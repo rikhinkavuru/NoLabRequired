@@ -1,0 +1,151 @@
+# Dataset and source index {.unnumbered}
+
+Every external source this book states a fact from, with the date that
+fact was last checked against the live source. The full address is
+printed for readers working from paper.
+
+This page is generated from `research/facts.jsonl` by
+`tools/make_backmatter.py`, so it cannot fall out of step with the text.
+
+## academic.oup.com {.unnumbered}
+
+- <https://academic.oup.com/bib/article/20/2/398/4096809>  
+  3 facts, checked 2026-08-02
+
+## alphafold.ebi.ac.uk {.unnumbered}
+
+- <https://alphafold.ebi.ac.uk/entry/P38398>  
+  5 facts, checked 2026-08-02
+
+## blast.ncbi.nlm.nih.gov {.unnumbered}
+
+- <https://blast.ncbi.nlm.nih.gov/Blast.cgi>  
+  40 facts, checked 2026-08-02
+
+## doi.org {.unnumbered}
+
+- <https://doi.org/10.1186/s13059-016-1044-7>  
+  1 fact, checked 2026-08-02
+
+## ftp.ncbi.nlm.nih.gov {.unnumbered}
+
+- <https://ftp.ncbi.nlm.nih.gov/genbank/gbrel.txt>  
+  11 facts, checked 2026-08-02
+
+## journals.plos.org {.unnumbered}
+
+- <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008984>  
+  2 facts, checked 2026-08-02
+
+## www.ebi.ac.uk {.unnumbered}
+
+- <https://www.ebi.ac.uk/Tools/services/rest/clustalo>  
+  8 facts, checked 2026-08-02
+
+## www.ncbi.nlm.nih.gov {.unnumbered}
+
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=10090>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=8364>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9031>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9598>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9606>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9615>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi>  
+  7 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/clinvar/variation/17662/>  
+  9 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/gene/>  
+  1 fact, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/gene/12189>  
+  15 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/gene/672>  
+  16 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450>  
+  40 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/MN850428.1>  
+  2 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_001013416.1>  
+  3 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_001045493.1>  
+  3 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_001114491.1>  
+  3 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_007294>  
+  8 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_007294.4>  
+  6 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_009764>  
+  8 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_009764.3>  
+  4 facts, checked 2026-08-02
+- <https://www.ncbi.nlm.nih.gov/nuccore/NM_204169.1>  
+  3 facts, checked 2026-08-02
+
+## www.nei.nih.gov {.unnumbered}
+
+- <https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/color-blindness>  
+  1 fact, checked 2026-08-02
+
+## www.rcsb.org {.unnumbered}
+
+- <https://www.rcsb.org/structure/1JNX>  
+  4 facts, checked 2026-08-02
+- <https://www.rcsb.org/structure/1T15>  
+  4 facts, checked 2026-08-02
+
+## www.uniprot.org {.unnumbered}
+
+- <https://www.uniprot.org/uniprotkb/P38398>  
+  9 facts, checked 2026-08-02
+- <https://www.uniprot.org/uniprotkb/P61626>  
+  9 facts, checked 2026-08-02
+- <https://www.uniprot.org/uniprotkb/P68871>  
+  9 facts, checked 2026-08-02
+
+## Files bundled with this book {.unnumbered}
+
+These ship in the repository, so nothing in the book depends on a
+download succeeding while you are working.
+
+| File | Size |
+|---|---|
+| `data/GSE60450_counts.tsv.gz` | 514 kB |
+| `data/GSE60450_samples.csv` | 1 kB |
+| `data/alignment/brca1_cds_five_species.aln` | 48 kB |
+| `data/alignment/brca1_cds_five_species.phylotree` | 0 kB |
+| `data/alignment/brca1_cds_five_species.pim` | 0 kB |
+| `data/alignment/brca1_cds_with_outgroup.aln` | 56 kB |
+| `data/alignment/brca1_cds_with_outgroup.phylotree` | 0 kB |
+| `data/alignment/brca1_cds_with_outgroup.pim` | 0 kB |
+| `data/blast/brca1_fragment_28bp.json` | 60 kB |
+| `data/blast/brca1_fragment_28bp.rid` | 0 kB |
+| `data/blast/brca1_fragment_28bp.txt` | 25 kB |
+| `data/blast/brca1_human_vs_nonhuman.json` | 1.1 MB |
+| `data/blast/brca1_human_vs_nonhuman.rid` | 0 kB |
+| `data/blast/brca1_human_vs_nonhuman.txt` | 1.4 MB |
+| `data/blast/cod_reference_nt.json` | 152 kB |
+| `data/blast/cod_reference_nt.rid` | 0 kB |
+| `data/blast/cod_reference_nt.txt` | 144 kB |
+| `data/blast/mystery_fillet_1_nt.json` | 168 kB |
+| `data/blast/mystery_fillet_1_nt.rid` | 0 kB |
+| `data/blast/mystery_fillet_1_nt.txt` | 148 kB |
+| `data/blast/shuffled_control_nt.json` | 1 kB |
+| `data/blast/shuffled_control_nt.rid` | 0 kB |
+| `data/blast/shuffled_control_nt.txt` | 2 kB |
+| `data/codon_table_standard.tsv` | 1 kB |
+| `data/sequences/brca1_cds_five_species.fasta` | 28 kB |
+| `data/sequences/brca1_cds_with_outgroup.fasta` | 33 kB |
+| `data/sequences/brca1_five_species.fasta` | 31 kB |
+| `data/sequences/brca1_fragment_28bp.fasta` | 0 kB |
+| `data/sequences/brca1_outgroup.fasta` | 7 kB |
+| `data/sequences/cod_reference_MT456169.fasta` | 1 kB |
+| `data/sequences/messy.fasta` | 2 kB |
+| `data/sequences/mystery_fillet_1.fasta` | 1 kB |
+| `data/sequences/shuffled_control.fasta` | 1 kB |
+

@@ -1,0 +1,104 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    # The three linters run on their own and first. They need no LaTeX, so a
+    # prose or fact regression fails in under a minute instead of after a
+    # fifteen-minute PDF build.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install check dependencies
+        run: pip install --quiet pypdf pdfplumber fonttools pandas
+      - name: Prose
+        run: python tools/check_prose.py --all --stats
+      - name: Content
+        run: python tools/check_content.py
+      - name: Sequences are real
+        run: python tools/check_sequences.py
+      - name: Quoted error messages are what Python really says
+        run: python tools/check_errors.py
+      - name: Every referenced file exists
+        run: python tools/check_data_refs.py
+      - name: Every figure has alt text
+        run: python tools/check_figures.py
+
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python environment
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --quiet --upgrade pip wheel
+          .venv/bin/pip install --quiet biopython pandas numpy scipy matplotlib \
+            seaborn requests jupyter nbformat nbclient ipykernel pyyaml statsmodels \
+            pypdf pdfplumber fonttools
+          .venv/bin/python -m ipykernel install --user --name nlr-book
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Fonts
+        run: |
+          mkdir -p ~/.fonts /tmp/fonts && cd /tmp/fonts
+          curl -fsSL -o ss.zip https://github.com/adobe-fonts/source-serif/releases/download/4.005R/source-serif-4.005_Desktop.zip
+          curl -fsSL -o inter.zip https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
+          curl -fsSL -o jb.zip https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip
+          for z in *.zip; do unzip -oq "$z" -d "${z%.zip}"; done
+          find /tmp/fonts \( -name '*.ttf' -o -name '*.otf' \) ! -path '*ariable*' -exec cp -n {} ~/.fonts/ \;
+          fc-cache -f
+
+      - name: Build both editions
+        env:
+          QUARTO_PYTHON: .venv/bin/python
+          MPLBACKEND: Agg
+        run: bash tools/build.sh all
+
+      - name: The PDF must match the typographic specification
+        run: .venv/bin/python tools/check_layout.py _book/bioinformatics-workbook-v1.0.pdf
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bioinformatics-workbook
+          path: _book/bioinformatics-workbook-v1.0.pdf
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: _book
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

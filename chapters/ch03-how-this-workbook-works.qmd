@@ -1,0 +1,174 @@
+# How this workbook works
+
+Chapter 1 said you could put this book down for two weeks and pick it up
+again. Here's what pays for that.
+
+Every chapter after this one is built out of the same six parts, in the same
+order, and each names the files it starts from. Coming back costs you a page of
+reading, not an evening. This is the only chapter that stops to say what the
+six parts are.
+
+## The six parts
+
+1. An opening question you can't answer yet, about real biology, with a real
+   answer.
+2. Concept, meaning the theory the next few pages need and none of the theory
+   they don't.
+3. Walkthrough, where I do the whole thing in front of you and print every
+   output so you can hold your screen against the book.
+4. Exercises, one or two, each stating what you'll produce and how long the
+   work takes.
+5. If it breaks, carrying the exact text of the errors that chapter produces.
+6. Checkpoint, three to six things you can now do, in verbs somebody could
+   watch.
+
+This chapter breaks the pattern twice. It opens with a claim rather than a
+question, because a book can't ask you a biological question about itself. And
+it has no exercises, because you haven't got a notebook yet. Chapter 4 hands
+you one.
+
+## What a time estimate assumes
+
+"About 25 minutes" on an exercise is an estimate, not a target. It assumes
+you're typing the code rather than pasting it, and that the page you need loads
+on the first try. It doesn't assume you already knew any of it.
+
+Doubling that number is ordinary. I wrote every estimate in this book already
+knowing the answer, which is the one advantage no reader has, so all of them
+lean short. If an exercise runs long, the estimate was optimistic. Write down
+what it really cost you and use your own number next time.
+
+## The five boxes
+
+Five kinds of box do the teaching here, each with a single job, and this page
+is the only legend you'll get. None is called Note or Warning: those labels
+announce that a box exists without saying what it's for. Each example below is
+doing real work rather than standing in as a sample.
+
+### Why this matters
+
+A Why this matters box carries the biology that makes a technical thing worth
+the trouble of learning.
+
+::: {.why}
+*BRCA1* occupies 126,033 bases of chromosome 17, and the transcript that gets
+translated into protein is 7,088 bases. The rest is introns, cut out before the
+protein is built. So "the length of *BRCA1*" isn't one number, and every length
+in this book arrives with the name of the thing it measured.
+:::
+
+### Trap
+
+A Trap box marks something that runs cleanly and hands you a wrong answer.
+Nothing turns red. These are the boxes to read twice.
+
+::: {.trap}
+The human gene is `BRCA1`. The mouse one is `Brca1`, and two nomenclature
+committees enforce that difference on purpose. Match a column of human symbols
+against a table of mouse ones and you get no rows back. Nothing errors. You
+lose an afternoon checking everything except the capital letters.
+:::
+
+### Check
+
+A Check box gives you a verification step and the exact output it should
+produce, never "you should see something like".
+
+::: {.check}
+Turn to Chapter 5 and find all six parts in it. Only four carry a heading: the
+opening question runs above the first one, and the checkpoint is the boxed list
+at the end. The exercises are numbered 5.1 and 5.2, and If it breaks holds four
+errors. If you can't find the opening question, it's the pair of coordinates in
+the first two paragraphs.
+:::
+
+### If it breaks
+
+Each If it breaks box holds the exact text of an error, names who is speaking,
+and gives the fix. An error stops you where you stand. A trap doesn't stop you
+at all, which is why these are two boxes and not one.
+
+::: {.ifbreaks}
+::: {.errfix err="NameError: name 'seq' is not defined"}
+Python is speaking here, and Python has no variable called `seq` at the moment
+you asked for one. Usually the cell that creates `seq` is sitting above this
+one, unrun. Run it, then run this one again.
+:::
+:::
+
+### As of
+
+An As of box carries a date. It appears wherever this book describes somebody
+else's web page, because those pages get redesigned and nobody tells you.
+
+::: {.asof}
+Checked against the live NCBI Gene interface on 2 August 2026. The human
+*BRCA1* record is Gene ID 672. NCBI moves the labels on that page every few
+years. Gene ID 672 stays put.
+:::
+
+## Where the code and the answers live
+
+Everything runnable in this book lives in one repository at
+`github.com/rikhinkavuru/NoLabRequired`, together with the small data files
+and a worked answer for every exercise. You'll open the first notebook from
+there in Chapter 4.
+
+That's the one full address the body of this book prints. Everywhere else you
+get a bare domain like `ncbi.nlm.nih.gov`, because the domain is the part that
+survives a redesign. Printed links go stale, and a book that scatters them
+starts coming apart the month it's printed. Exact addresses live in the source
+index at the back, each next to the date it was last checked.
+
+## Type the code, don't copy it
+
+Here's the real reason, and it has nothing to do with discipline.
+
+Typing puts you in contact with syntax errors at a moment when nothing is at
+stake. You'll miss a bracket, Python will refuse to run, you'll fix it in ten
+seconds and forget it happened. That's the point. A reader who has never seen
+`SyntaxError` in a safe moment meets it for the first time on a night when
+something matters. They read it as a verdict on themselves rather than as a
+missing bracket.
+
+Now the honest counter-argument. It's faster to copy, and you're going to do
+it. I do it. So the ask is narrower than "always type": type it out the first
+time you meet anything new, then copy freely after that.
+
+Copying out of a PDF carries one mechanical hazard. A quote mark can arrive
+curly where Python needs it straight, and Python rejects a curly quote with a
+`SyntaxError`. Every code block in this book is checked for that before it
+prints. What you copy from anywhere else isn't.
+
+## When you're stuck
+
+Every chapter has an If it breaks section near the end, holding the errors that
+chapter really produces. This one produces none, because you haven't run
+anything yet. So here's the general procedure. Work down it and stop at the
+step that fixes things.
+
+[The error index at the back is generated from the If it breaks boxes, so it
+can't drift out of step with the chapters.]{.margin}
+
+1. Read the last line of the error first. It names the error and what the
+   machine couldn't do. The lines above are the route, not the problem.
+2. Work out who's speaking. Python, the runtime your code runs on, a website
+   and a silent network fail in four different ways, and Chapter 4 teaches the
+   difference. Chapter 16 takes it apart error by error.
+3. Look the message up in the error index at the back. It lists every error
+   this book explains, against the page that explains it.
+4. Restart and run every cell from the top. A notebook holds on to what earlier
+   cells did, so the code on the page and the values in memory can disagree,
+   with nothing on screen to say so.
+5. Search for the exact message with your own filenames and variable names cut
+   out of it. Keep the machine's words, drop yours.
+6. Stop for the night. Write the last thing that worked into a text cell, and
+   you'll pick it up faster tomorrow than you'll finish it tonight.
+
+::: {.checkpoint}
+- Name the six parts of a chapter, in the order they appear
+- Find all six in Chapter 5, and name the two that carry no heading
+- Say what a Trap box means, and how it differs from an If it breaks box
+- Say what an exercise's time estimate assumes about how you're working
+- Name the first line to read when an error appears
+:::

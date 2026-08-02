@@ -1,0 +1,414 @@
+# What the results actually mean
+
+One search in this chapter matched 28 bases of human *BRCA1* against a bonobo
+sequence. Every base identical, no gaps, and BLAST reported that alignment as
+`7e-04`. Later I take that same alignment and shrink the database by a factor
+of a thousand on paper. The number comes out at `7e-07`. One alignment, two
+E-values, and neither of them is wrong. So what is that number counting?
+
+## A hit table answers four questions at once
+
+Beginners read one of the four, and it's usually percent identity, because
+that's the only one whose name sounds like plain English. The other three are
+the bit score, the E-value and query coverage, and each gets a section below.
+
+### Homology is a claim, identity is a measurement
+
+*Identity* is a measurement. Line two sequences up, count the positions where
+the letters agree, divide by the number of positions you compared. It's a
+percentage running from 0 to 100 percent, and you can compute it yourself from
+the alignment.
+
+Sequences are [homologous]{.term def="Descended from a common ancestor. A
+claim about history, which is either true or false."} when they descend from a
+common ancestor. That's a claim, true or false. Nothing is 60 percent descended
+from an ancestor. High identity is evidence for the claim and it isn't the
+claim itself.
+
+You'll read "percent homology" in papers anyway, and it means percent identity
+every time. Say identity when you mean the measurement and homologous when
+you're ready to defend the history.
+
+## Four real searches
+
+Everything printed below comes from four searches against NCBI's core
+nucleotide database on 2 August 2026, each one capped at 50 hits. I'll call
+these the BRCA1 search, the fillet search, the fragment search and the shuffled
+search. Where I write the BRCA1 hit, I mean the top row of the BRCA1 search.
+
+The BRCA1 search sent the whole human transcript, `NM_007294.4`, 7,088 bases.
+That's the accession and the length you wrote down in Exercise 5.1, and this is
+the first thing the book does with it. Human itself was excluded, so the best
+available answer had to come from another species.
+
+``` {.default .output}
+Query= NM_007294.4 Homo sapiens BRCA1 DNA repair associated (BRCA1),
+transcript variant 1, mRNA
+
+Length=7088
+
+                                                    Score     E     Max
+Sequences producing significant alignments:         (Bits)  Value  Ident
+
+XM_009432080.5 PREDICTED: Pan troglodytes BRCA1...  12746    0.0  99%
+XM_054669711.2 PREDICTED: Pan troglodytes BRCA1...  12728    0.0  99%
+XM_054669710.2 PREDICTED: Pan troglodytes BRCA1...  12728    0.0  99%
+```
+
+The fillet search sent the 649-base unknown from Exercise 6.1.
+
+``` {.default .output}
+Query= mystery_fillet_1
+
+Length=649
+
+                                                    Score     E     Max
+Sequences producing significant alignments:         (Bits)  Value  Ident
+
+AB182303.1 Gadus chalcogrammus mitochondrial DN...   1199    0.0  100%
+PZ291804.1 Gadus chalcogrammus voucher USNM:FIS...   1199    0.0  100%
+OL494247.1 Gadus chalcogrammus voucher H90 cyto...   1199    0.0  100%
+```
+
+The fragment search sent 28 bases cut out of the middle of `NM_007294.4`,
+positions 601 to 628. Nothing was excluded, and human sequences are in the
+database.
+
+``` {.default .output}
+Query= brca1_fragment_28bp
+
+Length=28
+
+                                                    Score     E     Max
+Sequences producing significant alignments:         (Bits)  Value  Ident
+
+XM_063598597.1 PREDICTED: Pan paniscus BRCA1 DN...   51.8  7e-04  100%
+XM_055100855.2 PREDICTED: Pan paniscus BRCA1 DN...   51.8  7e-04  100%
+XM_054457701.2 PREDICTED: Pongo pygmaeus BRCA1 ...   51.8  7e-04  100%
+```
+
+All 50 hits in that report score 51.8 bits at `7e-04`. Four of the 50 are
+human. Nothing in the numbers breaks the tie, so the order they print in isn't
+a ranking.
+
+The shuffled search sent the same 649 bases as the fillet search, same length,
+same base composition, put in a random order with a recorded seed.
+
+``` {.default .output}
+Query= shuffled_control
+
+Length=649
+
+No significant similarity found.
+```
+
+## The E-value counts accidents in a pile this size
+
+An [E-value]{.term def="A count of expected accidents, not a probability that
+the hit is real."} is the number of alignments at least this good that you'd
+expect to meet by accident in a database this size. It is not the probability
+that your hit is real, and BLAST has no opinion about that.
+
+Only two things go into it, and one of them says nothing about how good your
+match is:
+
+``` {.default}
+E = search space / 2^(bit score)
+```
+
+The bit score belongs to the alignment. The search space is your query length
+multiplied by the number of letters in the database. BLAST trims both a little
+and prints the figure it used at the foot of every report. Here it is from the
+fragment search:
+
+``` {.default .output}
+Effective search space: 2834618571966
+```
+
+<!-- nlr-allow: 2834618571966 7029 12033 1000 -->
+
+Put the fragment's bit score into the formula and turn the handle:
+
+``` {.default}
+2 ^ 51.8                              = about 3.92 x 10^15
+2,834,618,571,966 / (3.92 x 10^15)    = 0.00072
+```
+
+The report prints `7e-04` in the E column. That's the same number to the one
+digit the report bothers to print.
+
+::: {.check}
+Do that division on a phone calculator before you read on. Raise 2 to the power
+51.8, then divide 2,834,618,571,966 by what you get. You want 0.0007. If your
+answer is out by a factor of a thousand, count the digits in the search space:
+there are thirteen of them.
+:::
+
+The bit score sits in an exponent, so it moves E violently. The search space
+sits on top as a plain multiplier, so it moves E in proportion. Cut the
+database by a factor of a thousand and E falls from `7e-04` to `7e-07`, off an
+alignment where not one base changed.
+
+The behavior is deliberate. A hit that would be startling inside one small
+database is unremarkable inside this one, which holds 128,547,243 sequences and
+948,086,538,397 letters.
+
+Two things follow from that, and both bite when you read somebody else's table.
+
+Copy an E-value out of a paper and it means nothing on its own. E = 1e-20
+against the whole nucleotide database and E = 1e-20 against a 40-gene panel are
+different amounts of evidence. A paper that prints the number without naming
+the database has told you half a fact.
+
+The second is already sitting in your own results. BLAST prints a hit only if
+its E-value comes in under a threshold, and somebody picked that threshold
+before you got there. Three of the four searches here ran at 10, the number
+BLAST itself ships with. The fragment search ran at 1,000, raised on purpose so
+that a 28-base query would come back with anything at all.
+
+::: {.trap}
+A reporting threshold is not a verdict. At a threshold of 10, BLAST hands you
+hits it expects to meet ten times by chance in a database this size, and
+nothing in the output marks them. A row near the bottom of a long list with
+E = 4 is the search telling you it expected about four of these anyway. It
+prints in the same font as everything above it.
+:::
+
+NCBI dropped the default on its own web form to 0.05 in September 2020, so the
+page you paste a sequence into is stricter than the 10 in every book written
+before then. Every one of those numbers is a decision about what's worth
+printing, and the report won't tell you which decision it came from.
+
+None of this is BLAST going easy on beginners. The same table, with the same
+unflagged rows in it, goes to a professor and to you, and everyone who reads
+one does this part by hand.
+
+### Why two of these reports say 0.0
+
+The BRCA1 hit and the fillet hit both print `0.0` in the E column, and that
+isn't zero. Run the same formula on the BRCA1 hit, whose bit score is 12,746.
+Its report carries a search space of its own at the foot, bigger than the
+fragment's because the query is longer, and that's the number opening the last
+line below. Multiply a bit score by 0.30103, which is log base 10 of two, and
+you've turned it from a power of two into a power of ten:
+
+``` {.default}
+12,746 x 0.30103                     = 3,837
+2 ^ 12,746                           = about 10 ^ 3,837
+6,583,801,228,639,271 / 10 ^ 3,837   = about 10 ^ -3,821
+```
+
+That last line is the E-value of the BRCA1 hit, far below the smallest number
+the report can print. So `0.0` in an E column means "smaller than this report
+can say". All 50 hits in the BRCA1 report print `0.0`. They are not 50 equally
+good hits: their bit scores run from 12,746 down to 12,033. Sort by bit score,
+which has no floor to hit.
+
+::: {.asof}
+Checked against the live NCBI BLAST pages on 2 August 2026. The text report
+labels its columns Score (Bits), E Value and Max Ident, prints the effective
+search space at the very bottom, and carries no coverage column at all. The web
+form adds one called Query Cover and arrives with 0.05 in its expect-threshold
+box. If a name here doesn't match your screen, all four numbers are still there
+under some name.
+:::
+
+## The bit score is the number that travels
+
+A [bit score]{.term def="An alignment score put on a fixed scale, so the same
+value means the same thing in every search ever run."} rises as the alignment
+gets better and as it gets longer, and it has no idea how big the database was.
+A bit score of 50 means the same thing in every search anyone has ever run,
+which is the whole reason the number exists.
+
+Take the two extremes from the four searches. The BRCA1 hit scored 12,746 bits
+and the fragment hit scored 51.8.
+
+``` {.default}
+12,746 / 51.8 = 246
+```
+
+That gap is wider than 246 makes it sound. Each extra bit of score halves the
+number of accidents you'd expect. So the BRCA1
+hit doesn't carry 246 times the evidence. It carries the difference between an
+E-value of 0.0007 and one that printed as `0.0`.
+
+## Percent identity only covers what lined up
+
+Open the alignment and BLAST shows you the fraction it divided. Here's the top
+of the BRCA1 hit:
+
+``` {.default .output}
+ Score = 12746 bits (6902),  Expect = 0.0
+ Identities = 7029/7089 (99%), Gaps = 13/7089 (0%)
+ Strand=Plus/Plus
+```
+
+7,029 positions matched out of 7,089 compared. That denominator is the length
+of the aligned region, and it isn't the length of your query. The query is
+7,088 bases. One of the 13 gaps sits on the query side, and a gap still takes
+up a column. That's the extra one.
+
+Here's the fragment hit, in full, because it fits:
+
+``` {.default .output}
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1260  GAACTCTGAGGACAAAGCAGCGGATACA  1287
+```
+
+28 out of 28. Percent identity never reports how much sequence went into it. A
+hundred percent over 28 bases and 99 percent over 7,089 bases print in the same
+column, one above the other.
+
+::: {.trap}
+Sort a hit table by percent identity and the shortest alignment in it climbs to
+the top. The fragment hit ties for first at 100 percent against a hit scoring
+246 times higher, and it holds that place honestly, because 28 out of 28 really
+is 100 percent. Nothing errors and nothing warns. The column you sorted by is
+the one column in the table that can't see length.
+:::
+
+## Query coverage, and how a short query walks past it
+
+[Query coverage]{.term def="The percentage of your query sequence that the
+reported alignment actually covered."} is the guard against that trap, because
+a hit that matches a small piece of a long query gets caught by it.
+
+The text report never prints it. What it prints is the alignment, and every
+`Query` line carries the position it starts at and the position it ends at. The
+BRCA1 alignment runs to 119 `Query` lines; here are the first and the last:
+
+``` {.default .output}
+Query  1     GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGCG  60
+             |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |
+Sbjct  124   GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGAG  183
+
+...117 more blocks like that one...
+
+Query  7080  ACACTTCCA  7088
+             |||||||||
+Sbjct  7192  ACACTTCCA  7200
+```
+
+Base 1 to base 7,088 of a 7,088-base query, so coverage is 100 percent. The
+fragment alignment runs 1 to 28 of 28, which you can see whole in the block
+above, so 100 percent again.
+
+There's the hole. Coverage is a fraction of the query, so it can only report on
+the question you asked.
+
+Those 28 bases came out of `NM_007294.4`. Work out what fraction of it they
+are:
+
+``` {.default}
+28 / 7,088 = 0.0039
+```
+
+The fragment hit covers 100 percent of the query and 0.4 percent of the
+transcript. Both numbers are true. The one a results page hands you is the 100.
+
+Read identity and coverage next to the query length, printed above the table on
+the line that says `Length=28`. It's the number that decides what the other two
+are worth.
+
+## Ranking the four
+
+Rank the four searches by percent identity. The fillet hit and the fragment hit
+are level at 100 percent, the BRCA1 hit is at 99 percent, and the shuffled
+search has nothing to rank. A 28-base query ties for first place.
+
+Rank them by bit score instead: BRCA1 12,746 bits, fillet 1,199, fragment
+51.8, shuffled nothing. The fragment drops to a distant third, where it belongs,
+because the bit score is the only one of the four numbers that grows with how
+much sequence agreed.
+
+The shuffled search is what makes the other three mean anything at all. It
+asked the same question of a sequence with no history behind it. Against
+128,547,243 sequences it found nothing. A search that can come back empty is a
+search whose hits are worth reading.
+
+::: {.why}
+Those 28 bases of *BRCA1* come back identical in bonobo, gorilla, orangutan and
+human, and in a green monkey as well. Stretches that short sit everywhere in
+every mammal genome, so a perfect match over 28 bases is what being related
+looks like in general. It is not evidence about the one sequence you asked
+about. Chapter 20 asks the same question of read counts and Chapter 25 asks it
+of p-values.
+:::
+
+## Exercises
+
+::: {.exercise num="7.1" time="40 minutes"}
+::: {.goal}
+Rank the four searches in this chapter by how much biology you can conclude
+from each one, and defend the order you chose.
+:::
+::: {.given}
+The four reports are in `data/blast/` in the book's repository, under
+`brca1_human_vs_nonhuman`, `mystery_fillet_1_nt`, `brca1_fragment_28bp` and
+`shuffled_control_nt`. Every number you need is in this chapter as well.
+:::
+::: {.produce}
+An ordering of all four, strongest first, plus one sentence per search naming
+the single column that decided its position. Four sentences, four column names,
+and a column name may be used more than once.
+:::
+::: {.check}
+Two orderings are defensible at the top, and only if your sentence names the
+column that separates them. Every ordering that puts the fragment search above
+either of the other two is wrong, and it's wrong the same way: you ranked by
+percent identity. Reread the fragment sections if that's what happened. The
+shuffled search goes last, and the thing that puts it there is a hit count of
+zero rather than any score.
+:::
+
+::: {.answerspace lines="9"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="No significant similarity found."}
+The website is talking, and it's reporting a result rather than a failure.
+Three different situations produce this line and you can tell them apart. Your
+query may be too short, so check the `Length=` line first. You may have
+searched a database that doesn't contain the right kind of sequence. Or the
+sequence genuinely has no relative on deposit, which is what happened to the
+shuffled search here.
+:::
+
+::: {.errfix err="Every hit in your table has the same score and the same E-value"}
+They're ties, and the order they print in is not a ranking. All 50 hits in the
+fragment search sit at 51.8 bits. Picking the top row of a tie and calling it
+the answer is picking a row at random.
+:::
+
+::: {.errfix err="You want to report an E-value and yours prints as 0.0"}
+Report the bit score and the name of the database instead. The string `0.0`
+means the number was smaller than the report can print, so it can't be compared
+against another `0.0`. On its own it doesn't say which database produced it.
+:::
+
+::: {.errfix err="A paper reports 98 percent homology and you need to quote it"}
+They measured identity. Quote it as identity, give the length of the region it
+was measured over, and if the paper doesn't state that length, say so in your
+own write-up.
+:::
+:::
+
+::: {.checkpoint}
+- Name the database before comparing an E-value with any other E-value
+- Rank two hits by bit score, then say how ranking by percent identity would
+  have reordered them
+- Read `Identities = 7029/7089` and say what the denominator counts
+- Compute query coverage from an alignment range, and say what it fails to
+  protect you from when the query is short
+- Distinguish a homology claim from an identity measurement in a sentence
+  taken from a paper
+:::

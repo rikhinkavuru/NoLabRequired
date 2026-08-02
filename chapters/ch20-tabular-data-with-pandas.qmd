@@ -1,0 +1,415 @@
+# Tabular data with pandas
+
+One file in this book's data folder is 513,592 bytes and holds 27,179 rows of
+whole numbers, one row per mouse gene, across twelve sample columns. Nothing
+inside it says what those numbers count or which animal each column came from.
+So here's the question you can't answer yet: does 939 in one column beat 759 in
+another? That has an answer, and it isn't the obvious one.
+
+The file is `data/GSE60450_counts.tsv.gz`. It came out of the Gene Expression
+Omnibus, or GEO, which is NCBI's public archive of expression data, under the
+accession `GSE60450`. Twelve samples of mouse mammary gland went into it.
+Chapter 3 told you where the book's data folder lives, and Chapters 21, 24 and
+25 all come back to this one file.
+
+## Open it before you believe anything about it
+
+Every file you've handled so far held one sequence at a time, and Python's
+string tools were the right shape for that. A table isn't that shape. It has
+named columns, it has rows, and each column holds one kind of thing all the way
+down. The library everybody uses for tables in Python is called pandas, and the
+table it gives you is a
+[DataFrame]{.term def="A table in pandas. Named columns, numbered rows, and one kind of value in each column."}.
+
+Read the file and ask it how big it is.
+
+```{python}
+import pandas as pd
+
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t")
+print(counts.shape)
+```
+
+Two things happened without you asking for them. The file ends in `.gz`, so
+pandas uncompressed it on the way in. And `sep="\t"` says the columns are
+separated by tab characters, which is what the `.tsv` in the name means.
+
+Check the shape before you look at anything else. Rows first, then columns:
+27,179 genes across 14 columns, twelve of which are samples. Leave `sep="\t"`
+out and pandas assumes commas, finds none in a tab-separated file, and hands you
+27,179 rows of a single column. No error, no warning, nothing red. The shape is
+how you catch it.
+
+Now look at what the columns are called.
+
+```{python}
+for name in counts.columns[:4]:
+    print(name)
+```
+
+Those are the two that aren't samples. Here `EntrezGeneID` names the gene and
+`Length` is how long that gene is in bases, which you'll want in a moment.
+The remaining twelve are the samples, and
+their names have collected debris. Everything after the first underscore is
+bookkeeping from the sequencing machine, down to which lane of which flowcell
+each read came off. Only the part in front of the first underscore names the
+tube, and only that part will match anything else you own.
+
+```{python}
+counts.columns = [name.split("_")[0] for name in counts.columns]
+print(counts.columns[2:8].tolist())
+print(counts.columns[8:].tolist())
+```
+
+The square brackets hold a loop written on one line. It says: for every name in
+`counts.columns`, cut the name at the first underscore and keep the front piece.
+The list that comes out replaces the old column names, and you'll see the same
+line at the top of every chapter that opens this file.
+
+Six names starting `MCL1-D`, then six starting `MCL1-L`. Hold on to that
+ordering. It matters later in this chapter and it matters a lot in Chapter 24.
+
+```{python}
+print(counts[["EntrezGeneID", "MCL1-DG", "MCL1-LA"]].head())
+```
+
+A list of column names inside the square brackets gives you those columns and
+drops the rest. `.head()` gives you the first five rows. The numbers on the
+left, `0` through `4`, are pandas numbering the rows for you. They aren't in
+the file.
+
+## What one of these numbers is, and what it isn't
+
+Each number is a count of sequencing reads. Somebody broke the RNA in one
+sample into millions of short pieces, read them, worked out which gene each
+piece came from, and tallied the result. A `438` in the `MCL1-DG` column means
+438 reads from that sample landed on that gene. A table shaped like this one, a
+row per gene and a column per sample, is what everybody calls a count matrix.
+
+Each count carries two things at once: how much of the gene the cell was
+making, and how hard somebody looked. Add up a column and you get the second
+one on its own. The sum of one sample's column is its
+[library size]{.term def="The total number of reads counted in one sample. It is the sum of that sample's column."},
+the number of reads it contributed.
+
+```{python}
+sample_cols = list(counts.columns[2:])
+library_size = counts[sample_cols].sum()
+print(library_size.sort_values())
+```
+
+`.sum()` on a set of columns adds each one up and hands back one number per
+column. Then `.sort_values()` puts them in order, smallest first, which is the
+fast way to see a range.
+
+The shallowest sample is `MCL1-DL` at 20,015,386 reads. The deepest is
+`MCL1-LE` at 24,723,827. Divide the second by the first and you get 1.235.
+Sequencing went about a quarter further on `MCL1-LE`, and every gene in that
+column collects about a quarter more counts for nothing.
+
+<!-- nlr-allow: 11974 -->
+
+Watch it happen on one gene. Here is gene 11974 in those two columns.
+
+```{python}
+row = counts["EntrezGeneID"] == 11974
+print(counts.loc[row, ["MCL1-DL", "MCL1-LE"]])
+```
+
+939 against 759 looks like a real difference. Work out the ratio: 939 divided
+by 759 is 1.237. You got 1.235 out of the library sizes a moment ago. Those
+two numbers agree to three digits, and that agreement is the whole story.
+
+### Counts per million, derived here
+
+The fix is division. Take each count, divide it by the total of its own column,
+and you have that gene's share of that sample. Those shares are tiny, so
+multiply by a million to get numbers you can read out loud. That's
+[counts per million]{.term def="A raw count divided by its own sample's library size, times a million. It makes one gene comparable across samples."},
+written CPM from here on.
+
+```{python}
+cpm = counts[sample_cols] / library_size * 1e6
+print(cpm.loc[row, ["MCL1-DL", "MCL1-LE"]].round(1))
+```
+
+37.9 and 38.0. The gap closed. Two counts 180 apart turn out to be the same
+gene sitting at the same level in both samples, and the whole difference was
+how deep the sequencing went.
+
+That division works because `library_size` carries the column names as its
+labels. When you divide, pandas matches those labels against the columns of the
+table instead of going by position. This is the first of two places in this
+chapter where that habit saves you.
+
+<!-- nlr-allow: 1000000 -->
+
+::: {.check}
+Run `print(cpm.sum().round(0))`. Every one of the twelve columns should read
+`1000000.0`. No coincidence, and no rounding artifact either: you divided each
+column by its own total, so each column sums to a million by construction. If
+one column reads something else, you divided by the wrong thing.
+:::
+
+CPM fixes the column and does nothing at all to the row, and that's the limit
+you have to carry from here. Remember the `Length` column. A gene twice as long
+catches about twice as many reads at the same true expression, because there's
+twice as much of it to break into pieces. So you can compare one gene across
+the twelve columns, which is what the rest of this book does. You can't line
+two different genes up inside one column and say which is expressed more.
+
+::: {.why}
+Chapter 7 said an E-value means nothing without the size of the database behind
+it. This is the same shape of problem in a different costume. A count means
+nothing without the library size behind it, and the count is printed in the
+file while the library size is not. Any number you meet in this field is worth
+one question before you write it down: divided by what?
+:::
+
+## The row labels are integers on purpose
+
+Look back at that first column. `EntrezGeneID` holds an
+[Entrez Gene ID]{.term def="NCBI's permanent integer identifier for one gene in one species. Stable and unique, and it tells you nothing on sight."},
+and every value in it is a whole number. You cannot tell what gene 11974 is by
+looking at it. That's the trade the file made.
+
+An Entrez ID is stable. It's assigned once, it points at one gene in one
+species forever, and no committee is going to change it while your analysis is
+running. The IDs are unique too, so two rows carrying the same one would be a
+defect rather than an ambiguity.
+
+A gene symbol is the opposite trade. `Brca1` is readable and 12189 isn't, and
+that's the entire case for symbols. Against them, the list runs longer. Symbols
+get retired and reissued by nomenclature committees. The same symbol has meant
+different genes in different years. Human and mouse committees capitalize
+differently, which is why Chapter 5 had you write `BRCA1` and `Brca1` as two
+separate strings. A comparison between those two fails silently.
+
+::: {.trap}
+Open a gene list in a spreadsheet and some of the symbols stop being symbols.
+SEPT7 becomes a date in September. MARCH1 becomes a date in March, and DEC1
+goes the same way in December. The program doesn't ask you, doesn't flag it,
+and writes the dates back out when you save. Mark Ziemann and colleagues found
+this in 704 of 3,597 papers with Excel gene lists in 2016. The same group
+counted again in 2021, after five years of public warnings, and found it in
+3,436 of 11,117, which is 30.9 percent. The rate went up. The HUGO Gene
+Nomenclature Committee has since renamed the symbols that kept getting eaten,
+so SEPT7 is now SEPTIN7 and MARCH1 is MARCHF1. Renaming the genes turned out to
+be the easier fix, which tells you something about the other one.
+:::
+
+No spreadsheet turns 12189 into a date. That's why this file ships integers. The
+mapping from ID to name belongs at the end, on a short results table, rather
+than at the start on all 27,179 rows. Chapter 24 does that mapping once there's
+something worth naming.
+
+## Keeping the rows you want
+
+Most of those 27,179 rows are dead weight. Plenty of them are zero in every one
+of the twelve columns. Plenty more sit at one or two reads, where the number
+tells you about luck rather than about the tissue. So the first thing anybody
+does with a count matrix is throw rows away, on a rule stated out loud.
+
+```{python}
+print((counts[sample_cols].sum(axis=1) == 0).sum(), "rows are zero everywhere")
+expressed = counts[(cpm >= 1).sum(axis=1) >= 3]
+print(len(counts), "rows in")
+print(len(expressed), "rows out")
+```
+
+Read that condition from the inside out. The comparison `cpm >= 1` builds a
+table of True and False the same shape as `cpm`. Every True counts as 1, so
+`.sum(axis=1)` runs along each row and gives you how many samples cleared the
+bar. A row survives `>= 3` when that number is three or more, and `counts[...]`
+keeps the survivors.
+
+One word in there decides everything. `axis=1` means along the row, and
+`axis=0`, the default, means down the column. Get those two the wrong way round
+and the code runs cleanly and answers a question you didn't ask, so say the
+direction out loud each time you type it.
+
+Nearly half the rows are gone, and the rule that dropped them isn't free. A
+gene that clears 1 CPM in only two of the twelve samples goes out with the
+rest, however loudly it fires in those two. This study puts only two samples in
+some of its groups. The rule is one somebody chose, it isn't a law, and Chapter
+24 uses this exact one so that the numbers there match the numbers here.
+
+## Which sample is which column
+
+`MCL1-DG` is a tube. It doesn't say whether that tube held basal cells or
+luminal cells, or whether the mouse was virgin, pregnant or lactating. None of
+that is in the count matrix. It lives in a second file.
+
+```{python}
+samples = pd.read_csv("data/GSE60450_samples.csv")
+print(samples[["sample", "gsm", "cell_type", "stage"]].head(4))
+```
+
+Twelve rows, one per sample. The `gsm` column holds the GEO accession for each
+one, which is the identifier you'd quote in a paper.
+
+Now put the two tables together. Here's how it goes the first time, for almost
+everybody. Take the sample table in accession order, walk down the columns of
+the count matrix, and hand out the labels as you go.
+
+```{python}
+by_accession = samples.sort_values("gsm")
+guess = pd.DataFrame({"column": sample_cols,
+                      "cell_type": list(by_accession["cell_type"])})
+print(guess)
+```
+
+Read the result. `MCL1-DG` comes out luminal, and so do the next five. Then all
+six `MCL1-L` columns come out basal.
+
+All twelve are wrong. They're wrong consistently, which is the most expensive
+way to be wrong. The count matrix runs its six basal samples first and its six
+luminal samples second. The GEO accessions run the other way round. Accession
+`GSM1480291` belongs to `MCL1-LA`, which is the seventh of the twelve sample
+columns rather than the first.
+
+::: {.trap}
+Nothing above raised an error. Both lists held twelve entries, pandas set them
+side by side without a word, and printed a tidy table. Every number you
+computed downstream would be a real number, correctly calculated, about the
+wrong samples. Chapter 24 makes this exact mistake on the full dataset, catches
+it with a gene whose answer was already known, and recovers. Watch for it
+there.
+:::
+
+### Join on a key instead
+
+A key is a column whose values name the rows, so `sample` is the key here and
+`MCL1-DG` is one of its values. Both tables have to carry it. Build the second
+table so it does.
+
+```{python}
+totals = pd.DataFrame({"sample": sample_cols,
+                       "library_size": library_size.values})
+design = totals.merge(samples, on="sample")
+print(design[["sample", "gsm", "cell_type", "stage"]])
+```
+
+`merge` looks up each value of `sample` in the other table and brings the
+matching row across. Where that row happens to sit doesn't enter into it. Prove
+that to yourself: merge again against the accession-ordered copy and compare
+the answers.
+
+```{python}
+again = totals.merge(by_accession, on="sample")
+print(again["cell_type"].equals(design["cell_type"]))
+```
+
+::: {.check}
+`MCL1-DG` must come out `basal` and `MCL1-LA` must come out `luminal`. If
+you've got that pair the other way round, you joined by position. One more
+thing worth knowing. Had you merged before trimming those column names,
+`MCL1-DG_BC2CTUACXX_ACTTGA_L002_R1` would have matched nothing on the other
+side. You'd have got back a table with zero rows and no complaint. Check the
+row count of anything you merge.
+:::
+
+### One number per group
+
+`groupby` splits a table into piles according to the values in one or more
+columns, then computes something for each pile. Part 4 leans on it constantly.
+
+```{python}
+print(design.groupby(["cell_type", "stage"])["library_size"].mean())
+```
+
+Six piles. Two cell types, three stages, two samples in each combination. That's
+the whole design of the experiment, and you read it off your own table instead
+of off somebody's methods section.
+
+Now read the numbers next to the piles. The lowest mean and the second highest
+are both basal. The highest and the second lowest are both luminal. So nobody
+sequenced one cell type harder than the other, and the depth differences you
+found earlier look like run-to-run variation rather than something built into
+the study. You had no way of knowing that before you looked.
+
+## Exercises
+
+<!-- nlr-allow: 12993 12991 12990 11475 20750 -->
+
+::: {.exercise num="20.1" time="40 minutes"}
+::: {.goal}
+Rank all 27,179 genes by how much they vary across the twelve samples, once on
+CPM and once on the raw counts, then say what changed between the two rankings.
+:::
+::: {.given}
+`counts`, `cpm` and `sample_cols` as this chapter built them. Use the standard
+deviation across the twelve sample columns as the measure of variation, which
+is `.std(axis=1)`. Rank all rows, with no filtering step.
+:::
+::: {.produce}
+Two ordered lists of ten Entrez Gene IDs, most variable first, plus one number:
+how many of the ten appear in both lists.
+:::
+::: {.check}
+Both lists open 12993, 12991, 12990, and all ten IDs appear in both, so your
+number is ten. Exactly one adjacent pair trades places: 11475 is eighth on CPM
+and ninth on the raw counts, and 20750 does the reverse. That pair is the whole
+effect. Look at 20750's counts across the twelve columns and you'll see why it
+slips. It peaks in `MCL1-LE` and `MCL1-LF`, the two deepest columns in the
+file, so normalizing takes something off it. If your two lists disagree
+on more than that pair, print `cpm.sum()` and confirm each column is a million
+before you go any further.
+:::
+
+::: {.answerbox height="2.4in"}
+:::
+:::
+
+Then the part that isn't in the answer. Those two rankings barely differ, and
+the reason is the range you measured earlier: 20,015,386 reads to 24,723,827,
+a spread of about a quarter. Run the same ranking on a study where one sample
+came back at half the depth of another and the two lists come apart. Nothing in
+either list tells you which situation you're in. Which is why you normalize
+first, every time, instead of checking afterwards whether it mattered.
+
+Take one more minute at the end. Look up 12993 in NCBI Gene the way Chapter 5
+showed you, and see whether the answer fits animals that were lactating.
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="KeyError: 'MCL1-DG'"}
+pandas is talking, and it's telling you there's no column by that name. You
+asked for the short name before running the cell that trimmed the column names,
+so the real name is still `MCL1-DG_BC2CTUACXX_ACTTGA_L002_R1`. Print
+`counts.columns[:4]` to see which version you're holding.
+:::
+
+::: {.errfix err="NameError: name 'cpm' is not defined"}
+Python is talking, and no table is involved. The cell that built `cpm` hasn't
+run in this session. Colab throws away everything when the runtime restarts, so
+after a disconnect you have to run the cells above again. Restart and run all
+is the reliable version of that.
+:::
+
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/GSE60450_counts.tsv.gz'"}
+Python looked in the folder your notebook is standing in and found no `data`
+folder under it. Either the file went away when the runtime recycled, or you're
+a folder off. List the current folder's contents before you retype the path.
+:::
+
+::: {.errfix err="KeyError: 'sample_name'"}
+You gave `merge` a key that isn't a column in both tables. `on=` takes the name
+of a column that exists on each side, spelled identically. Print the column
+names of both tables and compare them character by character.
+:::
+:::
+
+::: {.checkpoint}
+- Read a compressed TSV into a DataFrame and say what each half of its shape
+  means
+- Compute the library size of every sample and name the deepest and the
+  shallowest
+- Convert a raw count into CPM by hand, then check that each CPM column sums to
+  a million
+- Say what CPM corrects for and name one thing it leaves alone
+- Give two reasons an Entrez Gene ID is a safer label than a gene symbol
+- Join a sample table onto a count matrix by key, and say how you'd find out
+  whether you'd joined it by position instead
+:::

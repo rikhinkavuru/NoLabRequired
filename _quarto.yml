@@ -1,0 +1,161 @@
+project:
+  type: book
+  output-dir: _book
+  # Code executes from the project root, not from chapters/, so a path printed
+  # in the book is the same path that runs. Readers get data/ into their own
+  # session with the fetch cell shown in each chapter that needs it.
+  execute-dir: project
+  preview:
+    port: 4444
+
+book:
+  output-file: "bioinformatics-workbook-v1.0"
+  title: "No Lab Required"
+  subtitle: "A bioinformatics workbook for people with no lab, no degree, and no budget"
+  author: "Rikhin Kavuru"
+  date: last-modified
+  date-format: "D MMMM YYYY"
+  repo-url: https://github.com/rikhinkavuru/NoLabRequired
+  repo-branch: main
+  repo-actions: [edit, issue]
+  downloads: [pdf]
+  search: true
+  page-navigation: true
+  sidebar:
+    style: docked
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - frontmatter/contents.qmd
+    - frontmatter/acknowledgments.qmd
+    - part: parts/p0-start-here.qmd
+      chapters:
+        - chapters/ch01-who-this-is-for.qmd
+        - chapters/ch02-what-computational-biology-is.qmd
+        - chapters/ch03-how-this-workbook-works.qmd
+        - chapters/ch04-your-one-and-only-setup.qmd
+    - part: parts/p1-first-analysis.qmd
+      chapters:
+        - chapters/ch05-reading-a-gene.qmd
+        - chapters/ch06-blast.qmd
+        - chapters/ch07-what-results-mean.qmd
+        - chapters/ch08-proteins-without-a-microscope.qmd
+        - chapters/ch09-checkpoint-what-you-just-did.qmd
+    - part: parts/p2-enough-python.qmd
+      chapters:
+        - chapters/ch10-why-code-at-all.qmd
+        - chapters/ch11-variables-strings-and-dna.qmd
+        - chapters/ch12-loops-and-conditionals.qmd
+        - chapters/ch13-lists-dictionaries-genetic-code.qmd
+        - chapters/ch14-functions.qmd
+        - chapters/ch15-files-and-formats.qmd
+        - chapters/ch16-reading-errors.qmd
+    - part: parts/p3-real-data.qmd
+      chapters:
+        - chapters/ch17-biopython.qmd
+        - chapters/ch18-sequence-alignment.qmd
+        - chapters/ch19-multiple-alignment-and-trees.qmd
+        - chapters/ch20-tabular-data-with-pandas.qmd
+        - chapters/ch21-figures-that-communicate.qmd
+    - part: parts/p4-complete-project.qmd
+      chapters:
+        - chapters/ch22-framing-a-question.qmd
+        - chapters/ch23-finding-data.qmd
+        - chapters/ch24-walkthrough-differential-expression.qmd
+        - chapters/ch25-interpreting-results.qmd
+        - chapters/ch26-writing-it-up-and-sharing-it.qmd
+    - part: parts/p5-where-this-goes.qmd
+      chapters:
+        - chapters/ch27-practicing.qmd
+        - chapters/ch28-getting-in-without-credentials.qmd
+        - chapters/ch29-what-the-field-looks-like.qmd
+        - chapters/ch30-resources.qmd
+    - part: backmatter/_backmatter.qmd
+      chapters:
+        - backmatter/glossary.qmd
+        - backmatter/error-index.qmd
+        - backmatter/cheat-sheet.qmd
+        - backmatter/dataset-index.qmd
+        - backmatter/about-the-author.qmd
+        - backmatter/changelog.qmd
+
+crossref:
+  fig-title: Figure
+  tbl-title: Table
+  fig-prefix: Figure
+  tbl-prefix: Table
+  chapters: true
+
+filters:
+  - at: post-quarto
+    path: filters/nlr-components.lua
+
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  error: false
+  cache: false
+
+jupyter: nlr-book
+
+format:
+  pdf:
+    pdf-engine: lualatex
+    documentclass: book
+    classoption:
+      - twoside
+      - openany
+      - 11pt
+    papersize: letter
+    lang: en-US
+    # Front and back matter are driven by tex/before-body.tex and by explicit
+    # \mainmatter / \backmatter in the part files, so pandoc must not insert
+    # its own. Page numbering has to switch to arabic at Chapter 1, not before.
+    has-frontmatter: false
+    toc: false
+    lof: false
+    lot: false
+    number-sections: true
+    number-depth: 2
+    top-level-division: chapter
+    colorlinks: true
+    links-as-notes: false
+    keep-tex: true
+    output-file: bioinformatics-workbook
+    highlight-style: scss/nlr-light.theme
+    pdfstandard:
+      version: "1.7"
+      standards:
+        - ua-2
+      tagging: true
+    include-in-header:
+      - tex/preamble.tex
+    include-before-body:
+      - tex/before-body.tex
+    include-after-body:
+      - tex/after-body.tex
+    fig-pos: "H"
+    fig-format: pdf
+    fig-dpi: 300
+    reference-location: document
+  html:
+    theme:
+      - cosmo
+      - scss/nlr.scss
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    number-sections: true
+    code-copy: true
+    code-overflow: scroll
+    code-line-numbers: false
+    link-external-newwindow: true
+    link-external-icon: false
+    anchor-sections: true
+    fig-responsive: true
+    smooth-scroll: true
+    highlight-style: scss/nlr-light.theme
+    include-in-header:
+      - text: |
+          <meta name="color-scheme" content="light dark">

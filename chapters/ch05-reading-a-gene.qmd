@@ -1,0 +1,311 @@
+# Reading a gene
+
+Here is a real line from a real clinical database. A deletion of two bases in
+*BRCA1*, classified as pathogenic by an expert panel, sits at position
+43,124,028 on chromosome 17. Here is the same deletion, in the same gene, from
+the same database: position 41,276,045 on chromosome 17.
+
+Both are correct. They differ by 1,847,983 bases, which is about fifteen times
+the length of the entire gene. Nothing on either page is wrong, and nothing on
+either page will stop you writing down the wrong one. By the end of this
+chapter you'll know what the second number is, why it's still in circulation,
+and how to tell which one a paper means.
+
+## What is actually in a database record
+
+When people say they looked a gene up in NCBI, they usually mean one of three
+different records, and the three answer different questions.
+
+The **Gene** record is about the gene as a piece of the genome. Where it sits,
+what it's called, what it's been called before, which papers mention it. The
+**Nucleotide** record is about a sequence: a specific string of A, C, G and T
+that somebody deposited, with a specific length. The **Protein** record is
+about what that sequence codes for.
+
+One gene therefore has one Gene record and many Nucleotide records, because a
+gene can be transcribed into several different [transcripts]{.term def="One RNA
+version of a gene, differing from the others in which exons it includes."} and
+each one is its own sequence. Get that straight first,
+because a lot of confusing answers come from comparing a number off one record
+with a number off another.
+
+### Sequences travel as FASTA
+
+Every sequence you download from anywhere arrives in a format that has barely
+changed since 1985. This is [FASTA]{.term def="A plain-text sequence format. A header line starting
+with a greater-than sign, then the sequence."}, and it looks like this:
+
+``` {.default filename="data/sequences/brca1_five_species.fasta"}
+>human|NM_007294.4 Homo sapiens BRCA1 mRNA
+GCTGAGACTTCCTGGACCCCGCACCAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGC
+GCTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATTGGAACAGAAAGAAATGGAT
+```
+
+The rules are short. A line starting with `>` is a header and everything after
+the `>` is a description of whatever follows. Every line until the next `>` is
+sequence. Nothing else is required.
+
+What the format does not do is tell you anything about the sequence. It won't
+say which organism it came from, or which build of the genome it matches, or
+whether it's DNA or RNA or protein. All of that lives in the header, and the
+header is free text. Different tools put different things there in different
+orders, and some put nothing at all.
+
+::: {.trap}
+Most software treats everything up to the first space as the sequence's
+identifier and throws the rest away. So `>human|NM_007294.4 Homo sapiens BRCA1
+mRNA` becomes `human|NM_007294.4`, and the species silently disappears. If two
+of your sequences have headers that agree up to the first space, they'll end up
+with the same identifier and one of them will overwrite the other. You'll meet
+this for real in Chapter 15.
+:::
+
+### The accession number and the part after the dot
+
+The human *BRCA1* transcript in that file is `NM_007294.4`. That's an
+[accession number]{.term def="A permanent identifier for one database record.
+The part after the dot rises each time the sequence is corrected."}, and it's
+the single most useful thing on the page.
+
+Read it in three pieces.
+
+The prefix `NM_` tells you where the record came from. `NM_` means a
+curated messenger RNA: a human being at NCBI has looked at this and signed off
+on it. You'll also see `XM_`, which means the same kind of thing produced
+automatically by software from a genome annotation, with nobody checking. Both
+are useful. Only one of them is evidence that the transcript was ever observed.
+
+`007294` is the record. It will never be reused and never point at a different
+gene.
+
+`.4` is the edition. It means this sequence has been corrected three times
+since it was first deposited. When somebody fixes a base, the number after the
+dot goes up and the old version stays available forever.
+
+That last part is what makes a result reproducible. `NM_007294` means whatever
+is current today. `NM_007294.4` means exactly 7,088 specific bases in a
+specific order, and it will still mean those bases in ten years. Write down the
+version. Every time.
+
+### Which transcript, when there are several
+
+*BRCA1* has more than one transcript, so "the *BRCA1* sequence" isn't a
+well-formed request. For most of the last twenty years the honest answer to
+"which one should I use" was that it depended, and that answer is useless to
+somebody who has to pick one and move on.
+
+Since 2018 there's been a better one. NCBI and EMBL-EBI went through the human
+genes one at a time and agreed on a single representative transcript for each,
+matching perfectly between their two databases. That agreed transcript is the
+[MANE Select]{.term def="The one transcript per human gene that NCBI and
+EMBL-EBI agree is representative."} transcript, and it's flagged on the record.
+
+So: when you need one human transcript and have no specific reason to want
+another, use the MANE Select one. This book will use it throughout, and you can
+too, without having to justify the choice every time.
+
+MANE covers human. It does not cover mouse, which is why Exercise 5.2 will feel
+different.
+
+## Walkthrough: looking up BRCA1
+
+Open `ncbi.nlm.nih.gov/gene` and search for `BRCA1 human`. The record you want
+is Gene ID 672.
+
+::: {.asof}
+Checked against the live NCBI interface on 2 August 2026. NCBI redesigns these
+pages every few years and the labels move. Three things are always on the Gene
+record under some name: where the gene is, what it's called, and a list of its
+transcripts. Find those and the layout doesn't matter.
+:::
+
+Here's what that record says, and what each part means.
+
+**It's on chromosome 17, at 17q21.31.** The `17q21.31` is a cytogenetic band,
+which is a coordinate system based on the stripes you can see down a stained
+chromosome under a microscope. It's coarse, it predates sequencing, and you
+will still see it in papers.
+
+**It spans 126,033 bases of `NC_000017.11`.** That accession is chromosome 17
+itself. The gene runs from 43,170,326 down to 43,044,294, and the fact that the
+start is bigger than the stop is not a typo. It means the gene is read off the
+other strand, right to left as the coordinates are printed. About a third of
+human genes are.
+
+**Its MANE Select transcript is `NM_007294.4`, which is 7,088 bases.**
+
+Stop on those two numbers for a second. The gene occupies 126,033 bases of
+chromosome. The transcript is 7,088 bases. The difference is introns, which get
+cut out, and it means that if you mix up "the gene" and "the transcript" you
+are wrong by a factor of about eighteen.
+
+**Its protein is `NP_009225.1`, which is 1,863 amino acids.**
+
+You can check that number without trusting anybody. The record says the coding
+sequence runs from base 114 to base 5,705 of the transcript. Subtract, and add
+one because the range includes both ends: 5,705 − 114 + 1 = 5,592 bases. Three
+bases per amino acid gives 1,864 codons, and one of those is the stop codon,
+which isn't an amino acid. 1,863. It matches.
+
+<!-- nlr-allow: 1864 5591 -->
+
+::: {.check}
+Do that subtraction yourself before reading on. If you got 5,591, you forgot
+that the range includes both ends. That off-by-one is the single most common
+bug in this entire field, it has an entire section of Chapter 11 to itself, and
+it starts here.
+:::
+
+### The chapter's real lesson: three exon counts, none of them wrong
+
+Somewhere on that same page you'll find that *BRCA1* has 22 exons. Somewhere
+else on the same page, you'll find 31. The transcript record lists 23.
+
+None of these is a mistake, and nobody is going to flag the disagreement for
+you.
+
+- **22** comes from the prose summary at the top of the record, which is
+  written by hand and describes the gene as the literature has traditionally
+  counted it.
+- **31** counts every exon that appears in *any* annotated transcript of the
+  gene. Different transcripts use different exons, and this number is the union
+  of all of them.
+- **23** is the number of exons in `NM_007294.4` specifically, which is the one
+  transcript you actually chose.
+
+They're three answers to three different questions: what does the literature
+say, what does this gene do in total, and what's in the sequence in front of
+me. The number you want is almost always the third one, because it's the only
+one attached to a specific sequence you can point at.
+
+::: {.why}
+This is the habit the rest of the book is built on. Before you write a number
+down, ask what question it answers. A number in biology is almost never a
+property of the organism. It's a property of a measurement, or of a database
+record, or of a decision somebody made about which transcript to call the real
+one. Chapter 7 does this again with E-values, Chapter 20 does it with read
+counts, and Chapter 25 does it with p-values.
+:::
+
+### Back to the two coordinates
+
+The variant from the opening is written `NM_007294.4(BRCA1):c.68_69del`. Now
+you can read it. It's a deletion of the two bases at positions 68 and 69 of the
+coding sequence of that exact transcript version, and because it removes two
+bases rather than three it shifts the reading frame and destroys everything
+downstream.
+
+That description doesn't mention a chromosome at all, which is why it survives
+intact while the chromosomal coordinates move.
+
+They move because the coordinates are counted from the start of a
+[genome assembly]{.term def="One numbered reconstruction of a genome. A
+coordinate only means something relative to a named assembly."}, and there's
+more than one assembly. GRCh37 came out in 2009,
+GRCh38 in 2013. Between them, sequence was added, removed and reordered, so
+every coordinate downstream of any change shifted. The same variant is at
+41,276,045 in GRCh37 and 43,124,028 in GRCh38.
+
+::: {.trap}
+A coordinate with no assembly attached is not a location. If you take
+41,276,045 from a 2012 paper and look it up in a current genome browser,
+you'll land 1.8 megabases away from *BRCA1*, in the middle of a different gene,
+and the browser will show you a perfectly ordinary page. Nothing errors.
+:::
+
+So when a paper gives you a coordinate, find the assembly before you use it.
+It's usually in the methods section, and if it isn't, that tells you something
+about the paper.
+
+## Exercises
+
+::: {.exercise num="5.1" time="25 minutes"}
+::: {.goal}
+Retrieve the human *BRCA1* record and write down what the database actually
+says, rather than what you remember it saying.
+:::
+::: {.produce}
+Five values: the chromosome, the genomic span in bases, the accession of the
+MANE Select transcript including its version suffix, that transcript's length
+in bases, and the length of the protein in amino acids.
+:::
+::: {.check}
+Your span should be a six-figure number and your transcript length a
+four-figure one. If they're the same order of magnitude, you've recorded the
+same thing twice. Then check the protein: subtract the two ends of the coding
+range, add one, divide by three, subtract one for the stop codon. It should
+land exactly on the number the protein record gives.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+::: {.exercise num="5.2" time="25 minutes"}
+::: {.goal}
+Find the same gene in mouse, and record what changed.
+:::
+::: {.given}
+The mouse gene is called `Brca1`. Mouse gene symbols are written with one
+capital and the rest lowercase, where human ones are all capitals. That
+convention is real, it's enforced by two different nomenclature committees, and
+it will break a string comparison in Chapter 20 if you forget it.
+:::
+::: {.produce}
+The same five values as Exercise 5.1, plus one sentence naming the largest
+proportional difference between the two species and saying whether it surprises
+you.
+:::
+::: {.check}
+The mouse gene occupies roughly half the chromosome that the human one does,
+but its protein is only about 3 percent shorter. Those two facts are not in
+tension, and being able to say why is the point of the exercise. One more
+thing: look for the MANE Select flag on the mouse record. It isn't there. Write
+down why not.
+:::
+
+::: {.answerspace lines="7"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="Your search returns hundreds of records and none of them look right"}
+You searched a sequence database instead of the Gene database. Searching
+`BRCA1` in Nucleotide returns every deposited sequence anyone has ever
+submitted that mentions it, which is thousands of records. Start at Gene, then
+follow the link to the transcript.
+:::
+
+::: {.errfix err="The version suffix on the page is higher than the one printed here"}
+The sequence has been corrected since this was written, which is the system
+working. Use the current version and note it in your answer. This exercise is
+about reading the record, not about matching this page.
+:::
+
+::: {.errfix err="Your coordinates do not match the ones in a paper you are reading"}
+Check the assembly. If the paper is older than about 2015 it's probably GRCh37,
+also called hg19. NCBI and Ensembl both have remapping tools, and neither will
+guess for you.
+:::
+
+::: {.errfix err="The gene page shows several transcripts and you cannot tell them apart"}
+Look for the MANE Select flag. If you're not working in human, there won't be
+one, and the convention is to take the longest curated transcript with an `NM_`
+prefix. Say which one you took.
+:::
+:::
+
+::: {.checkpoint}
+- Read an accession number and say what its prefix, its number, and its version
+  suffix each mean
+- Find the MANE Select transcript for a human gene, and say why there isn't one
+  for mouse
+- Explain why a single gene record can report three different exon counts
+  without any of them being wrong
+- Convert a coding-sequence range into a protein length and check it against
+  the record
+- Say what's missing from a genomic coordinate that has no assembly named
+  alongside it
+:::

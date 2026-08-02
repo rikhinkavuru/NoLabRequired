@@ -1,0 +1,609 @@
+# Everything ran, and the answer came out backwards
+
+`Krt5` is a mouse gene, and across the 12 samples in this chapter its average
+reads 2,728.5 counts per million in one cell type and 4.3 in the other. About
+six hundredfold. The whole result turns on which cell type goes with which
+number, and that comes out of a second file holding 12 rows of labels.
+
+Line those two files up wrong and every number above stays the same. The counts
+don't move and nothing errors. The two words swap places, and the answer
+inverts. By the end of this chapter you'll know how to catch that in two
+minutes, and why the largest signal in this dataset isn't the one most readers
+arrive looking for.
+
+<!-- nlr-allow: 2728 -->
+
+## What this analysis is asking
+
+[Differential expression]{.term def="Comparing one gene's counts between two
+groups of samples, then repeating that comparison for every gene."} is one
+question asked once per gene: is the average different between group A and
+group B? Four things stand between a file of counts and an answer to it, and
+every one of them moves the answer.
+
+### A count is not an amount
+
+A count is the number of sequencing reads that landed on one gene in one
+sample. It belongs to the cell and to the depth of the sequencing run, both at
+once. Sequence the same cells twice as deeply and every count roughly doubles,
+so a gene at 100 counts in one sample and 120 in a deeper one may not have
+moved. Divide each column by its own total and the depth cancels. Chapter 20
+called the result counts per million.
+
+### Two labels on the same 12 samples
+
+Twelve samples, split two ways. Six came from basal cells and six from luminal
+cells, which is the `cell_type` label. Four came from virgin mice, four from
+pregnant mice and four from lactating mice, which is the `stage` label. Each
+combination of the two holds exactly 2 samples.
+
+So basal against luminal has 6 samples on each side, and virgin against
+lactating inside one cell type has 2. The difference between 6 and 2 runs the
+back half of this chapter.
+
+::: {.why}
+A mammary duct is built from two layers of cells. Luminal cells line the inside
+and make the milk. Basal cells wrap around the outside and squeeze it out. The
+two layers carry different keratin proteins, which is how anyone tells them
+apart. Both sit in every one of these 12 samples, and neither changes across
+pregnancy the way the other does.
+:::
+
+### Ratios need a log
+
+The log axis in Chapter 21 was there for a reason. A gene that doubled sits at
+2.0 and one that halved sits at 0.5, and those are the same size of move written
+as two numbers that look nothing alike. Take a log base 2 and they become +1 and
+-1. Every fold change in this chapter is a log2 fold change, so +1 means doubled
+and -3 means down eightfold.
+
+### Two numbers per gene, and the second one is the hard one
+
+For each gene you get a log2 fold change, which is the difference between the
+two group averages, and a p-value from a t-test. The p-value answers a narrow
+question: if this gene really didn't differ between the groups, how often would
+random noise hand me a gap this big?
+
+You'll run that test 14,210 times before this chapter is out, and at that scale
+a p-value below 0.05 stops meaning much. The proper version of that argument is
+Chapter 25's job. For now the pipeline also reports an adjusted p-value, and
+the adjusted column is the one you read.
+
+The t-test isn't what a working analyst would run on counts. DESeq2, published
+by Michael I. Love, Wolfgang Huber and Simon Anders in 2014, and edgeR,
+published by Mark D. Robinson, Davis J. McCarthy and Gordon K. Smyth in 2010,
+both fit a negative binomial model instead, because a gene at 20 reads is
+noisier than a gene at 2,000 in a way a t-test can't see. The pipeline below
+runs a t-test anyway, out of parts you've already met apart from the
+multiple-testing correction, and Chapter 25 says what that costs.
+
+## Loading the counts
+
+You should already have `data/GSE60450_counts.tsv.gz` and
+`data/GSE60450_samples.csv` from Chapter 20, at 513,592 bytes and 526 bytes. If
+either isn't sitting next to your notebook, fetch it before you run anything
+here.
+
+The count file is gzipped. In Chapter 20 you handed the file name straight to
+pandas and let it unpack the file on the way in, which works. This version
+unpacks it in a line of its own first, so the step is on the page rather than
+implied, and both routes hand you the same table.
+
+```{python}
+import gzip
+import io
+import pandas as pd
+
+raw = gzip.decompress(open("data/GSE60450_counts.tsv.gz", "rb").read())
+counts = pd.read_csv(io.StringIO(raw.decode()), sep="\t", index_col=0)
+counts.pop("Length")
+counts.columns = [name.split("_")[0] for name in counts.columns]
+
+print(counts.shape)
+print(" ".join(counts.columns[:6]))
+print(" ".join(counts.columns[6:]))
+```
+
+`counts.pop("Length")` removes the gene-length column, for the reason Chapter 21
+gave: it isn't a sample, and it would get averaged as though it were one. The
+line after it cuts each column name down at the first underscore, because the
+file ships names like `MCL1-DG_BC2CTUACXX_ACTTGA_L002_R1` and only the first
+piece identifies the sample. The rest of it describes the sequencing run, not
+the mouse.
+
+The row labels are Entrez gene IDs, not symbols. `110308` is a stable
+identifier and `Krt5` is a name that nomenclature committees are allowed to
+change.
+
+Now the library sizes.
+
+```{python}
+library_size = counts.sum()
+print(library_size.min(), library_size.max())
+print((library_size.max() / library_size.min()).round(3))
+```
+
+The deepest sample carries about 1.23 times the reads of the shallowest. Divide
+each column by its own total and multiply by a million.
+
+```{python}
+cpm = counts / library_size * 1e6
+keep = (cpm >= 1).sum(axis=1) >= 3
+kept = counts.loc[keep]
+
+print(counts.shape[0], "genes before filtering")
+print(kept.shape[0], "genes after filtering")
+```
+
+Read the filter as a sentence. A gene stays if it reaches at least 1 count per
+million in at least 3 of the 12 samples. A gene with 2 reads in one sample and
+0 in the rest can't tell you anything, and it still consumes a test. Both
+numbers are choices. Raise the sample count and you lose genes that switch on
+in only one small group. Exercise 24.2 takes the filter away so you can watch
+what it was doing.
+
+::: {.check}
+`counts` has 27,179 rows and `kept` has 14,210. If your second number is
+27,179 as well, the filter didn't apply, and the usual cause is running the
+cell that builds `keep` before the cell that builds `cpm`.
+:::
+
+A last transform, and then the table is ready to test.
+
+```{python}
+import numpy as np
+
+logcpm = np.log2(kept / kept.sum() * 1e6 + 1)
+print(logcpm.iloc[:3, :4].round(2))
+```
+
+The `+ 1` inside the log is the one Chapter 21 explained. It shifts a zero to a
+log of zero and leaves large values essentially alone.
+
+## Failure one: the labels
+
+The labels live in a second file, one row per sample.
+
+```{python}
+samples = pd.read_csv("data/GSE60450_samples.csv").set_index("sample")
+geo_order = samples.sort_values("gsm")
+print(geo_order[["gsm", "cell_type", "stage"]])
+```
+
+Sort 12 accessions and that's the order you get. Six luminal samples, then six
+basal ones, with virgin, pregnant and lactating appearing twice inside each
+block.
+
+::: {.asof}
+Checked against GEO on 2 August 2026. This series carries one accession per
+sample, `GSM1480291` through `GSM1480302`, and the counts arrive separately as
+a file somebody uploaded. No step anywhere checks that the two orders agree.
+:::
+
+Twelve rows of metadata, 12 columns of counts. The obvious move is to staple
+them together.
+
+```{python}
+wrong_labels = pd.DataFrame({
+    "column": counts.columns,
+    "gsm": geo_order["gsm"].values,
+    "cell_type": geo_order["cell_type"].values,
+    "stage": geo_order["stage"].values,
+})
+print(wrong_labels)
+```
+
+Look at that table. Twelve rows, no blanks and no repeats, six labeled luminal
+and six labeled basal, two of each stage inside each. On paper the design is
+flawless.
+
+It is also wrong for all 12 samples.
+
+Nothing you do next will tell you that. The samples really do fall into two
+clean groups of six, and the principal component table below shows them doing
+it. No plot has an opinion about labels. One column of one small table is
+reversed, and it's the column your question rests on.
+
+### The check that catches it
+
+The table has no way to know what its columns contain, so you ask the data
+instead, using a gene whose behavior you already know.
+
+A [marker gene]{.term def="A gene whose expression is high in one cell type and
+low in others, used to tell those cell types apart."} is a gene that's reliably
+high in one cell type and low in another. Basal cells carry keratin 5 and
+keratin 14, luminal cells carry keratin 8 and keratin 18. The mouse gene
+`Krt5`, Entrez `110308`, should therefore read high in the basal samples and
+low in the luminal ones.
+
+Take that split on my word for one page, then check it without me on NCBI Gene
+the way Chapter 5 taught you. If the record and this page disagree, believe the
+record.
+
+```{python}
+krt5 = (kept.loc[110308] / kept.sum() * 1e6).round(1)
+print(krt5)
+```
+
+Now split those 12 numbers by the labels you just attached.
+
+```{python}
+grouped = krt5.groupby(wrong_labels.set_index("column")["cell_type"])
+print(grouped.mean().round(1))
+```
+
+`Krt5` comes out at 4.3 counts per million in the samples labeled basal and
+2,728.5 in the samples labeled luminal. That is backwards, and it isn't close.
+The gap runs about six hundredfold the wrong way.
+
+::: {.trap}
+The count matrix runs basal columns first, then luminal. The GEO accessions run
+luminal first, then basal. Stapling one to the other by position gives all 12
+samples the wrong cell type, and the stage labels stay correct, because both
+orderings run virgin, pregnant, lactating inside their blocks. Nothing errors,
+nothing is missing, and the design table looks textbook.
+:::
+
+Your first instinct on seeing those two group means will be to wonder whether
+basal cells in this study somehow don't make `Krt5`. Reject it. The keratin
+split is decades old and your join is four minutes old. When a marker gene says
+your labels are backwards, your labels are backwards.
+
+These 12 samples cost somebody months of animal work and a sequencing budget.
+Your join cost you one line. Suspect the cheap thing first.
+
+Do this before every comparison you ever run. Pick a gene whose answer you
+already know, and confirm the data agrees before you ask it anything else. In
+mammary tissue that gene is `Krt5`. Two minutes of that is what everything you
+don't know sits on.
+
+### Joining by key instead
+
+The fix is one line, and it's the line Chapter 20 asked you to remember.
+
+```{python}
+samples = samples.loc[counts.columns]
+print(samples[["gsm", "cell_type", "stage"]])
+```
+
+`samples.loc[counts.columns]` reorders the metadata rows to match the count
+columns by name. If a name were missing, pandas would raise a `KeyError` and
+you'd know. Positional stapling has no such protection. It lines up whatever
+you hand it, silently, forever.
+
+Run the marker check again on the repaired labels.
+
+```{python}
+print(krt5.groupby(samples["cell_type"]).mean().round(1))
+```
+
+The same 12 numbers, grouped a different way, and now `Krt5` points where the
+biology says it should. A single line separates the wrong version of this
+chapter from the right one, so write the join by key every time.
+
+::: {.check}
+`Krt5` should sit in the thousands of counts per million across all six basal
+columns and in the single digits across all six luminal ones. If your two group
+means come out the other way round, you're still on `wrong_labels`. Re-run the
+cell that reassigns `samples`, then this one.
+:::
+
+## Failure two: the biggest thing in the table isn't your question
+
+Labels fixed. Chapter 21 sorted these 12 samples with a principal component
+plot. Here's the same analysis as four lines of arithmetic on `logcpm`, printed
+as a table.
+
+```{python}
+centered = logcpm.T - logcpm.T.mean()
+u, s, vt = np.linalg.svd(centered, full_matrices=False)
+pcs = pd.DataFrame(u[:, :2] * s[:2], index=logcpm.columns,
+                   columns=["PC1", "PC2"]).round(0).astype(int)
+pcs["cell_type"] = samples["cell_type"]
+pcs["stage"] = samples["stage"]
+
+print(pcs)
+print((s ** 2 / (s ** 2).sum() * 100).round(1)[:2])
+```
+
+PC1 accounts for 66.9 percent of the variation and it sorts the samples cleanly
+into basal on one side and luminal on the other. PC2 holds 20.8 percent and it
+tracks stage. The strongest signal in this dataset is cell type, whatever
+question you arrived with.
+
+Say your question is about lactation. You could pool the two cell types, put
+all four virgin samples in one group and all four lactating samples in the
+other, and test that. Lactation moves genes one way in basal cells and another
+way in luminal ones, so pooling averages two different moves into one number
+that belongs to neither. The results table won't tell you that. It carries one
+fold change per gene and no column for which half of the tissue the number came
+from. Exercise 24.1 puts a number on how far apart the two halves are.
+
+Two fixes exist. The one this book can't teach you is a model carrying both
+factors at once, which is what a line like `~ cell_type + stage` does in a
+methods section. The one you can do today is to pick a cell type and stay
+inside it. This chapter picks basal, which leaves 2 samples against 2, and the
+rest of the chapter pays for that.
+
+## Comparing basal against luminal
+
+Start with the comparison the data is built for, because it's the one with 6
+samples on each side.
+
+```{python}
+from scipy import stats
+
+def benjamini_hochberg(p):
+    n = len(p)
+    order = np.argsort(p)
+    ranked = p[order] * n / (np.arange(n) + 1)
+    ranked = np.minimum.accumulate(ranked[::-1])[::-1]
+    out = np.empty(n)
+    out[order] = np.clip(ranked, 0, 1)
+    return out
+
+def compare(group_a, group_b):
+    a = logcpm[group_a]
+    b = logcpm[group_b]
+    t, p = stats.ttest_ind(b, a, axis=1)
+    table = pd.DataFrame({
+        "log2_fold_change": b.mean(axis=1) - a.mean(axis=1),
+        "p_value": p,
+    }, index=logcpm.index)
+    table = table.dropna(subset=["p_value"])
+    table["p_adjusted"] = benjamini_hochberg(table["p_value"].values)
+    return table.sort_values("p_value")
+
+print(benjamini_hochberg(np.array([0.001, 0.02, 0.5])).round(4))
+```
+
+`stats.ttest_ind(b, a, axis=1)` runs one t-test per row, all 14,210 at once.
+Argument order matters: `b` first means a positive fold change is higher in
+group B. The `dropna` line has a trap box of its own below.
+
+`benjamini_hochberg` is the one block in this chapter built out of numpy calls
+this book never taught, and you don't have to read them to use it. Watch what it
+does instead. The last line of that cell runs the correction on three made-up
+p-values so you can see its shape. Feed it 0.001, 0.02 and 0.5 and you get back
+0.003, 0.03 and 0.5. Each p-value is multiplied by the number of tests and
+divided by its own position in the sorted list. The smallest is first of three,
+so it goes up threefold. The largest comes back unchanged. Yoav Benjamini and
+Yosef Hochberg published that arithmetic in 1995, and what it means is Chapter
+25's argument.
+
+```{python}
+basal = samples.index[samples.cell_type == "basal"].tolist()
+luminal = samples.index[samples.cell_type == "luminal"].tolist()
+by_cell = compare(basal, luminal)
+
+print(len(by_cell), "genes tested")
+print((by_cell["p_value"] < 0.05).sum(), "with raw p below 0.05")
+print((by_cell["p_adjusted"] < 0.05).sum(), "with adjusted p below 0.05")
+print(by_cell["p_value"].median().round(4), "median p-value")
+```
+
+7,279 genes come in under a raw p of 0.05 and 6,199 of them survive
+correction. That's 44 percent of the genes you tested, which sounds
+implausible until you remember what you compared: two different cell types.
+
+The median p-value is worth a look. When nothing is going on, p-values spread
+evenly between 0 and 1 and the median sits near 0.5. This one is 0.0443. These
+two groups of samples are not the same.
+
+A list of 6,199 genes isn't an answer to anything, and you can't read it. You
+can sort it and check whether the genes at the top are ones a mammary biologist
+would expect there. Chapter 25 turns that move into a method. Now put names on
+the strongest five.
+
+```{python}
+symbols = {12293: "Cacna2d1", 94088: "Trim6", 77220: "Tmem200a",
+           110308: "Krt5", 594844: "Tceal3", 56461: "Kcnip3",
+           109594: "Lmo1", 14663: "Glycam1", 67102: "D16Ertd472e",
+           12189: "Brca1"}
+
+top_cell = by_cell.head(5).copy()
+top_cell["symbol"] = [symbols.get(gene, "") for gene in top_cell.index]
+print(top_cell[["symbol", "log2_fold_change", "p_adjusted"]]
+      .round({"log2_fold_change": 2}))
+```
+
+`Krt5` is fourth, at a log2 fold change of -8.97. Negative means lower in
+luminal, and 2 to the power of 8.97 is a little over 500-fold. That's the gene
+you used to catch the label error, arriving near the top of a list you built
+without mentioning it.
+
+## The question you came with
+
+Inside the basal samples, 2 virgin against 2 lactating. `pick` pulls the sample
+names for one cell type at one stage.
+
+```{python}
+def pick(cell_type, stage):
+    return samples.index[(samples.cell_type == cell_type)
+                         & (samples.stage == stage)].tolist()
+
+by_stage = compare(pick("basal", "virgin"), pick("basal", "lactating"))
+
+print(len(by_stage), "genes tested")
+print((by_stage["p_value"] < 0.05).sum(), "with raw p below 0.05")
+print((by_stage["p_adjusted"] < 0.05).sum(), "with adjusted p below 0.05")
+print(by_stage["p_value"].median().round(4), "median p-value")
+```
+
+5,390 genes come in under a raw p of 0.05. Nine survive correction. Nine.
+
+Nothing went wrong in that cell. Two mice per group is what this study
+collected, and nine is what two mice per group buys, for anyone who runs it. A
+longer list needs more mice, and that decision was made before the data
+existed.
+
+Four genes fewer went into this comparison than the last one: 14,210 minus 4 is
+14,206. Those 4 had identical values inside both groups, which gives the t-test
+nothing to divide by, so scipy returns `NaN` and the `dropna` line in `compare`
+sets them aside.
+
+::: {.trap}
+Leave those four `NaN` values in and `np.minimum.accumulate` drags a `NaN`
+backwards through the entire sorted list of adjusted p-values. Every one of the
+14,210 becomes `NaN`. Then `(table["p_adjusted"] < 0.05).sum()` returns 0, no
+error is raised, and you write down that nothing survived correction. That zero
+is four broken rows reporting themselves as a finding.
+:::
+
+Put names on the strongest five here too.
+
+```{python}
+top_stage = by_stage.head(5).copy()
+top_stage["symbol"] = [symbols.get(gene, "") for gene in top_stage.index]
+print(top_stage[["symbol", "log2_fold_change", "p_adjusted"]].round(4))
+```
+
+The third row prints no symbol, because `symbols` only holds the ten genes this
+chapter names. Entrez `68355` is a real gene with a real result, and NCBI Gene
+will give it a name.
+
+Nine genes out of 14,206, on a comparison holding 2 samples in each group, is
+the honest version of what you have. A gene that missed the cut isn't a gene
+that stayed still. With 2 against 2 you had almost no chance of showing that it
+moved, and Chapter 25 works through what that does to a list this size.
+
+## Brca1
+
+You've been carrying this gene since Chapter 5. Here it is in your own results.
+
+```{python}
+for label, table in (("basal vs luminal", by_cell),
+                     ("virgin vs lactating, basal", by_stage)):
+    row = table.loc[12189]
+    rank = int((table["p_value"] < row["p_value"]).sum()) + 1
+    print(f"{label:28s} log2FC={row['log2_fold_change']:+.2f} "
+          f"p={row['p_value']:.3g} p_adj={row['p_adjusted']:.3g} "
+          f"rank={rank}")
+```
+
+Mouse *Brca1*, Entrez `12189`, in basal against luminal: a log2 fold change of
++1.96, a p-value of 0.00265, an adjusted p-value of 0.00914, rank 4,127. Higher
+in luminal cells than basal ones, by a bit under fourfold.
+
+In the comparison you actually came for, virgin against lactating inside the
+basal samples, it moves the other way at -2.29 with a p-value of 0.00804. Its
+adjusted p-value is 0.0693, so it sits above the 0.05 line and outside the nine
+that survived. Rank 1,645 of 14,206.
+
+The table says that much, and no more. *Brca1* peaks at 494 raw reads in its
+best sample and bottoms out at 17. Counts that small can produce a large ratio
+off very little evidence, which is where a raw p-value and an adjusted one part
+company.
+
+The study these samples came from wasn't about *Brca1* at all. Nai Yang Fu and
+colleagues published it in *Nature Cell Biology* in 2015, working on a gene
+called Mcl1, which is why every sample is named `MCL1-` something. The paper is
+PubMed 25730472. *Brca1* turns up here because the sequencing covered every
+gene in the mouse. That's a fact about the dataset, not a finding.
+
+You now have two results tables in the notebook. `by_cell` holds 14,210 rows
+comparing basal against luminal, sorted so the smallest p-value is on top.
+`by_stage` holds 14,206 rows comparing virgin against lactating inside the
+basal samples. Chapter 25 opens on those two and decides which rows are worth a
+sentence.
+
+## Exercises
+
+::: {.exercise num="24.1" time="30 minutes"}
+::: {.goal}
+Run the stage comparison inside the luminal samples instead of the basal ones,
+and report what happens to *Brca1*.
+:::
+::: {.produce}
+Three numbers: how many genes were tested, how many had an adjusted p-value
+below 0.05, and *Brca1*'s log2 fold change in that comparison.
+:::
+::: {.check}
+You should have tested 14,173 genes, and 10,951 of them should survive
+correction, more than a thousand times the 9 you got inside the basal samples.
+*Brca1*'s log2 fold change should come out close to zero. It moves in basal
+cells across these stages and it barely moves in luminal ones, which is the
+whole reason the two cell types had to be separated.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+<!-- nlr-allow: 10951 14173 -->
+
+::: {.exercise num="24.2" time="35 minutes"}
+::: {.goal}
+Predict, then run. Skip the low-count filter, build a second table called
+`logcpm_all` from all 27,179 rows of `counts`, and redo the basal virgin
+against lactating comparison on it.
+:::
+::: {.given}
+Write your prediction down as a number before you run anything. You'll be
+testing far more genes than 14,206, and Benjamini-Hochberg divides by the
+number of tests.
+:::
+::: {.produce}
+Two numbers and one sentence: how many genes got tested, how many had an
+adjusted p-value below 0.05, and why the count moved the way it did.
+:::
+::: {.check}
+536 genes survive correction without the filter, against 9 with it. You'll have
+tested 20,047 of the 27,179 rows, because 7,132 of them have no variation
+inside either group and `dropna` sets those aside. The extra hits are genes
+sitting at a handful of reads, where both values inside a group land identical
+or nearly so. A tiny spread gives a tiny p-value no matter how small the counts
+are. The filter's job is to remove rows the t-test can't read honestly.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+<!-- nlr-allow: 536 20047 7132 -->
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="KeyError: \"['MCL1-DG'] not in index\""}
+Pandas is talking, and it's talking about `samples.loc[counts.columns]`. One of
+your count columns has no matching row in the metadata. Run
+`print(list(counts.columns))` and `print(list(samples.index))` and read the two
+lists side by side. If instead the message starts `None of [Index([` and then
+prints long names full of underscores, you skipped the line that cuts each
+column name at the first underscore.
+:::
+
+::: {.errfix err="ValueError: All arrays must be of the same length"}
+You built `wrong_labels` from arrays that aren't all 12 long. The usual cause
+is that `counts` still carries its `Length` column, so `counts.columns` has 13
+entries against 12 rows of metadata.
+:::
+
+::: {.errfix err="KeyError: 'Length'"}
+`counts.pop("Length")` already ran and there's nothing left to remove. Running
+a cell twice is normal and this is what it looks like. Restart the runtime and
+run every cell from the top.
+:::
+
+::: {.errfix err="Your p_adjusted column is entirely NaN"}
+Python isn't complaining, which is why this one is dangerous. A single `NaN`
+p-value propagates through `np.minimum.accumulate` and wipes out the whole
+column. Check with `print(table['p_value'].isna().sum())`. If that's above
+zero, you're missing the `dropna` line in `compare`.
+:::
+:::
+
+::: {.checkpoint}
+- Convert a column of raw counts into counts per million, and say what the
+  denominator was
+- Name the gene you'd check to tell basal samples from luminal ones, and say
+  which direction it should point
+- Join a sample table to a count matrix by key, and describe what a positional
+  join does to this dataset
+- Read a principal component table and name the factor that dominates it
+- Explain why 6 samples against 6 gives 6,199 genes past correction and 2
+  against 2 gives 9
+- Find one named gene in a results table and report its log2 fold change and
+  its adjusted p-value
+:::

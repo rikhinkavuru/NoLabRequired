@@ -1,0 +1,232 @@
+# What the field looks like
+
+Four things are in your notes. A gene record from Chapter 5, a hit table from
+Chapter 7, a tree from Chapter 19, a results table from Chapter 24. Every one
+of them came out of a browser tab, and that's one path through a field that has
+several. Two people can hold the same job title and spend their weeks on work
+the other one couldn't name. So what are the other paths, and where does the
+nearest one start?
+
+## Six questions, and the four you've already asked
+
+A subfield is easier to recognize by the question it asks than by the software
+it runs. The alignment step from Chapter 18 turns up in genomics and again in
+phylogenetics. The two questions stay separate.
+
+**Genomics.** What sequence is in this sample, and what differs between this
+one and that one? You started here in Chapter 5, and the whole of Part 4 is
+that question asked of twelve mouse samples at once. Where the molecule is RNA
+rather than DNA, the work gets filed under transcriptomics. One person often
+does both inside a week.
+
+**Phylogenetics.** Which of these came from which ancestor, and in what order
+did the lineages split? Chapter 19. You built a tree of one gene across five
+species and it put the mouse next to the chicken, confidently, with no warning
+attached. The answer is a claim about history, and history doesn't re-run.
+
+**Structural biology.** What shape does this protein fold into, and which part
+of it touches what? You did it in Chapter 8. A crystal structure deposited in
+2001 sat on your screen next to a model computed in 2025. One of those is a
+measurement. The other is a prediction that ships with a confidence score for
+every residue, and Chapter 8 showed you where to read it.
+
+**Systems biology.** How do the parts behave together, and can you predict what
+the whole does? You did one section of it in Chapter 25. You took your gene
+list and asked which curated groups of genes it landed in more often than
+chance allows. A gene set is the small end of the idea. The large end builds a model
+that produces a number you can hold against a measurement.
+
+**Single cell.** The four above ask about a sample. This one asks what each
+cell in that sample is doing, and how many kinds of cell were in the tube to
+start with. You haven't done it. Your own table has twelve columns where a
+single cell experiment would have thousands.
+
+**Drug discovery.** Which molecule binds this protein, and what happens to the
+cell when it does? Testing a molecule against a protein on a computer needs a
+structure to test it against, so this one opens on the question Chapter 8 left
+you holding. How much of that structure do you believe? You haven't done this
+one either.
+
+::: {.why}
+Nobody polices these borders. The tree you built in Chapter 19 came out of
+sequences retrieved the Chapter 5 way, lined up in columns of the kind
+Chapter 18 taught you to read. It still counts as phylogenetics. Papers from
+two of these subfields will open on the same shape of table: rows for things,
+columns for conditions. Joining either one to a second file means deciding
+which identifier maps to which, which is the morning Chapter 2 described. What
+carries across a border with you is smaller than the subject matter. You know a
+count needs a denominator. You know an identifier isn't an identity. Those two
+are what make a methods section in an unfamiliar subfield readable at all.
+:::
+
+## One table, four of those questions
+
+Load your own count matrix one more time, and count what's in the whole of it
+rather than in one row.
+
+```{python}
+import pandas as pd
+
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t")
+sample_cols = list(counts.columns[2:])
+zeros = (counts[sample_cols] == 0).sum().sum()
+total = counts[sample_cols].size
+
+print("genes (rows):  ", counts.shape[0])
+print("samples (cols):", len(sample_cols))
+print("numbers in all:", total)
+print("of those, zero:", zeros)
+print("percent zero:  ", round(100 * zeros / total, 1))
+```
+
+A third of that table is zero, and every column in it is a pool of many cells.
+Now put four of the six questions to it.
+
+Genomics asked which rows moved between the groups, and Chapter 24 answered
+that. Single cell keeps the rows and replaces the twelve columns with
+thousands, one per cell. A run of the same size spreads its reads across all of
+them, so most entries land on zero. A gene that reads as absent in one cell may
+only be unobserved there, and the two look identical in the table.
+
+Systems biology asks which of the moved rows connect to each other, and it
+takes the connections from a database somebody else assembled. Drug discovery
+asks whether anything on your list is worth binding, which sends you back to
+Chapter 8 for a structure.
+
+::: {.check}
+Your first two numbers should be 27,179 and 12. That's the whole file, before
+any filtering. The filter in Chapter 24 built a second table of 14,210 rows by
+dropping the genes too quiet to test. If that's the number you see, this cell
+read something other than `data/GSE60450_counts.tsv.gz`. Both counts are right
+about different tables, which is the Chapter 5 lesson turning up again in
+Part 5.
+:::
+
+## Three jobs that all get called bioinformatics
+
+Titles move around more than the work does, so here are the three shapes
+underneath, described by what a week holds.
+
+**Research scientist.** The question is yours. You decide what's worth
+measuring and then argue for it in writing, so more of the week goes on prose
+than a beginner expects. Papers, and the sections of grant applications nobody
+else will write. Code is a means here, and plenty of it gets written to run
+once. What you're buying is authority over the question, and the other two
+roles trade that away. Where a doctorate is required, the posting says so.
+
+**Bioinformatics analyst.** Somebody else brings the question and the data,
+often in a state you wouldn't have chosen. The week is pipelines and metadata
+archaeology, plus telling a biologist whether the result is real or the samples
+got swapped. The same analysis runs many times over, so reproducibility stops
+being a virtue and turns into how you survive Thursday. Whoever hires for this
+reads your application for one thing: evidence you can take a messy dataset to
+a defensible answer. That evidence is what Chapter 26 asked you to publish.
+
+**Software engineer on biological tools.** Your users are the other two. You
+build what they run, so the week is code review, tests, issue triage, and a
+release that must not break somebody's paper. You need enough biology to know
+what a column means, and less of it than the other two need. Work here is
+visible from outside before anybody meets you, because the repository is
+public. That's where Chapter 28 sends you to file your first issue.
+
+::: {.trap}
+You filter job listings by title. The same job goes up as bioinformatics
+scientist in one place and computational biologist in another, and two postings
+under one title can want two different weeks. Search a single word, read a thin
+page of results, decide the work isn't there for somebody like you: nothing
+errored, and the conclusion is wrong. Chapter 2 had you open a job board and
+search all three field names. Read the duties paragraph and let the heading go.
+:::
+
+## How people get in
+
+Three routes, and this book has been walking one of them the whole time.
+
+The traditional one is a degree. A master's or a doctorate buys supervised time
+and a thesis with somebody's signature under yours. It costs years and usually
+money. It's also the only route that satisfies a posting whose first
+requirement line names the degree.
+
+The second is a sideways move. People arrive from a biology degree with no
+code, or from code with no biology, and pick up the missing half while being
+paid for the half they brought. Chapter 1 gave you the closest thing to a
+measurement of that: in two surveys of working practitioners, 76 percent and
+64 percent called their bioinformatics skills self-taught.
+
+The third is the slow public one, and you're already on it. You do the work
+where it can be read: a reproduced figure from Chapter 27, a documentation fix
+from Chapter 28, a notebook from Chapter 26 that a stranger can open and run.
+Nobody grants you this route and nobody can take it back. Nobody announces the
+end of it either. Your artifacts do the job a certificate would otherwise do,
+so they have to be finished ones.
+
+Free structured material exists for all three routes, and Chapter 30 lists it.
+Every entry there names what the resource is bad at, which is the field no
+resource page prints about itself.
+
+## Exercises
+
+::: {.exercise num="29.1" time="25 minutes"}
+::: {.goal}
+Write the systems biology question and the drug discovery question that your
+own Chapter 24 result raises.
+:::
+::: {.given}
+Your results table from Chapter 24, the gene sitting at the top of it, and the
+symbol Chapter 24 attached to that Entrez ID.
+:::
+::: {.produce}
+Two questions, one sentence each, both naming that gene by its symbol and both
+naming a direction. Under each, one sentence naming the data you'd need and
+don't have.
+:::
+::: {.check}
+Neither question may be answerable from the count matrix on your disk. If one
+of them is, you've rewritten the genomics question in fresh words and it's
+still asking which rows moved. A systems question has to name something outside
+your table, a pathway or a partner protein. A drug discovery question has to
+name a structure, and Chapter 8 is where you find out whether one exists for
+your gene.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/GSE60450_counts.tsv.gz'"}
+Python is speaking, and it's telling you nothing sits at the path you handed
+it. Colab throws the whole folder away when the runtime recycles, so a session
+you left open since Chapter 24 no longer has the file next to it. This is the
+same break as the one in Chapter 20, and the cure is the same: list the current
+folder's contents before you retype the path.
+:::
+
+::: {.errfix err="Every posting you read wants a doctorate"}
+You searched one word. Duties are what separate the three roles above, and a
+title is what a search box matches on, so one query returns one flavor of job.
+Read the duties paragraph before the requirements list. Duties like "design
+studies and publish" belong to the first role above. The other two get
+advertised under words you haven't tried. Where the requirement line really is
+there, Chapter 28's rule holds and it means what it says.
+:::
+
+::: {.errfix err="You open a methods section in a new subfield and none of the nouns are familiar"}
+The nouns change per subfield and the shape doesn't. Find the four steps from
+Chapter 9: what got retrieved, what got compared, what got judged, what got
+annotated against a coordinate. Sentences that fit none of the four are the
+part of the paper that's new, and they're the ones worth looking up.
+:::
+:::
+
+::: {.checkpoint}
+- Name the six subfields, and state the question that defines each one
+- Say which four of them you've already touched, and name the chapter for each
+- Count the zeros in your own count matrix and say what single cell data would
+  do to that number
+- Distinguish the three roles by what a week holds rather than by job title
+- Name the route into this field you're on, and the next artifact it wants from
+  you
+:::

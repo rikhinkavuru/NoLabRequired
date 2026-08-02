@@ -1,0 +1,355 @@
+# Interpreting results
+
+*Brca1* came out of your own results table with a log2 fold change of −2.29 and
+a p-value of 0.00804. Read the row straight and it says two things. The gene
+falls by nearly a factor of five in basal cells between virgin and lactating
+mice. A fall that big turns up by accident less than once in a hundred tries.
+Is that a result?
+
+There's a third number on the same row, and it's the one that decides.
+
+## You ran the test 14,210 times
+
+A [p-value]{.term def="The chance of seeing a difference at least this big
+between two groups when there is no real difference at all."} answers one
+narrow question about one test. It knows nothing about how many other tests you
+ran, and you ran a great many of them.
+
+The filter in Chapter 24 kept every gene reaching 1 count per million in at
+least 3 of the 12 samples, which left 14,210 genes. One test per gene.
+
+```{python}
+tests = 14210
+print(tests * 0.05)
+```
+
+Set your threshold at 0.05 and every gene that isn't really different still has
+a one-in-twenty chance of landing under it. Take that gamble 14,210 times and
+about 710 genes come back under 0.05 with nothing whatsoever going on in the
+experiment.
+
+The raw count of genes below 0.05 is close to useless on its own. Your run gave
+5,390 of them in the virgin-against-lactating comparison, which is seven and a
+half times the 710 that pure noise would hand you. That's more than chance
+alone accounts for. It still doesn't say which of the 5,390 to believe, and
+that's the question the second p-value column exists to answer.
+
+## Two ways to pay for the tests you ran
+
+The two corrections start in the same place. A threshold that's fine for one
+test is far too generous once you've run 14,210. They part company over what
+they're protecting you from.
+
+The Bonferroni correction, named for the Italian mathematician Carlo Emilio
+Bonferroni, asks what threshold makes it unlikely you have even one false
+positive anywhere in the table. Divide the threshold by the number of tests.
+
+```{python}
+strongest_p = 4.47e-06
+bonferroni_bar = 0.05 / 14210
+print(bonferroni_bar)
+print(strongest_p < bonferroni_bar)
+```
+
+The first line prints `3.5186488388458835e-06`. The `e-06` on the end means
+move the decimal point six places to the left, so the bar sits at about three
+and a half millionths. You'll see that notation all over a results table.
+
+The second line is the whole argument. `4.47e-06` is the smallest p-value
+anywhere in your virgin-against-lactating table. It's printed in the second
+summary block below, and `by_stage["p_value"].min()` pulls it out of your own
+run. Python answers `False`. The strongest gene in the whole comparison misses
+the Bonferroni bar, so under that correction the comparison reports nothing.
+
+Yoav Benjamini and Yosef Hochberg asked a different question in a 1995 paper.
+Of the genes you put on your hit list, what fraction are you willing to have be
+wrong? Pick that fraction, usually 0.05. Their procedure then finds the largest
+p-value threshold at which the expected share of false calls among your hits
+stays at or below it. That share has a name: the [false discovery rate]{.term
+def="The expected fraction of the hits you report that are false positives."}.
+Benjamini-Hochberg is the adjustment Chapter 24 ran, and the adjusted p-value
+column in your table is what it produced.
+
+Genomics runs on the second one. When you're testing 14,210 genes and you
+expect hundreds of them to be genuinely different, a hit list where one in
+twenty is wrong is a useful thing to have. An empty table isn't.
+
+The whole analysis also runs end to end in
+`scripts/ch24_differential_expression.py`, which prints one summary per
+comparison. Here's the six-against-six one.
+
+``` {.default .output}
+=== basal vs luminal, 6 against 6 ===
+  genes tested:                     14,210
+  no variance, not testable:        0
+  raw p below 0.05:                 7,279
+  genes with adjusted p below 0.05: 6,199
+  median p-value:                   0.0443  (near 0.5 when the test is behaving)
+  strongest five by p-value:
+         12293 log2FC=  -7.26 p=2.28e-13 p_adj=1.51e-09
+         94088 log2FC=  +2.83 p=3.46e-13 p_adj=1.51e-09
+         77220 log2FC=  -5.28 p=4.14e-13 p_adj=1.51e-09
+        110308 log2FC=  -8.97 p=4.46e-13 p_adj=1.51e-09
+        594844 log2FC=  -4.09 p=6.89e-13 p_adj=1.51e-09
+```
+
+And the same summary for the comparison you came in asking about.
+
+``` {.default .output}
+=== within basal only: virgin vs lactating, 2 against 2 ===
+  genes tested:                     14,206
+  no variance, not testable:        4
+  raw p below 0.05:                 5,390
+  genes with adjusted p below 0.05: 9
+  median p-value:                   0.0936  (near 0.5 when the test is behaving)
+  strongest five by p-value:
+         56461 log2FC=  +1.35 p=4.47e-06 p_adj=2.37e-02
+        109594 log2FC=  -2.01 p=4.99e-06 p_adj=2.37e-02
+         68355 log2FC=  -1.16 p=5.01e-06 p_adj=2.37e-02
+         14663 log2FC=  +7.26 p=7.87e-06 p_adj=2.79e-02
+         67102 log2FC=  -0.93 p=1.24e-05 p_adj=3.30e-02
+```
+
+Four genes in the second run didn't vary at all inside either group, so the
+test had nothing to divide by and returned no p-value for them. 14,210 minus 4
+is the 14,206 on that line.
+
+::: {.check}
+In your basal-against-luminal table, 7,279 genes sit below a raw 0.05 and 6,199
+below an adjusted 0.05. The adjusted count is never the larger of the two. If
+the two numbers match exactly, the adjustment didn't run and you're reading the
+raw column twice.
+:::
+
+Set those two blocks beside each other. Six samples a side gives 6,199 survivors
+out of 7,279 raw hits. With two samples a side it's 9 out of 5,390.
+
+::: {.trap}
+Two p-value columns sit on the same row and nothing stops you reading the
+wrong one. *Brca1* in the virgin-against-lactating comparison has a raw p of
+0.00804 and an adjusted p of 0.0693. Quote the first and you've written a true
+sentence about a number that answers a question nobody asked, in a table where
+14,206 tests were run. Nothing errors.
+:::
+
+## Fold change and p-value are not two views of one number
+
+A volcano plot puts log2 fold change on the horizontal axis and the p-value on
+the vertical one, flipped so the small p-values sit at the top. A reasonable
+first thought is that one of those axes is redundant. Bigger difference,
+smaller p-value. Why plot both?
+
+A p-value is not a measure of how big the difference is. It comes out of the
+size of the difference divided by how much your replicates disagree with each
+other. Widen the disagreement and the p-value climbs while the fold change sits
+exactly where it was.
+
+The two axes catch two different failures. A gene can move a long way on
+average and still be untrustworthy, because the samples inside each group are
+scattered. Another gene can move a short distance with every sample agreeing,
+and the test will be confident about it. The first is a large fold change with
+a poor p-value. The second is a small fold change with a good one. Each happens
+constantly, and neither is a mistake.
+
+Which is why a hit list filtered on p-value alone collects genes that barely
+moved. Filter on fold change alone instead and it fills up with genes that were
+measured badly.
+
+::: {.trap}
+Sort your results by fold change instead of by p-value and the top fills with
+genes sitting just above the filter's floor. 1 count per million in a
+20,015,386-read library is about 20 reads. A gene at 20 reads in one group and
+200 in another is a tenfold change resting on 220 reads. A fold-change sort
+puts it above a gene that moved 50 percent on ten thousand reads. Nothing
+errors.
+:::
+
+## Walkthrough: the same gene, tested twice
+
+You've been carrying *Brca1* since Chapter 5, and Chapter 24 tested it in both
+comparisons. Here are the two rows.
+
+| comparison | per group | log2 FC | raw p | adjusted p | rank |
+|---|---|---|---|---|---|
+| basal virgin vs basal lactating | 2 | −2.29 | 0.00804 | 0.0693 | 1,645 |
+| basal vs luminal | 6 | +1.96 | 0.00265 | 0.00914 | 4,127 |
+
+Each comparison subtracts the first group's average from the second, so the
+minus sign means lower in lactating and the plus sign means higher in luminal.
+A log2 fold change of −2.29 means the gene divided by 2 raised to the power
+2.29. A log2 fold change of +1.96 means it multiplied by 2 raised to the power
+1.96.
+
+```{python}
+print(round(2 ** 2.29, 1))
+print(round(2 ** 1.96, 1))
+```
+
+The first row is a drop of 4.9-fold and the second is a rise of 3.9-fold. The
+first row's adjusted p-value of 0.0693 sits above 0.05, and only 9 genes in
+that whole comparison came in under the line. The second row clears it at
+0.00914, as one of 6,199 that do.
+
+Same gene, same count matrix, two comparisons. The one with the bigger fold
+change is the one you can't believe.
+
+Look at the rank column too, because it's the part that surprises people.
+*Brca1* is the 1,645th strongest gene in the comparison that fails and the
+4,127th strongest in the comparison that passes. A rank tells you about the
+company a gene is keeping, and nothing at all about whether you can believe it.
+
+What changed between the two rows is the number of mice.
+
+### Why two replicates a side isn't enough
+
+Two numbers per group is everything the test has. The gap between those two
+numbers is the only estimate of biological variation available to it, and two
+mice that happen to land close together look exactly like precision. A t-test
+has no way to tell that apart from a gene that's genuinely stable.
+
+There's a diagnostic for this, and it's one number. Look at the median p-value
+across every gene you tested.
+
+If nothing at all differed between the groups, and the test were handing back
+honest p-values, those p-values would spread evenly between 0 and 1. Half above
+0.5, half below. The median would land near 0.5.
+
+Yours is 0.0936.
+
+A median that low means one of two things. Either a great many genes really are
+different, or the test isn't giving you honest p-values. The number can't
+separate those two on its own. Benjamini-Hochberg answers the practical half:
+of the 5,390 genes under a raw 0.05, nine survive. Whatever crushed the
+distribution, it isn't several thousand genes you could name.
+
+Now compare the six-against-six run. Its median is lower still, 0.0443, and
+6,199 genes survive correction. That's what widespread real differences look
+like. Basal and luminal cells are two different kinds of cell, and the whole
+transcriptome says so. Two mice against two mice crushes the distribution just
+as hard and leaves you nine genes.
+
+### What a working analyst would have run
+
+The test behind those tables is a t-test on log counts per million. It's there
+because you can read every line that produces it, and you met all of those
+lines by Chapter 21.
+
+It isn't what somebody who does this for a living would run. Count data breaks
+it in two places. Counts aren't normally distributed, and a t-test assumes they
+are. And a gene measured at 20 reads is proportionally noisier than the same
+gene measured at 2,000, in a way a t-test has no parameter for.
+
+The tools built for this are DESeq2 and edgeR. Both fit a negative binomial
+model, which is a distribution for counts that vary more than pure counting
+noise would predict. Each one also borrows information across genes to pin down
+that extra variation. Neither is written in Python, and this book doesn't teach
+R. The derivations live in the papers behind them, and you now know what to
+search for.
+
+*Brca1* is exactly the kind of gene where that bites. Across the 12 samples its
+raw count runs from 17 to 494, in libraries holding between 20,015,386 and
+24,723,827 reads each. Both basal lactating samples sit at the bottom of that
+range, at 20 reads and 17. The log2 fold change of −2.29 rests on those two.
+
+::: {.why}
+An RNA-seq methods section names its test in a line or two, and the two names
+you'll meet most often are DESeq2 and edgeR. That line tells you what the model
+assumed about the data, and which correction produced the adjusted column. Your
+Chapter 24 table carries the same column headings out of a test that assumed
+something different. Telling those two apart is most of what reading a methods
+section is.
+:::
+
+## Gene sets, and how to over-read one
+
+The 6,199 Entrez IDs that survived correction aren't something a person can
+read. There's a standard next move for a list that size, and it's called gene
+set enrichment. Take a collection of pre-defined gene groups, each one a
+process somebody curated. Then ask which of those groups turn up in your hit
+list more often than chance would put them there. It's a counting question.
+Free web pages will run it on a pasted list of IDs, and this book doesn't walk
+you through one.
+
+Enrichment is also the easiest place in this pipeline to fool yourself, for two
+reasons that have nothing to do with the software.
+
+Your hit list depends on the threshold you picked. Move the threshold and the
+enrichment answer moves with it, and nothing in the output records which
+threshold produced it.
+
+The gene sets themselves overlap heavily. One real biological effect comes back
+as a dozen related categories, each carrying its own p-value. A dozen p-values
+about a single effect reads on the page like a dozen findings.
+
+Report it as what it is: a description of the hit list you already had, rather
+than fresh evidence for it.
+
+## Exercises
+
+::: {.exercise num="25.1" time="35 minutes"}
+::: {.goal}
+Write the three sentences about your results that a biologist would actually
+want, and stop at three.
+:::
+::: {.given}
+Your two results tables from Chapter 24: basal against luminal with six samples
+a side, and basal virgin against basal lactating with two.
+:::
+::: {.produce}
+Three sentences of plain English. Each one contains at least one number. None
+of them uses the word significant without naming, in the same sentence, both
+the threshold and the correction that produced it.
+:::
+::: {.check}
+Read each sentence back with the gene name swapped for a different gene. If
+it's still true, that sentence says nothing and you should cut it. Then check
+the numbers: any sentence calling *Brca1* significant in the
+virgin-against-lactating comparison fails, because 0.0693 is above 0.05. The
+same claim about basal against luminal holds at an adjusted p of 0.00914, and
+your sentence has to say which correction that 0.00914 came out of.
+:::
+
+::: {.answerspace lines="8"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="KeyError: 12189"}
+Python is talking, and it's saying 12189 isn't in the index of the table you
+asked. *Brca1* clears the count filter, so the usual cause is an index holding
+Entrez IDs as text rather than as numbers. `table.loc["12189"]` and
+`table.loc[12189]` are two different requests. Print `table.index[:5]` and look
+for quote marks.
+:::
+
+::: {.errfix err="Whole runs of rows share one identical adjusted p-value"}
+Nothing is wrong. An adjusted p-value is never allowed to fall as the raw
+p-value rises. The step that enforces that is a running minimum, taken from the
+bottom of the sorted list upward, and it flattens neighboring values onto one
+number. That's why the five strongest genes in your basal-against-luminal table
+all carry an adjusted p of 1.51e-09. Sort on the raw column when you want the
+order back.
+:::
+
+::: {.errfix err="Your adjusted p-values came out smaller than your raw ones"}
+The adjustment can push a p-value up or leave it alone, and it can't do
+anything else. If yours went down, you divided where you should have
+multiplied. The formula is the raw p-value times the number of tests, divided
+by that gene's rank in the sorted list, capped at 1.
+:::
+:::
+
+::: {.checkpoint}
+- Multiply a number of tests by a threshold and say how many hits chance alone
+  would give you
+- Read a results row and say whether the gene survives correction, naming which
+  correction you applied
+- Explain what Bonferroni protects you from and what Benjamini-Hochberg
+  protects you from
+- Say what a median p-value of 0.0936 across 14,206 tests does and doesn't tell
+  you
+- Name the two tools a working analyst would use instead of a t-test on log
+  counts, and say what their model assumes about the data
+:::

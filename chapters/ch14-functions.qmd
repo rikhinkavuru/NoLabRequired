@@ -1,0 +1,278 @@
+# Functions
+
+You wrote the translation loop twice in Chapter 13. The same three lines, once
+on `coding` and once on `other_strand`, with four names retyped in between.
+Both copies ran. Both did what you told them. So what was wrong with writing it
+that way?
+
+<!-- nlr-allow: 1864 -->
+
+## Putting Chapter 13 back on the table
+
+A notebook forgets. Here are four cells from Chapter 13 run as one, with the
+two translation loops held back because they're what this chapter is about.
+None of it is new, so read it as a receipt rather than as a lesson.
+
+```{python}
+table_lines = open("data/codon_table_standard.tsv").read().splitlines()
+
+codon_table = {}
+for line in table_lines[1:]:
+    codon, amino_acid, name, is_start = line.split("\t")
+    codon_table[codon] = amino_acid
+
+text = open("data/sequences/brca1_five_species.fasta").read()
+lines = text.split(">")[1].splitlines()
+brca1 = "".join(lines[1:])
+
+coding = brca1[113:5705]
+
+pairing = {"A": "T", "C": "G", "G": "C", "T": "A"}
+other_strand = ""
+for base in reversed(coding):
+    other_strand += pairing[base]
+
+print(len(codon_table), len(coding), len(other_strand))
+```
+
+64 codons in the table, and 5,592 bases in each of the two strands of the
+coding sequence. Those are Chapter 13's numbers, so the state you had then is
+the state you have now.
+
+## What the second copy cost you
+
+Here are the two loops the way you wrote them.
+
+```{python}
+translated = ""
+for i in range(0, len(coding), 3):
+    translated += codon_table[coding[i:i + 3]]
+
+wrong = ""
+for i in range(0, len(other_strand), 3):
+    wrong += codon_table[other_strand[i:i + 3]]
+
+print(translated[:20])
+print(wrong[:20])
+```
+
+`translated` became `wrong` in two places, and `coding` became `other_strand`
+in two more. You made all four edits by hand, and nothing anywhere checked that
+you'd caught them.
+
+Here's the second copy on an evening when you're moving fast.
+
+```{python}
+translated = ""
+for i in range(0, len(coding), 3):
+    translated += codon_table[coding[i:i + 3]]
+
+wrong = ""
+for i in range(0, len(coding), 3):
+    wrong += codon_table[coding[i:i + 3]]
+
+print(translated[:20])
+print(wrong[:20])
+```
+
+`other_strand` isn't in that block at all. The two `translated` edits landed
+and the two `coding` edits didn't, because `coding` reads correctly wherever
+your eye happens to land on it. Nothing errored. What's on screen is a claim
+that both strands of *BRCA1* start with the same twenty residues, and the block
+above this one shows you they don't.
+
+::: {.trap}
+A pasted block runs fine with the old variable name still inside it. Python
+can't know which sequence you meant, so you get a clean answer to a question
+you didn't ask. Near-identical copies are the dangerous ones: the more alike
+two blocks look, the harder it is to spot the line you missed.
+:::
+
+The wrong answer isn't the whole cost. Suppose you decide the translator
+should stop at the first stop codon rather than read through it. With two
+copies you have to remember there are two. With five copies across three
+notebooks, you'll fix four and never find the fifth.
+
+## A function is a name for a block you can run again
+
+A [function]{.term def="A block of code with a name. You run the block by
+writing the name and a pair of brackets."} is a block of code with a name, so
+you can run the block by writing the name instead of the block.
+
+```{python}
+def translate(dna):
+    translated = ""
+    for i in range(0, len(dna), 3):
+        translated += codon_table[dna[i:i + 3]]
+    return translated
+
+
+print(translate(coding)[:20])
+print(translate(other_strand)[:20])
+```
+
+That's Chapter 13's loop with two lines wrapped around it, untouched apart from
+the name of the sequence it reads. `def` starts the definition and `translate`
+is the name you picked. The indented lines under it are the body, and they
+don't run when Python reads them. They run when something calls `translate`.
+
+`dna` in the brackets is a [parameter]{.term def="The name a function gives to
+a value it was handed. It exists only while the function is running."}. Write
+`translate(coding)` and Python takes whatever `coding` holds and calls it `dna`
+for the length of that call. The name inside has nothing to do with the name
+outside, so the body can't mention `coding` and there's no stale name left to
+forget.
+
+## What comes back
+
+`return translated` hands the string back to whoever called. A call is an
+expression that turns into that string, so you can print it or keep it under a
+name of your own.
+
+```{python}
+translated = translate(coding)
+
+print(len(translated), translated.count("*"), translated[-1])
+print(translate(coding[:30]))
+```
+
+The `translated` inside the function stopped existing the moment the call
+ended. The `translated` on the first line above is a separate name in your
+notebook, and it holds what the call handed back.
+
+::: {.check}
+The first line reads `1864 1 *`, which is the output Chapter 13's check box
+asked you for, and it hasn't moved. The second reads `MDLSALRVEE`: ten
+characters from 30 bases, no `*` in them. That's the short answer Exercise 13.1
+had you predict before you ran anything.
+:::
+
+A function with no `return` still runs and still does whatever its body says.
+It hands back `None`, which is Python's word for nothing at all. That one
+doesn't break where you make it, so it's in the If it breaks section below.
+
+## Walkthrough: the version you can open in six months
+
+Six months from now you'll open this notebook to check a number somebody asked
+you about. Three things are obvious to you today and won't be then.
+
+A [docstring]{.term def="A string at the top of a function body, in triple
+quotes, saying what the function does and what it assumes."} is a string on the
+first line of the body, in triple quotes. Python keeps it, instead of throwing
+it away the way it throws away a comment.
+
+```{python}
+def translate(dna):
+    """Translate a DNA string into one-letter amino acids.
+
+    dna must be upper case, must contain only A, C, G and T, and its
+    length must be a multiple of three. Reading starts at the first
+    base given, so the reading frame and the strand are the caller's
+    problem. Stop codons come back as *.
+    """
+    translated = ""
+    for i in range(0, len(dna), 3):
+        translated += codon_table[dna[i:i + 3]]
+    return translated
+
+
+help(translate)
+```
+
+`help` prints the docstring of anything that has one, which is how you read a
+library you've never used before. The docstring is also the only place those
+three assumptions are recorded, because none of them appear anywhere in the
+code.
+
+Watch what the function does with the coding sequence read one base later.
+
+```{python}
+print(translate(coding[1:43]))
+```
+
+That slice is 42 bases, which is 14 codons, so 14 residues come back. No part
+of the string says it came from the wrong reading frame, and something like it
+could sit in a results table for a year with nobody catching it. The function
+did what you asked. The asking was wrong.
+
+::: {.trap}
+`translate` will translate any string of A, C, G and T whose length divides by
+three. A function takes one line to run, so you'll now point it at sequences
+you never checked. The docstring is where the reading-frame assumption gets
+written down, because the code won't enforce it and the output won't betray it.
+:::
+
+## Exercises
+
+Solutions are in the book's repository under `scripts/solutions/`. Work the
+exercise first.
+
+::: {.exercise num="14.1" time="30 minutes"}
+::: {.goal}
+Turn your Chapter 13 translator into one documented function, then prove it
+still gives the answers Chapter 13 got.
+:::
+::: {.given}
+Three sequences, all of them already in your notebook: `coding`, its first 30
+bases `coding[:30]`, and `other_strand`. Your function takes one parameter and
+returns the protein string with its stops left in.
+:::
+::: {.produce}
+The function, carrying a docstring that says what it assumes about its input,
+and three printed lines. Each line gives the length of one result, how many
+stops it holds, and its first ten characters.
+:::
+::: {.check}
+Every number here is one you already wrote down in Chapter 13. `coding` gives
+1,864 characters with one `*`, and it starts `MDLSALRVEE`. Drop that single
+stop and you have the 1,863 residues of `NP_009225.1`. The first 30 bases give
+`MDLSALRVEE` too, ten characters and no stop. On `other_strand` you get 1,864
+characters with 93 stops in them, and 67 residues sit in front of the first
+one. If all three still land, the rewrite changed nothing except how many
+places you have to edit next time.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="TypeError: object of type 'NoneType' has no len()"}
+Python is talking here, and the thing it's talking about is the value your
+function handed back. `None` means the function ended without a `return`, so
+there was nothing to measure. Look at the last line of the body. If it says
+`print(translated)`, change it to `return translated` and call the function
+again.
+:::
+
+::: {.errfix err="TypeError: translate() missing 1 required positional argument: 'dna'"}
+You called `translate()` with empty brackets. The definition says the function
+needs one value to work on, and Python won't guess which sequence you had in
+mind. Put it inside the brackets: `translate(coding)`.
+:::
+
+::: {.errfix err="IndentationError: expected an indented block after function definition on line 1"}
+The line after your `def` isn't indented. Indentation is the only thing marking
+which lines make up the body, so a definition with nothing indented under it
+has no body at all. Put four spaces at the front of every line the function
+should run.
+:::
+
+::: {.errfix err="NameError: name 'translate' is not defined"}
+This one is usually the notebook rather than your code. Either the cell holding
+the `def` hasn't been run in this session, or you edited it and ran the call
+first. Chapter 4's restart-and-run-all is the reliable answer here. This
+chapter downloads nothing, so a full rerun costs you seconds.
+:::
+:::
+
+::: {.checkpoint}
+- Write a function that takes one parameter and returns a value
+- Say what a caller gets back from a function whose body has no `return`
+- Read a docstring and name what it says the input has to be
+- Call one function on three sequences and check each result against a number
+  Chapter 13 already gave you
+- Point at the line in a pasted block that still names the old variable
+:::

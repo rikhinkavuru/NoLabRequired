@@ -1,0 +1,12 @@
+# Working with real data
+
+Up to here every sequence has been one you chose, and every file has been small
+enough to read.
+
+That changes now. This part introduces the libraries that working analysts
+actually use, and the data arrives in the state data actually arrives in:
+27,179 rows, twelve columns with unhelpful names, identifiers that are numbers
+rather than gene names, and no instructions.
+
+The skill this part teaches is not any one library. It is the habit of finding
+out what is in a file before trusting anything you compute from it.

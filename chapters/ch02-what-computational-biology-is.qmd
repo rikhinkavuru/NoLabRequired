@@ -1,0 +1,152 @@
+# What computational biology actually is
+
+How would you find out whether a gene you've never heard of exists in an animal
+nobody has sequenced?
+
+You can't look it up. Nothing from that animal has ever been deposited
+anywhere, so no database holds a record for it, and no amount of clicking will
+produce one. What you can do is take the gene from a relative somebody did
+sequence, then ask how far across the tree of life that gene reaches. If it
+turns up in a mouse and in a chicken, an unsequenced mammal is a good bet. If
+it turns up in nothing but chimpanzees, it isn't. You'll run that comparison
+across five species in Chapter 19.
+
+So the answer is a comparison, and what you compare against is the pile of
+sequence everybody else has already deposited. This book ran one of those
+comparisons on 2 August 2026. The database it searched held 128,547,243
+sequences, with 948,086,538,397 letters between them.
+
+## Nobody can read the pile
+
+GenBank Release 3 came out in December 1982 and held 680,338 bases in 606
+records. Print that at 60 letters to a line and 50 lines to a page, so 3,000
+letters a page, and the entire database is a 227-page paperback. You could have
+held all of it in one hand.
+
+<!-- nlr-allow: 3000 -->
+
+NCBI's release notes carry a table of every release since. The last row is
+Release 272. It's counted the same way as the 1982 one: 79,604,775,262 bases in
+192,425,204 records. At that same page size the printout runs past 26 million
+pages.
+
+That table isn't the whole database. It leaves out the records that arrive as
+whole projects instead of one gene at a time. The release notes count those on
+a line of their own: another 50,068,290,456,326 bases of whole-genome and
+transcriptome sets. Nobody typed those in one at a time either.
+
+::: {.asof}
+Every GenBank number here came from NCBI's release notes on 2 August 2026, at
+Release 272. Whatever the totals say when you go and look, they'll be bigger.
+:::
+
+The rate matters more than the total. NCBI prints one sentence above that
+table: from 1982 to now, the number of bases in GenBank has doubled about every
+18 months. The last few rows have gone flat, because the bulk arrivals land on
+the whole-genome line instead. The pile still outruns you. Your reading speed
+has not doubled once.
+
+::: {.why}
+The field exists because of a mismatch between two rates. A sequencing machine
+writes bases far faster than a person reads them, and the machines get faster
+every few years while people don't. That gap is why these tools exist at all.
+Every technique in this book is a way of putting a question to a pile you'll
+never look at directly.
+:::
+
+## Three questions a microscope can't answer
+
+You'll produce all three of these answers yourself before the book is done.
+
+**A 649-base fragment of DNA is sitting in a file with nothing attached saying
+where it came from. What animal is it?**
+
+*Gadus chalcogrammus*, the Alaska pollock. Its best match in the database is a
+record called AB182303, at 100 percent identity across the whole fragment, with
+a bit score of 1199.6. You run that search yourself in Chapter 6, and Chapter 7
+says what those two numbers are worth. Notice the shape of the work. A species
+name came out of a plain text file, by comparing that file against the whole
+database.
+
+**Human *BRCA1* and mouse *Brca1* are the same gene in two animals. Are the
+proteins the same size?**
+
+Nearly. The human protein is 1,863 amino acids and the mouse protein is 1,812,
+so 51 residues apart. The genes are nowhere near as close. The human gene
+occupies 126,033 bases of chromosome 17 and the mouse gene occupies 63,222
+bases of chromosome 11. Half the gene went missing. The protein barely moved.
+Chapter 5 has you read all four numbers off the database yourself, and no
+microscope ever built reports a residue count.
+
+**When a mouse starts producing milk, what happens to *Brca1* in the basal
+cells of her mammary gland?**
+
+It collapses. The gene reads 8.3 counts per million in virgin animals and 0.9
+in lactating ones. In the luminal cells it hardly shifts, 20.5 down to 19.3, on
+a unit that Chapter 20 defines. Getting there means holding 27,179 genes across
+12 samples in one table and comparing groups of columns. The same table answers
+the same question for every other gene in it. That's Part 4 of this book, on
+that exact dataset.
+
+## Three names for this, and why you shouldn't pick one
+
+People use three words for this work, and the words do mean different things.
+
+[Bioinformatics]{.term def="Building the software and databases that store
+biological data and hand it back."} is building and running the tools and the
+databases that hold biological data. The output is a resource other people use:
+BLAST is bioinformatics, and so is the collection it searches.
+
+[Computational biology]{.term def="Using computation to answer a biological
+question, rather than to build a tool."} is using computation to answer a
+question about biology. The output is an answer: this gene drops during
+lactation, these two species split in that order.
+
+[Systems biology]{.term def="The study of how genes and proteins behave in
+groups, rather than one gene at a time."} is the study of what the parts do
+together instead of what one gene does alone. Genes act on each other, and a
+network of them can behave in ways you can't recover from any single member.
+
+Here's the part nobody tells you, and you can check it yourself. Open any job
+board and search all three words. Every time I've done that, the same duties
+come back under all three headings. The word in the title tracks which
+department is hiring, not what you'd do all day. So don't pick a label and
+study toward it. The skill under all three names is one skill: getting a
+defensible answer out of data you didn't generate.
+
+None of that tells you what the work feels like from the inside, so here's an
+ordinary Tuesday.
+
+::: {.notebox label="A Tuesday"}
+You open yesterday's notebook and it won't run. It ran yesterday because you'd
+clicked the cells in an order you can no longer reconstruct. That's the first
+hour.
+
+Then you go to attach gene names to your results and find the two files speak
+different languages. GSE60450, the dataset in Part 4, ships NCBI Entrez Gene
+IDs and no symbols at all. Converting 27,179 of them is the rest of the
+morning, and fiddly work like that takes longer than hard work does.
+
+After lunch you plot something and it looks wrong in a way you can't name. The
+counts in that dataset run basal samples first and then luminal ones. The
+accession list at GEO runs the other way. Line them up by position, as anyone
+would, and all 12 samples carry the wrong label. Nothing errors. The plot is
+well-labeled and backwards.
+
+The stretch where you learn something about biology is the short part of the
+day. It's worthless unless the file wrangling was right, which is why the file
+wrangling gets the hours.
+:::
+
+Chapter 3 lays out how the rest of these chapters are built, and what each box
+on the page is for. Chapter 4 gets you somewhere to run code.
+
+::: {.checkpoint}
+- Distinguish bioinformatics from computational biology in one sentence each,
+  using the output of the work as the test
+- Name one question a computer can answer that a microscope cannot, and say
+  what the microscope is missing
+- State roughly how much bigger GenBank is now than it was in 1982, and what
+  NCBI's own release notes say about how fast it doubles
+- Say what a job title tells you about the work behind it
+:::

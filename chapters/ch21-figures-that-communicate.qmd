@@ -1,0 +1,497 @@
+# Figures that communicate
+
+Two plots below, same gene, same four samples, and nothing recalculated
+between them. The left one says the four numbers sit on top of each other. The
+right one says they're scattered. Which one is lying to you?
+
+```{python}
+#| echo: false
+#| fig-cap: "Brca1 in the four luminal samples of GSE60450, drawn twice."
+#| fig-alt: "Two bar charts of the same four numbers side by side. The left chart starts its vertical axis at zero and the four bars look nearly equal. The right chart starts its axis part way up and the same four bars look wildly different."
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t")
+counts.columns = [name.split("_")[0] for name in counts.columns]
+counts = counts.set_index("EntrezGeneID").drop(columns="Length")
+brca1_cpm = (counts / counts.sum() * 1e6).loc[12189]
+
+pairs = [brca1_cpm[["MCL1-LA", "MCL1-LB"]], brca1_cpm[["MCL1-LE", "MCL1-LF"]]]
+fig, axes = plt.subplots(1, 2, figsize=(6.2, 2.5))
+for ax, bottom in zip(axes, [0, 18]):
+    for position, values in zip([0, 1], pairs):
+        ax.scatter([position] * 2, values, s=40, color="#440154", zorder=3)
+    ax.set_xlim(-0.7, 1.7)
+    ax.set_ylim(bottom, 24)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["virgin", "lactating"])
+    ax.set_ylabel("Brca1 (counts per million)")
+    ax.grid(axis="y", color="#e4e4e4", zorder=0)
+axes[0].set_title("y axis starts at 0", fontsize=9)
+axes[1].set_title("y axis starts at 18", fontsize=9)
+fig.tight_layout()
+```
+
+Neither one is lying. Both panels draw the same four values: two virgin samples
+at 23.0 and 18.1 counts per million, two lactating ones at 20.0 and 18.6. The
+right panel starts its y axis at 18 instead of 0. That's the entire difference
+between them.
+
+The right panel is also showing you something the left one buries. Look at the
+two virgin points. They disagree with each other by about 5 counts per million,
+while the two group means differ by about 1. Your replicates argue harder than
+your conditions do. On the zero-based panel all four points sit inside a band a
+fifth of the panel tall, and your eye reads that band as one level.
+
+So a cut-off axis isn't dishonest on its own. Cutting the axis and not saying
+so is. Somebody glancing at a figure takes in the height of the ink, not the
+numbers up the side. You know that when you decide where the axis begins.
+
+## What a plot is made of
+
+Every figure in this chapter comes out of matplotlib, and seven of its
+functions cover all of them. Call `plt.subplots()` to get two things at once.
+One is a **figure**, which is the sheet of paper. The other is an **axes**,
+which is one set of x and y drawn on that sheet. Then `ax.scatter(x, y)` puts a
+dot at each pair of values. Labels go on with `ax.set_xlabel()` and
+`ax.set_ylabel()`. A straight rule at a value you name comes from
+`ax.axvline()` or `ax.axhline()`. Finish with `fig.tight_layout()`, which keeps
+the labels from running off the edge.
+
+Seaborn is a second library that builds matplotlib figures for you in a single
+call, and this chapter uses one of its functions, `sns.heatmap`. Colab has both
+libraries already, so there's nothing to install here.
+
+Three plots follow, and each one exists to answer a question you can't answer
+by reading the table.
+
+## The table you're going to draw
+
+Chapter 20 left you with the GSE60450 count matrix. Load it from the file
+again, the way Chapter 20 did, so nothing here depends on a variable you can't
+see any more.
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t")
+counts.columns = [name.split("_")[0] for name in counts.columns]
+counts = counts.set_index("EntrezGeneID").drop(columns="Length")
+
+samples = pd.read_csv("data/GSE60450_samples.csv").set_index("sample")
+samples = samples.loc[counts.columns]
+
+cpm = counts / counts.sum() * 1e6
+kept = counts[(cpm >= 1).sum(axis=1) >= 3]
+logcpm = np.log2(kept / kept.sum() * 1e6 + 1)
+print(counts.shape[0], "genes in,", logcpm.shape[0], "genes kept")
+```
+
+Three things in that block are new since Chapter 20.
+`set_index("EntrezGeneID")` moves the gene IDs off to the side, so that every
+column left is a sample. `drop(columns="Length")` throws away the gene-length
+column, which isn't a sample and would otherwise get averaged as though it were
+one. And the `+ 1` inside the log keeps the log defined, because log2 of zero
+has no answer and plenty of these genes read zero in some samples. The same line
+turns up again in Chapter 24, and Chapter 27 shows you what the addition costs
+on a gene with small counts.
+
+A gene has to reach 1 count per million in at least 3 of the 12 samples to
+survive that filter. Everything else is a row of near-zeros that no test can
+say anything about. Hold on to the number that came out, because a plot you
+draw in a minute has to contain exactly that many points.
+
+Now the comparison. Chapter 24 builds this table properly and explains every
+line of it. Here it's four lines, because this chapter is about the figures.
+
+```{python}
+from scipy import stats
+
+basal = samples.index[samples.cell_type == "basal"]
+luminal = samples.index[samples.cell_type == "luminal"]
+t, p = stats.ttest_ind(logcpm[luminal], logcpm[basal], axis=1)
+by_cell = pd.DataFrame(
+    {"log2_fold_change": (logcpm[luminal].mean(axis=1)
+                          - logcpm[basal].mean(axis=1)),
+     "p_value": p},
+    index=logcpm.index,
+)
+print(by_cell.loc[[110308, 12189]])
+```
+
+Those two rows are gene 110308, which is *Krt5*, and gene 12189, which is
+*Brca1*, the gene you've been carrying since Chapter 5. Each row holds two
+numbers. `log2_fold_change` says how far the gene moved, in doublings: 1 means
+twice as much in luminal cells, and -1 means half as much. `p_value` says how
+hard the move is to explain by the disagreement between replicates. A small
+number means hard.
+
+[The p-value here is raw. Chapter 25 is where you find out what running 14,210
+of them at once does to that number.]{.margin}
+
+## Which genes moved a lot, and which moves are well supported?
+
+The two columns answer different questions, and sorting on either one alone
+throws the other away. Sort by fold change and the top of your list fills up
+with genes measured in a handful of reads. A jump from 2 counts to 20 is a
+tenfold change and also noise. Sort by p-value and you get genes with tiny,
+beautifully reproducible differences that no biologist cares about.
+
+A [volcano plot]{.term def="A scatter of every gene at once. How far the gene
+moved runs across, how well the move is supported runs up."} puts one on each
+axis so you never have to choose. Fold change across. Support up, written as
+`-log10` of the p-value, which turns a p of 0.05 into 1.3 and a p of 0.000001
+into 6. Small p-values climb high.
+
+```{python}
+#| fig-cap: "Every kept gene, basal against luminal. Purple passes both rules."
+#| fig-alt: "A volcano plot. Log2 fold change runs left to right, and the negative logarithm of the p-value runs bottom to top, so well supported genes sit high. Most points form a dense grey cloud near the middle. Purple points sit in the upper left and upper right, past both a vertical fold-change threshold and a horizontal significance threshold."
+fold = by_cell["log2_fold_change"]
+support = -np.log10(by_cell["p_value"])
+strong = (by_cell["p_value"] < 0.05) & (fold.abs() >= 1)
+print(int(np.isfinite(support).sum()), "points drawn from",
+      len(by_cell), "rows")
+print(int(strong.sum()), "genes past both lines")
+
+box = dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.9)
+fig, ax = plt.subplots(figsize=(5.6, 3.3))
+ax.scatter(fold[~strong], support[~strong], s=3, color="#c9c9c9",
+           linewidths=0)
+ax.scatter(fold[strong], support[strong], s=3, color="#440154", linewidths=0)
+ax.axvline(-1, color="#666666", lw=0.7, ls=":")
+ax.axvline(1, color="#666666", lw=0.7, ls=":")
+ax.axhline(-np.log10(0.05), color="#666666", lw=0.7, ls=":")
+ax.set_xlabel("log2 fold change, luminal minus basal (log2 CPM)")
+ax.set_ylabel("support, -log10(p-value)")
+for gene, name, spot in [(110308, "Krt5", (-6.2, 10.6)),
+                         (12189, "Brca1", (3.4, 0.3))]:
+    ax.annotate(name, (fold[gene], support[gene]), xytext=spot, fontsize=8,
+                bbox=box, arrowprops=dict(arrowstyle="-", lw=0.6, color="k"))
+fig.tight_layout()
+```
+
+<!-- nlr-allow: 4755 -->
+
+Read the shape before you read any gene. The V is the whole point. Genes near
+zero on the x axis stay near zero on the y axis, because a difference that
+small can't be told from replicate noise. The two arms lean outward. *Krt5*
+sits at the far top left, moved by nearly nine doublings, and it's about as
+well supported as anything in this dataset. *Brca1* sits low on the right arm.
+It moved, the direction is clear, and the evidence under it is thin compared
+with *Krt5*.
+
+Both dotted rules are decisions, not discoveries. I put the vertical ones at a
+doubling and the horizontal one at p = 0.05. Neither line came out of your
+data, and 4,755 genes are past both of them. Move the vertical lines out to two
+doublings and that number falls, and not one gene has changed.
+
+::: {.check}
+The cell above printed `14210 points drawn from 14210 rows`. Those two have to
+agree, and 14,210 is the number your filter reported earlier in this chapter.
+If the first number is smaller, matplotlib skipped rows without telling you and
+your figure is missing genes.
+:::
+
+Getting those two numbers to agree isn't automatic. Here's the way they come
+apart.
+
+::: {.trap}
+`ax.scatter` won't complain about a missing value. Hand it one and it draws
+nothing at that spot, carries on, and returns a figure that looks finished. A
+gene whose counts don't vary at all inside either group gives the t-test
+nothing to work with. Its p-value comes back as `NaN` and the gene drops out of
+the figure. No error appears, and the plot is quietly short.
+:::
+
+## Do the samples group the way you expected?
+
+A volcano plot has already thrown the samples away. Every point on it is a
+summary of 12 numbers, and if two of those 12 columns were mislabeled, the
+volcano would look exactly as convincing as it does now.
+
+A [heatmap]{.term def="A table drawn as colored squares, one square per cell,
+so the pattern across rows and columns is visible at a glance."} keeps the
+samples. One row per gene, one column per sample, and the value in each cell
+becomes a color. Take the five smallest p-values in the table and add *Brca1*.
+GSE60450 ships Entrez IDs and no symbols, so the six names below came out of
+NCBI Gene, one lookup each, the way Chapter 5 showed you.
+
+```{python}
+#| fig-cap: "Six genes across the twelve samples, on the log2 CPM scale."
+#| fig-alt: "A heatmap with six gene rows and twelve sample columns, colored on the viridis scale from dark for low expression to bright for high. The six basal columns and the six luminal columns form two visibly different blocks."
+import seaborn as sns
+
+print(by_cell.nsmallest(5, "p_value").index.tolist())
+marker_genes = {12293: "Cacna2d1", 94088: "Trim6", 77220: "Tmem200a",
+                110308: "Krt5", 594844: "Tceal3", 12189: "Brca1"}
+panel = logcpm.loc[list(marker_genes)]
+panel.index = list(marker_genes.values())
+
+fig, ax = plt.subplots(figsize=(6.2, 2.6))
+sns.heatmap(panel, cmap="viridis", ax=ax,
+            cbar_kws={"label": "log2(CPM + 1)"})
+ax.set_xlabel("sample")
+ax.set_ylabel("gene")
+fig.tight_layout()
+```
+
+The split down the middle is the answer. Six columns on the left behave one way
+and six on the right behave the other. The break falls exactly where the sample
+table says basal ends and luminal begins. Nobody told the plot where to put the
+line. It came out of the numbers.
+
+::: {.check}
+Look along the *Krt5* row. It reads about 11 in every one of the six basal
+columns and about 2 in every one of the six luminal columns. On this scale each
+step of 1 is a doubling, so a gap of 9 is a factor of about 500 in counts per
+million. If your *Krt5* row is patchy rather than split cleanly in half, your
+sample table and your count columns are lined up wrong. Chapter 24 has a whole
+section on how that happens.
+:::
+
+Notice what the *Brca1* row does, or rather doesn't do. It stays down the dark
+end of the scale the whole way across. The luminal side is a shade lighter than
+the basal side, and not much more than that. That's a real result and the
+figure is being honest about it. Eyes read faint color differences badly, which
+is why the volcano gave *Brca1* a position and this figure gives it only a
+shade.
+
+::: {.trap}
+`sns.heatmap` picks its color range from whatever numbers you hand it, and from
+nothing else. Draw these six genes and the brightest yellow means 11. Swap in a
+different six and the brightest yellow might mean 4. Two heatmaps printed side
+by side can be on two different scales, both look identical, and only the
+colorbars differ.
+:::
+
+## What's the biggest thing changing in this data?
+
+Both plots so far started from a comparison you chose. Basal against luminal
+was your question. Suppose you'd rather ask the data what varies most, before
+you commit to a question at all.
+
+That's what [principal component analysis]{.term def="A way of redrawing many
+measurements per sample as two, chosen so that samples far apart in the full
+table stay far apart."} does. Each sample carries 14,210 numbers, which is
+14,210 directions you could measure it along, and you can only draw two. PCA
+finds the two directions that keep the samples as spread out as they were, then
+tells you what fraction of the total spread each one holds.
+
+```{python}
+#| fig-cap: "The twelve samples on the two axes that carry the most variation."
+#| fig-alt: "A scatter plot of the twelve samples on the first two principal components. The samples fall into two well separated groups along the horizontal axis, one basal and one luminal. Within each group the three developmental stages spread out along the vertical axis by a much smaller distance."
+from matplotlib.lines import Line2D
+
+table = logcpm.T.values
+centered = table - table.mean(axis=0)
+sample_axes, strength, gene_axes = np.linalg.svd(centered,
+                                                 full_matrices=False)
+coords = sample_axes * strength
+percent = strength ** 2 / (strength ** 2).sum() * 100
+
+color_for = {"basal": "#440154", "luminal": "#21918c"}
+shape_for = {"virgin": "o", "pregnant": "s", "lactating": "^"}
+fig, ax = plt.subplots(figsize=(5.6, 3.3))
+for i, name in enumerate(logcpm.columns):
+    ax.scatter(coords[i, 0], coords[i, 1], s=55,
+               color=color_for[samples.loc[name, "cell_type"]],
+               marker=shape_for[samples.loc[name, "stage"]])
+keys = [Line2D([], [], ls="", marker="o", color=c, label=k)
+        for k, c in color_for.items()]
+keys += [Line2D([], [], ls="", marker=m, color="#8c8c8c", label=k)
+         for k, m in shape_for.items()]
+ax.legend(handles=keys, fontsize=7.5, loc="lower left", frameon=False, ncol=3)
+ax.set_xlabel(f"PC1, {percent[0]:.1f} percent of the variance (log2 CPM)")
+ax.set_ylabel(f"PC2, {percent[1]:.1f} percent (log2 CPM)")
+fig.tight_layout()
+```
+
+The `centered` line matters more than it looks. Subtract each gene's mean
+first, or the first axis you get back is the average sample and every point
+lands in one clump. The third thing `svd` returns describes the genes instead
+of the samples, and this chapter doesn't use it.
+
+Now read the plot. Every purple point is left of zero and every teal point is
+right of it, with a wide empty stripe between. PC1 holds 66.9 percent of the
+variance, and PC1 is cell type. PC2 holds 20.8 percent, and within each color
+the circles, squares and triangles come out in order: virgin, pregnant,
+lactating. So developmental stage is real and it sits on the second axis. It
+carries about a third of the variance that cell type carries.
+
+::: {.why}
+Suppose lactation was your question. Cell type accounts for about three times
+as much of the variance here as developmental stage does. So any comparison
+that mixes basal and luminal samples answers the cell-type question, whatever
+you name the groups. Chapter 24 handles it by comparing virgin against
+lactating inside the basal samples only. You saw the reason here, on this plot,
+before the analysis went anywhere.
+:::
+
+## Color that everybody can read
+
+The heatmap used `cmap="viridis"`, and the PCA used two colors picked off the
+ends of the same scale. That's a choice, and it's the one this book makes every
+time.
+
+Red against green is the pairing to avoid. About 1 in 12 men have some form of
+color vision deficiency, per the US National Eye Institute, and the commonest
+forms collapse red and green toward each other. So a heatmap running red to
+green is unreadable for a substantial slice of the people who open your figure,
+and nothing in the figure warns them.
+
+Viridis was designed against that. It runs dark purple to yellow, and its
+lightness climbs the whole way, with no flat stretch and no dip. That climb is
+the part you can check, and it's the part doing the work. Sort the squares by
+how light they are and you get the right order, whether or not you can tell the
+hues apart. A grayscale photocopy of the same heatmap still reads correctly.
+Viridis ships with matplotlib and with seaborn, so the fix costs you one
+keyword.
+
+There's a habit worth building on top of the palette. Spend position first: put
+whatever you want compared onto an axis, and let color carry the label instead
+of the measurement. In the PCA above, cell type is carried by color *and* by an
+empty stripe of x axis. A reader who sees no color at all still gets the
+answer.
+
+## Where the axis starts is your decision to declare
+
+Back to the two panels this chapter opened with. Every axis you draw carries
+three choices, and every one of them is yours: where it starts, what scale it's
+on, and what the label says it's measuring.
+
+Label first, because it's the cheapest and it's the one people skip. An axis
+that says `expression` tells a reader nothing. Counts, counts per million and
+log2 CPM differ from each other by whole orders of magnitude. A figure that
+doesn't name which one it's on can't be checked by anybody. Each axis in this
+chapter names its units, and so does the colorbar.
+
+Then the start. A truncated axis is legitimate and often necessary, because a
+zero-based axis on a gene expressed at 20 counts per million turns a real
+difference into nothing. What you owe the reader is a note in the caption
+saying you did it. Seven words covers it: `y axis starts at 18, not zero`.
+That's the difference between a choice and a trick.
+
+Then the scale. Fold changes go on a log axis because doubling and halving
+should be the same distance from the middle. On a linear axis a gene that
+doubled sits at 2 and a gene that halved sits at 0.5. Those two distances from
+1 are nothing alike, so the volcano's two arms stop matching.
+
+## Exercises
+
+::: {.exercise num="21.1" time="40 minutes"}
+::: {.goal}
+Draw a labeled volcano plot for the comparison this chapter skipped: basal
+virgin against basal lactating.
+:::
+::: {.given}
+`logcpm` and `samples` from the walkthrough. The virgin basal samples are the
+two rows where `cell_type` is `basal` and `stage` is `virgin`; the lactating
+basal samples are the two where `stage` is `lactating`. Two samples per group,
+which is as few as a t-test will accept. Call the results table `by_stage`.
+:::
+::: {.produce}
+One figure, with units named on each axis. The x axis reads
+`log2 fold change, lactating minus virgin (log2 CPM)`, both threshold lines are
+drawn, and *Brca1* is marked. Plus one number written underneath: how many points
+the figure actually contains.
+:::
+::: {.check}
+Your point count comes back 14,206, four short of the 14,210 rows in the table.
+Find those four. They're the genes whose counts don't vary at all inside either
+pair, so the t-test had nothing to divide by and returned `NaN`. Run
+`by_stage["p_value"].isna().sum()` and you should get 4. Your *Brca1* point
+sits left of center this time, which is the opposite direction to the chapter's
+volcano, and Chapter 24 is where that flip gets its explanation.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+The figure below runs without an error and every number in it is real. It was
+drawn by `scripts/ch21_bad_figure.py` in the book's repository. The defects are
+written down in a comment at the top of that file, so you can mark your own
+answer.
+
+```{python}
+#| echo: false
+#| fig-cap: "The figure for Exercise 21.2. It runs. Do not copy it."
+#| fig-alt: "A deliberately bad bar chart. Neither axis is labeled, the bars are colored red and green, the vertical axis is truncated without saying so, the legend names categories that are not in the data, and the caption states a conclusion the bars do not support."
+import sys
+
+sys.path.insert(0, "scripts")
+from ch21_bad_figure import draw
+
+bad = draw()
+```
+
+::: {.exercise num="21.2" time="30 minutes"}
+::: {.goal}
+Name everything wrong with the figure above, before you open the script that
+drew it.
+:::
+::: {.produce}
+Exactly five numbered defects. Give a sentence each, and name in it the part of
+the figure the defect is about: an axis, the colors, the legend, or the
+caption.
+:::
+::: {.check}
+Five is the real count, and the five are listed at the top of
+`scripts/ch21_bad_figure.py`. If you found six, one of yours is a matter of
+taste rather than a defect, and it's worth working out which. If you found
+three, two of them are easy to walk straight past. One needs you to read the
+legend against the sample names under the bars. The other needs you to treat
+the caption as a claim and ask what would have to be true for it to hold.
+:::
+
+::: {.answerspace lines="7"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="AttributeError: 'numpy.ndarray' object has no attribute 'set_xlabel'"}
+Python is talking, and it's telling you that the thing you called `ax` is a
+list of axes rather than one axes. `plt.subplots(1, 2)` returns two panels, so
+you have `axes[0]` and `axes[1]` and no bare `ax`. Either loop over them, as
+the opening figure of this chapter does, or drop the `1, 2`.
+:::
+
+::: {.errfix err="ValueError: x and y must be the same size"}
+matplotlib is talking. You filtered one of the two arrays and not the other, so
+you're asking it to draw 4,755 x positions against 14,210 y positions. Apply
+the same mask to both: `fold[strong]` goes with `support[strong]`, never with
+bare `support`.
+:::
+
+::: {.errfix err="KeyError: 12189"}
+pandas is talking, and the gene isn't in the table you're indexing. Check which
+table you asked. *Brca1* is in `logcpm` and in `by_cell`, both filtered down to
+14,210 rows. A gene that fell out of the filter is gone from every table
+downstream of it.
+:::
+
+::: {.errfix err="AttributeError: PathCollection.set() got an unexpected keyword argument 'colour'"}
+matplotlib is talking. Color keywords in this library all use the US spelling,
+`color`, and matplotlib won't guess at the other one. The same applies to
+`cmap` and to `edgecolor`.
+:::
+:::
+
+::: {.checkpoint}
+- Name the question each of the three plot types answers, without naming the
+  plot type
+- Draw a volcano plot and check that its point count matches the number of
+  genes that survived filtering
+- Read a heatmap column block and say whether the samples grouped the way the
+  sample table claims
+- Say which of two labeled sources of variation a PCA plot puts first, and what
+  that means for the comparison you wanted to run
+- Name the palette this book uses and the pairing it avoids, and say why
+- Point at any axis in a figure and say where it starts, what scale it's on,
+  and what it measures
+:::

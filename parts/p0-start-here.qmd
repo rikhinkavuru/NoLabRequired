@@ -1,0 +1,12 @@
+```{=latex}
+\mainmatter
+```
+
+# Start here
+
+Four short chapters, and then you start working.
+
+This part exists to answer four questions before they become obstacles: whether
+this book is for you, what the field actually is, how a chapter is built, and
+where your code is going to run. None of it takes long. Chapter 4 is the only
+setup you will do, and it installs nothing.

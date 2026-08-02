@@ -1,0 +1,1985 @@
+{
+"BlastOutput2": [
+{
+    "report": {
+      "program": "blastn",
+      "version": "BLASTN 2.17.0+",
+      "reference": "Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb Miller (2000), \"A greedy algorithm for aligning DNA sequences\", J Comput Biol 2000; 7(1-2):203-14.",
+      "search_target": {
+        "db": "core_nt"
+      },
+      "params": {
+        "expect": 10,
+        "sc_match": 1,
+        "sc_mismatch": -2,
+        "gap_open": 0,
+        "gap_extend": 0,
+        "filter": "L;m;"
+      },
+      "results": {
+        "search": {
+          "query_id": "Query_5771003",
+          "query_title": "mystery_fillet_1",
+          "query_len": 649,
+          "hits": [
+            {
+              "num": 1,
+              "description": [
+                {
+                  "id": "gi|49658452|dbj|AB182303.1|",
+                  "accession": "AB182303",
+                  "title": "Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J4",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16572,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 2,
+              "description": [
+                {
+                  "id": "gi|3277457831|gb|PZ291804.1|",
+                  "accession": "PZ291804",
+                  "title": "Gadus chalcogrammus voucher USNM:FISH:485765 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16573,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 3,
+              "description": [
+                {
+                  "id": "gi|2148052573|gb|OL494247.1|",
+                  "accession": "OL494247",
+                  "title": "Gadus chalcogrammus voucher H90 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 651,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 4,
+              "description": [
+                {
+                  "id": "gi|209368033|gb|FJ165432.1|",
+                  "accession": "FJ165432",
+                  "title": "Gadus chalcogrammus voucher TZ05-FROSTI-171 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368039|gb|FJ165435.1|",
+                  "accession": "FJ165435",
+                  "title": "Gadus chalcogrammus voucher TZ05-FROSTI-173 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368041|gb|FJ165436.1|",
+                  "accession": "FJ165436",
+                  "title": "Gadus chalcogrammus voucher TZ05-FROSTI-170 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368043|gb|FJ165437.1|",
+                  "accession": "FJ165437",
+                  "title": "Gadus chalcogrammus voucher TZ05-FROSTI-050 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368053|gb|FJ165442.1|",
+                  "accession": "FJ165442",
+                  "title": "Gadus chalcogrammus voucher TZ-06-RICKER-854 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368055|gb|FJ165443.1|",
+                  "accession": "FJ165443",
+                  "title": "Gadus chalcogrammus voucher TZ-06-RICKER-855 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|209368059|gb|FJ165445.1|",
+                  "accession": "FJ165445",
+                  "title": "Gadus chalcogrammus voucher TZ-06-RICKER-857 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|294989432|gb|GU440554.1|",
+                  "accession": "GU440554",
+                  "title": "Gadus chalcogrammus voucher MFC376 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|294989434|gb|GU440555.1|",
+                  "accession": "GU440555",
+                  "title": "Gadus chalcogrammus voucher MFC252 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|584295813|gb|KF929902.1|",
+                  "accession": "KF929902",
+                  "title": "Gadus chalcogrammus voucher KUT 2067 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|1153535476|gb|KY018790.1|",
+                  "accession": "KY018790",
+                  "title": "Gadus chalcogrammus voucher MT08271 cytochrome oxidase subunit I (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 652,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 5,
+              "description": [
+                {
+                  "id": "gi|124377093|emb|AM489719.1|",
+                  "accession": "AM489719",
+                  "title": "Theragra finnmarchica complete mitochondrial genome",
+                  "taxid": 3083464,
+                  "sciname": "Gadus finnmarchicus"
+                }
+              ],
+              "len": 16570,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 6,
+              "description": [
+                {
+                  "id": "gi|3277437188|gb|PZ284884.1|",
+                  "accession": "PZ284884",
+                  "title": "Gadus chalcogrammus voucher USNM:FISH:485767 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5494,
+                  "hit_to": 6142,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 7,
+              "description": [
+                {
+                  "id": "gi|49658438|dbj|AB182302.1|",
+                  "accession": "AB182302",
+                  "title": "Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J3",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16572,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 8,
+              "description": [
+                {
+                  "id": "gi|1040626446|gb|KX119441.1|",
+                  "accession": "KX119441",
+                  "title": "Gadus chalcogrammus isolate 61 cytochrome c oxidase subunit I (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|1040626450|gb|KX119443.1|",
+                  "accession": "KX119443",
+                  "title": "Gadus chalcogrammus isolate 64 cytochrome c oxidase subunit I (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 655,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 9,
+              "description": [
+                {
+                  "id": "gi|2148055018|gb|OL494334.1|",
+                  "accession": "OL494334",
+                  "title": "Gadus chalcogrammus voucher H332 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 651,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 10,
+              "description": [
+                {
+                  "id": "gi|1917290892|gb|MN879772.1|",
+                  "accession": "MN879772",
+                  "title": "Gadus chalcogrammus cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 655,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 11,
+              "description": [
+                {
+                  "id": "gi|1852613523|gb|MN850428.1|",
+                  "accession": "MN850428",
+                  "title": "Gadus chalcogrammus isolate S1 cytochrome c oxidase subunit I (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 649,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 12,
+              "description": [
+                {
+                  "id": "gi|1783586429|gb|MH035600.1|",
+                  "accession": "MH035600",
+                  "title": "Gadus chalcogrammus voucher UW151990_5 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 13,
+              "description": [
+                {
+                  "id": "gi|1783586345|gb|MH035594.1|",
+                  "accession": "MH035594",
+                  "title": "Gadus chalcogrammus voucher UW151985_4 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5494,
+                  "hit_to": 6142,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 14,
+              "description": [
+                {
+                  "id": "gi|3277437076|gb|PZ284876.1|",
+                  "accession": "PZ284876",
+                  "title": "Gadus chalcogrammus voucher USNM:FISH:487031 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16574,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 15,
+              "description": [
+                {
+                  "id": "gi|1952005611|gb|MW435064.1|",
+                  "accession": "MW435064",
+                  "title": "Gadus chalcogrammus isolate 12280.seq cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 652,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 16,
+              "description": [
+                {
+                  "id": "gi|49658466|dbj|AB182304.1|",
+                  "accession": "AB182304",
+                  "title": "Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J5",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16570,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 17,
+              "description": [
+                {
+                  "id": "gi|1783586289|gb|MH035590.1|",
+                  "accession": "MH035590",
+                  "title": "Gadus chalcogrammus voucher UW151042 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16572,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 18,
+              "description": [
+                {
+                  "id": "gi|1783586471|gb|MH035603.1|",
+                  "accession": "MH035603",
+                  "title": "Gadus chalcogrammus voucher UW152903_1 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16572,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 19,
+              "description": [
+                {
+                  "id": "gi|49658522|dbj|AB182308.1|",
+                  "accession": "AB182308",
+                  "title": "Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:B5",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16570,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 20,
+              "description": [
+                {
+                  "id": "gi|2955806259|gb|PV495993.1|",
+                  "accession": "PV495993",
+                  "title": "Gadus chalcogrammus voucher X16 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806261|gb|PV495994.1|",
+                  "accession": "PV495994",
+                  "title": "Gadus chalcogrammus voucher X17 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806263|gb|PV495995.1|",
+                  "accession": "PV495995",
+                  "title": "Gadus chalcogrammus voucher X23 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806265|gb|PV495996.1|",
+                  "accession": "PV495996",
+                  "title": "Gadus chalcogrammus voucher X30 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806267|gb|PV495997.1|",
+                  "accession": "PV495997",
+                  "title": "Gadus chalcogrammus voucher X31 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806269|gb|PV495998.1|",
+                  "accession": "PV495998",
+                  "title": "Gadus chalcogrammus voucher X34 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806271|gb|PV495999.1|",
+                  "accession": "PV495999",
+                  "title": "Gadus chalcogrammus voucher X36 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806273|gb|PV496000.1|",
+                  "accession": "PV496000",
+                  "title": "Gadus chalcogrammus voucher X41 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806275|gb|PV496001.1|",
+                  "accession": "PV496001",
+                  "title": "Gadus chalcogrammus voucher H11 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806277|gb|PV496002.1|",
+                  "accession": "PV496002",
+                  "title": "Gadus chalcogrammus voucher H14 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806279|gb|PV496003.1|",
+                  "accession": "PV496003",
+                  "title": "Gadus chalcogrammus voucher H15 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806281|gb|PV496004.1|",
+                  "accession": "PV496004",
+                  "title": "Gadus chalcogrammus voucher H29 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806283|gb|PV496005.1|",
+                  "accession": "PV496005",
+                  "title": "Gadus chalcogrammus voucher Y9 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806285|gb|PV496006.1|",
+                  "accession": "PV496006",
+                  "title": "Gadus chalcogrammus voucher Y14 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806287|gb|PV496007.1|",
+                  "accession": "PV496007",
+                  "title": "Gadus chalcogrammus voucher Y23 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806289|gb|PV496008.1|",
+                  "accession": "PV496008",
+                  "title": "Gadus chalcogrammus voucher Y37 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806291|gb|PV496009.1|",
+                  "accession": "PV496009",
+                  "title": "Gadus chalcogrammus voucher A1 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806293|gb|PV496010.1|",
+                  "accession": "PV496010",
+                  "title": "Gadus chalcogrammus voucher A2 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806295|gb|PV496011.1|",
+                  "accession": "PV496011",
+                  "title": "Gadus chalcogrammus voucher A4 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806297|gb|PV496012.1|",
+                  "accession": "PV496012",
+                  "title": "Gadus chalcogrammus voucher A5 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806299|gb|PV496013.1|",
+                  "accession": "PV496013",
+                  "title": "Gadus chalcogrammus voucher A7 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806301|gb|PV496014.1|",
+                  "accession": "PV496014",
+                  "title": "Gadus chalcogrammus voucher A8 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806303|gb|PV496015.1|",
+                  "accession": "PV496015",
+                  "title": "Gadus chalcogrammus voucher A9 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806305|gb|PV496016.1|",
+                  "accession": "PV496016",
+                  "title": "Gadus chalcogrammus voucher A11 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806307|gb|PV496017.1|",
+                  "accession": "PV496017",
+                  "title": "Gadus chalcogrammus voucher A13 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806309|gb|PV496018.1|",
+                  "accession": "PV496018",
+                  "title": "Gadus chalcogrammus voucher A17 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806311|gb|PV496019.1|",
+                  "accession": "PV496019",
+                  "title": "Gadus chalcogrammus voucher A20 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|2955806313|gb|PV496020.1|",
+                  "accession": "PV496020",
+                  "title": "Gadus chalcogrammus voucher A21 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 1404,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 3,
+                  "hit_to": 651,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 21,
+              "description": [
+                {
+                  "id": "gi|382934982|gb|JQ354093.1|",
+                  "accession": "JQ354093",
+                  "title": "Gadus chalcogrammus voucher UW:047698 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|382934986|gb|JQ354095.1|",
+                  "accession": "JQ354095",
+                  "title": "Gadus chalcogrammus voucher UW:118646 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|382934988|gb|JQ354096.1|",
+                  "accession": "JQ354096",
+                  "title": "Gadus chalcogrammus voucher UW:047697 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 673,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 8,
+                  "hit_to": 656,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 22,
+              "description": [
+                {
+                  "id": "gi|382935832|gb|JQ354518.1|",
+                  "accession": "JQ354518",
+                  "title": "Gadus chalcogrammus voucher UW:150487 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 677,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 11,
+                  "hit_to": 659,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 23,
+              "description": [
+                {
+                  "id": "gi|1783586485|gb|MH035604.1|",
+                  "accession": "MH035604",
+                  "title": "Gadus chalcogrammus voucher UW152907 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16572,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 24,
+              "description": [
+                {
+                  "id": "gi|49658480|dbj|AB182305.1|",
+                  "accession": "AB182305",
+                  "title": "Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:B2",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 25,
+              "description": [
+                {
+                  "id": "gi|1783586615|gb|MH035611.1|",
+                  "accession": "MH035611",
+                  "title": "Gadus chalcogrammus voucher UW119164 mitochondrion, partial genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16570,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 26,
+              "description": [
+                {
+                  "id": "gi|3277436964|gb|PZ284868.1|",
+                  "accession": "PZ284868",
+                  "title": "Gadus chalcogrammus voucher USNM:FISH:485769 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5494,
+                  "hit_to": 6142,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 27,
+              "description": [
+                {
+                  "id": "gi|1491824570|gb|MH018252.1|",
+                  "accession": "MH018252",
+                  "title": "Gadus chalcogrammus mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16571,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1199.6,
+                  "score": 649,
+                  "evalue": 0,
+                  "identity": 649,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4475,
+                  "hit_to": 5123,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 28,
+              "description": [
+                {
+                  "id": "gi|301036149|gb|HM421738.1|",
+                  "accession": "HM421738",
+                  "title": "Gadus chalcogrammus voucher RUSALCA09-112 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|321402524|gb|HQ712777.1|",
+                  "accession": "HQ712777",
+                  "title": "Gadus chalcogrammus voucher BASIS2007-118 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                },
+                {
+                  "id": "gi|321402526|gb|HQ712778.1|",
+                  "accession": "HQ712778",
+                  "title": "Gadus chalcogrammus voucher BASIS2007-170 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 648,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1197.75,
+                  "score": 648,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 648,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 648,
+                  "hit_strand": "Plus",
+                  "align_len": 648,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACA",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACA",
+                  "midline": "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 29,
+              "description": [
+                {
+                  "id": "gi|1044673861|gb|KX017720.1|",
+                  "accession": "KX017720",
+                  "title": "Gadus chalcogrammus isolate X12 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 650,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1195.9,
+                  "score": 647,
+                  "evalue": 0,
+                  "identity": 647,
+                  "query_from": 3,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 647,
+                  "hit_strand": "Plus",
+                  "align_len": 647,
+                  "gaps": 0,
+                  "qseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 30,
+              "description": [
+                {
+                  "id": "gi|1044673863|gb|KX017721.1|",
+                  "accession": "KX017721",
+                  "title": "Gadus chalcogrammus isolate X13 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 650,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1195.9,
+                  "score": 647,
+                  "evalue": 0,
+                  "identity": 647,
+                  "query_from": 3,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 647,
+                  "hit_strand": "Plus",
+                  "align_len": 647,
+                  "gaps": 0,
+                  "qseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 31,
+              "description": [
+                {
+                  "id": "gi|1044673843|gb|KX017711.1|",
+                  "accession": "KX017711",
+                  "title": "Gadus chalcogrammus isolate X3 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 650,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1195.9,
+                  "score": 647,
+                  "evalue": 0,
+                  "identity": 647,
+                  "query_from": 3,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 647,
+                  "hit_strand": "Plus",
+                  "align_len": 647,
+                  "gaps": 0,
+                  "qseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 32,
+              "description": [
+                {
+                  "id": "gi|1044673845|gb|KX017712.1|",
+                  "accession": "KX017712",
+                  "title": "Gadus chalcogrammus isolate X4 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 650,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1195.9,
+                  "score": 647,
+                  "evalue": 0,
+                  "identity": 647,
+                  "query_from": 3,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 647,
+                  "hit_strand": "Plus",
+                  "align_len": 647,
+                  "gaps": 0,
+                  "qseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 33,
+              "description": [
+                {
+                  "id": "gi|1044673873|gb|KX017726.1|",
+                  "accession": "KX017726",
+                  "title": "Gadus chalcogrammus isolate X18 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 650,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1195.9,
+                  "score": 647,
+                  "evalue": 0,
+                  "identity": 647,
+                  "query_from": 3,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 647,
+                  "hit_strand": "Plus",
+                  "align_len": 647,
+                  "gaps": 0,
+                  "qseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 34,
+              "description": [
+                {
+                  "id": "gi|2032551571|gb|MZ097915.1|",
+                  "accession": "MZ097915",
+                  "title": "Gadus chalcogrammus isolate DF1-9 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 35,
+              "description": [
+                {
+                  "id": "gi|2032551591|gb|MZ097925.1|",
+                  "accession": "MZ097925",
+                  "title": "Gadus chalcogrammus isolate DF1-19 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 36,
+              "description": [
+                {
+                  "id": "gi|2032551585|gb|MZ097922.1|",
+                  "accession": "MZ097922",
+                  "title": "Gadus chalcogrammus isolate DF1-16 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 37,
+              "description": [
+                {
+                  "id": "gi|2148053050|gb|OL494265.1|",
+                  "accession": "OL494265",
+                  "title": "Gadus chalcogrammus voucher H137 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 651,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 38,
+              "description": [
+                {
+                  "id": "gi|2032551563|gb|MZ097911.1|",
+                  "accession": "MZ097911",
+                  "title": "Gadus chalcogrammus isolate DF1-5 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 39,
+              "description": [
+                {
+                  "id": "gi|2032551575|gb|MZ097917.1|",
+                  "accession": "MZ097917",
+                  "title": "Gadus chalcogrammus isolate DF1-11 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 40,
+              "description": [
+                {
+                  "id": "gi|2148054500|gb|OL494315.1|",
+                  "accession": "OL494315",
+                  "title": "Gadus chalcogrammus voucher H304 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 651,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 1,
+                  "hit_to": 649,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 41,
+              "description": [
+                {
+                  "id": "gi|2032551587|gb|MZ097923.1|",
+                  "accession": "MZ097923",
+                  "title": "Gadus chalcogrammus isolate DF1-17 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 42,
+              "description": [
+                {
+                  "id": "gi|2032551559|gb|MZ097909.1|",
+                  "accession": "MZ097909",
+                  "title": "Gadus chalcogrammus isolate DF1-3 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 43,
+              "description": [
+                {
+                  "id": "gi|3277437118|gb|PZ284879.1|",
+                  "accession": "PZ284879",
+                  "title": "Gadus chalcogrammus voucher USNM:FISH:487032 mitochondrion, complete genome",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 16570,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 5495,
+                  "hit_to": 6143,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTACTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 44,
+              "description": [
+                {
+                  "id": "gi|2032551573|gb|MZ097916.1|",
+                  "accession": "MZ097916",
+                  "title": "Gadus chalcogrammus isolate DF1-10 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 45,
+              "description": [
+                {
+                  "id": "gi|2500774624|gb|OQ932941.1|",
+                  "accession": "OQ932941",
+                  "title": "Gadus chalcogrammus voucher s06 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 675,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 13,
+                  "hit_to": 661,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 46,
+              "description": [
+                {
+                  "id": "gi|2032551569|gb|MZ097914.1|",
+                  "accession": "MZ097914",
+                  "title": "Gadus chalcogrammus isolate DF1-8 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 47,
+              "description": [
+                {
+                  "id": "gi|2032551577|gb|MZ097918.1|",
+                  "accession": "MZ097918",
+                  "title": "Gadus chalcogrammus isolate DF1-12 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 48,
+              "description": [
+                {
+                  "id": "gi|2032551565|gb|MZ097912.1|",
+                  "accession": "MZ097912",
+                  "title": "Gadus chalcogrammus isolate DF1-6 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 49,
+              "description": [
+                {
+                  "id": "gi|2032551589|gb|MZ097924.1|",
+                  "accession": "MZ097924",
+                  "title": "Gadus chalcogrammus isolate DF1-18 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 50,
+              "description": [
+                {
+                  "id": "gi|2032551583|gb|MZ097921.1|",
+                  "accession": "MZ097921",
+                  "title": "Gadus chalcogrammus isolate DF1-15 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial",
+                  "taxid": 1042646,
+                  "sciname": "Gadus chalcogrammus"
+                }
+              ],
+              "len": 658,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 1194.06,
+                  "score": 646,
+                  "evalue": 0,
+                  "identity": 648,
+                  "query_from": 1,
+                  "query_to": 649,
+                  "query_strand": "Plus",
+                  "hit_from": 4,
+                  "hit_to": 652,
+                  "hit_strand": "Plus",
+                  "align_len": 649,
+                  "gaps": 0,
+                  "qseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "hseq": "CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCATTCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC",
+                  "midline": "||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+                }
+              ]
+            }
+          ],
+          "stat": {
+            "db_num": 128547243,
+            "db_len": 948086538397,
+            "hsp_len": 36,
+            "eff_space": 578340267478837,
+            "kappa": 0.46,
+            "lambda": 1.28,
+            "entropy": 0.85
+          }
+        }
+      }
+    }
+  }
+]
+}
+

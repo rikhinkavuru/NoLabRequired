@@ -1,0 +1,13 @@
+```{=latex}
+\cleardoublepage
+\phantomsection
+\pdfbookmark[0]{Contents}{toc}
+{\setcounter{tocdepth}{1}\tableofcontents}
+```
+
+::: {.content-visible when-format="html"}
+# Contents {.unnumbered}
+
+Every chapter is listed in the sidebar. On a narrow screen, open it with the
+menu button at the top of the page.
+:::

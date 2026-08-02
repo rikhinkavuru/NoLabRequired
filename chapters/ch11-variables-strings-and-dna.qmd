@@ -1,0 +1,394 @@
+# Variables, strings, and DNA
+
+Chapter 5 read one number off the *BRCA1* record: the coding sequence of
+`NM_007294.4` starts at base 114. Hand that 114 to Python and ask for base 114.
+You get a `T`. The record says an `A`, and both of them are right.
+
+Nothing errors and nothing warns. The letter that comes back is real sequence
+sitting one place along, which is the worst kind of wrong answer there is. So
+this chapter is about what Python is holding while it counts, and why it and
+the database disagree about where base 114 is.
+
+## A sequence is a string, and that's all it is
+
+A [string]{.term def="An ordered run of characters that a program keeps as one
+value. Order matters and the program does not know what the characters mean."}
+is an ordered run of characters that Python keeps as one value. The order is
+remembered exactly. The meaning is not remembered at all, because there's
+nowhere in a string to put it. The same four letters could be DNA or a set of
+initials, and nothing inside the string would tell you which.
+
+Look at what DNA is once it's written down. An ordered run of letters, where
+the order carries the whole meaning. Same shape as a string, which is why this
+book starts you on strings rather than on numbers.
+
+A [variable]{.term def="A name attached to a value, so the value can be used
+again by name."} is a name you attach to a value so you can use the value
+again. The name goes on the left, an equals sign in the middle, the value on
+the right. Nothing is copied and nothing is stored twice. You've made a label.
+
+One habit is worth building right now, on your first variable. Give it a name
+that says what the thing is, because in four weeks you'll open this notebook
+again and `x` will tell you nothing while `brca1` will tell you everything. A
+name can hold letters, digits and the `_` character. It can't start with a
+digit, and `Brca1` and `brca1` are two different names.
+
+Type this into a Colab cell. The value is the first 200 bases of `NM_007294.4`,
+the human *BRCA1* transcript from Chapter 5, and the last line asks for a count
+of the characters it took.
+
+```{python}
+brca1 = (
+    "GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTG"
+    "GGCCCCTGCGCTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATT"
+    "GGAACAGAAAGAAATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAA"
+    "ATGTCATTAATGCTATGCAGAAAATCTTAGAGTGTCCCATCTGTCTGGAG"
+)
+print(len(brca1))
+```
+
+Four quoted pieces, one variable. Strings that sit side by side inside
+parentheses get glued into one, so `brca1` holds a single run of 200 characters
+rather than four runs of 50. The split into four lines is a printing decision.
+200 characters won't fit across this page, and nothing inside `brca1` remembers
+where the breaks were.
+
+<!-- nlr-allow: 200 199 -->
+
+`len()` counts characters. You can check its answer without trusting it: 4
+lines times 50 characters is 200.
+
+[Keep this cell. Every code block in this chapter reuses `brca1`, and Colab
+forgets your variables when the runtime disconnects.]{.margin}
+
+### Counting bases
+
+`.count()` goes on the end of a string, takes a piece of text, and tells you
+how many times that piece appears. Ask it for all four bases at once, so you
+can check its answers against a length you already have.
+
+```{python}
+print(brca1.count("A"), brca1.count("C"),
+      brca1.count("G"), brca1.count("T"))
+```
+
+::: {.check}
+Add those four numbers: 49 + 43 + 55 + 53 = 200. That's the same 200 that
+`len(brca1)` printed. If your four counts add up to less than the length, your
+string holds something that isn't a base, and an `N` or a stray space is the
+usual culprit.
+:::
+
+Now a number you work out from the sequence itself rather than read off a
+record. GC content is the fraction of a sequence that's G or C, and you get it
+by counting two letters and dividing by the length.
+
+```{python}
+gc = brca1.count("G") + brca1.count("C")
+print(gc, gc / len(brca1))
+```
+
+98 bases out of 200, which is 0.49. Just under half of this stretch is G or C.
+
+::: {.why}
+G pairs with C across three hydrogen bonds. A pairs with T across two. So a
+GC-rich stretch of DNA takes more heat to pull apart than an AT-rich one. Every
+experiment that heats DNA to separate the strands runs into this, which is why
+GC content is on the front page of so many tools. It also varies along a
+transcript, and you'll see that for yourself in Exercise 11.1.
+:::
+
+### The same sequence in lowercase counts as zero
+
+Sequence doesn't always arrive in capitals. NCBI's GenBank flatfile view prints
+the sequence at the bottom in lowercase, and plenty of genome files use
+lowercase to mark regions that repeat. To a string, `g` and `G` are two
+unrelated characters with nothing in common.
+
+::: {.asof}
+Checked against the GenBank flatfile view of `NM_007294.4` on 2 August 2026.
+The sequence at the foot of that page is printed in lowercase.
+:::
+
+`.upper()` hands back an all-capitals copy of a string and `.lower()` hands
+back a lowercase one. Neither one changes the string you called it on. Make a
+lowercase copy of your own sequence and count it, so you meet this problem on a
+string whose right answer you already know.
+
+```{python}
+lowercase = brca1.lower()
+print(lowercase.count("G") + lowercase.count("C"))
+print(lowercase.upper().count("G") + lowercase.upper().count("C"))
+```
+
+::: {.trap}
+That first line printed 0, and it was right to. There's no capital `G` anywhere
+in `lowercase`, so the honest count is zero. You know that zero is wrong only
+because you counted 98 a moment ago, and it arrives with no error message, no
+warning and no red text. The second line goes through `.upper()` first and gets
+the 98 back. So call `.upper()` on any sequence the moment it enters your
+notebook, before you count anything at all.
+:::
+
+## The numbers label the gaps, not the letters
+
+Slow down for this section. It's the piece of the chapter that costs people
+whole evenings, and it takes them quietly.
+
+You'd expect a position number to name a letter. These ones don't. They name
+the spaces between the letters instead, and the counting starts at the space in
+front of the first letter. Here are the first six bases of `brca1` with the
+gaps numbered.
+
+``` {.default}
+     G   C   T   G   A   G
+    0   1   2   3   4   5   6
+```
+
+Gap 0 sits before everything and gap 6 sits after everything. Six letters give
+you seven gaps, and that one extra number is the whole story of this chapter.
+
+`brca1[0]` means "the letter just after gap 0", which is `G`. `brca1[1]` is the
+letter after gap 1, which is `C`. Python isn't counting from zero because
+somebody picked a convention to annoy you. It's counting gaps, and there really
+is a gap before the first letter.
+
+A [slice]{.term def="A run of characters cut out of a string, written
+name[start:end]. The end number is a gap, so that letter is not included."} is
+written with two gap numbers and a colon between them. `brca1[2:5]` means
+"everything between gap 2 and gap 5".
+
+```{python}
+print(brca1[2:5], len(brca1[2:5]))
+```
+
+Read that straight off the diagram. Gap 2 sits before `T`, gap 5 sits after
+`A`, and what lies between the two of them is `TGA`. Three letters, and 5 minus
+2 is 3.
+
+That subtraction works whenever both numbers land inside the string. The length
+of a Python slice is the end number minus the start number, with no plus one to
+remember. Ask for an end past the last gap and Python hands back whatever
+exists rather than complaining. That's the one case where the subtraction
+promises more than you get. Once you're thinking in gaps you can stop
+memorizing the rule and redo the arithmetic instead.
+
+There's a second thing the gap model gives you free. Two slices that share a
+number sit flush against each other with nothing missing and nothing repeated,
+so `brca1[0:50]` and `brca1[50:100]` between them cover the first hundred bases
+exactly once. That's why the windows in Chapter 12 can walk a sequence in steps
+of 100 without counting any base twice.
+
+### The other system, which is also correct
+
+Genome browsers don't work this way, and GenBank doesn't either. Chapter 5's
+"base 114 to base 5,705" came off a GenBank record, and so does almost every
+coordinate anybody will ever hand you. Those systems number the letters
+themselves, the count starts at 1, and a range includes both of its ends.
+
+Take the same six bases. In that system letter 1 is `G` and letter 6 is the
+second `G`. The range 3 to 5 covers `T`, `G` and `A`.
+
+Both systems have now described the same three letters. One called it `[2:5]`
+and the other called it 3 to 5. Neither is a mistake, neither is going away,
+and you'll use both of them in the same afternoon for the rest of your working
+life. The two counting systems disagree because they were built for different
+jobs. Python's job is cutting pieces out of a run of characters. The record's
+job is telling a person which base you mean.
+
+The dangerous part is that they overlap. Feed a 1-based number to a program
+that wants a 0-based one and you don't get an error, because the wrong number
+is a perfectly legal position. You get a base, and the base you get is the one
+next door.
+
+Two rules carry you across, and they're worth writing on something you keep
+near the keyboard.
+
+1. A 1-based position becomes a Python index by subtracting 1.
+2. A 1-based inclusive range `start..stop` becomes the Python slice
+   `[start - 1 : stop]`. The start moves. The stop doesn't.
+
+The second one looks lopsided and people distrust it on sight. It's the gaps
+again. Gap number `stop` sits immediately after letter `stop`, so writing
+`stop` as the end of a slice takes that letter with you instead of cutting it
+off. Do the two conversions separately and check each one, rather than trying
+to fix the pair with a single adjustment at the end.
+
+<!-- nlr-allow: 113 114 152 -->
+
+## Walkthrough: pulling out a coding sequence by its coordinates
+
+Back to the 114 from the top of this chapter. The record gives the coding
+sequence of `NM_007294.4` as base 114 to base 5,705, with both ends included,
+and base 114 is the `A` of the start codon.
+
+Watch what comes back when you hand that 114 to Python without converting it.
+
+```{python}
+print(brca1[114])
+```
+
+`T`. No error, no complaint, and a perfectly ordinary single base that happens
+to belong to the wrong position. The counting started at gap 0, so `brca1[114]`
+is the letter after gap 114, which is the 115th letter of the transcript. You
+asked for one base and got its neighbor.
+
+Subtract one and try again.
+
+```{python}
+print(brca1[113])
+```
+
+That `A` is the first base of the start codon, and the two systems now agree
+about which letter you meant.
+
+The coding sequence runs to base 5,705, which is well past the 200 bases you
+have loaded. Take the first 39 bases of it instead, which is 13 whole codons,
+and which is bases 114 to 152 in the record's numbering. Apply rule 2. The
+start, 114, becomes 113. The stop, 152, stays at 152.
+
+```{python}
+cds_start = brca1[113:152]
+print(cds_start)
+print(len(cds_start))
+```
+
+::: {.check}
+Check that 39 two ways, because two routes to one number is the strongest
+evidence you can get without anybody to ask. The Python route uses the numbers
+in your code: 152 minus 113, which is 39. The record's route uses the numbers
+on the record: 152 minus 114 plus 1, which is also 39. They agree here, and
+they agree every time the conversion was done right, so a disagreement between
+them means one of your two numbers moved when it shouldn't have.
+:::
+
+### Why one base matters more here than anywhere else
+
+Bases are read three at a time. A codon is a group of three letters, and the
+reading starts at the `A` of `ATG`. Every codon after that gets measured from
+there. Slice one base late and every group of three downstream straddles a
+boundary that used to sit somewhere else.
+
+```{python}
+shifted = brca1[114:153]
+print(cds_start[0:3], cds_start[3:6], cds_start[6:9])
+print(shifted[0:3], shifted[3:6], shifted[6:9])
+```
+
+::: {.trap}
+Both of those slices are 39 bases long. Both hold real *BRCA1* sequence. One
+reads `ATG GAT TTA` and the other reads `TGG ATT TAT`, and they disagree about
+where every codon in the whole coding sequence begins. Chapter 13 turns codons
+into a protein. Keep reading in the shifted frame and it runs into `TAG` at
+`brca1[177:180]`, which is a stop, while the real frame reads straight past
+that spot. Nothing about any of this errors, and the length check you were
+relying on passes.
+:::
+
+That's the hazard in its purest form. Your slice was one base off, your code
+ran, and your output looked exactly like a sequence. The only thing that would
+have caught it is knowing that a coding sequence starts with `ATG`.
+
+## Exercises
+
+Both of these run on the `brca1` you built at the top of the chapter, so run
+that cell again if your Colab runtime has restarted since.
+
+::: {.exercise num="11.1" time="20 minutes"}
+::: {.goal}
+Work out the GC content of the first 40 bases of `brca1` on paper, write the
+answer down where you can't edit it, and only then run the code.
+:::
+::: {.given}
+The first 40 bases, which are `brca1[0:40]`:
+
+``` {.default}
+GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCT
+```
+:::
+::: {.produce}
+Four numbers: your hand count of G, your hand count of C, your hand fraction,
+and the fraction Python prints. Write the hand numbers down before you type
+anything.
+:::
+::: {.check}
+Two invariants catch a miscount. Tally A and T as well, and all four counts
+must add to 40. And because the denominator is 40, every correct fraction is a
+whole multiple of 0.025, so an answer off by exactly 0.025 means you missed one
+base. Then compare your result against the 0.49 you measured across all 200
+bases. This window sits ahead of the start codon at base 114 and it comes out
+higher, so GC isn't spread evenly even across these 200 bases.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+::: {.exercise num="11.2" time="30 minutes"}
+::: {.goal}
+Extract the second exon of `NM_007294.4` from `brca1`, using the coordinates
+the database record gives you rather than coordinates you worked out by eye.
+:::
+::: {.given}
+The GenBank record for `NM_007294.4` lists its second exon as `95..193`. Those
+are 1-based positions along the transcript and both ends are included. The
+whole exercise is the conversion.
+:::
+::: {.produce}
+One string and one number: the exon sequence, and its length.
+:::
+::: {.check}
+Your length must equal 193 minus 95 plus 1. Then run the second check, which is
+the one that catches an error in either direction. The start codon sits at
+transcript base 114, and 114 falls inside this exon, so the `ATG` has to appear
+at index 114 minus 95 in the string you pulled out. Print those three
+characters. If they read `ATG`, both conversions were right. If your `ATG` is
+one place to either side, exactly one of your two numbers moved when it
+shouldn't have.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="TypeError: string indices must be integers, not 'str'"}
+Python is speaking, and it's telling you that you put quotes around a position.
+`brca1["114"]` asks for the letter at position `"114"`, which is text rather
+than a number. Drop the quotes: `brca1[114]`. Quotes go around sequence, never
+around a position.
+:::
+
+::: {.errfix err="IndexError: string index out of range"}
+You asked for a letter past the end of the string. `brca1` holds 200
+characters, so the last valid index is 199, and `brca1[200]` has nothing to
+return. Run `len(brca1)` and check what you're indexing into. A slice behaves
+differently here: `brca1[190:400]` gives you whatever exists and raises
+nothing, which is convenient and is also how a short answer sneaks past you.
+:::
+
+::: {.errfix err="NameError: name 'brca1' is not defined"}
+There's no variable by that name in this session. Either the cell that created
+`brca1` never ran, or the two spellings differ somewhere. Colab throws away
+every variable when the runtime restarts, and the code stays on screen looking
+fine while it does. Scroll up and run the first cell again.
+:::
+
+::: {.errfix err="Your slice runs but the sequence looks wrong"}
+Nothing is broken and nothing will tell you. Print the first three characters
+of what you extracted. A coding sequence starts with `ATG`, and if yours starts
+with `TGG` or `GGA` you're off by one in the direction the trap box above
+describes.
+:::
+:::
+
+::: {.checkpoint}
+- Assign a sequence to a variable and report its length with `len()`
+- Count each of the four bases and check the four counts against the length
+- Compute GC content and say why a lowercase sequence returns zero
+- Convert a 1-based inclusive range from a database record into a Python slice
+- Check a slice length two ways: end minus start, and stop minus start plus one
+- Name what a one-base slice error does to a codon boundary
+:::

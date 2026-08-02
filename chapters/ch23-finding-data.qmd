@@ -1,0 +1,290 @@
+# Finding data
+
+Nobody made GSE60450 for you. Fu and colleagues sorted two kinds of cell out of
+mouse mammary glands and sequenced them. They were after the genes that switch
+on when a mouse starts producing milk. They published as PubMed 25730472 and
+moved on. The data stayed where they left it, and you've been putting your own
+questions to it since Chapter 20, none of which were theirs. One of those rows
+is `Brca1`, the gene you looked up in Chapter 5, sitting in somebody else's
+experiment the whole time and waiting for Chapter 24.
+
+So somebody has probably already run the experiment behind the question you
+wrote in Chapter 22. Where is it, and how do you tell whether it's any use to
+you?
+
+## Five archives, and which one your question belongs in
+
+Five names cover almost everything a beginner needs. Each one holds a different
+kind of thing, and what it holds decides whether your question belongs there.
+Read each paragraph for its last sentence.
+
+The Gene Expression Omnibus, GEO, holds processed data that authors deposited
+when they published. One submission is a series with an accession like
+`GSE60450`, and inside it sits one record per sample. What you download is
+usually a table: one row per gene, one column per sample, plus whatever the
+submitters wrote about the samples themselves. Your question belongs in GEO if
+it compares how much of something there is between groups that somebody else
+has already measured.
+
+The Sequence Read Archive, SRA, holds the reads. Those are the sequencer's raw
+output, before anybody decided which gene each read came from. Go to SRA when
+the counting has to be redone differently, against another genome build or
+another annotation. Now the honest part: nothing in this book can process a raw
+read. That needs a terminal, an aligner and a reference genome, which is the
+corner of the field Chapter 1 said you'd be giving up.
+Learn to recognize an `SRR` accession in a methods section anyway, because it
+tells you the authors published their raw data and somebody could check them.
+
+Ensembl isn't an experiment archive at all. It's an annotation source: where
+genes sit on a genome, and what each stable identifier refers to. There's a
+browser on the front of it that draws a stretch of chromosome with its features
+lined up underneath. Your question belongs in Ensembl if it's about what sits
+at a coordinate rather than about anyone's measurement.
+
+The UCSC Genome Browser is the second annotation source, and it answers the
+same kind of question Ensembl does. It draws a genome region as a stack of
+tracks, where each track is one kind of evidence laid out on the same
+coordinates. Its Table Browser hands you the rows behind a track as a file you
+can keep. Come to UCSC when you want to see what else has been measured across
+a region you already care about.
+
+Pick one of those two and stay in it. They overlap heavily, so choose on the
+thing that will bite you: UCSC writes the first human chromosome as `chr1` and
+Ensembl writes it as `1`.
+
+::: {.trap}
+Take coordinates from Ensembl, take a track from UCSC, then join the two on
+chromosome. Every row misses, because `1` and `chr1` are different strings and
+Python is right about that. You get an empty result and no error message. Join
+on a second column as well and you get a partial answer that looks reasonable.
+:::
+
+The Cancer Genome Atlas, TCGA, is one specific project rather than an archive
+of everything. It profiled tumors across many cancer types and recorded
+clinical information for every case, with normal tissue from the same patient
+for a lot of them. Its data arrives in two tiers, and which tier a file sits in
+decides whether you can open it at all. That split gets its own section below,
+because it's the one place in this book where a door is genuinely shut to you.
+
+::: {.asof}
+Checked on 2 August 2026. All five of these have been redesigned before and
+will be again. Three things survive every redesign: a dataset has an accession,
+a record lists its samples, and a file has a size printed next to it. Find
+those and the layout doesn't matter.
+:::
+
+## Reading a record before you trust it
+
+Once you have a candidate accession, four questions decide whether it's usable.
+Ask them in this order, because the cheap ones eliminate most candidates before
+you've spent anything.
+
+How many samples are there? What are the groups, and how many samples sit in
+each? What is the comparison, and against what? And the fourth, which is the
+one that takes practice: what did the submitters not write down?
+
+The first two come off the sample table. Here's the one for GSE60450, which
+this book ships as `data/GSE60450_samples.csv` with a row per sample.
+
+```{python}
+import pandas as pd
+
+samples = pd.read_csv("data/GSE60450_samples.csv")
+print(len(samples), "samples")
+print(samples.groupby(["cell_type", "stage"]).size())
+```
+
+Twelve samples, six groups, two apiece. You now know something the accession
+alone didn't tell you. Every comparison inside this dataset is two against two,
+unless you collapse a factor and make it six against six. Chapter 24 does
+exactly that, and says what it costs.
+
+::: {.check}
+The total prints as 12 and all six group sizes print as 2. A different total
+means you loaded a different file. A group size of 1 or 3 means the same thing.
+:::
+
+Third question. There's no control arm here, and that isn't a defect. Nothing
+was treated, so there's nothing to leave untreated. Virgin is a baseline
+because it comes first in time, not because anybody withheld anything. If your
+Chapter 22 question contains the word control, swap it for "compared with
+what" and answer that instead.
+
+Fourth question, and it's the one that takes practice. Look at what the count
+table records about each sample.
+
+```{python}
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t", nrows=1)
+for name in list(counts.columns)[2:]:
+    print(name)
+```
+
+Take the first heading apart. The sample is `MCL1-DG`. Then comes
+`BC2CTUACXX`, the flowcell the library ran on, and `ACTTGA`, the index barcode
+that told the machine this sample from its neighbors. The lane is `L002`. On
+the end sits `R1`, a read number, which Illumina writes into every file it
+produces. All of that is sequencing logistics, and not one character of it says
+basal or luminal, virgin or lactating.
+
+So the count table at the center of this whole project doesn't know what the
+experiment was about. The biology sits on GEO instead, on the sample records,
+one per sample. Each of those carries a characteristics block: strain,
+genotype, sex, tissue, which cell population got sorted out of the gland, and
+the developmental stage. Those records run in a different order from the
+columns you just printed, and Chapter 24 is where that bites.
+
+Now read the lane out of every heading. Six say `L001` and six say `L002`.
+Write down which six you think are the basal samples before you run the next
+block, which joins lane to label on sample name rather than on position:
+
+```{python}
+lanes = {c.split("_")[0]: c.split("_")[3] for c in counts.columns[2:]}
+samples["lane"] = samples["sample"].map(lanes)
+print(samples.groupby(["cell_type", "lane"]).size())
+```
+
+All six basal samples ran in lane 2, and all six luminal samples ran in lane 1.
+The two move together. So a difference you measure between basal and luminal in
+this dataset is also a difference between two lanes, and no arithmetic
+afterward pulls them apart. Nothing on the GEO record mentions a lane at all.
+It survived because somebody left it in a column heading.
+
+This is the normal condition of public data. Submitters record what their
+pipeline emitted, and the design lives somewhere a human typed it. Write down
+what's missing, every time. This record doesn't say how old the mice were in
+weeks, or when any library was prepared. You got the lane back off a column
+heading. Those two are gone. A missing field rarely disqualifies a dataset. It
+caps what you may claim from that dataset, and you want the cap written down
+before you have a result you like.
+
+::: {.trap}
+Two GEO series don't have to mean the same thing by the word expression. One
+deposits raw counts, the next counts per million, the next FPKM, the next the
+log of one of those. Plenty of files never say which. Numbers from two series
+will divide, plot and correlate without complaint, and the answer means
+nothing. Whole numbers with lots of zeros usually indicate raw counts, and
+decimals mean somebody normalized already. Some tools do emit fractional
+counts, so treat that as a first read rather than proof.
+:::
+
+## What you're allowed to use
+
+GEO and SRA ask you to sign nothing. The data is public, you download it, you
+use it, and no login stands between you and any of it. The courtesy, and I'd
+treat it as a rule, is to name the accession and the paper in anything you put
+your name on. Say plainly that you didn't generate the data. Chapter 26 shows
+where that goes in a README.
+
+TCGA splits in two. The open tier holds the summarized results: expression per
+gene, copy number, methylation, the somatic mutation calls, and clinical fields
+such as stage and survival time. Those mutation files get masked before
+release, which means the columns and the variants that could carry germline
+information are stripped out first. Anybody can download the open tier today
+with no application. The controlled tier holds anything that could identify a
+person, which mostly means the raw reads and the germline variants inside them.
+
+Getting into the controlled tier means a data access request through dbGaP. You
+submit it from an eRA Commons account, an institutional signing official
+co-signs it, and a data access committee at NIH decides. A signing official is
+a named person with the authority to bind an organization to an agreement. Both
+the account and the signature come from an institution. You don't have one,
+this book has no workaround, and I'd rather tell you now than have you spend an
+evening on the form. The boundary isn't there to keep you out. A person's
+germline variants identify them the way a fingerprint does, and the people who
+donated those samples agreed to a specific set of uses.
+
+Here's what gets left out of that warning. The open tier is far more than you
+can work through in three hours a week. A question comparing expression between
+tumor and matched normal tissue lives entirely inside it, and so does one
+comparing clinical groups. You'll run out of evenings long before you run out
+of open data.
+
+## What it costs to fetch
+
+Every download in this book prints its size in the sentence that asks you to
+start it. Do the same to yourself: write the byte size next to the accession in
+your notes before you fetch anything.
+
+GSE60450's count table is 513,592 bytes, compressed. That's the whole
+experiment: 27,179 rows of genes by 12 columns of counts, from samples carrying
+between 20,015,386 and 24,723,827 counted reads each. A count is a number and a
+read is four lines of text, which is the entire reason the table fits in half a
+megabyte.
+
+A download written into a Colab notebook lands on Google's machine rather than
+yours. If you're paying by the gigabyte, that's the difference between a size
+you pay for and one you don't. It doesn't make raw reads usable, because what's
+missing there is the software rather than the disk.
+
+## Exercises
+
+::: {.exercise num="23.1" time="60 minutes"}
+::: {.goal}
+Find three datasets that could address the question you wrote in Chapter 22,
+and put each one through the same four questions.
+:::
+::: {.given}
+The Chapter 22 question, in one sentence, naming a comparison and a
+measurement. If you can't write that sentence, go back and write it. No amount
+of searching repairs an unshaped question.
+:::
+::: {.produce}
+Three accessions. For each one: the number of samples, the group structure
+written as groups by samples per group, one thing the metadata doesn't record,
+and the size in bytes of the file you'd actually download.
+:::
+::: {.check}
+Every group structure has to come off the record, not off your sense of how the
+experiment must have been run. If you can't state it, write "group structure
+not stated" beside that accession and keep the accession in your list. That's a
+finding about the dataset rather than a failure of yours, and it's your reason
+to go looking for a fourth. Then check yourself for the opposite problem: if
+all three are the same organism and the same tissue, you searched one phrase
+and took the first page of results.
+:::
+
+::: {.answerspace lines="12"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="Your search returns thousands of series and none of them match your question"}
+GEO search runs over free text that submitters wrote, and submitters don't
+agree on words. Take the exact phrase out of the methods section of a paper you
+already trust and search that. Better still, papers print their accession in a
+data availability statement, so read the paper and go straight to it.
+:::
+
+::: {.errfix err="The series lists samples but there is no processed data file"}
+Some submitters deposit raw reads and nothing else. That's a GEO record
+pointing at SRA, and nobody has done the counting. Cross it off,
+write down why, and keep the note. The reason is worth as much to you as the
+dataset would have been.
+:::
+
+::: {.errfix err="The download is one file per sample instead of one table"}
+This is common and it isn't wrong. Twelve samples means twelve files you have to
+read and join on gene identifier, which is a pandas job from Chapter 20 and
+probably an extra evening. Count that cost before you commit to the dataset.
+:::
+
+::: {.errfix err="The file you want is labeled controlled access"}
+You've hit the tier boundary described above. The request goes through dbGaP
+and needs an institutional signing official to sign it. Filter your search to
+open-access data at the start, so you stop finding files you can't open.
+:::
+:::
+
+::: {.checkpoint}
+- Name what GEO holds and what SRA holds, and say which one your own question
+  needs
+- State the group structure of a dataset from its record alone, written as
+  groups by samples per group
+- Name one thing the metadata doesn't record, for a dataset you chose yourself
+- Read a batch variable out of a file name and say what it's confounded with
+- Say what sits in TCGA's open tier and why the controlled tier stays shut to
+  you
+- Write a download size in bytes beside an accession before you fetch it
+:::

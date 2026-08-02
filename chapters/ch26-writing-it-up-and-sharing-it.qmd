@@ -1,0 +1,363 @@
+# Writing it up and sharing it
+
+Your Chapter 24 notebook printed a log2 fold change of -2.29 for *Brca1*, and
+you watched it come out. Since then you've edited cells, re-run some of them,
+and left others alone. Here's what you can't check from where you're sitting.
+Does the code still on that page produce that number on a machine that has
+never met you? By the end of this chapter you'll have an address you can send
+somebody, and a way of knowing that what sits at it works.
+
+## Your notebook has two histories
+
+Chapter 4 said the runtime holds your variables, and that the page in front of
+you is a separate thing. Everything in this chapter comes off that one fact.
+
+One history is the code on the page, read top to bottom. That's what a reader
+gets. The other is the order you really ran things in, and nobody can see that,
+including you. The bracketed numbers beside your cells are its only trace, and
+they're a poor record. They tell you which cell ran first. They say nothing
+about what the code in it said at the time.
+
+Those two histories drift apart during an evening's work, and they drift apart
+quietly.
+
+::: {.trap}
+Edit a cell and don't re-run it. The output underneath stays where it is, left
+over from the previous version of the code, and on screen the two look like a
+pair. They'll look like a pair on a web page too. A reader will take it that
+this code produced that number. Nothing errors, nothing turns red, and the
+number is real. It came out of code that no longer exists.
+:::
+
+### Restart and run all, then believe the number
+
+Chapter 4 gave you the cure and said this chapter would turn it into a rule.
+Here's the rule. Run restart and run all before you believe a number, and again
+immediately before you publish one. It's the Runtime menu item Chapter 4 had
+you take in Colab, the one whose label carries the words restart and run.
+
+That item throws your machine away and rebuilds the runtime out of nothing but
+the page. If the code on the page can produce your results starting from an
+empty machine, a stranger can produce them too. If it can't, you don't have a
+result yet. You have a memory of one evening.
+
+::: {.check}
+Do it now on your project notebook, then find the *Brca1* line in the output.
+Its log2 fold change should still read -2.29 and its adjusted p-value 0.0693.
+Those are the two numbers Chapter 24 printed. If either one moved, the notebook
+you'd been reading and the notebook you actually had were two different
+documents. The one you were about to publish was the wrong one. If a cell now
+stops on a name it used to know, it was using a variable made in a cell you
+later deleted.
+:::
+
+### What a stranger's machine doesn't have
+
+Three things run fine for you and break for everybody else.
+
+A file you dragged into the session by hand lives only in that session, and
+nothing on the page tells a reader where it came from. A path pointing into
+your own Google Drive doesn't exist in anybody else's. A variable you typed
+into a cell and then deleted is still sitting in your runtime and nowhere on
+your page.
+
+Restart and run all catches the third one every time, because Python stops on a
+name it hasn't got. It won't catch the first two, since both of them still work
+for you. Check those by hand. Every file your notebook opens has to be either
+published beside the notebook or fetched by the notebook itself from an address
+you print.
+
+## Keep the outputs or clear them
+
+A notebook file stores the code and, if you let it, everything each cell
+printed: the tables of numbers and the pixels of every figure. Clearing all of
+that before you publish is a real practice with a real argument under it.
+
+The argument for clearing goes like this. The file gets much smaller, and when
+you change one line and publish again, the record of what changed shows you
+that one line. With the outputs kept, it shows a wall of re-encoded image data
+that moves whether or not you touched anything. Anybody reviewing your work
+sees the edit rather than the noise.
+
+The argument for keeping them is about who's reading. Nobody is going to run
+your notebook.
+
+So here's the call, and it isn't a matter of taste. Keep the outputs in a
+notebook you're publishing as a portfolio piece. The person you're publishing
+for opens the link in a browser tab and skims it. They won't start a runtime,
+they won't wait for your cells, and a notebook with its outputs cleared asks
+them to read code and take your word for the result. GitHub draws a notebook's
+saved outputs onto the page, so a figure you kept is a figure they see.
+
+The price is the trap above, and that price is why the rule comes first.
+Restart and run all, then publish, in that order and in the same sitting. Every
+output in the file then came from the code sitting above it.
+
+## A README a stranger can act on
+
+A README is a plain text file that GitHub prints on the front page of your
+project. It's the first thing anybody reads, and usually the only thing.
+
+Yours has four questions to answer, and a stranger can't repeat your work if
+one of them is missing. What question did you set out to answer? Where did the
+data come from, by accession, so a reader can fetch the same bytes? What do I
+run to reproduce your answer, and in what order? What did you find, and what
+part of that can't your data support?
+
+The last of those four needs a number Chapter 24 never printed. That chapter
+worked in logs from the filter onward, and a log2 fold change of -2.29 gives a
+reader on your front page nothing they can check by hand. So print the two
+group means in counts per million instead, which is what the fold change was
+made out of.
+
+```{python}
+import gzip
+import io
+import pandas as pd
+
+raw = gzip.decompress(open("data/GSE60450_counts.tsv.gz", "rb").read())
+counts = pd.read_csv(io.StringIO(raw.decode()), sep="\t", index_col=0)
+counts.pop("Length")
+counts.columns = [name.split("_")[0] for name in counts.columns]
+samples = pd.read_csv("data/GSE60450_samples.csv").set_index("sample")
+samples = samples.loc[counts.columns]
+
+cpm = counts / counts.sum() * 1e6
+basal = cpm.loc[12189][samples["cell_type"] == "basal"]
+means = basal.groupby(samples["stage"]).mean().round(1)
+print(means)
+```
+
+The top of that cell is Chapter 24's loading code, repeated so this one runs on
+its own. In your own notebook `cpm` and `samples` are already sitting in the
+runtime, so the last three lines are all you add.
+
+Now the ratio, which is the number your README quotes.
+
+```{python}
+print(round(means["virgin"] / means["lactating"], 1))
+```
+
+Here's the README for the project you've been building, kept short on purpose.
+The fourth question gets two headings, because a finding and the limits on it
+don't belong in the same paragraph.
+
+``` {.default}
+# Brca1 across mouse mammary development
+
+## Question
+Does Brca1 expression change between virgin and lactating mice, and
+does the answer depend on which cell type you look in?
+
+## Data
+GSE60450: 12 RNA-seq samples of mouse mammary gland, basal and luminal
+cells, from virgin, pregnant and lactating animals.
+Counts file: 513,592 bytes, 27,179 rows keyed by Entrez gene ID.
+Downloaded from GEO. I did not generate this data.
+
+## How to run it
+1. Open analysis.ipynb in Google Colab.
+2. Restart the runtime and run every cell from the top.
+3. Nothing is installed, and no account is needed beyond a Google one.
+
+## What I found
+In basal cells, mean Brca1 falls from 8.3 CPM in virgin animals to
+0.9 CPM in lactating ones. Dividing one mean by the other gives 9.2.
+The test in the notebook runs on logged counts and reports a log2
+fold change of -2.29 with an adjusted p-value of 0.0693, above the
+0.05 threshold I fixed before looking. Only 9 genes in that
+comparison clear 0.05 at all. In luminal cells Brca1 hardly moves.
+
+## What this does not establish
+Two samples per group. Brca1 tops out at 494 raw reads in its best
+sample, low enough that counting noise alone moves the ratio. The data
+was collected by Fu and colleagues to study a different gene, Mcl1
+(PubMed 25730472). Nothing here shows that lactation causes the change.
+```
+
+Two habits in that file are worth naming. It says where the data came from, and
+it doesn't claim the data as the writer's own. It also prints the two group
+means beside the ratio, so a reader can redo the division you just did. That's
+the smallest check anybody can run on your work, and it costs them ten seconds.
+A README that prints `9.2` and nothing else hands a reader no way in.
+
+Notice that 9.2 and the log2 fold change of -2.29 disagree. Both are right. The
+9.2 is a ratio of two means. The -2.29 is a difference of logs, taken after
+Chapter 24 added 1 to every value. That addition lifts a small number like 0.9
+much further than it lifts a large one. Print the method beside the number and
+nobody has to work out which one you did.
+
+Keep it short. A README isn't a paper. Half a page that answers four questions
+beats two pages of background nobody asked for, and you can drop the future
+work section entirely. You're not applying for a grant.
+
+## Getting it onto GitHub from a browser
+
+Nothing in this section installs anything on your machine. Both routes below
+happen in browser tabs.
+
+A [repository]{.term def="One project's folder on a code-hosting site. It has
+its own web address and a record of every change made to it."} is a folder of
+files with a web address of its own. GitHub accounts are free, and public
+repositories cost nothing.
+
+Colab can write into one directly. Its File menu carries an item that saves a
+copy of the open notebook to GitHub. The first time you use it, GitHub opens a
+window asking whether you want to give Colab access to your account. After
+that, Colab commits the `.ipynb` file into a repository and branch you pick.
+
+GitHub takes uploads from its own site as well. A repository's page has a
+control for adding files from your computer, and that's how the README gets
+there. It's the route for a small data file too.
+
+Four things have to be true when you're finished. How you got there doesn't
+matter, and neither does what this year's buttons are called.
+
+1. The repository is public.
+2. The notebook is in it, under a name ending `.ipynb`.
+3. A file named `README.md` sits at the top level rather than inside a folder,
+   so GitHub prints it on the front page.
+4. Every file the notebook opens is either in the repository or fetched by the
+   notebook from a public address.
+
+Condition four decides where your data file goes, and size is what settles it.
+The counts file for this project is 513,592 bytes, small enough to sit in the
+repository beside the notebook. Put it there and a reader needs nothing else. A
+file of a few hundred megabytes stays out, and the notebook fetches it instead
+from the archive it came from. Print the accession and the size in the README
+either way, because Chapter 1 named the reader who pays for that download by
+the gigabyte.
+
+::: {.asof}
+Checked against the live Colab and GitHub interfaces on 2 August 2026. Colab's
+restart-and-run item is in its Runtime menu, its GitHub item is in its File
+menu, and GitHub's upload control is on the repository's own page. All three
+have moved before. The four conditions above are what you're checking for,
+whatever the labels say.
+:::
+
+### Name it once, then use that name everywhere
+
+Colab calls a new notebook `Untitled0.ipynb`, and a copy of somebody else's
+notebook keeps the original name with `Copy of` stuck on the front. Either one
+will follow you into the repository if you let it. Rename the file before you
+publish. `analysis.ipynb` is a fine name, and so is `brca1_lactation.ipynb`.
+
+The name you typed into the README and the name sitting in the repository have
+to be the same string, character for character. That's the accession rule out
+of Chapter 5, applied to your own files. A reader looking at `analysis.ipynb`
+in your instructions and `Untitled0.ipynb` in the folder has to guess whether
+those are one file or two. Don't make anybody guess that.
+
+### The setting that decides whether any of this happened
+
+A new repository carries a visibility setting, and you choose it when you make
+one. Get that wrong and everything still looks perfect to you, because you're
+signed in. Your repository looks identical from your chair whether the world
+can reach it or not.
+
+So test it the one way that works: open the address in a private browsing
+window, where nobody is signed in.
+
+::: {.check}
+In that window you should see your README text on the front page and the
+notebook listed underneath by name. Open the notebook: its code and its saved
+outputs should render as a page, with no runtime and no sign-in anywhere. A 404
+there means the repository is private, whatever the settings page told you.
+:::
+
+## What a public repository is for
+
+You have no affiliation. Chapter 1 called that the unusual part of your
+position, and it promised your code would end up somewhere a stranger could
+open it. This is that place.
+
+An affiliation is a claim somebody else makes on your behalf. A repository is a
+claim anybody can open and check for themselves. It carries a question, public
+data named by accession, the code, and an answer with its limits attached. A
+reader gets through all four without having to know anything about you.
+
+Be exact about what that proves. It proves you can find public data, run an
+analysis end to end, and describe what came out without overselling it. It
+doesn't prove the biology. Reproducing somebody's published figure doesn't make
+you a co-author on their paper, and the README is where you say so first.
+The likeliest failure on a page like this one is overselling. Your own limits,
+written down before anybody asks for them, are the part of it hardest to fake.
+
+## Exercises
+
+::: {.exercise num="26.1" time="90 minutes"}
+::: {.goal}
+Publish the project so that a stranger can open it, and keep the link.
+:::
+::: {.given}
+The notebook you built in Chapter 24 and the three sentences you wrote for
+Exercise 25.1. Nothing gets installed and nothing gets paid for.
+:::
+::: {.produce}
+One public repository address. The repository holds the notebook with its
+outputs kept and a `README.md` answering the four questions above. One
+paragraph of that README says what the analysis found and what it can't
+establish.
+:::
+::: {.check}
+Open the address in a private browsing window and work down the four
+conditions. Anything that 404s isn't public, and nobody you send the link to
+will see it either. Then check one number: the fold change in your README has
+to be the two group means in your notebook, divided one by the other. Write the
+address in the space below. Chapter 28 asks you for it.
+:::
+
+::: {.answerspace lines="4"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="GitHub refuses the notebook and says the file is too large"}
+That message comes from GitHub, and it carries GitHub's own size limit. Read
+the number off the message rather than out of a book, because it's GitHub's to
+change. The notebook is carrying the pixels of every figure it drew, which is
+how a short notebook turns into a large file. Clear the output of the figure
+cells only and keep the outputs that are numbers. Then save one figure as an
+image file, upload it beside the notebook, and name that file in the README.
+:::
+
+::: {.errfix err="The repository works when you are signed in and 404s in a private window"}
+The repository is private. Whether you chose that or clicked past it, the fix
+is in the same place: visibility is a control on the repository's own settings
+page. Change it, then repeat the private-window test rather than assuming. This
+failure hides itself from the only person in a position to notice it.
+:::
+
+::: {.errfix err="Colab asks for GitHub access and the window closes without saving anything"}
+Three parties are involved here and only two of them are on your screen. Two
+causes cover most of it: your browser blocked the popup that GitHub needs, or
+you're signed into a GitHub account other than the one you meant. Allow popups
+for the Colab page and try again. If it keeps failing, the other route needs no
+authorization at all: download the `.ipynb` from Colab's File menu, then upload
+that file on the repository's page.
+:::
+
+::: {.errfix err="The README text does not appear on the front page of the repository"}
+The front page prints a README from a short list of places, and the top level
+of the repository is the one to use. A copy inside a folder you made yourself
+gets printed when somebody browses into that folder, which nobody will. Move it
+up. The name also has to start with `README`, and the `.md` ending is what gets
+the headings formatted rather than printed as literal `#` characters.
+:::
+:::
+
+::: {.checkpoint}
+- Restart a notebook and run every cell from the top, and say what that test
+  proves that reading the page can't
+- Name the four questions a README answers before a stranger can repeat your
+  work
+- Decide whether to keep or clear a notebook's outputs, and name the reader the
+  decision is made for
+- Publish a notebook and a README to a public repository from a browser, with
+  nothing installed
+- Check that a repository is public by opening its address signed out
+- Say what a public repository proves about you, and name one thing it doesn't
+:::

@@ -1,0 +1,116 @@
+% ===========================================================================
+%  Front matter, pages i-vi (spec: FRONT MATTER table)
+%  i half title / ii blank / iii title / iv copyright / v dedication / vi blank
+% ===========================================================================
+
+\newcommand{\nlrversion}{1.0}
+\newcommand{\nlrreleasedate}{August 2026}
+\newcommand{\nlrrepo}{github.com/rikhinkavuru/NoLabRequired}
+
+\frontmatter
+\pagestyle{nlrplain}
+
+% ---- i. half title --------------------------------------------------------
+\thispagestyle{empty}
+\vspace*{2.2in}
+\begin{nlrfull}
+{\nlrsans\bfseries\fontsize{34}{38}\selectfont No Lab Required}
+\end{nlrfull}
+\clearpage
+
+% ---- ii. blank ------------------------------------------------------------
+\thispagestyle{empty}\null\clearpage
+
+% ---- iii. title page ------------------------------------------------------
+\thispagestyle{empty}
+\begin{nlrfull}
+\vspace*{1.9in}
+{\nlrsans\bfseries\fontsize{44}{48}\selectfont No Lab Required}
+
+\vspace{14pt}
+{\nlrsans\fontsize{15}{21}\selectfont\color{nlrsecond}
+A bioinformatics workbook for people with\\
+no lab, no degree, and no budget}
+
+\vspace{26pt}
+{\color{nlrteal}\rule{2.2in}{2.5pt}}
+
+\vfill
+{\nlrsansmed\fontsize{12}{16}\selectfont Rikhin Kavuru}
+
+\vspace{6pt}
+{\nlrsans\fontsize{9.5}{13}\selectfont\color{nlrsecond}%
+Version \nlrversion\ \textperiodcentered\ \nlrreleasedate}
+\end{nlrfull}
+\clearpage
+
+% ---- iv. copyright, license, colophon -------------------------------------
+\thispagestyle{empty}
+\begin{nlrfull}
+\vspace*{0.2in}
+{\nlrsans\fontsize{9}{14}\selectfont\color{nlrink}
+
+\textbf{No Lab Required: A bioinformatics workbook for people with no lab, no degree, and no budget}
+
+\vspace{8pt}
+Version \nlrversion, \nlrreleasedate.
+
+\vspace{14pt}
+\textbf{License.} This work is licensed under a Creative Commons
+Attribution--NonCommercial--ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+You are free to copy, print, redistribute and adapt this book for non-commercial
+purposes, provided you credit the author and license your adaptation under the
+same terms. The full license text is at
+\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{creativecommons.org/licenses/by-nc-sa/4.0/}.
+
+\vspace{10pt}
+All source files for this book --- the text, the code, the datasets, and the
+build system that produced this PDF --- are public at
+\href{https://\nlrrepo}{\nlrrepo}. If you find an error, open an issue. If you fix
+one, open a pull request; contributors are credited in the changelog.
+
+\vspace{14pt}
+\textbf{How to cite this book.}\\
+Kavuru, R. (2026). \textit{No Lab Required: A bioinformatics workbook for people
+with no lab, no degree, and no budget} (Version \nlrversion). \nlrrepo
+
+\vspace{14pt}
+\textbf{A note on accuracy.} Every accession number, database record, tool
+output and web address in this book was checked against the live source during
+production, and the date of that check is recorded in the dataset index at the
+back. Databases grow and websites are redesigned. Chapter~3 explains what to do
+when what you see no longer matches what is printed here.
+
+\vspace{14pt}
+\textbf{Trademarks and third-party services.} Google Colab, NCBI, UniProt,
+EMBL-EBI, the Protein Data Bank, GitHub and every other service named in this
+book belong to their respective owners. This book is not affiliated with,
+endorsed by, or reviewed by any of them.
+
+\vspace{14pt}
+\textbf{Colophon.} Body text is set in Source Serif 4, headings and interface
+text in Inter, and code in JetBrains Mono NL --- the no-ligature cut, chosen so
+that \texttt{!=} prints as two characters you can type rather than one you
+cannot. All three faces are open-licensed. The book was written in Quarto and
+typeset with Lua\TeX; the layout source is in the repository alongside the text.
+
+}
+\end{nlrfull}
+\clearpage
+
+% ---- v. dedication --------------------------------------------------------
+\thispagestyle{empty}
+\vspace*{2.6in}
+\begin{nlrfull}
+\begin{center}
+{\fontsize{12}{20}\selectfont\itshape
+For everyone who was told to come back\\
+when they had access.}
+\end{center}
+\end{nlrfull}
+\clearpage
+
+% ---- vi. blank ------------------------------------------------------------
+\thispagestyle{empty}\null\clearpage
+
+\pagestyle{nlrmain}

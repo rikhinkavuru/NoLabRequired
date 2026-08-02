@@ -1,0 +1,275 @@
+# Checkpoint: what you just did
+
+Part 1 left three things in your notes: `NM_007294.4` off a gene record, a hit
+table for `mystery_fillet_1`, and `P38398` off a protein entry. That reads as
+three errands on three different websites. Each one was the output of a named
+step in a real method, and a methods section is written in those names. So what
+are the names?
+
+## Four steps, and what each one is called
+
+Chapters 5 through 8 weren't four unrelated errands. They're one method, run
+once, in the order it usually gets run in.
+
+### Sequence retrieval
+
+Chapter 5. You went to a public archive and came back with one sequence,
+identified precisely enough that a stranger can fetch the same bases. That
+precision is the method. `NM_007294.4` is a retrieval. "The *BRCA1* sequence"
+isn't, because it names neither the transcript nor the edition.
+
+The version suffix is what turned a download into a method. Take the `.4` off
+and you've described a moving target.
+
+### Homology search
+
+Chapter 6. You handed a sequence to a program that compared it against every
+sequence in a named database and handed back the ones that resemble it. The
+comparison is approximate on purpose. That's why 649 unlabelled bases came back
+matched to fifty deposited fish, and why a human transcript came back matched
+to a chimpanzee one.
+
+The thing you were hunting for is homology, meaning shared ancestry. BLAST
+never measures ancestry. It measures resemblance and leaves the inference to
+you, which is the next step.
+
+### Evidence assessment
+
+Chapter 7, and here's where the judgment lives. You had a table of hits and you
+decided which ones to believe. E-value, bit score, percent identity and query
+coverage each answer a different question, and none of them answers "is this
+the same gene."
+
+No threshold does this step for you. Three of the four searches behind Chapter
+7 reported every hit down to an expected ten accidents. A cutoff like that is a
+reporting line rather than a verdict. The decision is yours, and it stays
+yours.
+
+### Structural annotation
+
+Chapter 8. You took a protein and attached its regions to what somebody already
+knew about them. A RING-type zinc finger at residues 24 to 65, then BRCT 1 at
+1642 to 1736 and BRCT 2 at 1756 to 1855. Annotation is writing "this stretch is
+that thing" against a coordinate range. Nearly everything you'll ever read
+about a protein is annotation somebody else did.
+
+The four steps run in that order because each one eats the output of the one
+before. Homology search needs a retrieved sequence to search with, evidence
+assessment needs a hit table to judge, and annotation needs something to hang
+on a coordinate range. A methods paragraph stops being a wall of nouns once you
+can point at
+each sentence and say which of the four it belongs to. The sentences that fit
+none of them are usually the part of the paper that's new.
+
+::: {.check}
+Cover this page and name the four steps in order, with the chapter that did
+each. If you put evidence assessment before homology search, look at what it
+takes as input. It needs the hit table the search produces, so it can't come
+first.
+:::
+
+## Turning a search into a methods sentence
+
+A methods section says what was done in enough detail for a stranger to do it
+again. A BLAST report already holds everything a stranger needs, in the header
+above the hit table, where nobody looks. Here's the header from the BRCA1
+search Chapter 7 ran on 2 August 2026:
+
+``` {.default .output}
+RID: 6Z33DCWU014
+
+
+Database: Core nucleotide BLAST database
+           128,547,243 sequences; 948,086,538,397 total letters
+Query= NM_007294.4 Homo sapiens BRCA1 DNA repair associated (BRCA1),
+transcript variant 1, mRNA
+
+Length=7088
+```
+
+Four facts are in there. The query is `NM_007294.4`, version and all. The
+database has a name and a size. A few lines further up, the program printed its
+own version, `BLASTN 2.17.0+`. The RID is NCBI's job number for that one search
+on their server, and it isn't a permanent address for the result.
+
+::: {.asof}
+Checked against the live NCBI BLAST report on 2 August 2026. A text report puts
+the program version, the request ID, the database line and the `Query=` line in
+one block above the hit table. A browser page arranges the same four
+differently. All four are on the page under some name.
+:::
+
+Now the sentence those facts support:
+
+``` {.default}
+The human BRCA1 transcript NM_007294.4 (7,088 bp) was searched against
+the NCBI Core nucleotide database (128,547,243 sequences; 948,086,538,397
+letters) with blastn (BLASTN 2.17.0+) on 2 August 2026, excluding Homo
+sapiens. The best-scoring hit was Pan troglodytes XM_009432080.5, at
+12746 bits and 99% identity across 100% of the query.
+```
+
+There's no E-value in that sentence. The report printed `0.0` for this hit,
+which means too small to print rather than zero. So the bit score is the number
+that survives being written down.
+
+Notice what the sentence doesn't claim. It doesn't say the two genes do the
+same job, and it doesn't say the two species share an ancestor. It names a
+query, a pile, a day, a hit and a score. Every other claim you want to make is
+yours to argue for separately.
+
+::: {.trap}
+Your notes say "BLAST, top hit chimpanzee, 99 percent." Run that search again
+next year and the E-value will have moved, because the database will be
+bigger. The top hit may have changed too. Neither run errors. Neither one tells
+you which of the two numbers your notes meant. A hit is a fact about one query
+against one named database on one stated date.
+:::
+
+## What those steps settled, and what they didn't
+
+Three of these four steps produced a headline result in 2015. A second group
+ran the same three again and the result went away.
+
+Thomas C. Boothby, Bob Goldstein and eleven colleagues published a draft genome
+of the tardigrade *Hypsibius dujardini*. It's a microscopic eight-legged
+animal, often called a water bear, famous for surviving extreme conditions.
+They took each predicted gene, searched it against the public sequence
+databases, and asked what it most resembled. A lot of those genes came back
+looking bacterial. Their abstract estimates that "approximately one-sixth of
+tardigrade genes entered by HGT", horizontal gene transfer, meaning genes that
+arrived from another species rather than from a parent. That would have been
+the most extreme case known in any animal.
+
+Georgios Koutsovoulos, Mark Blaxter and eight colleagues then sequenced the
+same species independently. Their raw data contained plenty of DNA that wasn't
+tardigrade, which is what you'd expect from grinding up a whole animal and
+everything living on it. They separated the piles and compared the two
+assemblies. The overwhelming majority of the HGT candidates in the first genome
+sat on the contaminant side. Out of 23,021 predicted genes they called 0.2
+percent strong candidates from bacteria and 0.2 percent from non-animal
+eukaryotes, for at most 1 to 2 percent overall.
+
+Here's the part that matters to you. The similarity searches in the first paper
+weren't wrong. Those sequences really do resemble bacterial sequences more than
+they resemble animal ones, and a repeat of the search says so again. What a
+similarity search can't tell you is where that DNA physically was: inside the
+animal's chromosomes, or in a bacterium riding along in the same tube. That's a
+question about the sample, and no E-value answers it.
+
+You met this shape in Chapter 7. A low E-value says an alignment is unlikely to
+have turned up by chance. It says nothing about ancestry and nothing about
+function. Same tool, same output. The finding turned on the step where a person
+decides what that output is allowed to mean.
+
+Both papers are free to read in full through PubMed Central, and the two
+abstracts side by side are twenty minutes well spent.
+
+<!-- nlr-allow: 15976 15981 5053 5058 23021 -->
+
+Boothby TC, Tenlen JR, Smith FW, Wang JR, Patanella KA, Nishimura EO, Tintori
+SC, Li Q, Jones CD, Yandell M, Messina DN, Glasscock J, Goldstein B. Evidence
+for extensive horizontal gene transfer from the draft genome of a tardigrade.
+*Proceedings of the National Academy of Sciences* 2015;112(52):15976-15981.
+`doi:10.1073/pnas.1510461112`
+
+Koutsovoulos G, Kumar S, Laetsch DR, Stevens L, Daub J, Conlon C, Maroon H,
+Thomas F, Aboobaker AA, Blaxter M. No evidence for extensive horizontal gene
+transfer in the genome of the tardigrade Hypsibius dujardini. *Proceedings of
+the National Academy of Sciences* 2016;113(18):5053-5058.
+`doi:10.1073/pnas.1600338113`
+
+## What Part 1 couldn't do
+
+Three limits, and all three are real.
+
+**One sequence at a time, chosen by hand.** Every query in Part 1 was picked by
+you and pasted by you. Exercise 5.1 budgets 25 minutes for one gene. The second
+tardigrade genome carried 23,021 predicted genes, and somebody asked the
+Chapter 6 question of every one of them. Nobody clicked that through a form.
+
+**Not repeatable, exactly.** You clicked, and clicks leave no trace of
+themselves. Search on Tuesday and again on Wednesday and you can't show the two
+runs had the same settings. If the answer moved, you can't find out why. A
+stranger can't rerun your clicks at all.
+
+**No record.** Ask what artifact Part 1 actually produced. Three accessions on
+paper and a browser history that expires. Neither one says what was done in
+what order, and neither can be handed to somebody else and re-executed.
+
+One fix covers all three, and it isn't a better website. The fix is what Chapter
+10 argues for, and it's why the rest of this book is code.
+
+## One exercise
+
+This one produces a paragraph you'll reuse in the README you write in Chapter
+26, so keep it.
+
+::: {.exercise num="9.1" time="20 minutes"}
+::: {.goal}
+Write the methods paragraph for the search you ran in Exercise 6.1, the one
+that named the fish.
+:::
+::: {.given}
+Your notes from Exercise 6.1, which hold the species and the top hit's
+accession with its version suffix. If the database name, the program name or
+the date aren't written down anywhere, run the search again and read them off
+the report header before you start writing.
+:::
+::: {.produce}
+Four sentences at most, carrying five things. The query as a filename and a
+base count, the database name, the program name, the date, and the top hit with
+its version suffix and bit score.
+:::
+::: {.check}
+Give it to somebody who has never used BLAST and ask them to point at all five
+things. Whatever they can't find is missing, so add it. If there's nobody to
+hand it to, come back to it after a day and point at the five yourself. Then
+the harder test: using only your paragraph, could a stranger get a hit table
+for the same query against the same pile? A paragraph that names a website
+instead of a database fails that test.
+:::
+
+::: {.answerspace lines="8"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="Your notes do not say which database you searched"}
+Then the E-value in them means nothing, and you can't rescue it by remembering
+harder. Run the search again and write down the database line from the report
+header this time. Your old number wasn't wrong. It's unattached, which is a
+different problem and a fixable one.
+:::
+
+::: {.errfix err="You re-run a Part 1 search and the numbers do not match your notes"}
+Nothing has failed. Sequence databases grow every day, so today's search reads
+a bigger pile than last month's, and the E-value moves with the size of the
+pile. Rows tied on bit score can swap places too, because nothing orders a tie.
+Record the date next to the number and the two results stop contradicting each
+other.
+:::
+
+::: {.errfix err="Your paragraph reads fine to you and a stranger cannot repeat it"}
+Two things go missing more than anything else: the version suffix on the
+accession, and the name of the database. Check for both before you check for
+anything else.
+:::
+
+::: {.errfix err="You cannot tell which numbers in your notes came from which search"}
+Rebuild each entry as accession plus database plus date. Any entry missing one
+of the three is worth re-running rather than trusting, and re-running one
+search costs less than defending a number you can't source.
+:::
+:::
+
+::: {.checkpoint}
+- Name the four steps of Part 1 in order, and say which chapter did each
+- Write one methods sentence carrying an accession with its version suffix, a
+  database name, and a date
+- Say which of the four steps holds the judgment, and what it's judging
+- State one thing a similarity search establishes and one thing it can't
+- Name the three limits of Part 1 that Part 2 exists to fix
+:::

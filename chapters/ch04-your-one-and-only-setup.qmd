@@ -1,0 +1,256 @@
+# Your one and only setup
+
+You haven't installed anything, and you're not going to. So when this book
+tells you to run some code, what runs it?
+
+Not your laptop. You open a web page, and Google starts a Linux machine that
+belongs to your account for as long as you're using it. What you type goes up.
+The answers come back down. That machine is a computer you'll never touch, and
+it costs nothing beyond a Google account.
+
+## Your first cell
+
+Open `colab.research.google.com` and make a new notebook. You'll get a page
+with one empty box and a small round button to its left. Click inside the box
+and type this, to find out whether the machine will answer.
+
+``` {.python}
+print("hello")
+```
+
+Press the round button, or hold Shift and press Enter. The answer lands
+directly underneath the box you typed in.
+
+``` {.default .output}
+hello
+```
+
+The first run of a session is slow, because Google is starting your machine
+while you wait. Every run after that is fast.
+
+::: {.check}
+`hello` should be sitting under the box, on its own. A `[1]` should have
+appeared where the round button was. If a ring is still turning there instead,
+the machine hasn't finished starting, and the number arrives when it does.
+:::
+
+Nothing else on that page matters yet, and the labels on it are not stable.
+
+::: {.asof}
+Checked against the live Colab interface on 2 August 2026. Google renames these
+buttons every so often. Three things are always there: a box you type into,
+something you press to run it, and a menu called Runtime.
+:::
+
+## What the parts are called
+
+The box you typed in is a [cell]{.term def="One box in a notebook, holding code or text. Cells run one at a time, in whatever order you click."}. A notebook is a stack of cells, and nothing
+forces you to run them top to bottom.
+
+The machine underneath is the [runtime]{.term def="The remote machine that runs your cells. It holds every variable you have made."}. It holds your variables, it's separate from the page in
+front of you, and it can die while the page sits there looking healthy.
+
+The bracketed number beside a cell is a counter. It records which run this was,
+not which cell this is. Run the top cell, then the one below it, then the top
+one again. The top now reads `[3]` and the one below still reads `[2]`. That
+counter is your only record of the order things really happened in.
+
+### The notebook remembers
+
+Here's the part that causes more confusion later than anything else in this
+book. A variable made in one cell is still sitting there in the next one.
+
+``` {.python}
+sequence = "ATGGCC"
+print(len(sequence))
+```
+
+``` {.default .output}
+6
+```
+
+``` {.python}
+print(sequence.count("G"))
+```
+
+``` {.default .output}
+2
+```
+
+No value was handed from the first cell to the second. The second can see
+`sequence` because both ran inside the same runtime, which has held that value
+since the first cell finished. Count the G characters in `ATGGCC` yourself and
+you'll get 2.
+
+## Four voices
+
+A beginner sees red text and calls it an error. Somebody who has done this a
+while looks at the same screen and asks who's speaking. Four things can
+interrupt you here, and only one of them is Python.
+
+### Python is talking
+
+Type a name you never made into a cell, then run it.
+
+``` {.python}
+print(sequnce)
+```
+
+``` {.default .output}
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+----> 1 print(sequnce)
+
+NameError: name 'sequnce' is not defined
+```
+
+Your screen carries one more line, between the class name and the arrow, naming
+a file Colab built out of your cell. It's machine-generated, it changes every
+run, and it's left out above because it means nothing.
+
+Two marks identify Python. There's a line of your own code with an arrow
+pointing straight at it, and there's a class name, `NameError`, at the top and
+again at the bottom. Read the last line first. It's the only line written for a
+person.
+
+### The runtime is talking
+
+Ask the machine to hold more data than it has room for and the session dies.
+What comes back has a different shape:
+
+``` {.default .output}
+Your session crashed after using all available RAM.
+```
+
+No line number. No filename. No name out of your own code, and no exception
+class. Those absences are the tell. The message is about the machine, and your
+code goes unmentioned because your code isn't what failed. Restart the session
+and load less: one chromosome instead of the whole genome.
+
+A runtime also disconnects on its own after a stretch of inactivity, and
+everything it held goes with it. The notebook text survives because it's saved
+elsewhere, but the variables don't.
+
+### A website is talking
+
+Later chapters send you to NCBI and other database sites, where you fill in a
+form and press a button. When one refuses you, the page comes back with your
+form still on screen and a colored strip near the box you filled in. It
+complains about a field, and it can't name a line of code, because you never
+wrote any.
+
+The wording on those strips changes with every redesign, so this book won't
+print one. The shape doesn't change. Your input is still on screen and the
+complaint points at part of it. Fix the input and press the button again.
+
+### The network says nothing at all
+
+The fourth voice has no words: you press run and nothing happens. The ring
+keeps turning, no output appears, and no message arrives.
+
+Silence usually means the cell is working. The other thing it can mean is that
+something inside the cell is waiting on a connection that isn't coming back.
+Neither announces itself, which makes this the one voice you diagnose by
+waiting. A cell that normally takes seconds and touches the internet is worth
+stopping and running again once it passes a minute.
+
+Naming the speaker first is worth more than any single fix in this chapter. Get
+it right and you're looking at one line of your own code instead of at
+everything.
+
+## Where your notebooks live
+
+Colab keeps your notebooks in Google Drive and saves them as you work.
+
+This book's notebooks aren't in your Drive. Colab will open one from the
+repository Chapter 3 names and run every cell in it, but it can't write your
+changes back there. Save a copy into Drive first, from the File menu, and after
+that you're editing your own file.
+
+## Running cells in the wrong order
+
+Colab won't make you work down the page in order, and that freedom has a price.
+
+::: {.trap}
+Run a cell, edit it, then run the cell below without re-running the one you
+edited. The runtime still holds the value from before your edit. The code on
+the page and the value in memory now disagree, and the page is what you'll
+read. Nothing errors. You'll get a number, it'll look reasonable, and it'll
+answer a question you stopped asking ten minutes ago.
+:::
+
+Restart and run all is the cure. The Runtime menu has an item that throws your
+machine away and runs every cell from the top of a clean one. Google has
+labeled it two different ways over the years, so look for the words restart
+and run rather than a fixed phrase.
+
+That's the only way to find out whether a notebook works, so do it before you
+believe a result and again before you show one to anybody. Chapter 26 turns it
+into a rule.
+
+## The one install in this book
+
+Nothing after this chapter asks you to install anything, with one exception.
+Chapter 17 opens with the line `!pip install biopython`, typed into a cell like
+any other code. A fresh Colab session won't remember it, so you'll run it again
+every session, and that's the system working.
+
+## Exercises
+
+::: {.exercise num="4.1" time="15 minutes"}
+::: {.goal}
+Run the book's setup notebook from top to bottom and record the line it prints
+at the end.
+:::
+::: {.given}
+The notebook is `notebooks/setup.ipynb`, in the repository Chapter 3 names.
+Open it in Colab, save a copy into your own Drive, then take the Runtime menu
+item that restarts and runs everything.
+:::
+::: {.produce}
+One line, copied exactly as printed, starting `NLR setup OK` and carrying a
+Python version, a system name, and today's date.
+:::
+::: {.check}
+The system name on that line reads `Linux`, whatever kind of computer you're
+sitting at. That's this chapter's opening question, answered by the machine
+itself. If a cell higher up printed `MISSING` or `NOT INSTALLED`, write down
+which one and carry on: that's the book's problem to fix, not yours.
+:::
+
+::: {.answerspace lines="4"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="The page keeps asking you to sign in and will not open a notebook"}
+Colab needs a Google account, because a browser with nobody signed in has
+nowhere to put your work. Sign in, then open the notebook again. A school or
+workplace account can be blocked from Colab entirely by whoever administers it,
+and a personal account is the way around that.
+:::
+
+::: {.errfix err="Every variable has vanished and the numbers beside your cells are gone"}
+The runtime disconnected, which Colab does after a stretch with nobody touching
+it, and the replacement is empty. Use restart and run all and let it work back
+down the page.
+:::
+
+::: {.errfix err="Colab will not save your changes"}
+You're working in a notebook you don't own, which is what happens when you open
+one straight from a repository. Take the File menu item that saves a copy in
+Drive and edit the copy. On a school-managed account, sign into a personal
+Google account first and put the copy there. Every notebook here runs the same
+on either one.
+:::
+:::
+
+::: {.checkpoint}
+- Run a cell in Colab and read what lands in the output area
+- Name the four voices, and say which one points at a line of your own code
+- Explain why a variable can outlive the cell that created it
+- Predict what a notebook prints when its cells are run out of order
+- Restart a runtime and run every cell from the top
+:::

@@ -1,0 +1,225 @@
+# Why code at all
+
+Exercise 5.1 gave you 25 minutes to read one gene off a database record.
+Chapter 20 hands you a table with 27,179 rows in it, and every row is a gene.
+The same job on every one of them, no shortcuts. How long?
+
+## The wall
+
+That 25 is the budget the exercise printed, and nobody timed you. The estimates
+in this book lean short, as Chapter 3 warned, and doubling one is ordinary. Put
+your own number in below if you wrote it down. The round ten thousand keeps the
+arithmetic readable, and the real table is nearly three times bigger.
+
+```{python}
+minutes = 25 * 10000
+print(minutes, "minutes")
+print(round(minutes / 60), "hours")
+print(round(minutes / 60 / 3), "weeks at three hours a week")
+print(round(minutes / 60 / 3 / 52), "years")
+```
+
+<!-- nlr-allow: 10000 250000 4167 1389 9360 250 -->
+
+Three hours a week is the budget Chapter 1 asked you for, so those are your
+weeks. Twenty-seven years. That's the honest answer to the question at the top
+of this page. You don't finish.
+
+Work out where you'd actually stop. Three hours a week for a year is 156 hours,
+which is 9,360 minutes. Divide by 25 and you get 374. A year of your evenings,
+every evening you promised, and you've read 374 of the 27,179 rows. That's
+under two percent.
+
+::: {.check}
+Type those four lines into a Colab cell and put your own time in place of the
+25. If Exercise 5.1 cost you 40 minutes, the last line comes back 43. Any time
+you could plausibly have taken lands in years. Weeks means you dropped a zero
+out of the ten thousand.
+:::
+
+You've already seen that wall from the other side. The tardigrade paper in
+Chapter 9 ran the Chapter 6 question against more than twenty thousand
+predicted genes, and nobody did that through a form. Past a few hundred of
+anything, the size of the job picks the tool, and you don't get a vote.
+
+That's the speed argument. Everybody makes it for code, it's true, and it's the
+weaker half of the case.
+
+This is the one chapter in the book with nothing for you to hand in, so its If
+it breaks section sits here, beside the only cell it has, rather than at the
+end.
+
+## If it breaks
+
+Both of these come from typing the four lines rather than pasting them, and
+both are Python talking rather than the notebook or the website.
+
+::: {.ifbreaks}
+::: {.errfix err="NameError: name 'minutes' is not defined"}
+Python has never been handed anything called `minutes`. All four lines have to
+run in the same runtime, in order. If the `print` lines are sitting in their own
+cell, or the runtime disconnected in between, the first line is gone. Run the
+line that sets `minutes` again, then the prints.
+:::
+
+::: {.errfix err="TypeError: unsupported operand type(s) for /: 'tuple' and 'int'"}
+You typed the ten thousand with a comma in it. In Python a comma separates two
+values, and it's never part of a number. So `25 * 10,000` is `25 * 10`, which is
+250, followed by `000`, which is 0. `minutes` holds that pair, and a pair can't
+be divided by 60. Look at what the first line printed: `(250, 0) minutes`,
+brackets and all. Take the comma out.
+:::
+:::
+
+## Six months later
+
+Go and find your Chapter 5 answer sheet. One of the five values on it is an
+accession with a version suffix. Now answer something the sheet doesn't say.
+On the evening you wrote that suffix down, was it the one the page was showing,
+or had you copied it off this book?
+
+If you can answer, it's because you recorded where the number came from as well
+as the number. Nothing on the screen asked you to.
+
+A click leaves nothing behind. Your browser keeps a list of pages you visited,
+and a list of pages is not a list of decisions. Which menu you opened, which of
+the three exon counts you settled on, whether you carried the version suffix
+along: none of that is written down anywhere. And it isn't in your memory six
+months on.
+
+These are the second and third of the limits Chapter 9 named, taken apart.
+Three consequences follow, and they get worse in that order.
+
+You can't repeat it exactly. You'll click slightly differently next time, and
+the site will have moved its labels in between, and neither difference
+announces itself.
+
+Nobody else can check it. A stranger reading your result has your number and no
+route to it, and nothing to disagree with except your word.
+
+And there's no artifact. Ask what Chapter 5 actually produced, as an object. A
+few numbers on an answer sheet. Hand that to somebody and you've handed them a
+claim.
+
+The third one costs you more than the other two. Chapter 1 promised you'd
+finish this book with your code somewhere a stranger can open it. That's what
+somebody with no affiliation puts in front of a hiring manager in place of a
+reference. An evening of clicking produces nothing openable. It was real work,
+and it leaves no evidence that it happened.
+
+::: {.why}
+The tardigrade result in Chapter 9 turned on exactly this. Koutsovoulos and
+colleagues didn't have to take the first group's judgment on faith. They ran
+the work again on their own data and compared, and the estimate moved from
+about one-sixth of the genes to at most 1 to 2 percent. Redoing an analysis is
+the mechanism biology has for finding out that a published result was about the
+sample rather than the animal. It runs on other people being able to repeat
+what you did.
+:::
+
+## What a script actually is
+
+A [script]{.term def="A list of instructions saved in a file, so a machine can
+run the same steps again without you retyping them."} is a list of instructions
+saved in a file. The whole definition fits in that sentence, and it's smaller
+than the word sounds.
+
+Here's your Chapter 5 job written as one.
+
+``` {.default}
+1. Open the NCBI Gene record for BRCA1 in human.
+2. Read off the MANE Select transcript accession, version and all.
+3. Fetch that transcript.
+4. Count its bases.
+5. Print the accession and the count on one line.
+```
+
+Those five lines are English, and they're already a script in every sense but
+the one that matters: no machine can read them. Trade the English for Python
+and something else changes as well: the list stops describing what you did and
+starts being the thing that does it.
+
+Now the property you're buying, stated narrowly. Given the same input, a script
+produces the same output next year, and on a machine belonging to somebody who
+has never met you. Nothing more than that is on offer. Your five steps stop
+being a memory and become a file, so the question "which transcript did you
+use" gets answered by line 2 without anybody having to ask you.
+
+The machine belonging to somebody else is less abstract than it sounds, because
+you've already been working on one. Everything you write from here on runs on a
+Colab machine that Google starts for you. A link to that notebook is a link
+somebody else can open and run against the same data. What travels is the
+instructions rather than the answers, which is the difference between showing
+your work and reporting it.
+
+::: {.trap}
+Read "the same input" slowly. A script that fetches whatever NCBI currently
+calls `NM_007294` isn't getting the same input each run, because the record
+gets corrected and the number after the dot goes up. Run it in 2028 and it
+answers a slightly different question, in the same format, at the same speed,
+with no complaint anywhere. Pin the version or save the sequence file beside
+the script, and the promise holds.
+:::
+
+## For one gene, clicking wins
+
+For one gene, once, the browser beats the script and it isn't close. The next
+six chapters are slow, and 25 minutes of clicking sits against a couple of
+evenings of finding out what a variable is.
+
+Here's the crossover, and both numbers in it are soft. A lookup costs 25
+minutes, which is the exercise budget rather than anything I timed. Say the
+first script you write costs you three hours, which is 180 minutes. Divide one
+by the other. You get 7.2, so it pays for itself somewhere around the eighth
+gene.
+
+Treat 7.2 as the pessimistic figure, because the real crossover sits lower.
+Nobody runs an analysis once. You run it, you notice the numbers came off
+the wrong transcript, and you run it again. A second run of a script costs a
+keypress. A second run of a click-path costs the full 25 minutes, and the
+fourth run costs 25 more.
+
+Put your own two numbers on that scale once you have them. The arithmetic
+matters less than the shape: one side is paid once, and the other side is paid
+every single time.
+
+One more item sits on the clicking side of the ledger, and it's a real one. A
+web form checks what you typed and complains on the spot. You met that in
+Chapter 6, where pasting the wrong characters gets your sequence refused before
+anything runs. A script you wrote yourself checks nothing, runs your mistake at
+full speed, and prints an answer. There's a section in Chapter 16 on finding a
+wrong answer that never errored, and this is what it's for.
+
+## What the next six chapters buy you
+
+Concretely, and in the order they arrive.
+
+- Chapter 11 turns a sequence into something you can measure: its length, a
+  slice of it, how many of its bases are G or C. The off-by-one that Chapter 5
+  warned you about gets a long section to itself.
+- A loop does one thing to every item in a pile, and the code stays the same
+  length whether the pile holds 5 sequences or 27,179. Chapter 12, and it's the
+  one that answers the question at the top of this page.
+- The genetic code becomes a lookup table in Chapter 13, which is also the
+  shape of every gene-symbol mapping you'll ever need.
+- By Chapter 14 you write translation once and call it by name, after you've
+  written the same four lines twice by hand and felt why.
+- Files that real people send you get opened in Chapter 15, including a FASTA
+  with a blank line dropped into the middle of it.
+- Ten pages on reading error messages sit in Chapter 16. It's the chapter that
+  decides whether you're still doing this in six months.
+
+None of those is Python for its own sake. Variables come first, and they start
+where you already are: one sequence, and a name to put on it.
+
+::: {.checkpoint}
+- Multiply a one-gene lookup time by ten thousand and say what unit the answer
+  lands in
+- Name the property a script has that a click-path can't have, in one sentence
+- Say what "the same input" has to mean before a script gives you the same
+  answer next year
+- Explain why the crossover between clicking and coding sits lower than the
+  arithmetic suggests
+- Name the chapter that answers this chapter's opening question, and the
+  chapter that decides whether you finish the book
+:::

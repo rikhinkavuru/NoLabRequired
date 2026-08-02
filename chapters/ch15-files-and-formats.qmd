@@ -1,0 +1,490 @@
+# Files and formats
+
+Ask NCBI for `NM_007294.4` and it'll hand you that record as FASTA, or as a
+GenBank flatfile, and those two files share almost nothing except the letters.
+Pull the raw reads behind it out of a public archive and you get a third
+format. Ask which bases differ between one person's genome and the reference
+and you get a fourth. All of them are current. The oldest was designed in 1985
+and nobody is retiring it. So why does one field need this many ways to write
+down a sequence, and why does the count only ever go up?
+
+## A format is a decision about what to leave out
+
+The FASTA version of `NM_007294.4` is a header line and 7,088 bases, and that's
+the entire file. It won't tell you which organism the sequence came from, and
+it won't tell you that the coding part starts at base 114.
+
+The GenBank version of the same record carries all of that, plus the papers
+NCBI has attached to the record. It's the same 7,088 bases with several hundred
+lines bolted on top.
+
+Neither file is better. They answer different questions. FASTA is small and
+every program on earth reads it. GenBank is large and takes real work to parse,
+and it's the only one of the two that can tell you where an exon ends.
+
+One rule comes out of that, and it'll save you an afternoon. Going
+down is easy: any tool can throw the annotation away and write you a FASTA.
+Going up is impossible. Once a file has been cut back to a name and some
+letters, nothing gets the coordinates back, and you'll be fetching the record
+all over again.
+
+## FASTA holds the least of any of them
+
+You met FASTA in Chapter 5. Here's the part that chapter didn't need yet.
+
+``` {.default filename="data/sequences/messy.fasta"}
+>NM_007294.4 Homo sapiens BRCA1 mRNA, wrapped
+GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGCG
+CTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATTGGAACAGAAAGAAATGGATT
+TATCTGCTCTTCGCGTTGAAGAAGTACAAAATGTCATTAATGCTATGCAGAAAATCTTAG
+```
+
+Those line breaks carry no meaning. I wrapped that record at sixty characters
+because the script that built the file was set to sixty. Other files come at
+seventy, at eighty, or with no break at all, and nothing in a FASTA file
+records which. A parser has to glue the lines back together before it counts
+anything. The next record in that same file puts all 420 of its bases on one
+unbroken line, which is too wide to print here. Both records are legal.
+
+So the length of a FASTA record isn't a property you can see. You have to
+compute it, and the file will not help you.
+
+Chapter 5 warned you about the rest of the header. Most software keeps
+everything up to the first space and drops the remainder, so the header above
+goes in as `NM_007294.4`. Now look at the fourth record in that file. Its header
+starts `>NM_007294.4_translated`, and one underscore is all that keeps it out of
+the first record's slot. Put a space there instead and the fourth record lands
+on top of the first, and four records quietly become three. Exercise 15.1 asks
+what a parser should do about it.
+
+FASTA is everywhere. Sequence goes into a website in FASTA and comes out of a
+website in FASTA, and it has done that since 1985, when David J. Lipman and
+William R. Pearson published the search program the format was invented for.
+
+## FASTQ adds how much to trust each letter
+
+Raw output from a sequencing machine arrives as [FASTQ]{.term def="A four-line-per-read text format: a name line starting with an at sign, the bases, a plus line, then one quality character per base."},
+which is FASTA with a confidence attached to every base. Four lines make one
+read. I typed the two below by hand for this page. The bases are real: read 1
+is bases 1 to 40 of `NM_007294.4`, and read 2 is bases 61 to 100.
+
+``` {.default}
+@demo_read_1
+GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCT
++
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII?????55,
+@demo_read_2
+CTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATT
++
+@IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII??????5,
+```
+
+Line one is the read name and starts with `@`. Line two is the bases. Line
+three is a `+` and usually holds nothing else. Line four is the quality string,
+one character per base, in the same order as line two.
+
+Each quality character stands for a number. Take its position in the ASCII
+table and subtract 33. `I` is ASCII 73, so `I` means 40. `?` is 63, so `?`
+means 30. `5` is 53, so `5` means 20. That number is a [Phred quality score]{.term def="A number saying how likely a base call is wrong. Q20 is one error in a hundred, Q30 is one in a thousand."},
+and each 10 points is a factor of ten in the error rate. A `5` says the machine
+puts the odds of that letter being wrong at one in a hundred. A `?` says one in
+a thousand. The run of `I` at the front of both reads says one in ten thousand.
+Each read ends on a comma, which is ASCII 44 and means 11, a shade better than
+one error in ten.
+
+::: {.why}
+A sequencing machine never reads a base. It reads a measurement and guesses a
+letter from it, and some guesses are far shakier than others. The quality
+string is the machine telling you which ones. Reads usually get worse toward
+their far end, which is why the two above decay from `I` down through `5` to a
+comma.
+:::
+
+Count the characters on line two and line four of either read. Both are 40.
+They always match, and that's the one check you can run on a FASTQ file without
+any tool at all.
+
+::: {.trap}
+`@` is a legal quality character. It's ASCII 64, so it means 31, and a quality
+line is allowed to start with one. Count the lines in that block that start with
+`@`. Three do, and there are two reads, because the quality line of
+`demo_read_2` starts with one. Count reads that way and your number comes out
+too big, with nothing to tell you so. Count lines and divide by four instead.
+:::
+
+You'll meet FASTQ the moment you pull raw data off a public archive. Work out
+what it costs first. The sequence costs one character per base, and the quality
+line costs one more. That puts the same letters at over twice the size of a
+FASTA. An archive also holds every read an experiment produced rather than one
+finished sequence. This book never asks you to download one.
+
+## GenBank holds everything, coordinates included
+
+The [GenBank flatfile]{.term def="NCBI's full text record for one sequence: description, references, annotated features with coordinates, then the sequence itself."}
+is what you get when nothing is left out. Ask NCBI for `NM_007294.4` and take
+the GenBank view of the record rather than the FASTA one, and this is the real
+text that comes back.
+
+``` {.default}
+LOCUS       NM_007294               7088 bp    mRNA    linear   PRI 04-JUN-2026
+...
+FEATURES             Location/Qualifiers
+     source          1..7088
+                     /organism="Homo sapiens"
+                     /mol_type="mRNA"
+                     ...
+     exon            1..94
+                     /gene="BRCA1"
+                     ...
+     exon            95..193
+                     /gene="BRCA1"
+                     ...
+     CDS             114..5705
+                     /gene="BRCA1"
+                     ...
+```
+
+Each `...` is a cut I made to fit the page. The real record runs past six
+hundred lines before the sequence itself starts.
+
+Read the left column as a list of features and the right column as where each
+one sits. `1..7088` is the whole transcript. `114..5705` is the coding range
+you subtracted in Chapter 5, and now you can see the file it came out of.
+
+The two dots mean "through, and include both ends". So `1..94` is 94 bases:
+94 minus 1, plus 1. The next exon starts at 95, because 94 was used up.
+
+::: {.asof}
+Checked against the live NCBI interface on 2 August 2026. The control that
+switches a record between its FASTA view and its GenBank view has moved and
+been renamed more than once. What stays true is that one accession has both
+views, and the letters are identical in each.
+:::
+
+Reach for a flatfile on any NCBI record where you need the annotation and not
+only the letters.
+
+## BED is three columns and a counting convention
+
+A [BED]{.term def="A tab-separated interval format. Sequence name, start, end. Coordinates count from zero and the end position is not included."}
+file says nothing about sequence. It's a list of intervals, tab separated, with
+three required columns: what you're on, where the interval starts, where it
+ends. Here are the same two exons, written by hand as BED.
+
+``` {.default}
+NM_007294.4	0	94	exon1	0	+
+NM_007294.4	94	193	exon2	0	+
+```
+
+The first column doesn't have to be a chromosome. BED wants a sequence name and
+two numbers, and it has no opinion about what the sequence is. The three fields
+after them are optional: a label, a score this file has no use for, and the
+strand.
+
+Then the part that matters: BED counts from zero, and the end position is not
+part of the interval. So the first exon runs `0 94`, and the second one starts
+at `94`, the same number that ended the first. They don't overlap. Chapter 11
+taught you that shape already: `seq[0:94]` and `seq[94:193]` in Python are
+those two exons exactly.
+
+BED turns up in genome browsers, and in any tool that asks you which regions
+you care about.
+
+## VCF stores differences, not sequence
+
+[VCF]{.term def="Variant Call Format. One line per position where a sample differs from a named reference, with the reference and the alternate bases."}
+holds the positions where a sample disagrees with a reference genome, and
+nothing else. Storing a whole genome per person would be enormous and almost
+entirely repetition, so the format stores the disagreements. Here's a small one
+I wrote by hand.
+
+``` {.default}
+##fileformat=VCFv4.2
+##contig=<ID=demo,length=300>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+demo	120	.	C	T	.	PASS	DP=44
+demo	147	.	AGG	A	.	PASS	DP=39
+```
+
+Lines beginning with `##` are the header, and they're where the format records
+which reference the file was called against. A single line starts with one `#`
+and names the columns. Everything after that is one variant per line.
+
+The first variant says position 120 is `C` in the reference and `T` in this
+sample. The second one is a deletion, and it looks stranger than it is. `AGG`
+against `A` means the `GG` at 148 and 149 is gone. VCF carries the base in
+front of a deletion so that the line still has something to point at, which is
+why the position reads 147 rather than 148.
+
+`POS` counts from one. A dot means "no value here", not zero.
+
+Those eight columns are the ones every VCF has. A file with genotypes in it
+adds a `FORMAT` column after `INFO` and then one column per sample, so a study
+of twelve people carries twelve more columns on the right.
+
+::: {.trap}
+A VCF is meaningless without the reference it was called against, and the
+reference is named in a header line that most viewers hide. Chapter 5's two
+coordinates for the same variant, 41,276,045 and 43,124,028, are the same
+hazard. Load a GRCh37 file into a GRCh38 browser and every variant lands
+somewhere plausible and wrong.
+:::
+
+Every paper that reports variants stands on a VCF, and so does every clinical
+genetics pipeline in existence.
+
+## The same exon, two coordinate systems
+
+Chapter 11 gave you the rule for crossing between Python's counting and a
+database's: the start moves, the stop doesn't. Here's why that rule outlives
+Python. The two counting systems aren't a quirk of one language. They're built
+into the file formats themselves, and most of the conversions you'll ever do
+are between two files.
+
+Two conventions are in use, both of them everywhere.
+
+| Format | First base is | End position |
+|---|---|---|
+| BED | 0 | not included |
+| GFF and GTF | 1 | included |
+| VCF | 1 | included |
+| GenBank features | 1 | included |
+
+Take the first exon of `NM_007294.4`. GenBank writes it `1..94`. BED writes it
+`0 94`. Both describe the identical 94 bases, and you can check that from the
+two lengths:
+
+``` {.default}
+GenBank:  94 - 1 + 1  =  94 bases
+BED:      94 - 0      =  94 bases
+```
+
+GFF writes the same exon across nine tab-separated columns, with the start and
+the end sitting in the fourth and the fifth.
+
+``` {.default}
+NM_007294.4	.	exon	1	94	.	+	.	ID=exon1
+```
+
+A dot in a GFF column means the file has no value to put there. Everything else
+in that row agrees with the BED row above it, except the one number this whole
+section is about.
+
+A feature that's 94 bases long is 94 bases long in every one of these formats.
+The start number differs by one. The end number comes out the same, because
+BED's end sits one past the last base and GFF's end sits on it. That's the
+whole conversion: subtract one from the start, and leave the end alone.
+
+::: {.check}
+Do the second exon before reading on. GenBank says `95..193`. Write the BED
+row. You should get `94 193`, and both formats should give you 99 bases:
+193 minus 95 plus 1, and 193 minus 94. If you wrote `95 193` you converted the
+start twice, which is the error this section exists to prevent.
+:::
+
+The conversion is one subtraction. Knowing that you need to do it is the part
+that costs people a day.
+
+<!-- nlr-allow: 43124027 -->
+
+::: {.trap}
+A file never says which convention it uses, and no tool checks. A BED row
+copied straight into a GFF column shifts the feature one base to the left and
+makes it one base longer. Do that to a coding region and the codon boundaries
+move, so Chapter 13's translator hands you a different protein and no error.
+It goes wrong in the other direction too. Browser search boxes take 1-based
+coordinates, so a BED start of 43,124,027 typed into one lands you on the base
+before the one you meant.
+:::
+
+## Walkthrough: opening a file in Colab
+
+A running program is always standing in some folder, and a path is directions
+from there. In Colab you start in a folder called `/content`. A path with no
+slash in front of it gets read from wherever you're standing, so `messy.fasta`
+means the file next to you and `data/sequences/messy.fasta` means two folders
+down.
+
+Open a file, read all of it into a string, and look at the shape of what you
+got.
+
+```{python}
+text = open("data/sequences/messy.fasta").read()
+lines = text.splitlines()
+
+n = 0
+for line in lines:
+    if line.startswith(">"):
+        n = n + 1
+
+print(len(text), "characters")
+print(len(lines), "lines")
+print(n, "records")
+```
+
+<!-- nlr-allow: 1790 -->
+
+That output came from running the cell with the file sitting in
+`data/sequences/`. If your copy of `messy.fasta` sits next to the notebook
+instead, change the path to `"messy.fasta"` and nothing else in the cell
+changes.
+
+`.read()` gives you the file as one long string. `.splitlines()` cuts it at the
+line breaks and hands back a list, which is the form you want almost every
+time. Four records in 25 lines, and you already know those four aren't the same
+shape as each other.
+
+### Writing a file, and the flag that empties it
+
+You read a file with one argument. You write one with two, and the second
+argument is the part to be careful with.
+
+``` {.python}
+with open("ids.txt", "w") as out:
+    out.write("NM_007294.4\n")
+    out.write("NM_009764.3\n")
+
+print(open("ids.txt").read())
+```
+
+``` {.default .output}
+NM_007294.4
+NM_009764.3
+
+```
+
+That `"w"` means write. The `with` block closes the file for you when it ends,
+and a file that never gets closed can arrive on disk half-written. `\n` is a
+line break, and `.write()` won't add one for you, so two writes with no `\n`
+land on the same line.
+
+::: {.trap}
+`"w"` empties the file before it writes anything. Point it at a file you spent
+an evening building and that file is now zero bytes, with no warning, no
+confirmation and no undo. The flag that adds to the end instead is `"a"`. Read
+the second argument every time you type it.
+:::
+
+### Keeping your work: mounting Drive
+
+Colab lends you a runtime, and the runtime goes away with everything you wrote
+on it. Run these two lines and your Google Drive shows up as a folder inside
+that runtime.
+
+``` {.python}
+from google.colab import drive
+drive.mount("/content/drive")
+```
+
+``` {.default .output}
+Mounted at /content/drive
+```
+
+Your files are then under `/content/drive/MyDrive`, and a path that starts
+there survives the runtime being recycled. You'll be asked to approve the
+connection first, and the approval is per session.
+
+::: {.asof}
+Checked against Colab on 2 August 2026. The approval step has changed shape
+more than once. What stays true is that mounting needs your permission, the
+mount point is a folder you pick, and your own files land under `MyDrive`.
+:::
+
+## Why none of these will ever go away
+
+GenBank release 3 came out in December 1982 with 606 entries and 680,338 bases
+in it. Release 272 was current when I checked in August 2026, and it counts
+192,425,204 entries and 79,604,775,262 bases the same way. That's the
+like-for-like column of NCBI's own growth table, and the whole of GenBank is
+far bigger again once whole-genome shotgun data is counted. The flatfile you
+read three pages ago is that same format. It has been extended since, and it
+has never been replaced.
+
+That's the answer to the opening question. Every format here was designed by
+somebody solving a problem they had that week, and it stuck because other
+people's files were in it. Deprecate a format now and you break the published
+record, so nobody does it. Formats accumulate. They don't get replaced.
+
+Here's what to do about it. Don't wait for the field to settle on one
+file type, and don't learn a format by reading its specification. Open the file
+and look at the first few lines, because five minutes of looking answers more
+questions than an hour of reading about it.
+
+## Exercises
+
+::: {.exercise num="15.1" time="45 minutes"}
+::: {.goal}
+Write a parser for `data/sequences/messy.fasta` that uses no library at all,
+and print what's in the file.
+:::
+::: {.given}
+Four records. Every defect in the file is one that somebody has really sent
+somebody else. The first record is wrapped at 60 columns and the second has its
+whole sequence on one line. A blank line sits inside the third. Every header
+has spaces in it. The last record ends in a `*`, left behind by a tool that
+marks the stop codon. None of this is invalid FASTA, and all of it breaks a
+parser written in a hurry.
+:::
+::: {.produce}
+One line per record, in the order the records appear in the file: the
+identifier, then the length of the sequence in bases. Take the identifier to be
+everything after the `>` up to the first space, and don't count the `*` as a
+base.
+:::
+::: {.check}
+Four lines, and the lengths are 480, 420, 480 and 180. If your third record
+comes out at 240 you stopped reading at the blank line. If your last one is 181
+you counted the `*`. If three of your four lengths come out at 60 or 61 you're
+keeping the last line of each record instead of joining them. Record 2 looks
+right only because its whole sequence is one line. If you got fewer than four
+lines your loop is overwriting a record. Last part: `NM_007294.4` and
+`NM_007294.4_translated` are two identifiers separated by one underscore. Say
+what your parser should do if that underscore were a space.
+:::
+
+::: {.answerbox height="2.4in"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'messy.fasta'"}
+Python is talking, and it's telling you where it looked. It searched the folder
+the notebook is standing in, which is `/content` unless you moved. Either the
+file isn't there or the name is off by a character. Print the folder's contents
+before you retype the path.
+:::
+
+::: {.errfix err="UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"}
+The file is compressed and you opened it as text. A name ending in `.gz` is the
+tell, and `0x8b` is the second byte every gzip file starts with. Python did
+exactly what you asked. Uncompress the file first, or open it with a reader
+that handles gzip.
+:::
+
+::: {.errfix err="ValueError: I/O operation on closed file."}
+You used a file after its `with` block ended. The block closes the handle on
+the way out, on purpose. Move the code that reads the file inside the block, or
+read everything into a variable while the block is still open.
+:::
+
+::: {.errfix err="TypeError: write() argument must be str, not int"}
+`.write()` takes text only. A number has to be converted first: `str(480)`
+rather than `480`. Nothing about the file is wrong.
+:::
+:::
+
+::: {.checkpoint}
+- Name what each of FASTA, FASTQ, GenBank, BED and VCF holds, and one place
+  you'd meet each one
+- Check a FASTQ record by comparing the length of its sequence line and its
+  quality line
+- Convert one quality character into a Phred score, and say what that score
+  claims about the base
+- Convert a GenBank feature range into a BED row, and confirm both give the
+  same length
+- Read a file into a string in Colab, write a file back out, and say what `"w"`
+  does to a file that already exists
+- Explain why a VCF is unusable without the name of its reference
+:::

@@ -1,0 +1,371 @@
+# Proteins without a microscope
+
+Look up `P38398` in AlphaFold DB and you get a picture: one chain, folded,
+turning on the screen, colored along its length. The accession is human BRCA1,
+the protein Chapter 5 ended up at. Thirty-three experimental structures of it
+exist, and every one of them covers a piece of the chain. Nobody has ever seen
+the shape of the whole thing. So what is that picture of?
+
+## The protein has its own database
+
+Chapter 5 ended at `NP_009225.1`, NCBI's protein record for BRCA1, 1,863 amino
+acids long. It's a sequence with a few notes attached. UniProt holds the same
+protein the other way round: one entry per protein, with the sequence
+underneath and the annotation piled on top.
+
+What gets piled on is what the protein does, which residues do it, and which
+structures exist. The human BRCA1 entry is `P38398`. Open `uniprot.org` and
+search for that accession, because the rest of this chapter reads off it. Here
+are the values it uses, written out.
+
+``` {.default .output}
+Accession   P38398
+Entry name  BRCA1_HUMAN
+Status      UniProtKB reviewed (Swiss-Prot)
+Name        Breast cancer type 1 susceptibility protein
+Length      1863 amino acids
+Mass        207721 Da
+Structures  33 PDB entries
+```
+
+Two databases, two accessions, one number. `NP_009225.1` and `P38398` both say
+1,863 amino acids. That match is your check that you're on the right record,
+and it isn't more than that. Both curators worked from the same submitted
+sequences, so the agreement isn't two independent measurements landing in the
+same place. If the two lengths ever disagree, one of them is describing a
+different form of the protein and you need to find out which.
+
+The mass is 207,721 daltons, and a dalton is roughly the mass of one hydrogen
+atom. Nobody weighed anything to get it. UniProt's own documentation says the
+mass is calculated from the amino acid composition of the sequence. It leaves
+out everything a cell bolts onto a protein after it's made. So the number is
+exact about the sequence and silent about the molecule.
+
+::: {.asof}
+Checked against the live UniProt interface on 2 August 2026. The accession
+`P38398` is the stable handle and it won't move. The entry name `BRCA1_HUMAN`
+is the readable one, and readable names do get changed. Cite the accession.
+:::
+
+### Reviewed and unreviewed, which you have already met
+
+UniProt comes in two halves, and the half an entry sits in is printed on it.
+Reviewed (Swiss-Prot) means a curator read the papers and the sequence and put
+their name behind the entry. Unreviewed (TrEMBL) means software translated a
+coding sequence, filed the result, and nobody looked at it.
+
+You've seen this split before, wearing different clothes. In Chapter 5, `NM_`
+meant a curated transcript and `XM_` meant one predicted by software from a
+genome annotation. Same distinction, same consequence: both halves are worth
+having, and only one of them is evidence that a person checked.
+
+`P38398` is reviewed. For a human gene this heavily studied, that's what you
+should expect, and a search that hands you an unreviewed entry for BRCA1 has
+handed you the wrong record.
+
+### A domain is a part that folds by itself
+
+Cut a stretch out of the middle of a protein, make just that stretch in a tube,
+and usually you get a tangle. Some stretches fold up anyway, into the same
+shape they hold inside the full protein, and go on doing the same job. A
+stretch that behaves like that is a [domain]{.term def="A stretch of a protein
+that folds up on its own and does its own job. Domains are annotated by the
+residue numbers they run between."}, and that's why domains get names and
+residue ranges of their own.
+
+The BRCA1 entry annotates three of them. The numbers are positions along the
+chain, and the first amino acid is number 1.
+
+``` {.default .output}
+Zinc finger   24-65        RING-type
+Domain        1642-1736    BRCT 1
+Domain        1756-1855    BRCT 2
+```
+
+UniProt files the first one under a different heading, Zinc finger, because
+that's the kind of thing it is. It folds on its own like the other two, so this
+chapter counts it.
+
+Read the positions and you can see how thin the annotation is. One domain sits
+inside the first 65 residues. The other two sit at the far end, starting at
+residue 1,642. Everything between them is annotated as something else, or as
+nothing at all.
+
+Residue numbers are how a claim about a protein gets attached to a place. A
+paper reporting a change at residue 1,700 is reporting a change inside BRCT 1,
+and you can read that off the block above without knowing any structural
+biology. Without the numbers you'd have a change in "the protein", which is
+1,863 residues wide and no help to anybody.
+
+## Thirty-three structures of a 1,863-residue protein
+
+The entry lists 33 PDB structures. That sounds like a well-covered protein. Do
+the arithmetic before you believe it.
+
+BRCT 1 runs from residue 1,642 to residue 1,736. The number of residues is
+1,736 − 1,642 + 1 = 95, and the plus one is there because the range includes
+both ends. BRCT 2 runs 1,756 to 1,855, so 1,855 − 1,756 + 1 = 100 residues.
+
+Take the two together with the short linker between them and you get one
+continuous block, from 1,642 to 1,855: 1,855 − 1,642 + 1 = 214 residues.
+
+Now divide. 214 / 1863 = 0.115, so the BRCT block is about 11 percent of the
+protein. Throw in the RING-type zinc finger, which is 65 − 24 + 1 = 42
+residues, and the annotated domains come to 214 + 42 = 256. That leaves
+1,863 − 256 = 1,607 residues of BRCA1 outside any annotated domain.
+
+::: {.check}
+Do 1,855 − 1,642 + 1 on paper before reading on. If you got 213, you dropped
+the plus one and you're counting fenceposts. That's the same off-by-one as
+Chapter 5. It's the most expensive arithmetic error in this field, and
+Chapter 11 spends a long section on it.
+:::
+
+<!-- nlr-allow: 1607 1700 213 1.54 -->
+
+So 33 experimental structures exist, and they cluster on the two ends of the
+chain where the domains are. The middle of BRCA1 has never been crystallized.
+Not one of the 33 holds a single atom from it.
+
+Here's why that isn't a gap somebody forgot to fill. X-ray crystallography
+needs a crystal, and a crystal is millions of copies of the same molecule
+stacked in the same orientation in a regular lattice. A domain that folds on
+its own is a good candidate for one. Each copy has the same shape, so the
+copies stack. A stretch of chain that doesn't settle into one shape has
+nothing to stack, and you get no crystal, or a crystal that tells you almost
+nothing.
+
+Structural biology therefore reports on the parts of a protein that hold still.
+The method has that limit built into it, and the limit shows up in every
+structure count you'll ever read. A protein with 33 structures isn't 33 times
+better understood than a protein with one. It might be one small domain that
+behaves in a tube, solved over and over with different partners bound to it.
+
+Here's the same count on a protein that does hold still. Hemoglobin
+subunit beta is `P68871`, it's 147 amino acids long, and UniProt lists 340 PDB
+structures for it. That's less than a twelfth of BRCA1's length carrying more
+than ten times the structures. The count tracks how well a protein behaves in a
+tube, not how important it is or how hard anyone has worked on it.
+
+::: {.why}
+A sequence tells you which residues sit next to each other along the chain. A
+structure tells you which ones sit next to each other in space, and those are
+two different lists. Fold the chain up and two residues 200 apart in the
+sequence can end up touching. The pocket that grips a partner molecule is built
+out of residues collected from all over the protein. You can't find it by
+reading the sequence, however hard you stare. A structure is what turns "this
+change is at residue 1,700" into "this change is in the part that does the
+gripping".
+:::
+
+## Two structures of the same domains
+
+Look `1JNX` up on `rcsb.org` to see what one experiment actually delivered.
+It's called "Crystal structure of the BRCT repeat region from the breast
+cancer associated protein, BRCA1". It was determined by X-ray diffraction, to
+2.5 angstroms, and deposited on 26 July 2001. It covers the BRCT block you just
+measured, at the far end of the chain, and nothing else.
+
+`1T15` is called "Crystal Structure of the Brca1 BRCT Domains in Complex with
+the Phosphorylated Interacting Region from Bach1 Helicase". Also X-ray, also
+the BRCT domains, deposited on 15 April 2004, at 1.85 angstroms. The words
+after "in Complex with" matter: this structure has a second molecule in it, a
+short piece of another protein caught in the act of being held.
+
+::: {.asof}
+Checked against the live RCSB PDB interface on 2 August 2026. Every PDB entry
+carries an identifier like `1JNX`, a title, an experimental method, and a
+deposition date under some name, however the page is laid out. Those four are
+what this chapter uses.
+:::
+
+### Resolution, and why 1.85 beats 2.5
+
+An angstrom is a tenth of a nanometer, and a single bond between two carbon
+atoms is about 1.54 angstroms long. Hold on to that, because it makes the next
+number readable.
+
+Resolution is the size of the smallest detail the experiment can separate.
+Features closer together than that blur into one lump. At 2.5 angstroms you can
+see the path of the chain and the general bulk of the side chains. You can't
+see two bonded carbon atoms as two things, because they sit 1.54 angstroms
+apart and the experiment can't split anything closer than 2.5. At 1.85
+angstroms the map is sharper and more of the final model is pinned down by the
+data.
+
+Smaller is better here, which reads backwards until you remember what the
+number measures. Resolution is a blur width. A wider blur is less detail.
+
+::: {.trap}
+Every atom in a structure file carries three coordinates, printed to three
+decimal places. That's a thousandth of an angstrom, in a structure whose blur
+width is 2.5 angstroms. Read the decimals as precision and you'll trust a
+position a couple of thousand times further than the experiment can support.
+The coordinates are a model somebody fitted into a blurry map, and the file
+format has no way to print how blurry.
+:::
+
+## The picture on the AlphaFold page
+
+Now the entry this chapter opened on. Open `alphafold.ebi.ac.uk`, search for
+`P38398`, and keep the page in front of you for the rest of this section.
+AlphaFold DB holds a predicted structure for that accession under the
+identifier `AF-P38398-F1`. The one on the page as this was written is model
+version 6, created on 1 August 2025, and it covers all 1,863 residues.
+
+All 1,863, including the 1,607 residues outside every annotated domain and the
+whole middle of the chain, where no experiment has ever placed an atom. Those
+residues get three coordinates printed to three decimal places, exactly like
+the residues an experiment did place. Telling the two apart is the rest of this
+chapter, and the model will help you do it.
+
+AlphaFold predicts a structure from the sequence. It was trained on the
+structures that experiments did produce, so it has seen a great many folded
+domains and learned what they look like. For a domain that resembles things in
+its training data, the prediction can be close to what an experiment finds. For
+a region unlike anything that ever crystallized, the model still hands back a
+full set of coordinates. It has no way to hand back nothing.
+
+### pLDDT is the model marking its own work
+
+Every residue in an AlphaFold model carries a
+[pLDDT]{.term def="AlphaFold's per-residue confidence in its own prediction, from
+0 to 100. High means the model is sure of the local shape. It is not a
+measurement."} score from 0 to 100. It's the model's confidence in its own
+answer for that residue, and it comes out of the same network that produced the
+coordinates. No experiment enters into it. Nothing checked it.
+
+AlphaFold DB's own documentation cuts that range into four named bands, and the
+same four turn up wherever this output does. Above 90 is very high. Between 70
+and 90 is confident. Between 50 and 70 is low. Below 50 is very low. The
+picture is colored by those bands, so a glance tells you where the model is
+sure and where it isn't.
+
+Here's the part people get wrong. A long stretch of low pLDDT usually isn't the
+prediction failing. It's the model saying that this stretch has no single fixed
+shape, and for many proteins that's the correct answer. UniProt annotates
+several regions of BRCA1 as disordered, one of them running from residue 230 to
+residue 270. Disordered means what it sounds like: in a real cell that piece
+moves, and it never settles into one arrangement long enough for anybody to
+call it a structure.
+
+So a low-confidence region is a drawing of an answer the model declined to
+give. Read the confidence first and the shape second.
+
+::: {.trap}
+Take two residues in a low-confidence stretch, measure the distance between
+them in the model, and write it in your notes. Nothing errors. Every tool that
+reads structures will compute that distance and print it to three decimals,
+because the file has coordinates for every atom in the chain. The number is
+meaningless, and no software will say so. Check the confidence band before you
+measure anything.
+:::
+
+Both of those traps come down to reading the confidence before the shape, so
+you need to know where AlphaFold DB puts the confidence.
+
+::: {.asof}
+Checked against the live AlphaFold DB interface on 2 August 2026. Models get
+recomputed and the version number rises, so the one on your screen may be later
+than the one printed here. Three things are on that entry under some name: the
+model colored by confidence, a key saying which color means which band, and a
+per-residue confidence plot along the chain. Find those and the layout doesn't
+matter.
+:::
+
+## Exercises
+
+::: {.exercise num="8.1" time="30 minutes"}
+::: {.goal}
+Find the predicted structure for `P38398` and locate one named domain in it by
+residue number.
+:::
+::: {.given}
+The three annotated domains and their residue ranges are in the block earlier
+in this chapter. Pick any one of them.
+:::
+::: {.produce}
+Three values: the AlphaFold entry identifier, the residue range of the domain
+you chose, and the confidence band the model reports across that range, named
+as one of very high, confident, low or very low.
+:::
+::: {.check}
+Write your prediction down before you look. A domain folds on its own, and all
+three of these have been solved experimentally, which makes them the easiest
+cases a predictor ever gets. Expect one of the two top bands. If you land in
+low or very low over an annotated domain, check that you're counting residues
+from the start of the chain.
+:::
+
+::: {.answerspace lines="5"}
+:::
+:::
+
+::: {.exercise num="8.2" time="35 minutes"}
+::: {.goal}
+Put the AlphaFold model of BRCA1 next to `1JNX` and say what the experiment
+covers that the model doesn't, and the other way round.
+:::
+::: {.given}
+`1JNX` is the BRCT repeat region at 2.5 angstroms. The AlphaFold model covers
+1,863 residues. The BRCT block runs from residue 1,642 to residue 1,855.
+:::
+::: {.produce}
+Four things: the number of residues in the BRCT block, that number as a
+fraction of the whole protein, one sentence on what `1JNX` can tell you that
+the model can't, and one sentence on what the model shows you that `1JNX`
+doesn't.
+:::
+::: {.check}
+Your fraction should be about 11 percent. You can get there from two numbers in
+this chapter: subtract, add one, divide. If you wrote something near 100
+percent, you used the length of the model instead of the length of the
+experimental structure. That mistake is the whole reason this exercise exists.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="Searching BRCA1 in UniProt returns dozens of entries"}
+The search covers every species and both halves of the database at once. Narrow
+it to human and to reviewed entries, or go straight to the accession `P38398`,
+which is one record and can't be ambiguous.
+:::
+
+::: {.errfix err="The AlphaFold model version is higher than 6"}
+The model was recomputed after this page was written, which is the system
+working as intended. Use what's on the page and write down the version you
+used, the same way you wrote down the dot in `NM_007294.4` in Chapter 5.
+:::
+
+::: {.errfix err="Residue numbers in the PDB entry do not match the UniProt ones"}
+A PDB entry holds a fragment, and the numbering inside it doesn't have to start
+at 1 or to match UniProt. The entry carries a mapping back to `P38398`. Find
+that mapping and convert before you compare anything, because an unconverted
+residue number will look perfectly reasonable and point at the wrong place.
+:::
+
+::: {.errfix err="The structure viewer stays blank or never finishes loading"}
+That's the network or the browser, not the database. A viewer downloads the
+coordinates and then renders them in 3D, which some machines and some
+connections won't do. Neither exercise needs the picture to turn: the
+identifier, the residue range and the confidence band all come off the text and
+the confidence plot on the same page.
+:::
+:::
+
+::: {.checkpoint}
+- Read a UniProt entry and say whether it's reviewed or unreviewed, and what
+  that tells you about who checked it
+- Name the three annotated domains of BRCA1 and give the residue range of each
+- Convert a residue range into a count of residues, and into a fraction of the
+  whole protein
+- Explain why 33 experimental structures do not cover 33 parts of a protein
+- Say what a resolution of 2.5 angstroms lets you see and what it doesn't
+- Distinguish a pLDDT score from a measurement, and say what a long low-pLDDT
+  stretch usually means
+:::

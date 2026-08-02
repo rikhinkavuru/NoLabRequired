@@ -1,0 +1,13 @@
+```{=latex}
+\backmatter
+```
+
+# Reference
+
+The rest of the book is for looking things up in.
+
+The glossary defines every term this book set in bold. The error index maps
+every error message the book explains to the page that explains it. The cheat
+sheet is two pages and is meant to be printed on its own. The dataset index
+lists every external source, with the address in full and the date it was last
+checked.

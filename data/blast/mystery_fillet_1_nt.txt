@@ -1,0 +1,2845 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.17.0+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and
+Webb Miller (2000), "A greedy algorithm for aligning DNA
+sequences", J Comput Biol 2000; 7(1-2):203-14.
+
+
+Reference for database indexing: Aleksandr Morgulis, George
+Coulouris, Yan Raytselis, Thomas L. Madden, Richa Agarwala,
+Alejandro A. Schaffer (2008), "Database Indexing for
+Production MegaBLAST Searches", Bioinformatics 24:1757-1764.
+
+
+RID: 6Z2TVR6D014
+
+
+Database: Core nucleotide BLAST database
+           128,547,243 sequences; 948,086,538,397 total letters
+Query= mystery_fillet_1
+
+Length=649
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+AB182303.1 Gadus chalcogrammus mitochondrial DNA, complete gen...  1199    0.0    100%      
+PZ291804.1 Gadus chalcogrammus voucher USNM:FISH:485765 mitoch...  1199    0.0    100%      
+OL494247.1 Gadus chalcogrammus voucher H90 cytochrome c oxidas...  1199    0.0    100%      
+FJ165432.1 Gadus chalcogrammus voucher TZ05-FROSTI-171 cytochr...  1199    0.0    100%      
+AM489719.1 Theragra finnmarchica complete mitochondrial genome     1199    0.0    100%      
+PZ284884.1 Gadus chalcogrammus voucher USNM:FISH:485767 mitoch...  1199    0.0    100%      
+AB182302.1 Gadus chalcogrammus mitochondrial DNA, complete gen...  1199    0.0    100%      
+KX119441.1 Gadus chalcogrammus isolate 61 cytochrome c oxidase...  1199    0.0    100%      
+OL494334.1 Gadus chalcogrammus voucher H332 cytochrome c oxida...  1199    0.0    100%      
+MN879772.1 Gadus chalcogrammus cytochrome c oxidase subunit I ...  1199    0.0    100%      
+MN850428.1 Gadus chalcogrammus isolate S1 cytochrome c oxidase...  1199    0.0    100%      
+MH035600.1 Gadus chalcogrammus voucher UW151990_5 mitochondrio...  1199    0.0    100%      
+MH035594.1 Gadus chalcogrammus voucher UW151985_4 mitochondrio...  1199    0.0    100%      
+PZ284876.1 Gadus chalcogrammus voucher USNM:FISH:487031 mitoch...  1199    0.0    100%      
+MW435064.1 Gadus chalcogrammus isolate 12280.seq cytochrome c ...  1199    0.0    100%      
+AB182304.1 Gadus chalcogrammus mitochondrial DNA, complete gen...  1199    0.0    100%      
+MH035590.1 Gadus chalcogrammus voucher UW151042 mitochondrion,...  1199    0.0    100%      
+MH035603.1 Gadus chalcogrammus voucher UW152903_1 mitochondrio...  1199    0.0    100%      
+AB182308.1 Gadus chalcogrammus mitochondrial DNA, complete gen...  1199    0.0    100%      
+PV495993.1 Gadus chalcogrammus voucher X16 cytochrome c oxidas...  1199    0.0    100%      
+JQ354093.1 Gadus chalcogrammus voucher UW:047698 cytochrome ox...  1199    0.0    100%      
+JQ354518.1 Gadus chalcogrammus voucher UW:150487 cytochrome ox...  1199    0.0    100%      
+MH035604.1 Gadus chalcogrammus voucher UW152907 mitochondrion,...  1199    0.0    100%      
+AB182305.1 Gadus chalcogrammus mitochondrial DNA, complete gen...  1199    0.0    100%      
+MH035611.1 Gadus chalcogrammus voucher UW119164 mitochondrion,...  1199    0.0    100%      
+PZ284868.1 Gadus chalcogrammus voucher USNM:FISH:485769 mitoch...  1199    0.0    100%      
+MH018252.1 Gadus chalcogrammus mitochondrion, complete genome      1199    0.0    100%      
+HM421738.1 Gadus chalcogrammus voucher RUSALCA09-112 cytochrom...  1197    0.0    100%      
+KX017720.1 Gadus chalcogrammus isolate X12 cytochrome oxidase ...  1195    0.0    100%      
+KX017721.1 Gadus chalcogrammus isolate X13 cytochrome oxidase ...  1195    0.0    100%      
+KX017711.1 Gadus chalcogrammus isolate X3 cytochrome oxidase s...  1195    0.0    100%      
+KX017712.1 Gadus chalcogrammus isolate X4 cytochrome oxidase s...  1195    0.0    100%      
+KX017726.1 Gadus chalcogrammus isolate X18 cytochrome oxidase ...  1195    0.0    100%      
+MZ097915.1 Gadus chalcogrammus isolate DF1-9 cytochrome c oxid...  1194    0.0    100%      
+MZ097925.1 Gadus chalcogrammus isolate DF1-19 cytochrome c oxi...  1194    0.0    100%      
+MZ097922.1 Gadus chalcogrammus isolate DF1-16 cytochrome c oxi...  1194    0.0    100%      
+OL494265.1 Gadus chalcogrammus voucher H137 cytochrome c oxida...  1194    0.0    100%      
+MZ097911.1 Gadus chalcogrammus isolate DF1-5 cytochrome c oxid...  1194    0.0    100%      
+MZ097917.1 Gadus chalcogrammus isolate DF1-11 cytochrome c oxi...  1194    0.0    100%      
+OL494315.1 Gadus chalcogrammus voucher H304 cytochrome c oxida...  1194    0.0    100%      
+MZ097923.1 Gadus chalcogrammus isolate DF1-17 cytochrome c oxi...  1194    0.0    100%      
+MZ097909.1 Gadus chalcogrammus isolate DF1-3 cytochrome c oxid...  1194    0.0    100%      
+PZ284879.1 Gadus chalcogrammus voucher USNM:FISH:487032 mitoch...  1194    0.0    100%      
+MZ097916.1 Gadus chalcogrammus isolate DF1-10 cytochrome c oxi...  1194    0.0    100%      
+OQ932941.1 Gadus chalcogrammus voucher s06 cytochrome c oxidas...  1194    0.0    100%      
+MZ097914.1 Gadus chalcogrammus isolate DF1-8 cytochrome c oxid...  1194    0.0    100%      
+MZ097918.1 Gadus chalcogrammus isolate DF1-12 cytochrome c oxi...  1194    0.0    100%      
+MZ097912.1 Gadus chalcogrammus isolate DF1-6 cytochrome c oxid...  1194    0.0    100%      
+MZ097924.1 Gadus chalcogrammus isolate DF1-18 cytochrome c oxi...  1194    0.0    100%      
+MZ097921.1 Gadus chalcogrammus isolate DF1-15 cytochrome c oxi...  1194    0.0    100%      
+
+ALIGNMENTS
+>AB182303.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J4
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>PZ291804.1 Gadus chalcogrammus voucher USNM:FISH:485765 mitochondrion, complete 
+genome
+Length=16573
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>OL494247.1 Gadus chalcogrammus voucher H90 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=651
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>FJ165432.1 Gadus chalcogrammus voucher TZ05-FROSTI-171 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165435.1 Gadus chalcogrammus voucher TZ05-FROSTI-173 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165436.1 Gadus chalcogrammus voucher TZ05-FROSTI-170 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165437.1 Gadus chalcogrammus voucher TZ05-FROSTI-050 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165442.1 Gadus chalcogrammus voucher TZ-06-RICKER-854 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165443.1 Gadus chalcogrammus voucher TZ-06-RICKER-855 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ FJ165445.1 Gadus chalcogrammus voucher TZ-06-RICKER-857 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ GU440554.1 Gadus chalcogrammus voucher MFC376 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+ GU440555.1 Gadus chalcogrammus voucher MFC252 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+ KF929902.1 Gadus chalcogrammus voucher KUT 2067 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+ KY018790.1 Gadus chalcogrammus voucher MT08271 cytochrome oxidase subunit 
+I (COI) gene, partial cds; mitochondrial
+Length=652
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>AM489719.1 Theragra finnmarchica complete mitochondrial genome
+Length=16570
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>PZ284884.1 Gadus chalcogrammus voucher USNM:FISH:485767 mitochondrion, complete 
+genome
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5494  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5553
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5554  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5613
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5614  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5673
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5674  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5733
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5734  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5793
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5794  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5853
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5854  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5913
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5914  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5973
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5974  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6033
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6034  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6093
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6094  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6142
+
+
+>AB182302.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J3
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>KX119441.1 Gadus chalcogrammus isolate 61 cytochrome c oxidase subunit I 
+(COI) gene, partial cds; mitochondrial
+ KX119443.1 Gadus chalcogrammus isolate 64 cytochrome c oxidase subunit I 
+(COI) gene, partial cds; mitochondrial
+Length=655
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>OL494334.1 Gadus chalcogrammus voucher H332 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=651
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>MN879772.1 Gadus chalcogrammus cytochrome c oxidase subunit I (COX1) gene, 
+partial cds; mitochondrial
+Length=655
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>MN850428.1 Gadus chalcogrammus isolate S1 cytochrome c oxidase subunit I 
+(COI) gene, partial cds; mitochondrial
+Length=649
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>MH035600.1 Gadus chalcogrammus voucher UW151990_5 mitochondrion, complete 
+genome
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MH035594.1 Gadus chalcogrammus voucher UW151985_4 mitochondrion, complete 
+genome
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5494  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5553
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5554  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5613
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5614  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5673
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5674  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5733
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5734  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5793
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5794  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5853
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5854  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5913
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5914  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5973
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5974  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6033
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6034  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6093
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6094  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6142
+
+
+>PZ284876.1 Gadus chalcogrammus voucher USNM:FISH:487031 mitochondrion, complete 
+genome
+Length=16574
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MW435064.1 Gadus chalcogrammus isolate 12280.seq cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=652
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>AB182304.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J5
+Length=16570
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MH035590.1 Gadus chalcogrammus voucher UW151042 mitochondrion, complete 
+genome
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MH035603.1 Gadus chalcogrammus voucher UW152903_1 mitochondrion, complete 
+genome
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>AB182308.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:B5
+Length=16570
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>PV495993.1 Gadus chalcogrammus voucher X16 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495994.1 Gadus chalcogrammus voucher X17 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495995.1 Gadus chalcogrammus voucher X23 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495996.1 Gadus chalcogrammus voucher X30 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495997.1 Gadus chalcogrammus voucher X31 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495998.1 Gadus chalcogrammus voucher X34 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV495999.1 Gadus chalcogrammus voucher X36 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496000.1 Gadus chalcogrammus voucher X41 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496001.1 Gadus chalcogrammus voucher H11 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496002.1 Gadus chalcogrammus voucher H14 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496003.1 Gadus chalcogrammus voucher H15 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496004.1 Gadus chalcogrammus voucher H29 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496005.1 Gadus chalcogrammus voucher Y9 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496006.1 Gadus chalcogrammus voucher Y14 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496007.1 Gadus chalcogrammus voucher Y23 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496008.1 Gadus chalcogrammus voucher Y37 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496009.1 Gadus chalcogrammus voucher A1 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496010.1 Gadus chalcogrammus voucher A2 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496011.1 Gadus chalcogrammus voucher A4 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496012.1 Gadus chalcogrammus voucher A5 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496013.1 Gadus chalcogrammus voucher A7 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496014.1 Gadus chalcogrammus voucher A8 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496015.1 Gadus chalcogrammus voucher A9 cytochrome c oxidase subunit I 
+(COX1) gene, partial cds; mitochondrial
+ PV496016.1 Gadus chalcogrammus voucher A11 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496017.1 Gadus chalcogrammus voucher A13 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496018.1 Gadus chalcogrammus voucher A17 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496019.1 Gadus chalcogrammus voucher A20 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+ PV496020.1 Gadus chalcogrammus voucher A21 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=1404
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  3    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  62
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  63   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  122
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  182
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  183  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  242
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  243  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  302
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  303  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  362
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  363  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  422
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  423  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  482
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  483  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  542
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  543  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  602
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  603  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  651
+
+
+>JQ354093.1 Gadus chalcogrammus voucher UW:047698 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+ JQ354095.1 Gadus chalcogrammus voucher UW:118646 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+ JQ354096.1 Gadus chalcogrammus voucher UW:047697 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+Length=673
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  8    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  67
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  68   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  127
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  128  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  187
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  188  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  247
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  248  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  307
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  308  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  367
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  368  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  427
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  428  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  487
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  488  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  547
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  548  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  607
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  608  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  656
+
+
+>JQ354518.1 Gadus chalcogrammus voucher UW:150487 cytochrome oxidase subunit 
+1 (COI) gene, partial cds; mitochondrial
+Length=677
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  11   CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  70
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  71   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  130
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  131  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  190
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  191  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  250
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  251  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  310
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  311  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  370
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  371  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  430
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  431  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  490
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  491  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  550
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  551  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  610
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  611  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  659
+
+
+>MH035604.1 Gadus chalcogrammus voucher UW152907 mitochondrion, complete 
+genome
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>AB182305.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:B2
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MH035611.1 Gadus chalcogrammus voucher UW119164 mitochondrion, partial genome
+Length=16570
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>PZ284868.1 Gadus chalcogrammus voucher USNM:FISH:485769 mitochondrion, complete 
+genome
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5494  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5553
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5554  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5613
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5614  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5673
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5674  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5733
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5734  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  5793
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5794  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5853
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5854  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5913
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5914  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5973
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5974  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6033
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6034  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6093
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6094  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6142
+
+
+>MH018252.1 Gadus chalcogrammus mitochondrion, complete genome
+Length=16571
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4475  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  4534
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4535  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  4594
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4595  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  4654
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4655  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  4714
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4715  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  4774
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4775  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  4834
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4835  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  4894
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4895  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  4954
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  4955  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  5014
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5015  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  5074
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5075  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  5123
+
+
+>HM421738.1 Gadus chalcogrammus voucher RUSALCA09-112 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ HQ712777.1 Gadus chalcogrammus voucher BASIS2007-118 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+ HQ712778.1 Gadus chalcogrammus voucher BASIS2007-170 cytochrome oxidase 
+subunit 1 (COI) gene, partial cds; mitochondrial
+Length=648
+
+ Score = 1197 bits (648),  Expect = 0.0
+ Identities = 648/648 (100%), Gaps = 0/648 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACA  648
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACA  648
+
+
+>KX017720.1 Gadus chalcogrammus isolate X12 cytochrome oxidase subunit 1 
+(COI) gene, partial cds; mitochondrial
+Length=650
+
+ Score = 1195 bits (647),  Expect = 0.0
+ Identities = 647/647 (100%), Gaps = 0/647 (0%)
+ Strand=Plus/Plus
+
+Query  3    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  62
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  60
+
+Query  63   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  122
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  120
+
+Query  123  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  182
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  180
+
+Query  183  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  242
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  240
+
+Query  243  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  302
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  300
+
+Query  303  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  362
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  360
+
+Query  363  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  422
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  420
+
+Query  423  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  482
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  480
+
+Query  483  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  542
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  540
+
+Query  543  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  602
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  600
+
+Query  603  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  647
+
+
+>KX017721.1 Gadus chalcogrammus isolate X13 cytochrome oxidase subunit 1 
+(COI) gene, partial cds; mitochondrial
+Length=650
+
+ Score = 1195 bits (647),  Expect = 0.0
+ Identities = 647/647 (100%), Gaps = 0/647 (0%)
+ Strand=Plus/Plus
+
+Query  3    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  62
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  60
+
+Query  63   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  122
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  120
+
+Query  123  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  182
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  180
+
+Query  183  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  242
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  240
+
+Query  243  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  302
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  300
+
+Query  303  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  362
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  360
+
+Query  363  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  422
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  420
+
+Query  423  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  482
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  480
+
+Query  483  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  542
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  540
+
+Query  543  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  602
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  600
+
+Query  603  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  647
+
+
+>KX017711.1 Gadus chalcogrammus isolate X3 cytochrome oxidase subunit 1 (COI) 
+gene, partial cds; mitochondrial
+Length=650
+
+ Score = 1195 bits (647),  Expect = 0.0
+ Identities = 647/647 (100%), Gaps = 0/647 (0%)
+ Strand=Plus/Plus
+
+Query  3    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  62
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  60
+
+Query  63   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  122
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  120
+
+Query  123  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  182
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  180
+
+Query  183  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  242
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  240
+
+Query  243  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  302
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  300
+
+Query  303  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  362
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  360
+
+Query  363  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  422
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  420
+
+Query  423  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  482
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  480
+
+Query  483  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  542
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  540
+
+Query  543  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  602
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  600
+
+Query  603  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  647
+
+
+>KX017712.1 Gadus chalcogrammus isolate X4 cytochrome oxidase subunit 1 (COI) 
+gene, partial cds; mitochondrial
+Length=650
+
+ Score = 1195 bits (647),  Expect = 0.0
+ Identities = 647/647 (100%), Gaps = 0/647 (0%)
+ Strand=Plus/Plus
+
+Query  3    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  62
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  60
+
+Query  63   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  122
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  120
+
+Query  123  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  182
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  180
+
+Query  183  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  242
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  240
+
+Query  243  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  302
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  300
+
+Query  303  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  362
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  360
+
+Query  363  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  422
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  420
+
+Query  423  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  482
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  480
+
+Query  483  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  542
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  540
+
+Query  543  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  602
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  600
+
+Query  603  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  647
+
+
+>KX017726.1 Gadus chalcogrammus isolate X18 cytochrome oxidase subunit 1 
+(COI) gene, partial cds; mitochondrial
+Length=650
+
+ Score = 1195 bits (647),  Expect = 0.0
+ Identities = 647/647 (100%), Gaps = 0/647 (0%)
+ Strand=Plus/Plus
+
+Query  3    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  62
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    TTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCATTC  60
+
+Query  63   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  122
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGATCG  120
+
+Query  123  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  182
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  TTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGGCT  180
+
+Query  183  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  242
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  TTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAATAA  240
+
+Query  243  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  302
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  ATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGGTG  300
+
+Query  303  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  362
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGCTC  360
+
+Query  363  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  422
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATCAA  420
+
+Query  423  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  482
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  TTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTCAC  480
+
+Query  483  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  542
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  AGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCTAT  540
+
+Query  543  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  602
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  CTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATACTT  600
+
+Query  603  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  CTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  647
+
+
+>MZ097915.1 Gadus chalcogrammus isolate DF1-9 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097925.1 Gadus chalcogrammus isolate DF1-19 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097922.1 Gadus chalcogrammus isolate DF1-16 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>OL494265.1 Gadus chalcogrammus voucher H137 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=651
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            |||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>MZ097911.1 Gadus chalcogrammus isolate DF1-5 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097917.1 Gadus chalcogrammus isolate DF1-11 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>OL494315.1 Gadus chalcogrammus voucher H304 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=651
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            |||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+
+
+>MZ097923.1 Gadus chalcogrammus isolate DF1-17 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097909.1 Gadus chalcogrammus isolate DF1-3 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>PZ284879.1 Gadus chalcogrammus voucher USNM:FISH:487032 mitochondrion, complete 
+genome
+Length=16570
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+
+Query  61    TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5555  TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  5614
+
+Query  121   CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5615  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  5674
+
+Query  181   CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5675  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  5734
+
+Query  241   AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+             ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  5735  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTACTCCTTTTAGCATCCTCTGG  5794
+
+Query  301   TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5795  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  5854
+
+Query  361   TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5855  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  5914
+
+Query  421   AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5915  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  5974
+
+Query  481   ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5975  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  6034
+
+Query  541   ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6035  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  6094
+
+Query  601   TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+             |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  6095  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  6143
+
+
+>MZ097916.1 Gadus chalcogrammus isolate DF1-10 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>OQ932941.1 Gadus chalcogrammus voucher s06 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=675
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  13   CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  72
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  73   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  132
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  133  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  192
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  193  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  252
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            |||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||
+Sbjct  253  AAATAACATAAGCTTCTGGCTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  312
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  313  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  372
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  373  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  432
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  433  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  492
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  493  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  552
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  553  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  612
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  613  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  661
+
+
+>MZ097914.1 Gadus chalcogrammus isolate DF1-8 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097918.1 Gadus chalcogrammus isolate DF1-12 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097912.1 Gadus chalcogrammus isolate DF1-6 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097924.1 Gadus chalcogrammus isolate DF1-18 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+>MZ097921.1 Gadus chalcogrammus isolate DF1-15 cytochrome c oxidase subunit 
+I (COX1) gene, partial cds; mitochondrial
+Length=658
+
+ Score = 1194 bits (646),  Expect = 0.0
+ Identities = 648/649 (99%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  4    CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGGACAGCCCTAAGCCTGCTCAT  63
+
+Query  61   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  64   TCGAGCAGAGCTAAGTCAACCTGGTGCACTTCTTGGTGATGATCAAATTTATAATGTGAT  123
+
+Query  121  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  180
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  124  CGTTACAGCGCACGCTTTCGTAATAATTTTCTTTATAGTAATACCACTAATAATTGGAGG  183
+
+Query  181  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  CTTTGGAAACTGACTCATTCCTCTAATGATCGGTGCCCCAGATATAGCTTTCCCTCGAAT  243
+
+Query  241  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  244  AAATAACATAAGCTTCTGACTTCTTCCCCCATCTTTCCTGCTCCTTTTAGCATCCTCTGG  303
+
+Query  301  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  360
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  304  TGTAGAAGCTGGGGCTGGAACAGGCTGAACTGTCTATCCACCTTTAGCCGGAAACCTCGC  363
+
+Query  361  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  420
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  364  TCATGCTGGGGCATCTGTTGATCTCACTATTTTCTCTCTTCATCTAGCAGGGATTTCATC  423
+
+Query  421  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  480
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  424  AATTCTTGGGGCAATTAATTTTATTACCACAATTATTAATATGAAACCTCCAGCAATTTC  483
+
+Query  481  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  484  ACAGTACCAAACACCCCTATTTGTTTGAGCAGTACTAATTACAGCCGTGCTTCTACTTCT  543
+
+Query  541  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  600
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  544  ATCTCTCCCCGTCTTAGCAGCTGGTATCACAATACTTCTAACTGACCGTAATCTTAATAC  603
+
+Query  601  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  649
+            |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  604  TTCTTTCTTCGATCCTGCTGGAGGGGGTGACCCCATTTTATATCAACAC  652
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Jul 18, 2026  1:17 AM
+  Number of letters in database: 948,086,538,397
+  Number of sequences in database:  128,547,243
+
+Lambda      K        H
+    1.33    0.621     1.12 
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+Matrix: blastn matrix:1 -2
+Gap Penalties: Existence: 0, Extension: 0
+Number of Sequences: 128547243
+Number of Hits to DB: 14873439
+Number of extensions: 1999
+Number of successful extensions: 1999
+Number of sequences better than 10: 1950
+Number of HSP's better than 10 without gapping: 0
+Number of HSP's gapped: 1950
+Number of HSP's successfully gapped: 1950
+Length of query: 649
+Length of database: 948086538397
+Length adjustment: 36
+Effective length of query: 613
+Effective length of database: 943458837649
+Effective search space: 578340267478837
+Effective search space used: 578340267478837
+A: 0
+X1: 13 (25.0 bits)
+X2: 32 (59.1 bits)
+X3: 54 (99.7 bits)
+S1: 13 (25.1 bits)
+S2: 25 (47.3 bits)
+
+

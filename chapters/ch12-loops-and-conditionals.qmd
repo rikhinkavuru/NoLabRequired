@@ -1,0 +1,380 @@
+# Loops and conditionals
+
+The human *BRCA1* transcript runs to 7,088 bases, and the protein it codes for
+starts at base 114. Base 114 is an A, base 115 is a T, base 116 is a G. Read
+through the rest of the transcript and the same three letters turn up 139 more
+times. Nothing in the sequence marks which of the 140 the cell uses. So how
+would you find all of them, and what would it take to pick the right one?
+
+## Most ATGs are not start codons
+
+Three letters is not much of a pattern. Four bases in the first position, four
+in the second, four in the third: 4 × 4 × 4 = 64 different three-letter words.
+If bases turned up at random, about one position in 64 would spell ATG by
+accident, and 7,088 ÷ 64 is about 111.
+
+The real transcript has 140 of them, and real sequence isn't random, so the two
+numbers were never going to agree. The estimate still does its job: a
+three-letter pattern is short enough to turn up everywhere.
+
+ATG codes for the amino acid methionine, and it does that wherever it appears.
+Every methionine in the middle of a protein is an ATG in the sequence behind it.
+A [start codon]{.term def="The ATG where translation begins. The same three
+letters appear elsewhere in a gene and code methionine there instead."} isn't a
+different word from those. It's the same word in a particular place.
+
+The ribosome loads onto the front end of the messenger RNA, moves along, and
+begins translating at the first ATG it meets. That's called the scanning model.
+Position is what makes a start codon, and position is not a property of the
+three letters.
+
+ATG isn't formally the only one. NCBI's standard genetic code lists CTG and TTG
+as start codons too, and Chapter 13 prints that table in full. This chapter
+looks for ATG and nothing else, which is a decision I've made for you.
+
+### One sequence, three ways to read it
+
+Translation reads bases three at a time, with no gaps and no overlaps. Start at
+base 114 and you get one set of codons. Start at 115 and every codon after it
+is different, because each one has shifted by a base.
+
+That choice is the [reading frame]{.term def="Which of the three ways of
+chopping a sequence into triplets you are using. Shift by one base and every
+codon changes."}. A DNA strand has three of them, and only one of them produces
+the protein.
+
+An ATG sitting 40 bases downstream of the real start never gets read as a word
+at all. Divide 40 by 3 and you get 13 with 1 left over. That A is the second
+base of a codon, the T closes that same codon, and the G opens the next one.
+Three letters, two codons, no methionine.
+
+::: {.why}
+Annotating a new bacterial genome is this problem at scale: a few million bases
+of continuous sequence, nothing labeled. The software that does it begins where
+you're about to begin, by listing every start codon, and the rest of gene
+finding is throwing most of that list away.
+:::
+
+## Doing the same thing to every position
+
+Chapter 11 kept the first 200 bases in `brca1`, and this chapter needs all
+7,088 of them. The cell below reads the file and puts the whole transcript into
+that same variable.
+
+```{python}
+text = open("data/sequences/brca1_five_species.fasta").read()
+lines = text.split(">")[1].splitlines()
+brca1 = "".join(lines[1:])
+print(lines[0])
+print(len(brca1))
+```
+
+Two lines came back. The header names the record you got: this file holds five
+species and the human transcript is only the first of them. Under the header is
+7,088, the same number Chapter 5 read off the NCBI record, so the file is what
+its name says.
+
+Reading files properly is Chapter 15's job. The sequence stays in `brca1` for
+the rest of the chapter, as long as the runtime doesn't disconnect.
+
+A `for` loop runs the same lines of code once for each item you hand it. Here
+the items come from `range(5)`, which hands out 0, 1, 2, 3, 4 and then stops.
+
+```{python}
+for i in range(5):
+    print(i, brca1[i])
+```
+
+`i` is an ordinary variable. The loop sets it to 0, runs the indented lines,
+sets it to 1, and keeps going until `range` runs out. Indentation is the only
+thing marking which lines belong to the loop, and Python has no closing bracket
+to end one.
+
+You asked for `range(5)` and got five numbers beginning at zero, so the last
+one is four. That's the same off-by-one you met in Chapter 11.
+
+Give `range` two numbers and it starts at the first and stops before the
+second.
+
+```{python}
+for i in range(113, 116):
+    print(i, brca1[i])
+```
+
+Those three bases are the start codon. Index 113 in Python is base 114 counting
+from one, and converting between the two is the whole of Exercise 12.1.
+
+::: {.check}
+Run that loop. It prints `A`, then `T`, then `G`. If it prints `T`, `G`, `G`,
+you fed the database's 114 straight into `range` as a Python index. Every
+position you report for the rest of this chapter would then be one base to the
+right of where it really is.
+:::
+
+A third number tells `range` how far to jump each time. Step by three and you
+walk the sequence codon by codon, which is what the ribosome does.
+
+```{python}
+for i in range(113, 125, 3):
+    print(i, brca1[i:i + 3])
+```
+
+Those are the first four codons of *BRCA1*, and you'll turn them into amino
+acids in Chapter 13.
+
+## Asking a question about each one
+
+To find something, ask a question at each position and act only when the answer
+is yes. The tool for that is `if`, and it runs its indented block only when the
+test comes out true.
+
+The test is usually a comparison. There are six of them.
+
+| Operator | Asks |
+|---|---|
+| `==` | are these two equal |
+| `!=` | are these two different |
+| `<` | is the left one smaller |
+| `>` | is the left one bigger |
+| `<=` | smaller or equal |
+| `>=` | bigger or equal |
+
+Take a slice of three bases and compare it against the string `"ATG"`.
+
+```{python}
+i = 113
+if brca1[i:i + 3] == "ATG":
+    print("start codon at", i)
+```
+
+One equals sign assigns a value. Two equals signs ask a question.
+
+`in` does two different jobs. Inside a `for` statement it means "take each item
+from". On its own it asks whether one thing appears inside another.
+
+```{python}
+print("ATG" in brca1)
+print("ATGATGATG" in brca1)
+```
+
+`True` and `False` are Python's two words for yes and no, and they're what a
+comparison hands back when you print it instead of testing it. Both questions
+are about the entire sequence. They won't tell you where or how many, which is
+why you still need the loop.
+
+The other comparison operators earn their keep when you want the biggest of
+something. Walk 100 bases at a time, count the G and C in each window, and keep
+two variables for the record holder. Overwrite both whenever the window in
+front of you beats the record.
+
+```{python}
+best = 0
+best_start = 0
+for start in range(0, 500, 100):
+    window = brca1[start:start + 100]
+    gc = window.count("G") + window.count("C")
+    print(start, gc)
+    if gc > best:
+        best = gc
+        best_start = start
+print(best_start, best)
+```
+
+The first five lines are the windows in the order they went past. The last line
+is the record holder, and it stopped changing after the first pass: 59 at the
+front, then nothing above 42. That stretch sits ahead of the start codon at
+base 114 and repeats what Exercise 11.1 showed you on 40 bases.
+
+Don't read it as a verdict on the whole transcript. You've looked at 500 bases
+out of 7,088, and Exercise 12.2 slides this loop along all of them and turns up
+a richer window a long way past the middle. Single letters can't overlap, so
+`.count` is safe here.
+
+## Walkthrough: every ATG in BRCA1
+
+Now run the test at every position. The loop stops two bases early, because a
+three-base slice taken from the last base has nothing to take.
+
+```{python}
+count = 0
+for i in range(len(brca1) - 2):
+    if brca1[i:i + 3] == "ATG":
+        count = count + 1
+print(count)
+```
+
+Your loop found 140 of them, in a transcript whose protein starts once.
+
+Positions matter more than the total, so print them. This version stops at 500
+to keep the output on the page.
+
+```{python}
+for i in range(500):
+    if brca1[i:i + 3] == "ATG":
+        print(i, i + 1)
+```
+
+The left column is Python's index and the right column is the base number a
+database would give you. The top row is the real start codon. The nine rows
+under it are ATGs that begin nothing.
+
+The first ATG in the whole transcript is the one the cell uses, which is the
+scanning model behaving as advertised. It isn't a rule you can lean on. Some
+transcripts carry an ATG upstream of the real start.
+
+Now cut the list down with the biology. Chapter 5 took the coding range off the
+record as bases 114 to 5,705. Apply rule 2 from Chapter 11: the start moves to
+113 and the stop stays at 5,705. Step through that range in threes and every
+position you test begins a codon rather than sitting in the middle of one.
+
+```{python}
+count = 0
+for i in range(113, 5705, 3):
+    if brca1[i:i + 3] == "ATG":
+        count = count + 1
+print(count)
+```
+
+So 140 ATGs in the transcript, and 30 of them start a codon inside the coding
+sequence. Those 30 are the ones the ribosome reads as a word, and each one puts
+a methionine into the protein.
+
+A second route to that 30 runs through Chapter 13. Translate the coding
+sequence, count the letter M in the protein, and you get 30 again.
+
+Picking the one of those 30 that starts the protein took something the sequence
+doesn't contain. It took the coding range you read off the record in Chapter 5,
+which NCBI built out of evidence somebody else collected. The loop finds the
+pattern. What the pattern means is a separate job, and code won't settle it for
+you.
+
+### A shorter route that isn't the same route
+
+A string method can count a pattern with no loop at all.
+
+```{python}
+count = 0
+for i in range(len(brca1) - 1):
+    if brca1[i:i + 2] == "AA":
+        count = count + 1
+print(brca1.count("ATG"), brca1.count("AA"), count)
+```
+
+`brca1.count("ATG")` agrees with your loop at 140. `brca1.count("AA")` says 634,
+and the loop that tests every position says 883.
+
+::: {.trap}
+`.count` moves left to right, and after a match it carries on from the end of
+that match rather than from the next base. So overlapping copies get skipped:
+`"AAAA".count("AA")` returns 2 when three positions start an `AA`. ATG can't
+overlap itself, which is the only reason `.count` agreed above. Neither answer
+errors, and the wrong number looks exactly like the right one.
+:::
+
+## Exercises
+
+Solutions are in the book's repository under `scripts/solutions/`. Work the
+exercise first.
+
+::: {.exercise num="12.1" time="25 minutes"}
+::: {.goal}
+Find every ATG in the human *BRCA1* transcript and report where they are, in
+both coordinate systems at once.
+:::
+::: {.given}
+`brca1`, the 7,088-base string loaded at the top of this chapter. A match
+counts wherever the three letters appear, including matches inside the
+untranslated ends.
+:::
+::: {.produce}
+One line per match, two numbers on it: the Python index, then the same position
+counting from one. 140 lines, in ascending order.
+:::
+::: {.check}
+Your first line reads `113 114`. The number 114 has to appear in the right-hand
+column, because that's where the coding sequence starts. Chapter 5 took that
+number off the database rather than out of your code, which is what makes it
+worth checking against. If your right-hand column starts at 113 you printed the
+index twice. If it starts at 115 you converted twice. Count your lines as well:
+anything other than 140 means your `range` stopped in the wrong place.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+::: {.exercise num="12.2" time="35 minutes"}
+::: {.goal}
+Slide a window along the transcript, work out the GC content of each window,
+and report the richest one. Do it for two window sizes.
+:::
+::: {.given}
+`brca1` again. A window of 100 bases starting at every position in turn, then
+the same thing with a window of 500. Several windows tie for the top score, so
+keep the first one you meet and let a later window take the record only when it
+scores strictly higher. Write your prediction down before you run anything.
+When the window grows, what happens to the GC fraction you report? And what
+happens to where in the transcript you find it?
+:::
+::: {.produce}
+Two rows. Each row carries the window size, the 1-based start of the best
+window, and its GC fraction rounded to two decimals. Plus the prediction you
+made first.
+:::
+::: {.check}
+The 100-base window starts at base 5,598 and scores 0.61. The 500-base window
+starts at base 5,316 and scores 0.54. If your fractions match but your starts
+sit further along, you kept the last tied window instead of the first, and
+changing `>=` back to `>` moves them. One invariant catches the real bugs: a
+500-base window is five 100-base windows averaged together, so its GC can never
+beat the best 100-base window. If your longer window scores higher, the bug is
+in your arithmetic and not in the biology.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+<!-- nlr-allow: 5598 5316 634 883 500 5000 -->
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/sequences/brca1_five_species.fasta'"}
+Python is talking, and it's telling you where it looked. It searched the folder
+the notebook is standing in and found nothing by that name. Either the data
+folder isn't in this session yet or it sits somewhere other than the path says.
+Nothing below this cell will run until it does, and Chapter 15 covers where a
+notebook looks and how to point it somewhere else.
+:::
+
+::: {.errfix err="IndentationError: expected an indented block after 'for' statement on line 1"}
+The line after your `for` isn't indented. Indentation is how Python knows which
+lines belong to the loop, so a loop with nothing indented under it has no body.
+Put four spaces at the front of every line the loop should repeat.
+:::
+
+::: {.errfix err="SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?"}
+You wrote one equals sign inside an `if`. One assigns a value, two ask whether
+two things match. Python guessed the fix and printed it inside the message.
+Take the guess: change the `=` to `==` on the line the traceback names.
+:::
+
+::: {.errfix err="IndexError: string index out of range"}
+You asked for a base past the end of the sequence. A loop that runs to
+`len(brca1)` and then reads `brca1[i + 2]` runs off the end on its last two
+passes. Stop the `range` early enough for the widest slice you take inside it.
+:::
+:::
+
+::: {.checkpoint}
+- Write a `for` loop over `range` and say what the loop variable holds on each
+  pass
+- Convert a list of Python indices into base numbers a database would
+  recognize, and check one of them against a number you already have
+- Explain why 140 ATGs in a transcript become 30 candidate codons and then one
+  answer
+- Say what `.count` does with overlapping matches, and name a pattern where
+  that changes your answer
+- Name the thing the annotation supplies that the sequence itself cannot
+:::

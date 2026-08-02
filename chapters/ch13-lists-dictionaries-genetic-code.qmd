@@ -1,0 +1,401 @@
+# Lists, dictionaries, and the genetic code
+
+Chapter 5 left you holding arithmetic. Bases 114 to 5,705 of `NM_007294.4` are
+5,592 bases, which is 1,864 codons, which is 1,863 amino acids and one stop. The
+protein those bases spell out is already sitting in NCBI as `NP_009225.1`, and
+you've never made it yourself. Between the two sits the genetic code, a lookup
+table with 64 rows. So what is a lookup table, to Python?
+
+<!-- nlr-allow: 1864 -->
+
+## What a list is good for
+
+Three codons in the standard genetic code mean stop. They're `TAA`, `TAG` and
+`TGA`, and nothing else about them matters yet. Put them in a list and look at
+what a list gives you.
+
+```{python}
+stop_codons = ["TAA", "TAG", "TGA"]
+print(len(stop_codons), "TGA" in stop_codons, "TGG" in stop_codons)
+```
+
+Square brackets, values separated by commas, and the order you typed stays the
+order you get. A [list]{.term def="An ordered run of values. You reach a value
+by its position, counting from zero."} is an ordered run of values, and you
+reach one by its position counting from zero, so `stop_codons[0]` is `"TAA"`.
+The `in` operator asks one question: is this value anywhere in the list? `TGA`
+is a stop codon. `TGG` is tryptophan, one letter away, and the answer comes back
+`False`.
+
+Now try to hold the whole genetic code the same way. A codon on its own isn't
+enough, because each entry has to carry the codon and what it codes for. So each
+entry becomes a small list of two.
+
+```{python}
+pairs = [["TTT", "F"], ["TTC", "F"], ["TTA", "L"], ["TTG", "L"]]
+
+for codon, amino_acid in pairs:
+    if codon == "TTG":
+        print(amino_acid)
+```
+
+Read that loop as a search. It walks the entries in order and prints when it
+reaches the one whose first item is `TTG`. Four entries is cheap. Put all 64
+codons in there and translate this gene, and you run that search 1,864 times. On
+a sequence this short you'll never see the cost in the clock.
+
+The expensive part is elsewhere. You wrote a search, and what you wanted was a
+question.
+
+## A dictionary answers instead of searching
+
+Same four codons, written the way you meant them.
+
+```{python}
+four_codons = {"TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L"}
+print(four_codons["TTG"])
+```
+
+Curly braces this time, and each entry is a key, a colon, then a value. A
+[dictionary]{.term def="A set of key and value pairs. You fetch a value by
+naming its key rather than by its position."} is a set of key and value pairs,
+and you get a value out by naming its key. `four_codons["TTG"]` isn't position
+three of anything. It's the question "what does TTG code for" written down.
+
+Keys and values behave differently, and that difference is the whole chapter. A
+key appears once. Ask for `TTG` and you get one answer, or the dictionary raises
+an error. Values repeat as often as they like, so `four_codons` has four keys
+and two distinct values, because `TTT` and `TTC` both code for phenylalanine.
+
+Python didn't invent that lopsidedness. The genetic code has it. Sixty-four
+codons across twenty amino acids means most amino acids own several codons. So
+codon to amino acid is a question with one answer, and amino acid to codon
+isn't. You can translate DNA into protein. You can't run that backwards and
+recover the DNA you started from, and no software will ever fix it for you.
+
+## Sixty-four keys, twenty-one answers
+
+You could type all 64 rows out by hand. Don't. A codon table typed from memory
+is 64 chances to get a row wrong. One wrong row puts a wrong letter at every
+place that codon appears, buried in 1,863 characters you were never going to
+read. Nothing errors. Nothing looks odd.
+
+The book ships the table as a file instead, generated from NCBI translation
+table 1. That's the code your nuclear genes use. Mitochondria use different
+codes, and so do a few single-celled groups. NCBI numbers each one separately on
+the page this table came from. Here are the first rows of the file.
+
+``` {.default filename="data/codon_table_standard.tsv"}
+codon	amino_acid	name	is_start
+TTT	F	Phenylalanine	no
+TTC	F	Phenylalanine	no
+TTA	L	Leucine	no
+TTG	L	Leucine	yes
+```
+
+Four columns, separated by tabs: the codon, its amino acid as a one-letter code,
+the full name, and a flag. Look at the flag on `TTG`. NCBI's note on table 1
+says the standard code allows initiation from `TTG` and `CTG` as well as `ATG`,
+so three codons in the file carry a `yes`. Chapter 12 looked for `ATG` and
+nothing else, and this chapter keeps that decision.
+
+Load the file into a dictionary. `open(...)` is the same borrowed line Chapter
+12 used to read the sequence file. Read it as "hand me the contents of this
+file" and leave it there. You'll meet `open` for real in Chapter 15.
+
+```{python}
+table_lines = open("data/codon_table_standard.tsv").read().splitlines()
+
+codon_table = {}
+for line in table_lines[1:]:
+    codon, amino_acid, name, is_start = line.split("\t")
+    codon_table[codon] = amino_acid
+
+print(len(codon_table), codon_table["ATG"], codon_table["TGA"])
+```
+
+`table_lines[1:]` skips the header row, which is the slice you met in Chapter
+11. Each line splits on its tabs into four pieces, and the loop keeps the first
+two: the codon becomes a key, its amino acid becomes the value. `name` and
+`is_start` get read and dropped.
+
+So `codon_table` holds 64 keys. `ATG` is `M`, methionine. `TGA` is `*`, the
+character translation software writes where a stop codon sits, and it means the
+ribosome stops rather than adding anything.
+
+Count how many codons each amino acid gets, to see how the 64 spread out.
+
+```{python}
+counts = {}
+for amino_acid in codon_table.values():
+    counts[amino_acid] = counts.get(amino_acid, 0) + 1
+
+print(len(counts))
+print(counts["L"], counts["S"], counts["R"], counts["M"], counts["W"])
+```
+
+`codon_table.values()` hands you the 64 values with the keys left behind.
+`counts.get(amino_acid, 0)` looks an amino acid up and returns 0 if it isn't
+there yet, which saves you checking first. That's the counting pattern this book
+uses, and Chapter 20 runs it on a much bigger table.
+
+Twenty-one outcomes: 20 amino acids and the stop. Leucine, serine and arginine
+get six codons each. Methionine and tryptophan get one each. That spread is what
+redundancy means in the genetic code, and it has a consequence you can measure
+right now.
+
+Take a codon and change one base. Three positions, three other bases at each,
+so nine neighbors. Count how many of the nine leave the amino acid alone, and
+how many turn the codon into a stop.
+
+```{python}
+for codon in ["CTG", "TGG"]:
+    silent = 0
+    stops = 0
+    for position in range(3):
+        for base in "ACGT":
+            neighbor = codon[:position] + base + codon[position + 1:]
+            if base != codon[position]:
+                if codon_table[neighbor] == codon_table[codon]:
+                    silent += 1
+                if codon_table[neighbor] == "*":
+                    stops += 1
+    print(codon, codon_table[codon], silent, stops)
+```
+
+`CTG` is one of leucine's six codons. Four of its nine neighbors are still
+leucine, and none of them is a stop. `TGG` is the only codon tryptophan has. Not
+one of its nine neighbors is still tryptophan, and two of them end the protein
+on the spot.
+
+::: {.why}
+This is what you're reading past when a paper reports that a variant changes one
+base. In a leucine codon like `CTG`, four of the nine single-base changes leave
+the protein exactly as it was. In the tryptophan codon, all nine change the
+protein and two of them cut it short. The phrase "a single base change" covers
+both, and the codon it landed in decides which one you're looking at.
+:::
+
+## Walkthrough: translating BRCA1
+
+You finished Chapter 12 with the whole human transcript in `brca1`. Colab throws
+your variables away when the runtime disconnects, so here's that same cell
+again, unchanged.
+
+```{python}
+text = open("data/sequences/brca1_five_species.fasta").read()
+lines = text.split(">")[1].splitlines()
+brca1 = "".join(lines[1:])
+print(len(brca1))
+```
+
+Now cut out the coding part. You read the range off the record back in Chapter
+5: bases 114 to 5,705. Those are 1-based positions counting the first base as
+base 1, and Python counts from zero, so base 114 sits at index 113. The far end
+needs no adjustment at all. A Python slice stops before the index you hand it,
+so 5705 takes you through base 5,705 and no further.
+
+```{python}
+coding = brca1[113:5705]
+print(len(coding), len(coding) / 3)
+```
+
+Look at the `.0` on the end of that second number. 5,592 divides by three with
+nothing left over. A coding sequence that doesn't divide by three is either
+mis-annotated or mis-sliced, and this is the cheapest place to catch it.
+
+Translate it. Step through `coding` three bases at a time and look up each
+codon.
+
+```{python}
+translated = ""
+for i in range(0, len(coding), 3):
+    translated += codon_table[coding[i:i + 3]]
+
+print(len(translated), translated.count("*"), translated[-1])
+```
+
+`range(0, len(coding), 3)` counts 0, 3, 6 and onwards to the end, so
+`coding[i:i + 3]` is exactly one codon each time round the loop.
+
+::: {.check}
+Your output should read `1864 1 *`. That's 1,864 codons, one stop, and the stop
+is the last character. More than one stop means your slice started in the wrong
+place, so every codon after it is shifted. A last character that isn't `*` means
+the slice ended in the wrong place. Either way, check both numbers in
+`brca1[113:5705]` before you go on.
+:::
+
+```{python}
+protein = translated[:-1]
+print(len(protein))
+print(protein[:9])
+```
+
+`translated[:-1]` drops the last character. A stop codon isn't an amino acid, so
+it has no place in a protein sequence. That leaves 1,863 residues, which is
+exactly the length `NP_009225.1` reports, and the first nine of them are
+`MDLSALRVE`. Exercise 13.2 checks the rest.
+
+One number here you can check against work you've already done. Back in Chapter
+12 you stepped through this coding sequence in threes and found 30 in-frame
+`ATG`s. Every `ATG` the ribosome reads as a word puts a methionine into the
+protein, so the letter `M` should turn up 30 times.
+
+```{python}
+print(protein.count("M"))
+```
+
+Two routes, two different pieces of code, one answer. Agreement between
+independent routes is the best evidence you can get with nobody to ask.
+
+### The strand you didn't translate
+
+You made one more decision than you noticed. `coding` came out of a RefSeq mRNA,
+which is already the strand and the direction that gets read. Try the other one
+and watch what comes back.
+
+```{python}
+pairing = {"A": "T", "C": "G", "G": "C", "T": "A"}
+
+other_strand = ""
+for base in reversed(coding):
+    other_strand += pairing[base]
+
+wrong = ""
+for i in range(0, len(other_strand), 3):
+    wrong += codon_table[other_strand[i:i + 3]]
+
+print(wrong[:20], wrong.count("*"), wrong.find("*"))
+```
+
+`pairing` is a dictionary too, four keys wide, and it's the base-pairing rule
+written down as a lookup. `reversed()` walks a string backwards. Together they
+hand you the complementary strand read the way a ribosome would read it.
+Translating that gives you 67 residues before the first stop turns up, and 93
+stops once you count the whole thing.
+
+::: {.trap}
+Any stretch of DNA has two strands and three reading frames on each, so six ways
+to translate it. Only one of them gave you `NP_009225.1`. All six produce
+letters, so the output looks equally healthy whichever one you're in. The wrong
+strand here handed back a clean run of 67 residues before its first stop and
+warned you about nothing. The fix in this chapter is one sentence: a RefSeq mRNA
+like `NM_007294.4` is already the strand that gets translated, so translate it
+exactly as it arrives. Sequence taken straight off a chromosome for a
+minus-strand gene like *BRCA1* has to be flipped first, and Chapter 17 gives you
+a one-line way to do the flip.
+:::
+
+## Exercises
+
+Solutions are in the book's repository under `scripts/solutions/`. Work the
+exercise first.
+
+::: {.exercise num="13.1" time="45 minutes"}
+::: {.goal}
+Write a translator that turns any coding sequence into a protein sequence, then
+run it on something shorter than *BRCA1* to prove it isn't hard-wired to one
+gene.
+:::
+::: {.given}
+A DNA string in uppercase `A`, `C`, `G` and `T` whose length divides by three,
+plus the `codon_table` dictionary you built above.
+:::
+::: {.produce}
+One string of one-letter amino acid codes, with `*` for each stop, and two
+numbers: how long the string is and how many stops it contains.
+:::
+::: {.check}
+Write down the length you expect before you run anything. On `coding` you should
+get 1,864 characters with one `*` at the end. On `coding[:30]`, the first 30
+bases, you should get 10 characters, `MDLSALRVEE`, and no `*` at all. If your
+translator throws the stop away for you, that's a decision you made, and
+Exercise 13.2 will make you undo it.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+::: {.exercise num="13.2" time="30 minutes"}
+::: {.goal}
+Check your protein against the one NCBI deposited, character by character.
+:::
+::: {.given}
+`NP_009225.1`, the protein record linked from `NM_007294.4`. Take the sequence
+in FASTA. It arrives wrapped across many lines, so drop the header and join the
+lines before you compare anything.
+:::
+::: {.produce}
+Three values: the length of your protein, the length of NCBI's, and whether the
+two strings are equal.
+:::
+::: {.check}
+1,863, 1,863 and `True`. If you got 1,864 residues you kept the stop codon, and
+NCBI doesn't. If yours is much shorter you started at base 1 instead of base 114
+and ran into a stop out in the untranslated part after 59 residues. If the two
+lengths agree and the strings don't, print the first position where they differ
+and go and look at the codon that produced it.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+That second exercise puts an outside authority on your code. You're reproducing
+a deposited protein from a deposited transcript, with a table you loaded and a
+loop you wrote. Either the strings match or they don't, and a string comparison
+gives no partial credit.
+
+::: {.asof}
+Checked against the live NCBI interface on 2 August 2026. `NP_009225.1` is
+reachable from the `NM_007294.4` record, and the protein record offers its
+sequence in FASTA. NCBI has moved and relabeled that link before, so look for
+the format name rather than for a button in a fixed place.
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="KeyError: 'CA'"}
+Python is talking, and it's the dictionary complaining. Every key in
+`codon_table` is three letters long. `CA` is two, so you ran off the end of a
+sequence whose length doesn't divide by three. The usual cause is translating
+the whole 7,088-base transcript instead of the 5,592-base coding part. Slice
+bases 114 to 5,705 out first.
+:::
+
+::: {.errfix err="KeyError: 'atg'"}
+Same dictionary, different cause. Your sequence is lowercase and the keys are
+uppercase, and Python compares text exactly. You met lowercase sequence back in
+Chapter 11, along with what it costs you. Call `.upper()` on the sequence before
+you translate it.
+:::
+
+::: {.errfix err="ValueError: not enough values to unpack (expected 4, got 1)"}
+Python is talking, and it's talking about the line that splits the file. You
+asked for four pieces and one came back, so the split found nothing to split on.
+The codon table is separated by tabs rather than commas, and a tab inside quotes
+is written `\t`. Check that character before you check anything else.
+:::
+
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/codon_table_standard.tsv'"}
+Python is talking, and it looked in the folder it's running from. That's the
+same folder Chapter 12 opened the sequence file from, so if that worked and this
+doesn't, you're in a new session or a different folder. Chapter 15 covers where
+a notebook looks and how to point it somewhere else.
+:::
+:::
+
+::: {.checkpoint}
+- Say what a list answers well and what a dictionary answers well, using the
+  genetic code as the example
+- Build a dictionary from a file and check that it holds 64 keys
+- Count the codons per amino acid, and name the two amino acids that have one
+  codon each
+- Translate a coding sequence and say why you drop the last character
+- Check a protein you translated against a deposited one, and name two ways the
+  two lengths can disagree
+- Say why translation runs in one direction only
+:::

@@ -1,0 +1,481 @@
+# Multiple alignment and trees
+
+Five species carry a version of *BRCA1*: human, chimpanzee, mouse, dog and
+chicken. All five coding sequences sit in
+`data/sequences/brca1_cds_five_species.fasta`. Their lineages split apart in
+some order, and inside that file the differences between the sequences are the
+only record of it. Can you get the order back out of the letters? And when a
+program hands you an order, what would tell you it's wrong?
+
+## A column has to mean the same thing five times
+
+In Chapter 18 you lined two sequences up. Each column held two letters and made
+one small claim: these two bases correspond.
+
+Five sequences make that claim ten times over in a single column, once for
+every pair you can pick out of five. A column now says all five of these bases
+sit at the same position in the same ancestral gene. Human against
+mouse might want a gap in one spot, and human against dog might want it three
+bases along. A [multiple sequence alignment]{.term def="One alignment of three
+or more sequences, in which every column makes a single claim about all of them
+at once."} has to pick one arrangement and hold it for every pair in the set.
+
+Here's the first 60 columns of the one Clustal Omega returned. I've dropped the
+running position count that the real file prints at the end of every row, so
+the block fits this page.
+
+``` {.default filename="data/alignment/brca1_cds_five_species.aln"}
+human           ATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAAATGTCATTAATGCTATGCAGAAA
+chimpanzee      ATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAAATGTCATTAACGCTATGCAGAAA
+mouse           ATGGATTTATCTGCCGTCCAAATTCAAGAAGTACAAAATGTCCTTCATGCTATGCAGAAA
+dog             ATGGATTTATCTGCGGATCGTGTTGAAGAAGTACAAAATGTTCTTAATGCTATGCAGAAA
+chicken         ATGGACTTGTCAGTGATTGCCATTGGAGACGTGCAAAATGTGCTTTCAGCCATGCAGAAG
+                ***** ** ** *         **  *** ** ********  **   ** ********
+```
+
+Read it down, not across. The bottom line is the conservation line, and it
+carries a `*` under every column where all five sequences hold the same letter
+and a space everywhere else. Column 1 is `A` five times. Columns 1 to 3 are the
+start codon `ATG`, which is where a coding sequence begins in all five.
+
+Now look at the run of stars near the right-hand end. The last nine columns are
+`ATGCAGAAA` in human and `ATGCAGAAG` in chicken. Eight of the nine are
+conserved and the ninth isn't, which is exactly what the conservation line
+shows.
+
+Nothing here computed the best possible arrangement of five sequences. That
+can't be done for anything past a few short ones, so an aligner takes a
+shortcut. It gets a rough idea of which sequences resemble which, aligns the
+closest ones first, then brings the rest in against what it has built so far.
+The ordering comes from a quick tree the program builds for itself. That tree
+is called a [guide tree]{.term def="A rough tree an aligner builds to decide
+what order to align sequences in. It is a scheduling device."}. It exists to
+schedule the work, and none of it is meant as a claim about history. Keep it
+apart from the tree Clustal hands back when the run finishes. Those are two
+different objects, and this chapter turns on the difference.
+
+## Gaps make the alignment longer than anything that went into it
+
+Sixty columns further on, at column 121, the alignment runs into a length
+difference.
+
+<!-- nlr-allow: 121 -->
+
+``` {.default filename="data/alignment/brca1_cds_five_species.aln"}
+human           CACATATTTTGCAAATTTTGCATGCTGAAACTTCTCAACCAGAAGAA---AGGGCCTTCA
+chimpanzee      CACATATTTTGCAAATTTTGCATGCTGAAACTTCTCAACCAGAAGAA---AGGGCCTTCA
+mouse           CACATATTTTGCAAATTTTGTATGCTGAAACTTCTTAACCAGAAGAA---AGGGCCTTCA
+dog             CACATATTTTGCAAATTTTGTATGCTGAAACTTCTCAACCAGAGGAA---GGGGCCTTCA
+chicken         CACGTATTCTGCAGATTCTGTATGTTTAAACTTCTCAGCAGAAAGAAAAAAGGTGTAATA
+                *** **** **** *** ** *** * ******** * *   * ***    **      *
+```
+
+Four species have three dashes where chicken has `AAA`. A dash isn't a letter
+in the sequence. It's the alignment saying this species has nothing at this
+position, and it costs a column that four of the five sequences never needed.
+
+The alignment can't tell you which way that happened. Chicken may have gained
+three bases, or the common ancestor of the four mammals may have lost them.
+Both stories produce the same picture, which is why the honest word for it is
+an *indel* rather than an insertion or a deletion.
+
+A column like that one makes the whole alignment wider than any sequence that
+went into it. Read the file in and count the dashes. The file has one row per
+species per block, and each of those rows starts with a letter, so that's the
+test for whether a line is sequence. One other line starts with a letter too,
+`CLUSTAL O(1.2.4)` at the top of the file, which is why the code below throws
+that one out by name.
+
+```{python}
+rows = {}
+for line in open("data/alignment/brca1_cds_five_species.aln"):
+    if line[:1].isalpha() and not line.startswith("CLUSTAL"):
+        name, chunk, position = line.split()
+        rows[name] = rows.get(name, "") + chunk
+
+for name in rows:
+    gaps = rows[name].count("-")
+    print(f"{name:11} {len(rows[name])} columns  {gaps} gaps  "
+          f"{len(rows[name]) - gaps} bases")
+```
+
+Every row is 5,838 columns wide, because every row has to be. The longest
+coding sequence that went in was the dog's at 5,637 bases, and the alignment is
+201 columns longer than that.
+
+::: {.check}
+Subtract each species' gap count from 5,838 and you get the length of the
+sequence that went in. Dog: 5,838 − 201 = 5,637. Human: 5,838 − 246 = 5,592.
+Chicken: 5,838 − 588 = 5,250. If one of yours doesn't land on a length from
+Chapter 5 or from the FASTA file, your parser picked up a line it shouldn't
+have.
+:::
+
+Now count the columns where all five agree. `zip` is the one from Chapter 18,
+widened: it hands you the five letters at position 0, then the five at position
+1, and so on down the alignment.
+
+```{python}
+columns = list(zip(*rows.values()))
+
+identical = 0
+for column in columns:
+    if len(set(column)) == 1 and "-" not in column:
+        identical += 1
+
+print(identical, "of", len(columns), "columns are identical in all five")
+print(round(100 * identical / len(columns), 1), "percent")
+```
+
+<!-- nlr-allow: 1787 -->
+
+Under a third of the gene survives unchanged across all five species. That's
+the number a conservation line is showing you, one screen at a time.
+
+## Running this yourself
+
+EMBL-EBI runs Clustal Omega as a public service. There's no account to make and
+nothing to install. You paste FASTA into a box, tell it the sequences are DNA
+rather than protein, and start the job. The five coding sequences together come
+to 28 kilobytes of text.
+
+<!-- nlr-allow: 28 -->
+
+Coding sequence, not mRNA. The untranslated ends of an mRNA aren't conserved
+between a human and a chicken. Put them in and both ends of the alignment fill
+up with columns that say nothing about the gene.
+
+::: {.asof}
+Checked against the live EMBL-EBI Clustal Omega service on 2 August 2026. Form
+labels move. Three things have to be on that form under some name: the box you
+paste sequences into, the choice between DNA and protein, and the control that
+starts the job. On that date the service built its tree by neighbor joining.
+:::
+
+The job queues, and then three results come back: the alignment you've been
+reading, a percent identity matrix, and a tree. All three are in
+`data/alignment/` in this book's repository, so nothing below depends on the
+service being up the evening you read it.
+
+## The identity matrix, and the floor underneath it
+
+The percent identity matrix is the alignment reduced to one number per pair.
+Here's the whole of it, with the comment lines at the top of the file dropped.
+
+``` {.default filename="data/alignment/brca1_cds_five_species.pim"}
+     1: human       100.00   99.28   73.18   83.90   49.25
+     2: chimpanzee   99.28  100.00   73.36   84.04   49.17
+     3: mouse        73.18   73.36  100.00   70.65   46.56
+     4: dog          83.90   84.04   70.65  100.00   49.34
+     5: chicken      49.25   49.17   46.56   49.34  100.00
+```
+
+<!-- nlr-allow: 46.56 49.34 73.36 84.04 49.17 -->
+
+Read the human row across. Chimpanzee comes in at 99.28 percent, dog at 83.90,
+mouse at 73.18 and chicken at 49.25. One row down, mouse to dog is 70.65.
+
+Stop on those two numbers for a second. Dog is closer to human than mouse is,
+by 83.90 − 73.18 = 10.72 percentage points. The gap isn't relatedness. NCBI
+Taxonomy groups mouse with human and chimpanzee and leaves the dog outside, and
+a later section here has you check that yourself. What the number reports is
+how much change has piled up, and change piles up faster in some lineages than
+in others.
+
+There's also a floor under the whole table that nothing on the page mentions.
+DNA has four letters. Two sequences with no relationship at all still agree at
+about one column in four, because a quarter is what random agreement between
+four letters looks like: 100 ÷ 4 = 25. So the 49.25 between human and chicken
+is 24.25 points above pure chance, and the 46.56 between mouse and chicken is
+closer to the floor still.
+
+::: {.why}
+The reason anyone builds a tree from a single gene is to answer a question
+about identity. You find a *BRCA1*-like sequence in an organism nobody has
+studied. Is it the same gene doing the same job, or a copy that split off long
+ago and drifted into something else? The branching order is the evidence, so
+getting the branching order wrong changes the biological claim you end up
+making.
+:::
+
+## A tree written as text
+
+The tree comes back as one string of names and punctuation, closed by a
+semicolon. This format is called [Newick]{.term def="A text format for trees.
+Parentheses group, commas separate, a colon and a number give a branch length,
+and a semicolon ends the tree."}, and it's what tree software reads and writes.
+Clustal breaks the string across lines wherever it likes. Here it is rewrapped
+into three so the grouping shows.
+
+``` {.default filename="data/alignment/brca1_cds_five_species.phylotree"}
+((human:0.00399,chimpanzee:0.00316):0.07035,
+ (mouse:0.15374,chicken:0.38062):0.04650,
+ dog:0.08637);
+```
+
+Parse it by hand, from the inside out. Four rules cover everything in it.
+
+1. A name is a leaf. `dog` is one sequence.
+2. A colon and a number after a name is the length of the branch leading to
+   that leaf.
+3. A pair of parentheses groups whatever is inside it, and the colon and number
+   after the closing parenthesis belong to the branch leading to that group.
+4. The semicolon ends the tree.
+
+So `(human:0.00399,chimpanzee:0.00316)` is a group of two, and the `:0.07035`
+after it is the branch that group hangs from. `(mouse:0.15374,chicken:0.38062)`
+is a second group of two. Then `dog:0.08637` sits on its own.
+
+Count the commas at the top level. There are two, so the outermost parentheses
+hold three items, not two. A tree with a root has exactly two things at the
+top, because a root is one split into two. Three items is Newick's way of
+saying this tree is unrooted. There's no oldest node in it, so it carries no
+direction of time and no answer to which lineage came off first. What the tree
+still claims is which sequences group with which.
+
+Branch lengths are estimated substitutions per site. Human's branch is 0.00399
+and chimpanzee's is 0.00316, so the distance between them along the tree is
+0.00399 + 0.00316 = 0.00715, or about 0.7 changes per hundred columns.
+
+::: {.check}
+Check that against the identity matrix. It puts human and chimpanzee at 99.28
+percent identical, so they differ at 100 − 99.28 = 0.72 percent of columns. The
+tree says 0.715 and the matrix says 0.72. Both numbers came off the same
+alignment, so this tells you your reading of the tree is right. It does not
+tell you the tree is right. If the two disagree by more than a rounding step,
+you added the wrong branches together.
+:::
+
+## Distances or likelihood
+
+There are two families of method for turning an alignment into a tree, and the
+difference between them matters for the rest of this chapter.
+
+A distance method throws the alignment away and keeps one number per pair,
+exactly like the matrix above. Then it looks for the tree whose branch lengths
+best reproduce those numbers. It's fast and it scales, which is why an aligner
+uses one for its guide tree.
+
+Maximum likelihood keeps every column. You give it a model of how bases change
+over time, and it asks which tree makes this exact alignment most probable. It
+scores one candidate tree after another. It's far slower on the same sequences,
+and it uses evidence a distance method throws away, including which base
+changed into which.
+
+Here's what one number per pair can't hold. It cannot tell "this site changed
+once" apart from "this site changed three times and landed back on the letter
+it started with". Over a short branch the difference is small. Over a long one
+it isn't, and the distance comes out too low. Published phylogenies mostly use
+maximum likelihood or a Bayesian method for that reason.
+
+So which kind is the tree in `data/alignment/`? Clustal Omega built two trees
+on this job. The first was the guide tree, and its work was over before the
+alignment existed. The second is the one you were handed: a tree built by a
+distance method from the finished alignment, which is what the EMBL-EBI service
+produces by default. Nothing in the file names the method, and nothing in it
+warns you a distance was involved.
+
+One more thing is missing. A published tree normally carries a support number
+on each internal branch. Here's how you get one. Build a fresh alignment the
+same width as the real one by drawing its columns at random, with the same
+column allowed to come up twice. Make a tree from that. Do the whole thing a
+few hundred times. A branch's support number is the percentage of those trees
+that contained it. The procedure is called the *bootstrap*, and those
+percentages are the numbers you see sitting on the branches of a published
+tree. A branch that survives nearly every resample is a different claim from
+one that survives half of them. Go back and count the support numbers in the
+Newick block. There are none.
+
+This book doesn't run a maximum-likelihood program, because doing it properly
+means picking a substitution model and defending the choice, and that's a
+chapter this book doesn't have. What you can do without one is read the tree
+you were given and check it against something outside itself. That's the rest
+of this chapter.
+
+## The tree groups a mouse with a chicken
+
+Take the topology on its own and compare it against NCBI Taxonomy, the
+classification NCBI hangs on every sequence record. NCBI assembles it from the
+published systematics literature rather than ruling on it, and none of the five
+placements below is in dispute. Human and chimpanzee are Primates, inside
+Euarchontoglires, inside Mammalia. Mouse is Rodentia, inside
+Euarchontoglires, inside Mammalia. Dog is Carnivora, inside Laurasiatheria,
+inside Mammalia. Chicken is Aves. All five are Tetrapoda.
+
+Four mammals and one bird, then. The computed tree pairs the mouse with the
+chicken.
+
+That isn't a subtle disagreement. Mouse shares a clade with human and
+chimpanzee that dog doesn't share, and chicken is outside all four. The
+grouping the tree reports puts a rodent and a bird together, to the exclusion
+of three other mammals. Rooting won't rescue it. A root only puts a direction
+on branches that are already there. This tree has a branch with mouse and
+chicken on one side and human, chimpanzee and dog on the other. Taxonomy needs
+mouse on the same side as the primates, and no tree does both.
+
+The cause is in the branch lengths, and you already have them. Mouse's branch
+is 0.15374. Chicken's is 0.38062. Every other number in that file is under
+0.09. The two primates only look short because they share a stem, so add
+human's two numbers to get from human out to the middle of the tree: 0.00399 +
+0.07035 = 0.07434. Still under 0.09. Those two are the fastest-changing
+sequences in the set, and it isn't close.
+
+Now put that together with the floor under the identity matrix. A long branch
+means many changed sites. DNA has four letters. When a site changes on two
+separate branches, there's a real chance both landed on the same letter, and
+the alignment shows a match that neither species inherited. The faster a branch
+runs, the more of these accidental matches it manufactures. Two fast branches
+manufacture them with each other.
+
+Mouse and chicken read 46.56 percent identical against a chance floor of 25.
+A distance method has no way to separate the accidental matches from the
+inherited ones. It reads the accidents as evidence and pulls the two longest
+branches toward each other. That effect has a name: *long-branch attraction*.
+Joseph Felsenstein worked out the conditions for it in 1978. It's why the two
+fastest-changing sequences in a small set are the ones most likely to come out
+as neighbors when they shouldn't.
+
+::: {.trap}
+A tree always has a shape. Every branch in that file carries a length, printed
+to five decimal places, and not one of them carries a confidence. Nothing marks
+the grouping the data supports least. The output of a wrong tree and the output
+of a right tree are the same kind of object. If you hadn't checked this one
+against NCBI Taxonomy, you'd have had no reason to doubt it.
+:::
+
+## What an outgroup is for
+
+An [outgroup]{.term def="A sequence you are confident sits outside the group
+you are studying, added to a tree so the rest of it can be oriented."} is a
+sequence you add on purpose, chosen because you're already sure it falls
+outside everything else in the set. It gives the tree something to be oriented
+against. The branch leading to the outgroup is where the root goes, and every
+other branch takes a direction from that.
+
+Frog is the obvious one here. `NM_001114491.1` is the *Xenopus tropicalis* copy
+of the gene, and its coding sequence is 4,779 bases. NCBI writes that symbol
+`brca1`, all lowercase, which is a third convention on top of the two Chapter 5
+gave you. NCBI Taxonomy puts frog in Amphibia, inside Tetrapoda, so it sits
+outside the birds and outside the mammals both.
+
+The six-sequence alignment and its tree are already in `data/alignment/`, under
+the name `brca1_cds_with_outgroup`. Don't open them yet. Exercise 19.2 asks you
+to write down what you think the frog will do before you look, and the
+prediction is most of the exercise.
+
+## One gene isn't a species tree
+
+Everything in this chapter came off one gene. Suppose the method were perfect
+and the alignment were perfect. The tree for a gene can still differ from the
+tree for the species carrying it. Two copies of a gene in two living species
+can trace back to a common ancestor older than the split between those
+species. When that happens the gene keeps a history of its own.
+
+That's why a published phylogeny uses many genes at once, and it's why a
+disagreement between a one-gene tree and NCBI Taxonomy isn't automatically a
+bug. The reasoning runs in an order, though. Check the method first. Grouping a
+rodent with a bird to the exclusion of three mammals is not a story about
+*BRCA1*, and the branch lengths told you which explanation to reach for.
+
+## Exercises
+
+::: {.exercise num="19.1" time="60 minutes"}
+::: {.goal}
+Find the grouping in the five-species tree that disagrees with NCBI Taxonomy,
+and say what produced it.
+:::
+::: {.given}
+`data/alignment/brca1_cds_five_species.phylotree`, the identity matrix beside
+it, and the classification of all five species from the NCBI Taxonomy browser.
+:::
+::: {.produce}
+Four things. The pair of species the tree groups together wrongly, the clade
+NCBI Taxonomy uses to contradict it, and the two branch lengths that explain
+the error. Then one sentence naming what a distance method cannot see.
+:::
+::: {.check}
+The two branch lengths you write down should be the two largest in the file.
+Test them against the other three. Human's distance to the middle of the tree
+is 0.00399 + 0.07035 = 0.07434, chimpanzee's is a shade less, and dog's is
+0.08637. Both of your numbers should be bigger than all three of those. If one
+isn't, you've picked a branch that isn't long, and long is the whole
+explanation.
+:::
+
+::: {.answerspace lines="7"}
+:::
+:::
+
+::: {.exercise num="19.2" time="30 minutes"}
+::: {.goal}
+Predict what adding the frog does to the tree, then read the tree that has it
+in.
+:::
+::: {.given}
+`data/alignment/brca1_cds_with_outgroup.phylotree`, which you have not opened
+yet. Write your prediction down before you do.
+:::
+::: {.produce}
+Three things, in this order. Your predicted topology for the six species in
+words, then the actual grouping in the file. Then one sentence on which part of
+your prediction was wrong.
+:::
+::: {.check}
+Chicken and frog come out as a pair. The four mammals sit together on the other
+side of the branch leading to them. The five-species tree never managed that,
+so the outgroup fixed the error you wrote down in Exercise 19.1. Look at the
+mammals before you call it a win. Mouse sits outside dog and the two primates,
+and NCBI Taxonomy puts mouse with the primates in Euarchontoglires and dog
+further out in Laurasiatheria. One error got fixed and one didn't, and nothing
+in the file marks either.
+:::
+
+::: {.answerspace lines="7"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/alignment/brca1_cds_five_species.aln'"}
+Python is speaking, and it's looking in the folder your notebook is standing
+in. Chapter 15 covered this: a path with no slash in front of it gets read from
+where you are. If your copy of the alignment sits next to the notebook, change
+the path to `"brca1_cds_five_species.aln"` and nothing else in the cell
+changes.
+:::
+
+::: {.errfix err="ValueError: not enough values to unpack (expected 3, got 2)"}
+Python is speaking, and it's counting fields. Each row of the file should be a
+name, a chunk of sequence and a running position, which is three. Yours has
+two, so you downloaded the alignment in a format that leaves the position count
+off. Either take the numbered Clustal format or change that line to
+`name, chunk = line.split()`.
+:::
+
+::: {.errfix err="KeyError: 'Human'"}
+Python is speaking. The keys in `rows` come from the FASTA headers you sent to
+the aligner, and those are lowercase. `rows['Human']` isn't `rows['human']`,
+and a dictionary won't guess. Print `list(rows)` to see the five names you
+actually have.
+:::
+
+::: {.errfix err="Your column count isn't 5,838 and your identity numbers don't match the ones printed here"}
+Nothing broke. You aligned something else. The usual cause is aligning the full
+mRNA records instead of their coding sequences, which drags the untranslated
+ends into the comparison and moves every number on the page. Check the length
+of what you submitted: the human coding sequence is 5,592 bases and the human
+mRNA is 7,088.
+:::
+:::
+
+::: {.checkpoint}
+- Read a Newick string by hand and name which sequences it groups together
+- Say why a five-way alignment has more columns than the longest sequence in it
+- Recover each input length from the alignment by subtracting that species' gaps
+- Name the grouping in the five-species tree that contradicts NCBI Taxonomy, and
+  the two branch lengths behind it
+- Explain why two fast-changing sequences get pulled together by a distance
+  method
+- Say what an outgroup did to this tree and name the one error it left in place
+:::

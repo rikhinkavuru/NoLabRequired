@@ -1,0 +1,141 @@
+# Who this is for
+
+This book is for somebody with no lab, no relevant degree, no budget and
+nobody to ask. You don't need anyone's permission to start, which is
+fortunate, because there's nobody standing there to give it. If that's roughly
+your situation, keep going.
+
+If it isn't, save yourself the time. Some readers have a supervisor, a cluster
+login and somebody two doors down who does this for a living. The Data
+Carpentry genomics lessons will get you further than this book will: free
+material, taught on the command line, on a machine somebody else set up for
+you. That last part is the thing you have and this book's reader doesn't.
+
+## What you need
+
+Three things, and that's the whole list.
+
+A browser, on any machine that runs a current one. Your connection is allowed
+to drop, and Chapter 4 covers what to do when it does. A phone will show you
+every website in Part 1, and it'll fight you the moment you have to type code.
+
+A Google account. It's free, and it's for Colab, the notebook service this
+book runs its code in. Chapter 4 is where you set that up. Nothing in Part 1
+needs it: NCBI, UniProt and the rest hand their records to anyone who asks,
+with no login and no email address.
+
+About three hours a week. Each exercise prints its own time estimate before you
+start it. Each chapter opens by naming the files you should already have, so a
+two-week gap costs you the time it takes to find them again. You'll have a
+two-week gap.
+
+### If your only machine is a school Chromebook
+
+Read this before the setup chapter. Google's own Colab FAQ says access for
+Workspace accounts "is controlled by the Workspace on/off control accessible to
+your organization's administrator". The same page says a school has to obtain
+parental consent before a student under 18 uses it. So Colab may not be there
+when you go looking, and the switch is on somebody else's desk.
+
+That's a policy about who owns the account. It says nothing about your machine
+and nothing about you. Part 1 needs no account at all, so you can work through
+it on the school Chromebook while you sort out where your code will run.
+Chapter 4 covers the school-account case and what to do instead.
+
+### If you're paying for data by the gigabyte
+
+Every download in this book states its size in the sentence that asks you to
+start it, so you can decide before you spend anything. The dataset the whole
+final project runs on is 513,592 bytes, which is about half a megabyte. A
+download written into a notebook lands on Google's machine rather than yours,
+so those sizes are a ceiling on what you pay rather than a bill.
+
+## What you don't need
+
+A math background. The arithmetic you'll do by hand is subtraction and
+division. Where a real statistical method turns up, Chapter 25 uses it, names
+what it assumes, and points at where the derivation lives.
+
+Prior programming. Chapter 11 starts at what a variable is, and every example
+in it is DNA, because there's no reason to learn strings twice.
+
+An institutional login. Every database you'll pull data from is open to anybody
+with a browser: NCBI, UniProt, the PDB, AlphaFold DB. None of them asks who you
+work for. Chapter 23 names the one kind of archive that does, and says why you
+can finish without it.
+
+## Do you need a master's for this?
+
+Ask on a forum whether you can do this without a degree and somebody will tell
+you to get a master's. One reply on r/bioinformatics reads "Do you have no
+degree or a completely unrelated degree? Very unrealistic." That answer is half
+right, and the half matters.
+
+Some jobs really do require the degree. It's printed in the posting, and no
+workbook argues its way past that.
+
+The analysis doesn't require it. NCBI serves the same record to a professor and
+to a stranger, and BLAST returns the same hits either way. Nothing you're about
+to do checks your credentials, because there's nothing there to check them
+with.
+
+Here's what this book can hand you, stated plainly because you've read the
+threads that say otherwise. By the end you can read the methods section of a
+paper in your own field and say what happened in it. You'll have a
+published figure reproduced from public data, with your code somewhere a
+stranger can open it. And you'll have a small analysis that nobody assigned
+you.
+
+What this book cannot hand you is a job offer ahead of a candidate with a PhD.
+Anybody who sells you a job at the price of a workbook is lying to you.
+
+One more thing, and then the subject is closed for the rest of the book. Teresa
+Attwood and colleagues, writing in *Briefings in Bioinformatics* in 2019,
+summarize two surveys of working practitioners. In the one run in 2013, with
+about 200 respondents, 76 percent considered their bioinformatics skills to be
+self-taught. Roughly 64 percent said the same in the 2014 survey, which had
+about twice as many people in it.
+
+Most of this field taught itself, so teaching yourself isn't what makes your
+position unusual. The unusual part is that you're unaffiliated: no
+institutional login, nobody down the hall. Everywhere this book would otherwise
+tell you to go and ask a colleague, it gives you something you can check by
+yourself instead. Every exercise ends with a check you can run on your own
+answer, because that's the job a colleague would otherwise be doing for you.
+
+## What this book leaves out
+
+Four subjects are missing on purpose.
+
+Statistics stops where the arithmetic stops. You'll get counts, rates,
+thresholds and one page on what running 27,179 tests at once does to a p-value.
+You won't get the derivation behind the model that produced it, and Chapter 25
+says so on the page where it uses one.
+
+Algorithm theory is out. You'll align two sequences and read what came back.
+You won't write the alignment algorithm yourself, and nothing here asks you to
+prove anything about it.
+
+Wet-lab methods are out. You need no bench, no freezer and no pipette.
+Somebody else generated every dataset you touch and deposited it in public,
+which is the whole reason this book is possible.
+
+The command line is out, and that one costs you something real. Plenty of
+bioinformatics software is driven from a terminal. One day the tool you want
+will have no web version, and you'll have to go and learn it then.
+
+What you get in exchange is that nothing gets installed on your machine.
+Exactly one line in this book installs anything, in Chapter 17, and it runs on
+Google's computer. Setup is where books like this one lose people, in the first
+hour, before any biology has happened. Software Carpentry's own write-up on
+teaching this material gives that section the title "Is it supposed to hurt
+this much?"
+
+::: {.checkpoint}
+- Decide, in one word, whether the first paragraph of this chapter describes
+  you
+- Name the three things this book needs from you, and check that you have each
+  one
+- Write down which hours of your week you're giving this, and where they are
+- Say what this book can hand you at the end, and name one thing it can't
+:::

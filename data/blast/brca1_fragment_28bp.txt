@@ -1,0 +1,765 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+
+BLASTN 2.17.0+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+RID: 6Z35UM5N014
+
+
+Database: Core nucleotide BLAST database
+           128,547,243 sequences; 948,086,538,397 total letters
+Query= brca1_fragment_28bp
+
+Length=28
+
+
+                                                                   Score     E     Max
+Sequences producing significant alignments:                       (Bits)  Value  Ident
+
+XM_063598597.1 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_055100855.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_054457701.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_063629068.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+XM_073005274.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair...  51.8    7e-04  100%      
+XM_034941183.3 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_055388044.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+XM_063656678.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_054546474.2 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_057300189.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_063629061.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+XM_057300192.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_057300203.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_057300195.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_063629060.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+XM_031011552.3 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+XM_063718834.1 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+PP465840.1 Homo sapiens isolate TWH-3503-0-1 breast and ovaria...  51.8    7e-04  100%      
+XM_063656705.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_063598596.1 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_054546455.2 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_055388042.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+OR676871.1 Homo sapiens isolate TWH-3684-0-1 truncated BRCA1 (...  51.8    7e-04  100%      
+XM_055256863.2 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+XM_063598601.1 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_063629072.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+XM_054457735.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_063629087.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA r...  51.8    7e-04  100%      
+PP465839.1 Homo sapiens isolate TWH-3747-0-1 truncated breast ...  51.8    7e-04  100%      
+XM_054457710.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_055388012.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+OQ417597.1 Homo sapiens truncated BRCA1 DNA repair associated ...  51.8    7e-04  100%      
+XM_055388018.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+XM_057300185.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_073005273.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair...  51.8    7e-04  100%      
+XM_055388030.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+XM_057300194.2 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_054457737.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_073005275.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair...  51.8    7e-04  100%      
+XM_063598594.1 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_063656682.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_009251711.4 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_054457705.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_063598592.1 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_063656687.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair asso...  51.8    7e-04  100%      
+XM_055100850.3 PREDICTED: Pan paniscus BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_073005270.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair...  51.8    7e-04  100%      
+XM_063718831.1 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+XM_055388036.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA re...  51.8    7e-04  100%      
+XM_054546454.2 PREDICTED: Pongo abelii BRCA1 DNA repair associ...  51.8    7e-04  100%      
+
+ALIGNMENTS
+>XM_063598597.1 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X39, mRNA
+Length=14806
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1260  GAACTCTGAGGACAAAGCAGCGGATACA  1287
+
+
+>XM_055100855.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X24, mRNA
+Length=14407
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  741  GAACTCTGAGGACAAAGCAGCGGATACA  768
+
+
+>XM_054457701.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X5, mRNA
+Length=7273
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  791  GAACTCTGAGGACAAAGCAGCGGATACA  818
+
+
+>XM_063629068.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X28, mRNA
+Length=3146
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  662  GAACTCTGAGGACAAAGCAGCGGATACA  689
+
+
+>XM_073005274.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X12, mRNA
+Length=4562
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  697  GAACTCTGAGGACAAAGCAGCGGATACA  724
+
+
+>XM_034941183.3 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X28, mRNA
+Length=14410
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  741  GAACTCTGAGGACAAAGCAGCGGATACA  768
+
+
+>XM_055388044.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X41, mRNA
+Length=3779
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  721  GAACTCTGAGGACAAAGCAGCGGATACA  748
+
+
+>XM_063656678.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X3, mRNA
+Length=6237
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  797  GAACTCTGAGGACAAAGCAGCGGATACA  824
+
+
+>XM_054546474.2 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X30, mRNA
+Length=6019
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  633  GAACTCTGAGGACAAAGCAGCGGATACA  660
+
+
+>XM_057300189.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X17, mRNA
+Length=14404
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  735  GAACTCTGAGGACAAAGCAGCGGATACA  762
+
+
+>XM_063629061.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X19, mRNA
+Length=7553
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1206  GAACTCTGAGGACAAAGCAGCGGATACA  1233
+
+
+>XM_057300192.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X21, mRNA
+Length=14401
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  732  GAACTCTGAGGACAAAGCAGCGGATACA  759
+
+
+>XM_057300203.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X49, mRNA
+Length=14209
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  663  GAACTCTGAGGACAAAGCAGCGGATACA  690
+
+
+>XM_057300195.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X25, mRNA
+Length=14401
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  732  GAACTCTGAGGACAAAGCAGCGGATACA  759
+
+
+>XM_063629060.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X18, mRNA
+Length=7556
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1209  GAACTCTGAGGACAAAGCAGCGGATACA  1236
+
+
+>XM_031011552.3 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X1, mRNA
+Length=7247
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  754  GAACTCTGAGGACAAAGCAGCGGATACA  781
+
+
+>XM_063718834.1 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X41, mRNA
+Length=2615
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  623  GAACTCTGAGGACAAAGCAGCGGATACA  650
+
+
+>PP465840.1 Homo sapiens isolate TWH-3503-0-1 breast and ovarian cancer susceptibility 
+protein 1 (BRCA1) mRNA, complete cds
+Length=5592
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  488  GAACTCTGAGGACAAAGCAGCGGATACA  515
+
+
+>XM_063656705.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X43, mRNA
+Length=4305
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1135  GAACTCTGAGGACAAAGCAGCGGATACA  1162
+
+
+>XM_063598596.1 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X38, mRNA
+Length=14281
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  735  GAACTCTGAGGACAAAGCAGCGGATACA  762
+
+
+>XM_054546455.2 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X9, mRNA
+Length=6696
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  717  GAACTCTGAGGACAAAGCAGCGGATACA  744
+
+
+>XM_055388042.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X39, mRNA
+Length=3780
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  719  GAACTCTGAGGACAAAGCAGCGGATACA  746
+
+
+>OR676871.1 Homo sapiens isolate TWH-3684-0-1 truncated BRCA1 (BRCA1) mRNA, 
+complete cds
+Length=4242
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  488  GAACTCTGAGGACAAAGCAGCGGATACA  515
+
+
+>XM_055256863.2 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X11, mRNA
+Length=7239
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  766  GAACTCTGAGGACAAAGCAGCGGATACA  793
+
+
+>XM_063598601.1 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X43, mRNA
+Length=14373
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  827  GAACTCTGAGGACAAAGCAGCGGATACA  854
+
+
+>XM_063629072.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X32, mRNA
+Length=3826
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  662  GAACTCTGAGGACAAAGCAGCGGATACA  689
+
+
+>XM_054457735.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X39, mRNA
+Length=4382
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1212  GAACTCTGAGGACAAAGCAGCGGATACA  1239
+
+
+>XM_063629087.1 PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated 
+(BRCA1), transcript variant X50, mRNA
+Length=3573
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  649  GAACTCTGAGGACAAAGCAGCGGATACA  676
+
+
+>PP465839.1 Homo sapiens isolate TWH-3747-0-1 truncated breast and ovarian 
+cancer susceptibility protein 1 (BRCA1) mRNA, complete cds
+Length=891
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  488  GAACTCTGAGGACAAAGCAGCGGATACA  515
+
+
+>XM_054457710.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X16, mRNA
+Length=6271
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  834  GAACTCTGAGGACAAAGCAGCGGATACA  861
+
+
+>XM_055388012.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X4, mRNA
+Length=7211
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  718  GAACTCTGAGGACAAAGCAGCGGATACA  745
+
+
+>OQ417597.1 Homo sapiens truncated BRCA1 DNA repair associated (BRCA1) mRNA, 
+complete cds
+Length=5031
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  488  GAACTCTGAGGACAAAGCAGCGGATACA  515
+
+
+>XM_055388018.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X13, mRNA
+Length=7208
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  718  GAACTCTGAGGACAAAGCAGCGGATACA  745
+
+
+>XM_057300185.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X6, mRNA
+Length=14502
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  830  GAACTCTGAGGACAAAGCAGCGGATACA  857
+
+
+>XM_073005273.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X11, mRNA
+Length=6417
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  724  GAACTCTGAGGACAAAGCAGCGGATACA  751
+
+
+>XM_055388030.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X26, mRNA
+Length=3942
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  758  GAACTCTGAGGACAAAGCAGCGGATACA  785
+
+
+>XM_057300194.2 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X22, mRNA
+Length=14926
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1257  GAACTCTGAGGACAAAGCAGCGGATACA  1284
+
+
+>XM_054457737.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X40, mRNA
+Length=4382
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1212  GAACTCTGAGGACAAAGCAGCGGATACA  1239
+
+
+>XM_073005275.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X13, mRNA
+Length=4479
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  698  GAACTCTGAGGACAAAGCAGCGGATACA  725
+
+
+>XM_063598594.1 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X36, mRNA
+Length=14376
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  830  GAACTCTGAGGACAAAGCAGCGGATACA  857
+
+
+>XM_063656682.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X10, mRNA
+Length=7696
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1217  GAACTCTGAGGACAAAGCAGCGGATACA  1244
+
+
+>XM_009251711.4 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X26, mRNA
+Length=6536
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  634  GAACTCTGAGGACAAAGCAGCGGATACA  661
+
+
+>XM_054457705.2 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X13, mRNA
+Length=7316
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  834  GAACTCTGAGGACAAAGCAGCGGATACA  861
+
+
+>XM_063598592.1 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X34, mRNA
+Length=14284
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  735  GAACTCTGAGGACAAAGCAGCGGATACA  762
+
+
+>XM_063656687.1 PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X19, mRNA
+Length=7693
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1214  GAACTCTGAGGACAAAGCAGCGGATACA  1241
+
+
+>XM_055100850.3 PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X5, mRNA
+Length=14932
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1     GAACTCTGAGGACAAAGCAGCGGATACA  28
+             ||||||||||||||||||||||||||||
+Sbjct  1260  GAACTCTGAGGACAAAGCAGCGGATACA  1287
+
+
+>XM_073005270.1 PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), 
+transcript variant X8, mRNA
+Length=7172
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  703  GAACTCTGAGGACAAAGCAGCGGATACA  730
+
+
+>XM_063718831.1 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X22, mRNA
+Length=6412
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  433  GAACTCTGAGGACAAAGCAGCGGATACA  460
+
+
+>XM_055388036.2 PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated 
+(BRCA1), transcript variant X33, mRNA
+Length=3893
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  712  GAACTCTGAGGACAAAGCAGCGGATACA  739
+
+
+>XM_054546454.2 PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), 
+transcript variant X8, mRNA
+Length=6696
+
+ Score = 51.8 bits (56),  Expect = 7e-04
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  1    GAACTCTGAGGACAAAGCAGCGGATACA  28
+            ||||||||||||||||||||||||||||
+Sbjct  720  GAACTCTGAGGACAAAGCAGCGGATACA  747
+
+
+  Database: Core nucleotide BLAST database
+    Posted date:  Jul 18, 2026  1:17 AM
+  Number of letters in database: 948,086,538,397
+  Number of sequences in database:  128,547,243
+
+Lambda      K        H
+   0.634    0.408    0.912 
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+Matrix: blastn matrix:2 -3
+Gap Penalties: Existence: 5, Extension: 2
+Number of Sequences: 128547243
+Number of Hits to DB: 49339694
+Number of extensions: 1316
+Number of successful extensions: 1316
+Number of sequences better than 1000: 31
+Number of HSP's better than 1000 without gapping: 0
+Number of HSP's gapped: 1316
+Number of HSP's successfully gapped: 31
+Length of query: 28
+Length of database: 948086538397
+Length adjustment: 25
+Effective length of query: 3
+Effective length of database: 944872857322
+Effective search space: 2834618571966
+Effective search space used: 2834618571966
+A: 0
+X1: 22 (20.1 bits)
+X2: 33 (29.8 bits)
+X3: 110 (99.2 bits)
+S1: 28 (26.5 bits)
+S2: 34 (31.9 bits)
+
+

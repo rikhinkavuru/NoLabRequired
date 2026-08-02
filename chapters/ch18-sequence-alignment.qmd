@@ -1,0 +1,519 @@
+# Sequence alignment
+
+Chapter 5 had you write down two protein lengths. Human BRCA1 is 1,863 amino
+acids and mouse Brca1 is 1,812. The coding sequences behind those proteins are
+5,592 and 5,439 bases, so the human one carries 153 bases the mouse one lacks.
+Where are they? One block near the end would mean one thing. Thirty small
+pieces scattered through the gene would mean something quite different. Nothing
+you've done so far can tell those two stories apart.
+
+## Lining two sequences up is a scoring problem
+
+A [pairwise alignment]{.term def="Two sequences written one above the other,
+gaps allowed, so every column holds one base from each or a base against a
+gap."} is what you get when you write two sequences one above the other and
+allow yourself to push gaps into either one. The format has no other rules.
+
+There are a great many ways to do it, and no program tries them all. None has
+to. The highest-scoring one can be computed directly, one column at a time,
+without the others ever being written down.
+
+Best by what standard, though? No output anywhere answers that, and it's the
+point of this chapter. You hand the program four numbers and it returns the
+arrangement with the highest total. It has no other definition of a good
+alignment, and it has no access to what actually happened to these two genes.
+
+The smallest example that shows it uses two made-up sequences, seven bases
+against five, so any global alignment of them needs two gap columns.
+
+```{python}
+from Bio.Align import PairwiseAligner
+
+toy_aligner = PairwiseAligner(mode="global")
+toy_aligner.match_score = 1
+toy_aligner.mismatch_score = -1
+toy_aligner.open_gap_score = -10
+toy_aligner.extend_gap_score = -1
+print(toy_aligner.align("GATTACA", "GTTCA")[0])
+```
+
+Read the printout in three rows. `target` is the first sequence you passed and
+`query` is the second. The row between them marks each column: `|` for a match,
+`.` for a mismatch, `-` for a gap.
+
+Now change one setting. Gaps get cheaper to open and dearer to extend, and
+nothing else moves.
+
+```{python}
+toy_aligner.open_gap_score = -2
+toy_aligner.extend_gap_score = -2
+print(toy_aligner.align("GATTACA", "GTTCA")[0])
+```
+
+Different answer, same two sequences.
+
+The first alignment has 4 matches, 1 mismatch, and one gap two columns long.
+Score it under the first scoring: 4 − 1 − (10 + 1) leaves it on −8 points. The
+second alignment has 5 matches, no mismatches, and two gaps of one column each,
+so the second scoring leaves it on 5 − (2 + 2), or 1 point. Now cross them
+over. Under the first scoring the second arrangement is worth 5 − 20, or −15.
+Under the second scoring the first is worth 4 − 1 − 4, or −1. Each one loses
+under the other's rules.
+
+<!-- nlr-allow: 2185 5628 5403 4055 2216 5577 153 225 -->
+
+Neither run consulted a fossil or a phylogeny. Both alignments are correct
+answers to the question that was asked, and the questions were different.
+
+## The four numbers you pick, and why two of them are about gaps
+
+Match and mismatch are the easy pair. A match adds, a mismatch subtracts, and
+the ratio between them says how much evidence one identical column is worth
+against one disagreement.
+
+Gaps take two numbers instead of one. Opening a gap costs a lot and extending
+an existing gap costs a little, which is called an
+[affine gap penalty]{.term def="A gap costs one price to open and a smaller
+price for each extra column, so one long gap is cheaper than several short
+ones."}. The reason is biological. One deletion that removes twelve bases is a
+single event. Twelve separate one-base deletions are twelve events, and twelve
+events are far less likely than one.
+
+Set the open price low and the program will scatter small gaps everywhere. Set
+it high and it will accept mismatches instead.
+
+### For proteins the numbers come out of a matrix
+
+DNA has four letters and each is about as good a substitute for the others.
+Protein has twenty, and they aren't interchangeable at all. So for protein you
+swap the match and mismatch scores for a
+[substitution matrix]{.term def="A table giving a score for every pair of amino
+acids, built by counting how often each swap turns up in known alignments."}.
+It holds one score for each of the 20 × 20 pairs.
+
+Load the one most tools reach for and look at four entries.
+
+```{python}
+from Bio.Align import substitution_matrices
+
+blosum62 = substitution_matrices.load("BLOSUM62")
+print(blosum62["W"]["W"], blosum62["L"]["L"])
+print(blosum62["K"]["R"], blosum62["K"]["W"])
+```
+
+Tryptophan against tryptophan is worth far more than leucine against leucine,
+because tryptophan is rare and rarely tolerated as anything else. Lysine
+against arginine scores positive even though the residues differ, because both
+carry a positive charge. Lysine against tryptophan scores negative.
+
+Steven Henikoff and Jorja G. Henikoff built the BLOSUM matrices in 1992 by
+counting how often each swap appeared in a collection of protein alignments
+they picked. Every number in that table measures one set of proteins rather
+than stating a law. Pick a different matrix and you've told the program to
+believe something different about how protein changes.
+
+## Global or local, decided by one question
+
+Do you expect the whole of both sequences to correspond? Your answer picks
+between the two kinds of alignment.
+
+If the answer is yes, you want a
+[global alignment]{.term def="An alignment forced to run end to end through
+both sequences, gaps included."}, which forces every base in both sequences
+into some column. Saul B. Needleman and Christian D. Wunsch published the
+method for that in 1970.
+
+If the answer is no, you want a
+[local alignment]{.term def="An alignment reporting only the best-scoring
+stretch, free to ignore the rest of both sequences."}. Temple F. Smith and
+Michael S. Waterman published that one in 1981.
+
+A short query against a huge database has to be local. In Chapter 6 you sent 28
+bases at 948,086,538,397 letters. You asked whether any part of your sequence
+resembled any part of anything, and the answer had to be free to come back as
+"this stretch, and nothing else."
+
+One gene's coding sequence in two mammals is the other case. You expect them to
+correspond over their whole length, so global is the honest choice. That's a
+claim, and later in the chapter you'll check it.
+
+## Walkthrough: human BRCA1 against mouse
+
+This chapter uses Biopython, so the install line from Chapter 17 goes at the
+top of your notebook.
+
+Load the coding sequences first and confirm the two lengths against what you
+recorded in Chapter 5.
+
+```{python}
+from Bio import SeqIO
+
+seqs = {}
+for record in SeqIO.parse("data/sequences/brca1_cds_five_species.fasta",
+                          "fasta"):
+    seqs[record.id] = str(record.seq)
+
+human = seqs["human"]
+mouse = seqs["mouse"]
+print(len(human), len(mouse), len(human) - len(mouse))
+```
+
+::: {.check}
+The third number is 153, and it's worth holding on to. Divide it by three and
+you get 51 codons, which is 1,863 − 1,812, the difference between the two
+protein lengths you wrote down in Chapter 5. Two records fetched separately, on
+two different pages, agreeing to the base. If your third number isn't 153, you
+loaded the wrong two keys.
+:::
+
+Now build an aligner with the scores from earlier and run it on the real pair.
+
+```{python}
+aligner = PairwiseAligner(mode="global")
+aligner.match_score = 1
+aligner.mismatch_score = -1
+aligner.open_gap_score = -10
+aligner.extend_gap_score = -1
+
+alignment = aligner.align(human, mouse)[0]
+human_row = alignment[0]
+mouse_row = alignment[1]
+print(alignment.score, len(human_row))
+```
+
+`alignment[0]` is the human sequence written out with its gaps in place, and
+`alignment[1]` is the mouse one. Both are ordinary strings and both are 5,628
+characters long, because every alignment has the same number of columns in
+every row.
+
+Do the subtraction and you have the gap counts already. The human row is 5,628
+long and holds 5,592 real bases, so 36 of its columns are gaps. The mouse row
+holds 5,439, so 189 of its columns are gaps. And 189 − 36 = 153, the number
+from the opening paragraph.
+
+One more thing about that `[0]`. It isn't decoration.
+
+```{python}
+print(len(aligner.align(human, mouse)))
+```
+
+That's how many arrangements tie for the highest score. Over two quadrillion of
+them, all scoring 2185.0, and `[0]` hands you one. Every claim in the rest of
+this chapter is a claim about one member of that pile. It is not the true
+history of the two genes, and no output anywhere says otherwise.
+
+### Percent identity is two different numbers
+
+[Percent identity]{.term def="The share of alignment columns where both
+sequences carry the same base. The denominator varies between programs."} is
+the number everybody quotes, and its denominator is a choice.
+
+```{python}
+def percent_identity(top, bottom):
+    identities = 0
+    columns = 0
+    for top_base, bottom_base in zip(top, bottom):
+        if top_base != "-" and bottom_base != "-":
+            columns += 1
+            if top_base == bottom_base:
+                identities += 1
+    return identities, columns, round(100 * identities / columns, 2)
+
+
+print(percent_identity(human_row, mouse_row))
+```
+
+`zip` walks two strings at once and hands you one pair of letters at a time, so
+each pass of that loop is one column of the alignment.
+
+4,055 columns hold the same base in both sequences. The function counts only
+the 5,403 columns where both rows have a base at all, so it reports 75.05
+percent. Divide the same 4,055 by all 5,628 columns instead and you get 72.05
+percent. Same alignment, same identities, two answers, and neither is wrong.
+
+### Where the 153 bases went
+
+Gaps come in runs, and the gap prices you set treat a run as one event. Count
+the runs rather than the columns.
+
+```{python}
+def gap_runs(row):
+    runs = []
+    length = 0
+    for base in row:
+        if base == "-":
+            length += 1
+        elif length > 0:
+            runs.append(length)
+            length = 0
+    if length > 0:
+        runs.append(length)
+    return runs
+
+
+human_gaps = gap_runs(human_row)
+mouse_gaps = gap_runs(mouse_row)
+print(len(human_gaps), sum(human_gaps))
+print(len(mouse_gaps), sum(mouse_gaps))
+```
+
+`runs.append(length)` sticks `length` on the end of the list `runs`, which is
+how you grow a list you started empty. And `elif` means "otherwise, if": it's
+tested only when the `if`
+above it came out false, so a column that isn't a gap closes whatever run was
+in progress.
+
+The first printed line is the human row. 6 runs of gaps, 36 columns between
+them, so 6 places where the mouse carries bases the human one doesn't. The
+second line is the mouse row: 27 runs, 189 columns, 27 places the other way.
+Each run is an
+[indel]{.term def="An insertion or a deletion. Which one it is depends on which
+sequence you call the original, and an alignment can't tell you."}, and 33
+separate events sit between these two genes. The 153 bases are not one block.
+
+Which of the 33 were insertions and which were deletions? Your alignment can't
+say. Both sequences are modern, and the ancestor they share isn't in your file.
+Chapter 19 brings in more species partly for this reason.
+
+Now sort the run lengths and print them in two halves.
+
+```{python}
+all_gaps = sorted(human_gaps + mouse_gaps)
+whole_codons = 0
+for gap in all_gaps:
+    if gap % 3 == 0:
+        whole_codons += 1
+print(all_gaps[:17])
+print(all_gaps[17:])
+print(whole_codons, len(all_gaps))
+```
+
+`gap % 3` is the remainder after dividing by three, so `gap % 3 == 0` asks
+whether a run is a whole number of codons. Every single one of the 33 is. No
+run of 1, no run of 2, no run of 4. The shortest is three columns and the
+longest is 42, which is 14 codons.
+
+::: {.why}
+Chapter 13 had you translate in threes. An indel of one or two bases inside a
+coding sequence moves every codon boundary downstream of it. The rest of the
+protein then comes out as unrelated amino acids and usually hits an early stop.
+That version of the gene is broken, and a broken BRCA1 doesn't get carried down
+a lineage. What survives long enough for anyone to sequence it is overwhelmingly
+whole codons. You didn't tell the aligner any of this. It fell out of the
+letters.
+:::
+
+Where along the gene do these 33 events sit? Count the gap columns in each
+third of the alignment, with `else` catching whatever the two tests above it
+didn't.
+
+```{python}
+one_third = len(human_row) / 3
+first_third = 0
+middle_third = 0
+last_third = 0
+for column in range(len(human_row)):
+    if human_row[column] == "-" or mouse_row[column] == "-":
+        if column < one_third:
+            first_third += 1
+        elif column < 2 * one_third:
+            middle_third += 1
+        else:
+            last_third += 1
+print(first_third, middle_third, last_third)
+```
+
+All three thirds carry gaps, so the 153 bases are scattered rather than parked
+at one end. Add the three counts and you get 24 + 111 + 90 = 225, which is the
+36 gap columns in the human row plus the 189 in the mouse row. The first third
+holds far fewer than the other two, and one alignment of one pair of species
+isn't enough to say why. Write that down and carry it into Chapter 19.
+
+### The number moves when the rules move
+
+Set up the same alignment with none of the four scores specified and see what
+Biopython does on its own.
+
+```{python}
+default_aligner = PairwiseAligner()
+print(default_aligner.match_score, default_aligner.mismatch_score,
+      default_aligner.open_gap_score, default_aligner.extend_gap_score)
+
+default_alignment = default_aligner.align(human, mouse)[0]
+print(default_alignment.score, len(default_alignment[0]))
+print(percent_identity(default_alignment[0], default_alignment[1]))
+
+default_runs = gap_runs(default_alignment[0]) + gap_runs(default_alignment[1])
+default_whole_codons = 0
+for gap in default_runs:
+    if gap % 3 == 0:
+        default_whole_codons += 1
+print(len(default_runs), default_whole_codons)
+```
+
+A mismatch scores zero out of the box, so disagreement is free, and a gap opens
+for the same price as it extends. The percent identity that comes back is
+77.25, which is higher than the 75.05 you got from the scores this chapter
+chose.
+
+::: {.trap}
+The default settings give a better-looking percent identity and a worse answer.
+The last line says 165 gap runs through the gene instead of 33, and only 14 of
+those 165 are whole codons. Nothing errors, nothing warns, and the headline
+number goes up. If you report percent identity without reporting the scores you
+used, you have reported nothing.
+:::
+
+## Two sequences that have nothing to do with each other
+
+Take the mouse sequence, shuffle its bases into random order, and align the
+result against human BRCA1. The scrambled string has the same length and the
+same base composition as `mouse`, and no shared history with anything.
+
+```{python}
+import random
+
+local_aligner = PairwiseAligner(mode="local")
+local_aligner.match_score = 1
+local_aligner.mismatch_score = -1
+local_aligner.open_gap_score = -10
+local_aligner.extend_gap_score = -1
+
+local_alignment = local_aligner.align(human, mouse)[0]
+local_human = local_alignment[0]
+print(local_alignment.score, len(local_human),
+      len(local_human) - local_human.count("-"))
+
+random.seed(1)
+letters = list(mouse)
+random.shuffle(letters)
+scrambled = "".join(letters)
+
+junk_alignment = local_aligner.align(human, scrambled)[0]
+print(junk_alignment.score, len(junk_alignment[0]))
+print(percent_identity(junk_alignment[0], junk_alignment[1]))
+print(junk_alignment)
+```
+
+`list(mouse)` breaks the string into a list of single characters and
+`random.shuffle` reorders that list in place. `random.seed(1)` fixes which
+reordering you get, so your numbers match the ones above.
+
+The first line is the check promised earlier. Run human against mouse locally,
+where the program may trim as much as it likes, and it keeps 5,577 of the 5,592
+human bases in a 5,592-column alignment. Local mode dropped 15 bases, which is
+the evidence that global was the right call.
+The local score of 2216 beats the global 2185 because local mode can stop
+wherever the score is highest.
+
+The rest of the cell is the warning.
+
+::: {.trap}
+Alignment always returns something. Two sequences with no relationship still
+produce a best arrangement, a score of 15 and a percent identity of 94.12. No
+part of that output carries a flag saying the answer is meaningless. The
+number looks superb until you notice the alignment is 17 columns long. Length
+and coverage are what separate that hit from a real one, which is the same
+lesson the E-value taught you in Chapter 7.
+:::
+
+## Exercises
+
+::: {.exercise num="18.1" time="45 minutes"}
+::: {.goal}
+Align the human and mouse BRCA1 coding sequences yourself and say where the
+extra bases went.
+:::
+::: {.given}
+`data/sequences/brca1_cds_five_species.fasta`, using the records with the ids
+`human` and `mouse`. Global mode, match 1, mismatch −1, gap open −10, gap
+extend −1.
+:::
+::: {.produce}
+Three things: the alignment score, the percent identity with the denominator
+you used named alongside it, and one sentence saying how many separate gap runs
+there are and how long the longest one is.
+:::
+::: {.check}
+Your gap columns in the mouse row minus your gap columns in the human row must
+come to exactly 153 columns. That holds for any scoring you pick, because both
+sequences are forced end to end and their lengths differ by 153. Then divide by
+three, which gives 51 codons, and 1,863 − 1,812 gives the same 51 from the two
+protein lengths in Chapter 5. If you get anything but 153, you're in local mode
+or you loaded the wrong records.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+::: {.exercise num="18.2" time="20 minutes"}
+::: {.goal}
+Predict what a cheaper gap does to the answer, write the prediction down, then
+run it.
+:::
+::: {.given}
+The alignment from Exercise 18.1, with `open_gap_score` changed from −10 to −2
+and everything else left alone.
+:::
+::: {.produce}
+Two predictions written before you run anything, each a direction rather than a
+number: does the percent identity go up or down, and does the count of gap runs
+go up or down. Then the two measured values next to them.
+:::
+::: {.check}
+Percent identity rises to 77.42 and the count of gap runs goes from 33 up to
+122. I predicted it would fall, on the reasoning that a worse setting gives a
+worse number. It gives a better-looking number and a worse answer, because a
+cheap gap is a cheap way to buy a matching column. Check the 153 invariant
+again afterwards. It still holds.
+:::
+
+::: {.answerspace lines="5"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="ModuleNotFoundError: No module named 'Bio'"}
+Python is talking, and it's telling you Biopython isn't in this session. Colab
+starts fresh every time, so the install line from Chapter 17 has to run again
+at the top of the notebook. Run it, then run your import cell again.
+:::
+
+::: {.errfix err="KeyError: 'Human'"}
+Python is talking, and the key you asked `seqs` for isn't in it. The ids in
+that FASTA file are lowercase: `human`, `chimpanzee`, `mouse`, `dog`,
+`chicken`. Print `list(seqs)` to see exactly what you have.
+:::
+
+::: {.errfix err="ValueError: invalid mode (expected 'global', 'local', or 'fogsaa'"}
+Biopython is talking. That message is copied exactly off the version this page
+was built on, unbalanced bracket included, and the words inside the brackets
+have changed between Biopython releases. You passed `mode` something it doesn't
+recognize. The two words you want are spelled `global` and `local`. There's no
+`semiglobal` and no `glocal` here, whatever a paper called it.
+:::
+
+::: {.errfix err="The cell has been running for several minutes and nothing has printed"}
+Nothing is talking, which is its own signal. A pair of coding sequences this
+size aligns in about a second. The work grows with the two lengths multiplied
+together, so a pair of whole mRNA records is slower and a chromosome will not
+finish while you watch. Interrupt the cell and print the two lengths before you
+run it again.
+:::
+:::
+
+::: {.checkpoint}
+- Name the four scores a nucleotide aligner needs, and say which two concern
+  gaps
+- Explain why gap open and gap extend are priced differently
+- Choose global or local for a stated pair of sequences and defend the choice
+  in one sentence
+- Compute percent identity two ways from the same alignment and report which
+  denominator you used
+- Read a list of gap run lengths and say what a run of 4 would imply about a
+  coding sequence
+- Say what a 94 percent identity over 17 columns is evidence of
+:::

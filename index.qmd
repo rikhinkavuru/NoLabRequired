@@ -1,0 +1,87 @@
+# How to use this workbook {.unnumbered}
+
+This book is a series of things you do, not a series of things you read. The
+reading is there to make the doing possible, and it's kept as short as that
+allows.
+
+Here's how it's built, so you can decide how to spend your time on it.
+
+## Every chapter has the same six parts
+
+A chapter opens with a **question** you can't yet answer. Then comes the
+**concept**, which is the smallest amount of theory that makes the next part
+possible. Then the **walkthrough**, where the work is done in front of you with
+every result printed on the page. Then the **exercises**, where you do it, and
+each one names the thing you'll have at the end. Then **if it breaks**, which
+lists the specific ways it goes wrong and what to do about each. Then a
+**checkpoint**, so you can tell whether to move on.
+
+When you're short on time, the walkthrough and the exercises are the chapter.
+The concept section will still be there next week.
+
+## What you need
+
+A browser. A Google account, from Chapter 4 onward. About three hours a week.
+
+Nothing in this book is installed. There's no terminal, no package manager, and
+no moment where the instructions stop working because a version number moved.
+The one install command in the whole book appears in Chapter 17, and the book
+says so when it arrives.
+
+Every dataset used here is already in the repository, so no chapter depends on
+a download working while you're sitting there. Where the book does ask you to
+fetch something, the size is stated in the sentence that asks.
+
+## Time estimates, and what they assume
+
+Every exercise carries a time in minutes. Those numbers assume you're typing
+the code rather than pasting it, that you'll stop to read at least one database
+record properly, and that something will go wrong once.
+
+If an exercise takes you twice its estimate, that's within range. If it takes
+you five times, something is actually stuck, and the *if it breaks* section is
+the right place to look before the internet is.
+
+Most chapters run seven to nine pages, which is one comfortable sitting. The
+four that open the book are shorter, and Chapter 24, where the whole project
+runs start to finish, is the longest thing in here.
+
+## What to do when you're stuck
+
+In this order, and the order matters.
+
+1. Read the last line of the error message. Not the first line, and not the
+   whole block. The last line is the one that says what went wrong.
+2. Check the *if it breaks* section of the chapter you're in. If the error is
+   listed there, it's listed with a fix.
+3. Check the error index at the back of the book, which maps every error
+   message this book explains to the page that explains it.
+4. Compare your code against the printed version, character by character, on
+   the line the error names. Roughly half the time it's a quotation mark, a
+   bracket, or a letter.
+5. Search the exact error message, with your own filenames and variable names
+   taken out. Chapter 16 covers how to do that well.
+
+Chapter 16 is the one to read early if you get stuck often. It's about reading
+errors, and it's the longest chapter in Part 2 for a reason.
+
+## Type the code
+
+You'll be tempted to copy and paste, and sometimes you should. But the first
+time you meet anything new, type it.
+
+The reason isn't discipline. It's that typing produces small errors, and small
+errors are how you learn what the error messages mean while nothing is at
+stake. A reader who has never seen a `SyntaxError` in a calm moment reads it as
+a verdict when it finally shows up in the middle of something they care about.
+
+## Where everything lives
+
+The code, the data, the answers to every exercise, and the source of this book
+are all at `github.com/rikhinkavuru/NoLabRequired`. Chapter 3 prints that
+address, and it's the only full web address in the body of the book. Everywhere
+else you get a bare domain. Every exact address this book took a number from is
+collected in the index at the back, with the date it was last checked. Printed
+links go stale, and a book that scatters them through its body text ages badly.
+
+If something here is wrong, the repository is where to say so.

@@ -1,0 +1,12 @@
+# Enough Python to be dangerous
+
+Seven chapters, and none of them are about Python.
+
+They are about sequences, and Python is how we handle them. Nearly every example
+is a piece of DNA, a codon table, or a file somebody really sent somebody else,
+and the one that is none of those is your own time budget. Anything this book
+does not use later is not in here.
+
+Chapter 16 is the one that matters most. It is about reading error messages,
+and it is the difference between a person who is learning to program and a
+person who has quit.

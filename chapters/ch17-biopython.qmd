@@ -1,0 +1,332 @@
+# Biopython
+
+Exercise 15.1 gave you 45 minutes to write a FASTA parser with no library.
+Yours had to glue wrapped lines back together, read past a blank line sitting
+inside a record, drop a trailing `*`, and cut each identifier at the first
+space. Code that reads FASTA already exists, and it's free. So should you have
+written yours?
+
+## A library is code somebody else already debugged
+
+A [library]{.term def="Code somebody else wrote and published for other people
+to call. You install it once, import it by name, then use the names inside
+it."} is code somebody else wrote and left somewhere your code can reach. You
+install it once, you import it, then you call names out of it the same way you
+call `translate` out of your own notebook.
+
+Biopython is the one this book installs. It reads three of the five formats
+from Chapter 15, it knows the genetic code you loaded into `codon_table` in
+Chapter 13, and Chapter 18 is built on it. Colab already carries every other
+library this book uses, so this is the only install anywhere in it.
+
+Here's the trade, and it's the whole chapter. You give up knowing exactly what
+happens between the file and the answer. You get back every edge case the
+people who wrote it have already hit, including the ones nobody has told you
+about yet.
+
+## The one install in this book
+
+Every other cell in this book runs on a Colab machine exactly as Google hands
+it to you. One line doesn't, and here it is.
+
+``` {.python}
+!pip install biopython
+```
+
+The exclamation mark says the line isn't Python. Everything after it goes to
+the machine underneath your notebook, and `pip` is the program on that machine
+that fetches libraries and puts them where Python looks. The download lands on
+Google's computer rather than on yours, so it costs you no data and it installs
+nothing you'll ever have to remove.
+
+You'll run that line again tomorrow. Colab hands you a fresh machine each
+session. Chapter 4 covered what that means: the machine you had last night was
+thrown away with everything on it, and this library went with it. So the
+install goes at the top of any notebook that needs it, and you run it again
+every session. That's the system working, and expecting it is the difference
+between a shrug and a lost evening.
+
+`pip` prints a run of lines while it works. None of them is the check. I
+haven't reprinted them here, because they name a version and a set of
+dependencies that shift between sessions. A copy printed on this page would be
+wrong before you read it. Here's the check instead, and it's one cell you can
+run any time you're unsure:
+
+```{python}
+import Bio
+
+print(Bio.__version__)
+```
+
+::: {.check}
+A version number prints. The number above came off the machine this page was
+built on, and yours can be higher without anything being wrong. What matters is
+that a number appears at all instead of red text. If you get
+`ModuleNotFoundError: No module named 'Bio'`, the install cell hasn't run in
+this session, and the end of this chapter has the fix.
+:::
+
+Colab's own set of preinstalled libraries shifts over time, so one evening
+`import Bio` may work before you've installed anything.
+
+::: {.asof}
+Checked against Colab on 2 August 2026. Run the install line even when the
+import already works. It costs seconds, and it's the difference between a
+notebook that runs for you and a notebook that runs for anybody you send it to.
+:::
+
+## Walkthrough: reading the file you parsed by hand
+
+`SeqIO` is the part of Biopython that reads and writes sequence files.
+`SeqIO.parse` takes a path and the name of a format, and it hands back the
+records one at a time.
+
+Before you run the next cell, write down the four lengths you expect. You
+measured them yourself in Chapter 15 and the answers were 480, 420, 480 and
+180.
+
+```{python}
+from Bio import SeqIO
+
+for record in SeqIO.parse("data/sequences/messy.fasta", "fasta"):
+    print(record.id, len(record.seq))
+```
+
+Three lines, against everything Exercise 15.1 made you write. Three of the four
+lengths match what you got by hand, and the fourth doesn't.
+
+Take the matches first. 480 means the wrapped record got glued back together.
+420 means the record written on one unbroken line came through whole. Two
+wrapping styles inside a single file are no trouble at all. The second 480
+means the blank line inside the mouse record didn't end the record. Look at the
+identifiers as well, because every one of them arrived cut at the first space.
+So `SeqIO` absorbed three of the four defects you found the hard way, and you
+never asked it to.
+
+Now the 181. The trailing `*` is still there, and the library kept it on
+purpose. In a protein FASTA file, `*` is a legal character. It marks the stop
+codon, and your own `translate` from Chapter 14 put one at the end of the
+protein it handed you. Nothing tells `SeqIO` whether this file holds DNA or
+protein, and it doesn't guess. A parser that quietly deleted `*` would corrupt
+every protein file it ever touched, so Biopython leaves the character alone.
+You still decide what it means in your own file.
+
+::: {.trap}
+`record.id` is everything from the `>` up to the first space, so the species
+sits in the part that `record.id` leaves out. Two of the four identifiers in
+`messy.fasta` are `NM_007294.4` and `NM_007294.4_translated`, and they stay
+apart only because the second one carries an underscore where a space would
+have been. Put a space there and both records answer to `NM_007294.4`. Key a
+dictionary of your own on `record.id` and the second record lands silently on
+top of the first. You'd have three records where you counted four.
+:::
+
+Biopython has a shortcut for exactly that job. `SeqIO.to_dict` builds the
+dictionary keyed on `record.id`, and it refuses to build one at all when two
+ids collide. A dictionary you assemble yourself in a loop refuses nothing.
+
+## What one record hands you
+
+`SeqIO.parse` doesn't give you a list. It gives you one pass over the file, and
+the pass runs out at the end of the file. That's how Biopython can open a file
+far bigger than the memory your notebook has, and it's why the next cell
+surprises people.
+
+```{python}
+records = SeqIO.parse("data/sequences/messy.fasta", "fasta")
+
+print(len(list(records)))
+print(len(list(records)))
+```
+
+Four, then zero, out of the same variable and the same call. The first `list()`
+used the pass up, and there's nothing behind it for the second one to read.
+
+::: {.trap}
+Nothing errored on that second line and nothing warned you. Loop over the same
+`SeqIO.parse` call twice and your second loop body never runs, so a count comes
+out as zero and a search finds nothing. The fix is to spend the pass once and
+keep what came back.
+:::
+
+Wrap the call in `list()` and you have an ordinary Python list you can walk as
+many times as you like. Same name, and this time it holds four records instead
+of a promise to find four records.
+
+```{python}
+records = list(SeqIO.parse("data/sequences/messy.fasta", "fasta"))
+first = records[0]
+
+print(len(records))
+print(first.id)
+print(first.description)
+print(type(first.seq))
+```
+
+One item out of that list is a
+[SeqRecord]{.term def="Biopython's object for one sequence record: an id, a
+description, and the sequence itself."}. Three parts of it matter here.
+The `.id` attribute holds the identifier, cut at the first space. The
+`.description` attribute holds everything after the `>`, cut at nothing. The
+`.seq` attribute holds the sequence. Look at the last line of that output,
+because it says the sequence isn't a string.
+
+### The format name is the only thing that changes
+
+Chapter 15 walked you through five formats. `SeqIO` reads three of them, and
+moving from one to another means editing one string.
+
+| The file holds | You pass |
+|---|---|
+| FASTA | `"fasta"` |
+| FASTQ | `"fastq"` |
+| GenBank | `"genbank"` |
+
+Same loop, same `record.id`, same `len(record.seq)`. What changes is how much
+each record carries, because a FASTQ record brings its quality string along and
+a GenBank record brings the whole annotation block. The other two formats from
+Chapter 15 aren't here on purpose. BED and VCF hold coordinates rather than
+sequence, so nothing in `SeqIO` reads them. Both are tables, and Chapter 20 is
+where this book opens tables.
+
+That second argument is a claim you're making about the file, and nothing
+checks it against the file's contents until something goes wrong. The If it
+breaks section at the end of this chapter has the error you get when the claim
+is false.
+
+## A Seq is a string that knows what it's made of
+
+`first.seq` is a [Seq]{.term def="Biopython's sequence object. It slices and
+counts like a string, and it also knows how to complement and translate
+itself."}, which behaves like a string everywhere you already know how to use
+one. `len()` works on it. Slicing works. `.count("G")` works. It also carries
+methods that a plain string has no business carrying.
+
+Here's the human *BRCA1* coding sequence again, sliced out of the same file
+Chapter 14 used, at the same two numbers.
+
+```{python}
+human = None
+for record in SeqIO.parse("data/sequences/brca1_five_species.fasta", "fasta"):
+    if record.id.startswith("human"):
+        human = record
+
+coding = human.seq[113:5705]
+
+print(len(coding))
+print(coding.translate()[:20])
+print(coding.reverse_complement()[:20])
+```
+
+That's the same 5,592 bases under the same name as before, held as a Seq rather
+than as a string. The call to `.translate()` does in one line what your
+`translate` function does with a loop and a dictionary. And
+`.reverse_complement()` does what your `pairing` dictionary and its backwards
+loop did.
+
+<!-- nlr-allow: 1864 -->
+
+::: {.check}
+The first twenty residues read `MDLSALRVEEVQNVINAMQK`, which is what Chapter
+14's `translate` printed off the identical slice. Don't take the rest of it
+from me. If that function is still in your notebook, run
+`translate(str(coding)) == str(coding.translate())` and Python answers `True`:
+the two agree over all 1,864 characters, ending on the `*` where the stop codon
+sits. Print `other_strand[:20]` from the same notebook and you get
+`TCAGTAGTGGCTGTGGGGGA`, which is the twenty letters `.reverse_complement()`
+just handed you. Two routes to one answer is the strongest evidence you can get
+with nobody around to ask.
+:::
+
+## What you gave up for that
+
+You gave up being able to look. When your own parser did something strange you
+put a `print` in the middle of the loop and watched. You can't do that inside
+`SeqIO.parse`. When a library surprises you, you're reading its documentation
+rather than watching its behavior.
+
+What you bought is harder to see, because nothing prints when a bug doesn't
+happen. Three of your four defects were handled in this chapter without a line
+of code from you. The mixed wrapping, the blank line and the spaces in the
+headers cost you real minutes in Chapter 15 and cost you nothing here.
+
+So use the library, and keep the check. That 181 is the whole argument. The
+library and your expectation disagreed and nothing errored. You could tell
+which number answered your question for one reason: you'd written four of them
+down before you ran the cell.
+
+Which is also why Chapter 15 came first. You can read that 181 and name the
+exact defect it is, in a file you've already taken apart by hand. Somebody who
+started here would see a number and write it down.
+
+## Exercises
+
+::: {.exercise num="17.1" time="25 minutes"}
+::: {.goal}
+Redo Exercise 15.1 with `SeqIO`, in about three lines, then write down what the
+library did for you and what it left to you.
+:::
+::: {.given}
+The same file, `data/sequences/messy.fasta`, with the same four records and the
+same four defects. `SeqIO.parse` wants the path and the string `"fasta"`.
+:::
+::: {.produce}
+One line per record, in the order the records appear in the file: the
+identifier, then the length of the sequence in bases, with a trailing `*` not
+counted. Then three sentences: which defects the library absorbed, which one it
+handed back to you, and why handing that one back was the right call.
+:::
+::: {.check}
+Four lines, and the lengths run 480, 420, 480 and 180. Those are the numbers
+Exercise 15.1 checked against. A fourth length of 181 means the `*` is still in
+there, and `.rstrip("*")` on the sequence takes it off. Fewer than four lines
+means you walked the same `SeqIO.parse` call more than once. Last, look at the
+two identifiers that share an accession and write down what your code would do
+if the underscore in the second one were a space.
+:::
+
+::: {.answerbox height="2.4in"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="ModuleNotFoundError: No module named 'Bio'"}
+Python is talking, and it went looking for the library in the folders where it
+keeps libraries. The install cell hasn't run in this session, which happens
+every time the runtime restarts. Run `!pip install biopython` again, then run
+your import again. Nothing is wrong with your machine or with the library.
+:::
+
+::: {.errfix err="ValueError: Duplicate key 'NM_007294.4'"}
+Biopython is talking. `SeqIO.to_dict` keys its dictionary on `record.id`, and
+two of your headers agree up to their first space. This is the collision the
+Trap box above described, except that `to_dict` refuses out loud rather than
+overwriting. Key on `record.description` instead, or fix the headers in the
+file.
+:::
+
+::: {.errfix err="ValueError: Records in Fastq files should start with '@' character"}
+Biopython is talking, and it's reporting the first thing that didn't match. You
+passed `"fastq"` as the format name for a file that holds FASTA, so it went
+looking for the `@` that starts a FASTQ record and found `>`. The format name
+is a claim you're making about the file, and nothing checks it for you.
+:::
+
+::: {.errfix err="AttributeError: 'SeqRecord' object has no attribute 'sequence'"}
+Python is talking, and it's quoting back the name you typed rather than the one
+that exists. The attribute is `.seq`. Read the quoted word letter by letter
+against what you meant to write.
+:::
+:::
+
+::: {.checkpoint}
+- Run the one install line in this book, and say why it has to run again every
+  session
+- Read a FASTA file with `SeqIO.parse` and print one line per record
+- Name the three parts of a SeqRecord, and say which one loses the species
+- Explain why the library left the trailing `*` in place and your Chapter 15
+  parser did not
+- Check a library's answer against code you wrote yourself, on the same input
+:::

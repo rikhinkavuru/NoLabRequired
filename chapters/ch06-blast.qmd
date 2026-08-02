@@ -1,0 +1,392 @@
+# What is this sequence?
+
+Open `data/sequences/mystery_fillet_1.fasta` and see how little the file tells
+you. It holds 649 bases of DNA under a header that reads `mystery_fillet_1` and
+nothing else. No species, no gene, no date. You can read every base in that file
+and still not name the animal it came out of. Naming it is the question this
+chapter answers. It's also the question somebody answers every time they check
+whether the fish on the label is the fish in the packet.
+
+## Comparing one sequence against everything anyone has deposited
+
+Nobody can reason from 649 bases to a species. What you can do is ask whether
+anyone has ever deposited a sequence like this one, and then read what they
+called it.
+
+That's the idea behind [BLAST]{.term def="Basic Local Alignment Search Tool. It
+takes one sequence and finds the deposited sequences that resemble it, region
+by region."}. You hand it one sequence, which is called the *query*. It works
+through a pile of deposited sequences and hands back the ones that resemble
+your query, ranked, with a score on each.
+
+The pile is the part that's hard to picture. Every report names the database it
+went through, and this chapter's search went through this one:
+
+``` {.default .output}
+Database: Core nucleotide BLAST database
+           128,547,243 sequences; 948,086,538,397 total letters
+```
+
+A hundred and twenty-eight million sequences. Nearly a trillion letters, put
+there by other people since 1982, none of whom was thinking about your packet.
+You don't have to be the first person to sequence this animal. Somebody has to
+have got there first and written down what it was.
+
+### Why the find box can't do this
+
+Your browser's find box asks one question: is this exact string present,
+character for character. Biology almost never answers yes. Exercise 5.2 sent you
+after two versions of *BRCA1*, and the human one, `NM_007294.4`, is 7,088 bases
+against 6,648 for the mouse one, `NM_009764.3`. Same gene, same job. The
+lengths alone differ by 7,088 − 6,648 = 440 bases, before you count the
+mismatches scattered through the stretch they do share. Search for either
+sequence inside the other, character for character, and you get nothing. You'd
+get nothing for two sequences with no relationship either, so an exact search
+can't tell those two situations apart.
+
+BLAST scores instead of matching. It hunts for stretches where two sequences
+line up well, tolerates mismatches and gaps inside a stretch, and puts a number
+on how good the alignment is. A near-match still scores, which is the
+difference that makes the tool work at all.
+
+Here's the part that sounds like a contradiction. The nucleotide search gets
+started by exact matching. It chops your query into short words and finds
+database sequences carrying one of those words exactly. Then it extends outward
+from each one, base by base, keeping score as it goes. A stretch that keeps
+scoring gets reported and a stretch that falls apart gets abandoned. Exact
+matching is the way in, and scoring is what happens after. The short words also
+explain the speed. BLAST looks them up in an index, the way a book's index finds
+you a page without reading the book. That's why nearly a trillion letters is
+something you wait for rather than something you schedule.
+
+Notice the word *local* in the name. BLAST will line up your 649 bases against
+649 bases buried in the middle of a 16,572-base mitochondrial genome and ignore
+the rest of that genome entirely. A query doesn't have to be the same kind of
+thing as the record it matches, or the same length, or anywhere near it.
+
+<!-- nlr-allow: 16572 -->
+
+### Three programs, and how you pick one
+
+Which BLAST you want comes down to what your query is made of and what you want
+to compare it against.
+
+| Your query is | You want hits from | Use |
+|---|---|---|
+| DNA or RNA | nucleotide records | `blastn` |
+| protein | protein records | `blastp` |
+| DNA or RNA | protein records | `blastx` |
+
+`blastx` translates your nucleotide query into protein and searches with the
+translation. Reach for it when you have a piece of DNA and you care what it
+makes rather than which organism it sits in. There are more BLAST programs than
+these three. The extra ones move the translation over to the database side of
+the comparison, or do it on both sides at once.
+
+`mystery_fillet_1` is DNA, and I want other people's DNA records. So, `blastn`.
+
+You'll put *BRCA1* through this same form in Chapter 7, where each column of the
+hit table gets a page. A shorter query with one clear answer is the better thing
+to learn the form on, so it goes first.
+
+## Walkthrough: what `mystery_fillet_1` is
+
+Open `blast.ncbi.nlm.nih.gov` and pick the nucleotide search. Paste the whole
+file into the query box, header line and all. Choose the database that covers
+nucleotide records generally, rather than one restricted to a single organism.
+Then press the button that starts the search.
+
+::: {.asof}
+Checked against the live NCBI BLAST interface on 2 August 2026. NCBI has
+redesigned this form more than once and the labels move. Three things are on it
+under some name: the box you paste the query into, the menu where you choose
+the database, and the button that starts the search. Find those three and the
+rest of the layout can move without costing you anything.
+:::
+
+The search doesn't run in your browser. It runs on NCBI's machines, in a queue,
+behind everybody else's search, which is why the page sits there reloading
+itself. Every job gets a request ID, printed at the top of the report as `RID`:
+
+``` {.default .output}
+RID: 6Z2TVR6D014
+
+Database: Core nucleotide BLAST database
+           128,547,243 sequences; 948,086,538,397 total letters
+Query= mystery_fillet_1
+
+Length=649
+```
+
+::: {.check}
+Read `Length=649` before you read anything else. It matches the file, so the
+whole query arrived. A shorter number means the paste got cut off and every
+result below it is a search for a fragment you didn't mean to send.
+:::
+
+Then the hits. Here are the first twelve rows, with the descriptions trimmed to
+fit this page:
+
+``` {.default .output}
+                                                           Score     E     Max
+Sequences producing significant alignments:                (Bits)  Value  Ident
+AB182303.1 Gadus chalcogrammus mitochondrial DNA, comp...  1199    0.0    100%
+PZ291804.1 Gadus chalcogrammus voucher USNM:FISH:48576...  1199    0.0    100%
+OL494247.1 Gadus chalcogrammus voucher H90 cytochrome ...  1199    0.0    100%
+FJ165432.1 Gadus chalcogrammus voucher TZ05-FROSTI-171...  1199    0.0    100%
+AM489719.1 Theragra finnmarchica complete mitochondria...  1199    0.0    100%
+PZ284884.1 Gadus chalcogrammus voucher USNM:FISH:48576...  1199    0.0    100%
+AB182302.1 Gadus chalcogrammus mitochondrial DNA, comp...  1199    0.0    100%
+KX119441.1 Gadus chalcogrammus isolate 61 cytochrome c...  1199    0.0    100%
+OL494334.1 Gadus chalcogrammus voucher H332 cytochrome...  1199    0.0    100%
+MN879772.1 Gadus chalcogrammus cytochrome c oxidase su...  1199    0.0    100%
+MN850428.1 Gadus chalcogrammus isolate S1 cytochrome c...  1199    0.0    100%
+MH035600.1 Gadus chalcogrammus voucher UW151990_5 mito...  1199    0.0    100%
+```
+
+Every report in this chapter was run with the hit list capped at fifty rows.
+Your own run will probably come back longer, because the form's default cap is
+higher than that. A longer list doesn't change the reading. What you count is
+how many rows agree with each other, and the length of the list is a display
+setting.
+
+Three number columns, and Chapter 7 spends a page on each of them. Here's the
+short version. The bit score measures how good the alignment is. The E value
+counts how many alignments this good you'd expect to stumble across by
+accident. Max Ident is the percentage of aligned positions where the two
+sequences carry the same base, rounded to a whole number. Seventeen of these
+fifty rows print as 100% and are really 648 of 649.
+
+The names in the left column are doing the work here. `Gadus chalcogrammus` is
+Alaska pollock. All fifty rows of this report land in the same genus, on records
+deposited by different people from different fish.
+
+Open any one of those rows and you get the alignment it's reporting:
+
+``` {.default .output}
+>AB182303.1 Gadus chalcogrammus mitochondrial DNA, complete genome, haplotype:J4
+Length=16572
+
+ Score = 1199 bits (649),  Expect = 0.0
+ Identities = 649/649 (100%), Gaps = 0/649 (0%)
+ Strand=Plus/Plus
+
+Query  1     CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5495  CCTTTATCTCGTATTTGGTGCCTGAGCCGGCATAGTCGGAACAGCCCTAAGCCTGCTCAT  5554
+```
+
+`Query` is your sequence and `Sbjct` is the deposited one, which BLAST calls
+the subject. Base 1 of the query sits against base 5,495 of a complete
+mitochondrial genome, and the vertical bars mark the positions where the two
+agree. The fraction behind that rounded percentage is on the line reading
+`Identities = 649/649`. On this row every one of the 649 positions agrees.
+
+<!-- nlr-allow: 5495 -->
+
+Those 649 bases come from one mitochondrial gene: cytochrome c oxidase subunit
+I, which everybody shortens to COI.
+
+::: {.why}
+Paul D. N. Hebert and colleagues proposed in 2003 that one stretch of COI could
+work as an identification tag for animal species. The premise is that COI
+differs enough between two species to separate them, and little enough within
+one species that two individuals still match. People have been depositing COI
+records on purpose ever since, which is why this search filled its whole hit
+list with one genus instead of coming back empty.
+:::
+
+### One row disagrees with the other forty-nine
+
+Row five says `Theragra finnmarchica`. Different genus, different species, and
+it matched all 649 bases exactly.
+
+Theragra got folded into *Gadus*. Whoever deposited `AM489719.1` used the name
+that was current on the day they deposited it, and the free-text title on the
+record still carries that name. NCBI's taxonomy has since moved on: ask it
+which species that record belongs to now and it answers `Gadus finnmarchicus`.
+The title is frozen at deposition. The taxonomy behind it is maintained. On
+this record the two disagree, and nothing on the page flags it.
+
+So a species name on a record is somebody's opinion, written down on the day
+they submitted the sequence. Some of those opinions are decades old. The count
+is what carries the answer here. Read the voucher and isolate codes in the
+twelve rows above: they come from separate collections, so this isn't one
+submitter's mistake copied fifty times.
+
+::: {.trap}
+The top row is no more right than the twenty-six under it. Twenty-seven rows in
+this report tie at 1199 bits with 649 of 649 identities. Any of the twenty-seven
+could have been printed first, and the order among tied rows says nothing about
+your fish. Copy the species off row one and stop, and you've copied a name out
+of a tie.
+:::
+
+<!-- nlr-allow: 1199 -->
+
+### The other fish
+
+Now do the comparison the label invites. The file
+`data/sequences/cod_reference_MT456169.fasta` holds a real Atlantic cod
+barcode, 655 bases taken off a voucher specimen in a museum collection. Push it
+through the same form and every row that comes back is *Gadus morhua*. The top
+one is `MT456169.1`, which is the record the file was copied from.
+
+<!-- nlr-allow: 655 -->
+
+So the two hit lists don't overlap. *Gadus morhua* is absent from all fifty rows
+for `mystery_fillet_1`, and *Gadus chalcogrammus* is absent from all fifty rows
+for `cod_reference_MT456169`. Those are two fish, and no amount of reading the
+sequences by eye would have told you so.
+
+That's the substitution test, and it needs no bench and no permission. What it
+can't tell you is who swapped what, or where in the chain it happened. A
+sequence identifies tissue. It doesn't assign blame.
+
+One more thing about that table, because you should know where your data came
+from. Row eleven is `MN850428.1`, and that's where I got the query. I took a
+deposited Alaska pollock barcode, dropped its header, and saved the bases as
+`mystery_fillet_1`. So one of the hits is the query itself, which is why it
+matched perfectly. Cross that row out and the answer doesn't move. Forty-nine
+other records still match, and forty-eight of them carry the same species name.
+
+### The control: same letters, no history
+
+`data/sequences/shuffled_control.fasta` holds 649 bases. Same length as
+`mystery_fillet_1`, and the same count of every base, because it is
+`mystery_fillet_1` with the order scrambled. Nothing else about it changed. The
+shuffle used a fixed number, 20260802, so anybody can regenerate exactly this
+file.
+
+Put it through the same form and the same database. Here's the whole result:
+
+``` {.default .output}
+Query= shuffled_control
+
+Length=649
+
+No significant similarity found.
+```
+
+Zero hits. Against 128,547,243 sequences and 948,086,538,397 letters, a
+649-base query came back with nothing worth reporting.
+
+Sit with those two searches side by side. Same length, and the same count of
+every base. One of them filled its hit list with fifty records and the other
+came back with none. The difference between them is history. One is a piece of an
+animal with relatives in the database, and the other is those same letters in an
+order no animal has ever carried.
+
+That's what a negative control buys you. Any search that returns hits leaves one
+question open: would it have returned hits anyway? You've now watched this form
+come back empty, so you know it's capable of saying no.
+
+::: {.check}
+The `shuffled_control` report should read `No significant similarity found.`
+and `Length=649`. If hits come back, check the first bases of what you pasted.
+`shuffled_control` starts `GTCCAATG` and `mystery_fillet_1` starts `CCTTTATC`.
+:::
+
+## Exercises
+
+::: {.exercise num="6.1" time="35 minutes"}
+::: {.goal}
+Identify `mystery_fillet_1` yourself, and write down the evidence rather than
+the answer.
+:::
+::: {.given}
+`data/sequences/mystery_fillet_1.fasta`, 649 bases of DNA, no other
+information about it.
+:::
+::: {.produce}
+Three things: the species name as two words, the accession of the
+highest-scoring hit including its version suffix, and one sentence saying why
+more than one record supports the identification.
+:::
+::: {.check}
+Your accession should carry a dot and a number after it. If it doesn't, you
+wrote down the record and not the edition, and Chapter 5 says why that matters.
+Then test your sentence: delete the top-scoring row from the table and read the
+sentence again. If it stops being true, it was a sentence about one record
+rather than about the evidence.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+::: {.exercise num="6.2" time="25 minutes"}
+::: {.goal}
+Run the negative control, then say what a search with no hits is telling you.
+:::
+::: {.given}
+`data/sequences/shuffled_control.fasta`, 649 bases, the same base composition
+as `mystery_fillet_1`. Before you run anything, write down whether you expect
+hits and why.
+:::
+::: {.produce}
+Three items: your written prediction, the result, and which of three readings
+applies. Either the sequence is unlike anything deposited, or the query is
+too short to reach significance, or the search went against the wrong
+database. Name the check that ruled out each of the other two.
+:::
+::: {.check}
+Rule out the wrong database by putting
+`data/sequences/cod_reference_MT456169.fasta` through the identical form. That
+one is a real Atlantic cod barcode and every hit it returns is *Gadus morhua*,
+so a form that answers it is a form that works. Rule out length by comparing:
+both queries are 649 bases, and one of them filled its whole hit list, so 649
+bases is long enough here. That leaves the first reading, and this is the rare
+case where you can be sure of it, because you know where the sequence came from.
+For an unknown off a real sample you'd never be that sure.
+:::
+
+::: {.answerspace lines="7"}
+:::
+:::
+
+## If it breaks
+
+<!-- nlr-allow: 447400 -->
+
+::: {.ifbreaks}
+::: {.errfix err="The page has been sitting there for minutes and nothing has happened"}
+Nothing on your machine is stuck. Your search is in a queue on NCBI's servers,
+and the page reloads itself while it waits. Don't press the search button
+again: that starts a second job behind the first and slows both of them down.
+Write the request ID down before you close anything, because it's how you ask
+for that job's results again.
+:::
+
+::: {.errfix err="Your report is labeled with a species you never asked about"}
+You pasted a file whose header names an organism. Pasting a header is allowed,
+and BLAST takes it as the query's name without counting it in the length. The
+damage is to you, not to the search. Paste `cod_reference_MT456169.fasta` and
+the report's query line starts `Query= MT456169.1 Gadus morhua voucher
+USNM:FISH:447400` and runs on from there. That line sits directly above a table
+of hits from whatever the sequence actually is. Skim it and you'll read your own
+label back as the answer. The species you want is in the hit rows, never in the
+`Query=` line.
+:::
+
+::: {.errfix err="The form refuses your sequence and complains about the characters in it"}
+The website is talking, and it's talking before any search has run. The usual
+cause is a protein sent to a nucleotide search. Count the different letters in
+your sequence. DNA uses four of them and a protein uses twenty. An E, an F, an L
+or a Q in there means it isn't DNA. Send a protein query to the protein search
+instead. If the sequence really is DNA and it's protein hits you want, that's
+`blastx`.
+:::
+:::
+
+::: {.checkpoint}
+- Pick between `blastn`, `blastp` and `blastx` given what a query is made of
+  and what you want to compare it against
+- Read a BLAST hit table and name the organism the rows agree on
+- Explain why many records agreeing is stronger evidence than one top row
+- Say what a species name on a database record is evidence of, and what it
+  isn't
+- Run a negative control and say what its result rules out
+- Distinguish three reasons a search comes back with no hits, and name the
+  check that separates them
+:::

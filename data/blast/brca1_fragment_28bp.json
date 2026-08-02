@@ -1,0 +1,1691 @@
+{
+"BlastOutput2": [
+{
+    "report": {
+      "program": "blastn",
+      "version": "BLASTN 2.17.0+",
+      "reference": "Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), \"Gapped BLAST and PSI-BLAST: a new generation of protein database search programs\", Nucleic Acids Res. 25:3389-3402.",
+      "search_target": {
+        "db": "core_nt"
+      },
+      "params": {
+        "expect": 1000,
+        "sc_match": 2,
+        "sc_mismatch": -3,
+        "gap_open": 5,
+        "gap_extend": 2,
+        "filter": "L;m;"
+      },
+      "results": {
+        "search": {
+          "query_id": "Query_3701365",
+          "query_title": "brca1_fragment_28bp",
+          "query_len": 28,
+          "hits": [
+            {
+              "num": 1,
+              "description": [
+                {
+                  "id": "gi|2694357808|ref|XM_063598597.1|",
+                  "accession": "XM_063598597",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X39, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14806,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1260,
+                  "hit_to": 1287,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 2,
+              "description": [
+                {
+                  "id": "gi|2694357763|ref|XM_055100855.2|",
+                  "accession": "XM_055100855",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X24, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14407,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 741,
+                  "hit_to": 768,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 3,
+              "description": [
+                {
+                  "id": "gi|2695811723|ref|XM_054457701.2|",
+                  "accession": "XM_054457701",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X5, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 7273,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 791,
+                  "hit_to": 818,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 4,
+              "description": [
+                {
+                  "id": "gi|2694468129|ref|XM_063629068.1|",
+                  "accession": "XM_063629068",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X28, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 3146,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 662,
+                  "hit_to": 689,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 5,
+              "description": [
+                {
+                  "id": "gi|2954748534|ref|XM_073005274.1|",
+                  "accession": "XM_073005274",
+                  "title": "PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), transcript variant X12, mRNA",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 4562,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 697,
+                  "hit_to": 724,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 6,
+              "description": [
+                {
+                  "id": "gi|2694357776|ref|XM_034941183.3|",
+                  "accession": "XM_034941183",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X28, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14410,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 741,
+                  "hit_to": 768,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 7,
+              "description": [
+                {
+                  "id": "gi|2695045167|ref|XM_055388044.2|",
+                  "accession": "XM_055388044",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X41, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 3779,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 721,
+                  "hit_to": 748,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 8,
+              "description": [
+                {
+                  "id": "gi|2695811719|ref|XM_063656678.1|",
+                  "accession": "XM_063656678",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X3, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 6237,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 797,
+                  "hit_to": 824,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 9,
+              "description": [
+                {
+                  "id": "gi|2694609175|ref|XM_054546474.2|",
+                  "accession": "XM_054546474",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X30, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 6019,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 633,
+                  "hit_to": 660,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 10,
+              "description": [
+                {
+                  "id": "gi|2694357737|ref|XM_057300189.2|",
+                  "accession": "XM_057300189",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X17, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14404,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 735,
+                  "hit_to": 762,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 11,
+              "description": [
+                {
+                  "id": "gi|2694468100|ref|XM_063629061.1|",
+                  "accession": "XM_063629061",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X19, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 7553,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1206,
+                  "hit_to": 1233,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 12,
+              "description": [
+                {
+                  "id": "gi|2694357751|ref|XM_057300192.2|",
+                  "accession": "XM_057300192",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X21, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14401,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 732,
+                  "hit_to": 759,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 13,
+              "description": [
+                {
+                  "id": "gi|2694357838|ref|XM_057300203.2|",
+                  "accession": "XM_057300203",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X49, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14209,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 663,
+                  "hit_to": 690,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 14,
+              "description": [
+                {
+                  "id": "gi|2694357767|ref|XM_057300195.2|",
+                  "accession": "XM_057300195",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X25, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14401,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 732,
+                  "hit_to": 759,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 15,
+              "description": [
+                {
+                  "id": "gi|2694468097|ref|XM_063629060.1|",
+                  "accession": "XM_063629060",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X18, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 7556,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1209,
+                  "hit_to": 1236,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 16,
+              "description": [
+                {
+                  "id": "gi|2695045048|ref|XM_031011552.3|",
+                  "accession": "XM_031011552",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X1, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 7247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 754,
+                  "hit_to": 781,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 17,
+              "description": [
+                {
+                  "id": "gi|2694609191|ref|XM_063718834.1|",
+                  "accession": "XM_063718834",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X41, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 2615,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 623,
+                  "hit_to": 650,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 18,
+              "description": [
+                {
+                  "id": "gi|2703623457|gb|PP465840.1|",
+                  "accession": "PP465840",
+                  "title": "Homo sapiens isolate TWH-3503-0-1 breast and ovarian cancer susceptibility protein 1 (BRCA1) mRNA, complete cds",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 5592,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 488,
+                  "hit_to": 515,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 19,
+              "description": [
+                {
+                  "id": "gi|2695811797|ref|XM_063656705.1|",
+                  "accession": "XM_063656705",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X43, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 4305,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1135,
+                  "hit_to": 1162,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 20,
+              "description": [
+                {
+                  "id": "gi|2694357805|ref|XM_063598596.1|",
+                  "accession": "XM_063598596",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X38, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 735,
+                  "hit_to": 762,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 21,
+              "description": [
+                {
+                  "id": "gi|2694609135|ref|XM_054546455.2|",
+                  "accession": "XM_054546455",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X9, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 6696,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 717,
+                  "hit_to": 744,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 22,
+              "description": [
+                {
+                  "id": "gi|2695045161|ref|XM_055388042.2|",
+                  "accession": "XM_055388042",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X39, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 3780,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 719,
+                  "hit_to": 746,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 23,
+              "description": [
+                {
+                  "id": "gi|2607637244|gb|OR676871.1|",
+                  "accession": "OR676871",
+                  "title": "Homo sapiens isolate TWH-3684-0-1 truncated BRCA1 (BRCA1) mRNA, complete cds",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 4242,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 488,
+                  "hit_to": 515,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 24,
+              "description": [
+                {
+                  "id": "gi|2694468077|ref|XM_055256863.2|",
+                  "accession": "XM_055256863",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X11, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 7239,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 766,
+                  "hit_to": 793,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 25,
+              "description": [
+                {
+                  "id": "gi|2694357819|ref|XM_063598601.1|",
+                  "accession": "XM_063598601",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X43, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14373,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 827,
+                  "hit_to": 854,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 26,
+              "description": [
+                {
+                  "id": "gi|2694468142|ref|XM_063629072.1|",
+                  "accession": "XM_063629072",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X32, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 3826,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 662,
+                  "hit_to": 689,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 27,
+              "description": [
+                {
+                  "id": "gi|2695811789|ref|XM_054457735.2|",
+                  "accession": "XM_054457735",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X39, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 4382,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1212,
+                  "hit_to": 1239,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 28,
+              "description": [
+                {
+                  "id": "gi|2694468195|ref|XM_063629087.1|",
+                  "accession": "XM_063629087",
+                  "title": "PREDICTED: Symphalangus syndactylus BRCA1 DNA repair associated (BRCA1), transcript variant X50, mRNA",
+                  "taxid": 9590,
+                  "sciname": "Symphalangus syndactylus"
+                }
+              ],
+              "len": 3573,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 649,
+                  "hit_to": 676,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 29,
+              "description": [
+                {
+                  "id": "gi|2703623455|gb|PP465839.1|",
+                  "accession": "PP465839",
+                  "title": "Homo sapiens isolate TWH-3747-0-1 truncated breast and ovarian cancer susceptibility protein 1 (BRCA1) mRNA, complete cds",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 891,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 488,
+                  "hit_to": 515,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 30,
+              "description": [
+                {
+                  "id": "gi|2695811745|ref|XM_054457710.2|",
+                  "accession": "XM_054457710",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X16, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 6271,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 834,
+                  "hit_to": 861,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 31,
+              "description": [
+                {
+                  "id": "gi|2695045056|ref|XM_055388012.2|",
+                  "accession": "XM_055388012",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X4, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 7211,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 718,
+                  "hit_to": 745,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 32,
+              "description": [
+                {
+                  "id": "gi|2557734833|gb|OQ417597.1|",
+                  "accession": "OQ417597",
+                  "title": "Homo sapiens truncated BRCA1 DNA repair associated (BRCA1) mRNA, complete cds",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 5031,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 488,
+                  "hit_to": 515,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 33,
+              "description": [
+                {
+                  "id": "gi|2695045084|ref|XM_055388018.2|",
+                  "accession": "XM_055388018",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X13, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 7208,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 718,
+                  "hit_to": 745,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 34,
+              "description": [
+                {
+                  "id": "gi|2694357702|ref|XM_057300185.2|",
+                  "accession": "XM_057300185",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X6, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14502,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 830,
+                  "hit_to": 857,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 35,
+              "description": [
+                {
+                  "id": "gi|2954748532|ref|XM_073005273.1|",
+                  "accession": "XM_073005273",
+                  "title": "PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), transcript variant X11, mRNA",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 6417,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 724,
+                  "hit_to": 751,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 36,
+              "description": [
+                {
+                  "id": "gi|2695045119|ref|XM_055388030.2|",
+                  "accession": "XM_055388030",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X26, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 3942,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 758,
+                  "hit_to": 785,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 37,
+              "description": [
+                {
+                  "id": "gi|2694357755|ref|XM_057300194.2|",
+                  "accession": "XM_057300194",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X22, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14926,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1257,
+                  "hit_to": 1284,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 38,
+              "description": [
+                {
+                  "id": "gi|2695811791|ref|XM_054457737.2|",
+                  "accession": "XM_054457737",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X40, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 4382,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1212,
+                  "hit_to": 1239,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 39,
+              "description": [
+                {
+                  "id": "gi|2954748536|ref|XM_073005275.1|",
+                  "accession": "XM_073005275",
+                  "title": "PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), transcript variant X13, mRNA",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 4479,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 698,
+                  "hit_to": 725,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 40,
+              "description": [
+                {
+                  "id": "gi|2694357800|ref|XM_063598594.1|",
+                  "accession": "XM_063598594",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X36, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14376,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 830,
+                  "hit_to": 857,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 41,
+              "description": [
+                {
+                  "id": "gi|2695811733|ref|XM_063656682.1|",
+                  "accession": "XM_063656682",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X10, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 7696,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1217,
+                  "hit_to": 1244,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 42,
+              "description": [
+                {
+                  "id": "gi|2694609167|ref|XM_009251711.4|",
+                  "accession": "XM_009251711",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X26, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 6536,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 634,
+                  "hit_to": 661,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 43,
+              "description": [
+                {
+                  "id": "gi|2695811739|ref|XM_054457705.2|",
+                  "accession": "XM_054457705",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X13, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 7316,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 834,
+                  "hit_to": 861,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 44,
+              "description": [
+                {
+                  "id": "gi|2694357794|ref|XM_063598592.1|",
+                  "accession": "XM_063598592",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X34, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14284,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 735,
+                  "hit_to": 762,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 45,
+              "description": [
+                {
+                  "id": "gi|2695811751|ref|XM_063656687.1|",
+                  "accession": "XM_063656687",
+                  "title": "PREDICTED: Pongo pygmaeus BRCA1 DNA repair associated (BRCA1), transcript variant X19, mRNA",
+                  "taxid": 9600,
+                  "sciname": "Pongo pygmaeus"
+                }
+              ],
+              "len": 7693,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1214,
+                  "hit_to": 1241,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 46,
+              "description": [
+                {
+                  "id": "gi|2694357699|ref|XM_055100850.3|",
+                  "accession": "XM_055100850",
+                  "title": "PREDICTED: Pan paniscus BRCA1 DNA repair associated (BRCA1), transcript variant X5, mRNA",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 14932,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 1260,
+                  "hit_to": 1287,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 47,
+              "description": [
+                {
+                  "id": "gi|2954748526|ref|XM_073005270.1|",
+                  "accession": "XM_073005270",
+                  "title": "PREDICTED: Chlorocebus sabaeus BRCA1 DNA repair associated (BRCA1), transcript variant X8, mRNA",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 7172,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 703,
+                  "hit_to": 730,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 48,
+              "description": [
+                {
+                  "id": "gi|2694609161|ref|XM_063718831.1|",
+                  "accession": "XM_063718831",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X22, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 6412,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 433,
+                  "hit_to": 460,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 49,
+              "description": [
+                {
+                  "id": "gi|2695045141|ref|XM_055388036.2|",
+                  "accession": "XM_055388036",
+                  "title": "PREDICTED: Gorilla gorilla gorilla BRCA1 DNA repair associated (BRCA1), transcript variant X33, mRNA",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 3893,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 712,
+                  "hit_to": 739,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            },
+            {
+              "num": 50,
+              "description": [
+                {
+                  "id": "gi|2694609133|ref|XM_054546454.2|",
+                  "accession": "XM_054546454",
+                  "title": "PREDICTED: Pongo abelii BRCA1 DNA repair associated (BRCA1), transcript variant X8, mRNA",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 6696,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 51.7806,
+                  "score": 56,
+                  "evalue": 0.000732777,
+                  "identity": 28,
+                  "query_from": 1,
+                  "query_to": 28,
+                  "query_strand": "Plus",
+                  "hit_from": 720,
+                  "hit_to": 747,
+                  "hit_strand": "Plus",
+                  "align_len": 28,
+                  "gaps": 0,
+                  "qseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "hseq": "GAACTCTGAGGACAAAGCAGCGGATACA",
+                  "midline": "||||||||||||||||||||||||||||"
+                }
+              ]
+            }
+          ],
+          "stat": {
+            "db_num": 128547243,
+            "db_len": 948086538397,
+            "hsp_len": 25,
+            "eff_space": 2834618571966,
+            "kappa": 0.41,
+            "lambda": 0.625,
+            "entropy": 0.78
+          }
+        }
+      }
+    }
+  }
+]
+}
+

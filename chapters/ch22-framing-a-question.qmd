@@ -1,0 +1,298 @@
+# Framing a question
+
+Cancer is interesting. That sentence is true, it isn't a question, and no
+dataset anywhere can answer it. In front of you sits GSE60450: 27,179 rows of
+counts, 12 columns of samples, all of it already loaded. What has to be added
+to "cancer is interesting" before that file can answer it?
+
+## What a question needs before anybody can answer it
+
+Three things have to be written down inside it. Take one away and nothing stops
+you. The file still opens and a table still comes back. You find out at the
+end, holding output you have no way to read.
+
+### It names two groups
+
+A number out of biology almost never settles anything on its own.
+
+"How much *Brca1* is there in mammary tissue?" gets you a number. It doesn't get
+you an answer, because you can't call the number high without saying higher
+than what.
+
+So name both sides, and say how many samples sit on each. GSE60450 holds 12
+samples, and most of what you can ask it comes down to cutting those 12 into
+two piles. Basal against luminal is six and six. Virgin against lactating
+inside the basal cells is two and two. Pile size is part of the question, and
+Chapter 25 is where two-against-two starts costing you.
+
+::: {.why}
+A mouse mammary gland isn't one thing. Basal cells and luminal cells sit side
+by side in it and run different genes, and the organ rebuilds itself when the
+animal starts producing milk. That's why the people who made GSE60450 sorted
+the cells before sequencing them: two cell types at three stages, six groups,
+12 samples. "How much *Brca1* is in mammary tissue" has no answer, because the
+tissue in that question is six different things.
+:::
+
+### It names the number you will compute
+
+"Expression" is a subject. Counts per million is a measurement. The test is
+whether you can name the file and the column you'd pull it out of.
+
+Say it as a verb with a unit attached: take the mean counts per million for
+*Brca1* in each group, then divide one by the other. That sentence tells you
+which file to open on Saturday.
+
+That unit is doing real work. A raw count of reads isn't expression.
+It's a count out of however many reads that sample happened to get, which is
+why Chapter 20 divided by library size first. Chapter 7 was the same move: an
+E-value meant nothing until you knew how big the database behind it was. Name a
+unit that already carries its denominator.
+
+### It names the result that would prove you wrong
+
+Write the sentence "I would be wrong if" before you run anything, and finish
+it.
+
+For the basal-against-luminal question it takes one line. I'd be wrong if the
+mean counts per million in the two groups land within a factor of two of each
+other. Two means, one division, and the run can now come back and contradict
+me. A question that can't come out badly is a plan to generate a table.
+
+Pick that factor with some care. "The six basal values never overlap the six
+luminal ones" sounds stricter and therefore better, and it's the wrong bar. It
+throws the question out the moment one sample lands inside the other group's
+range, while the other eleven still say the groups differ.
+
+I leave the third part off more often than the other two. It costs nothing at
+all, right up to the day you have a table and no way to say whether it's the
+right one.
+
+::: {.trap}
+"Which genes are highest in the lactating samples" has a comparison and a
+measurement and no way to fail. Sort a column, take the top ten, and a table
+comes back. Shuffle the numbers first and a table still comes back. It looks
+the same: real gene names, sensible values, nothing red anywhere. You can't tell
+that output apart from the one your data would give if every sample label were
+wrong. Add the third part and the run gets a chance to disagree with you.
+:::
+
+Try the shape on whatever question brought you to this chapter.
+
+::: {.check}
+Write your question on one line. Underline the two groups and put the number of
+samples beside each. Circle the measurement and write its unit above it. Then
+finish "I would be wrong if" underneath.
+
+Two underlines, one circle, one finished sentence. Whichever of the four you
+couldn't produce is the part you're missing, and it isn't code.
+:::
+
+## Three narrowings
+
+Here are three starting sentences, narrowed a step at a time. Every version in
+between is printed, including the ones too vague to use.
+
+### Cancer is interesting
+
+Rewrite it as a subject and it feels like progress. "I want to work on breast
+cancer genes." That isn't progress. Adding words to a topic gets you a longer
+topic.
+
+"Is *BRCA1* expressed differently in breast cancer?" has the grammar of a
+question. Differently from what? Measured how? "Breast cancer" is a category,
+and a category isn't a pile of samples.
+
+Here's the version that lands. In GSE60450, do basal cells and luminal cells
+differ in *Brca1* expression, measured as mean counts per million, six samples
+against six? I'd be wrong if the two group means land within a factor of two.
+
+Now the uncomfortable part, out loud: that question isn't about cancer any
+more. It's mouse mammary tissue, the symbol is spelled `Brca1` because mouse
+nomenclature capitalizes differently, and nothing in the answer will mention a
+tumor. If that trade is unacceptable to you, the repair is a different dataset,
+which is Chapter 23. The repair is never a vaguer question.
+
+### Mouse studies do not translate
+
+That's an opinion, and a common one. "Are mouse genes different from human
+genes?" is the first rewrite, and it's worse than it looks. All of them?
+Different how?
+
+"How similar is mouse *BRCA1* to human *BRCA1*?" gets you a measurement with no
+comparison. A percentage on its own is unreadable. Whether 73 percent identity
+counts as close depends entirely on what you set beside it.
+
+So the answerable version brings its own yardsticks. Over the coding sequences,
+does human-to-mouse identity sit nearer human-to-chimpanzee or nearer
+human-to-chicken? I'd be wrong if mouse came out nearer chimpanzee. You ran
+that alignment in Chapter 19. Human to chimpanzee came back 99.28 percent,
+human to mouse 73.18, human to chicken 49.25. Take the gaps:
+99.28 − 73.18 = 26.10, and 73.18 − 49.25 = 23.93. Mouse lands in the middle, a
+little closer to the chicken end.
+
+And here's the limit, which belongs to the question rather than to the answer:
+that's one gene. It settles nothing about mouse models in general, and a
+sentence claiming otherwise would be a bigger claim with the same evidence
+under it.
+
+### Antibiotic resistance
+
+"Which bacteria are resistant to antibiotics?" is a lookup. Somebody wrote that
+list already and copying it isn't analysis.
+
+"Does carrying a resistance gene make a strain resistant?" implies a comparison
+without naming one, and names no measurement at all.
+
+Answerable: take a collection of bacterial isolates where somebody recorded
+which ones grew on the drug. Is a named resistance gene present in the
+resistant isolates and absent from the susceptible ones? The comparison is
+resistant against susceptible, counted both ways. The measurement is one yes or
+no per isolate. I'd be wrong if the gene turns up at similar rates in both
+piles.
+
+You don't have that file yet, and notice what decides whether you ever will.
+The sequences are in the archives by the thousand. What's scarce is a record of
+which isolates grew on the drug and which didn't. A genome collection carrying
+no resistance labels can't answer this, however many genomes it holds. Chapter
+23 is where you check that before you spend an evening on it.
+
+## One that does not narrow
+
+Plenty of people arrive at this field carrying a version of this question.
+"Cancer runs in my family and I want to know whether we carry something."
+
+Run it through the three parts and watch it fail on the first one. The
+comparison would be your relatives against some group of people without the
+disease. The measurement would be the sequence of *BRCA1* in named individuals.
+That's where it stops. Nothing in a public archive is labeled with your aunt's
+name, and if it were you shouldn't be able to find her in it. Human deposits
+are de-identified before they go up, and that property is what makes them
+public.
+
+So abandon it. Not narrow it, not park it until you know more: this book can't
+get you there and neither can public data. Testing named people for inherited
+cancer risk is a clinical service and it runs down a different road.
+
+One warning before you move on, because the near miss costs more than the
+failure. You can ask which *BRCA1* variants have been classified as pathogenic
+and by whom. That question is answerable, and it's the one you'll drift toward,
+and it tells you nothing about your family. Answering the neighboring question
+and reporting it as the original is the most expensive mistake in this chapter.
+
+The rule generalizes past this case: if the answer would be about one named
+person, public data can't produce it. The same holds for any measurement nobody
+has made yet: an experiment that hasn't been run isn't sitting in an archive,
+however good the question is.
+
+## Three weeks beats three sentences
+
+Give a first project three weeks of the three hours a week Chapter 1 asked you
+for. Three times three is nine hours in total, and Exercise 23.1 spends one of
+them before you compute anything.
+
+Nine hours is why the questions above are small. Each one ends in an object you
+can name before you start. For the *Brca1* question that object is two group
+means and a plot with 12 points on it. Write that end state down first. If you
+can't describe what you'll be holding when you're done, the scope isn't set,
+and no amount of work will set it.
+
+Nine hours into a question you can state in three sentences and can't finish,
+you're holding a folder of half-run notebooks and no number. The small question
+pays out. The large one describes well at parties.
+
+One more thing, and it cuts against instinct. A question somebody has already
+answered makes a better first project than an open one, because their answer is
+the only thing you can check yours against. That's why Chapter 1 promised you a
+reproduced figure rather than a discovery. Asking a dataset something its own
+authors never asked is allowed too. The team who generated GSE60450 was chasing
+*Mcl1*, and *Brca1* sits in their file because the sequencing covered every
+gene. What you give up there is the check.
+
+## Exercises
+
+::: {.exercise num="22.1" time="30 minutes"}
+::: {.goal}
+Rewrite a question you actually care about until all three parts are on the
+page.
+:::
+::: {.produce}
+Four lines: the statement you started from, two versions in between, and a
+final question. The final one carries two group names with a sample count
+beside each, one measurement with its unit, and a sentence beginning "I would
+be wrong if".
+:::
+::: {.check}
+Your final line should carry at least two numbers, and they should be the sizes
+of the two groups. No numbers means you named categories rather than samples,
+and a category can't be counted. Then cover the line and write down what kind
+of file you'd open first and which column you'd read out of it. If you can't
+name a column, the measurement isn't named either.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+::: {.exercise num="22.2" time="20 minutes"}
+::: {.goal}
+Move each statement below one step less vague, then say which part is still
+missing.
+:::
+::: {.given}
+1. Sleep affects the immune system.
+2. Some tumors come back after treatment and some don't.
+3. Gut bacteria have something to do with obesity.
+:::
+::: {.produce}
+Three rewritten lines, and beside each one the name of the part that's still
+absent: the comparison, the measurement, or the direction you could be wrong
+about.
+:::
+::: {.check}
+At least one of your three should still be missing a part after one step. One
+step is rarely enough, and three that all came out answerable means you jumped
+the middle version. Look at your measurements too. If one of them reads
+"activity" or "level", you've named a subject where a number goes.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="Your question still contains the words is involved in"}
+"Involved" is a relationship, and no file has a column for it. Say what you'd
+count instead. If the honest answer is that you don't know what you'd count,
+the missing part is the measurement, and Chapter 20 is where the countable
+things live.
+:::
+
+::: {.errfix err="You have two named groups and no dataset containing both of them"}
+Change the groups, not the shape of the question. A vaguer question is harder
+to check and it fails on the same file anyway. Chapter 23 shows you which
+groupings somebody has already deposited.
+:::
+
+::: {.errfix err="You cannot finish the sentence I would be wrong if"}
+The question can only come out one way, so it'll come out that way on any
+input. The usual culprit is the word "differ" with no threshold under it. Pick
+the number that would change your mind and write it down before the run.
+:::
+
+::: {.errfix err="You have four questions and no way to choose between them"}
+Pick the one whose data you can already open. Against a budget of nine hours, a
+middling question you finish beats a good one you abandon in week two.
+:::
+:::
+
+::: {.checkpoint}
+- Name the two groups in your question and how many samples sit on each side
+- Finish the sentence "I would be wrong if" for a question you care about
+- Rewrite a topic into a question and say which part you added at each step
+- Say why a question about one named person can't be answered from a public
+  archive
+- Check a question against nine hours of work and cut it until it fits
+:::

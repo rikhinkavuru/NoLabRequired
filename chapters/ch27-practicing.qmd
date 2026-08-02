@@ -1,0 +1,262 @@
+# Practicing
+
+You finished the project. The notebook runs from a clean start, the README says
+where the data came from, and Chapter 26 put a link on it. That was Sunday.
+It's Tuesday now, you have an hour, and nobody has assigned you anything. What
+goes in the hour?
+
+## Three ways to keep going, ordered by what they're worth
+
+Reproducing a published figure is worth more of the hour than the other two
+together, and it takes most of this chapter.
+
+### Reproduce one figure from a paper that published its data
+
+A hiring manager wrote this on r/bioinformatics, about filling one near
+entry-level job: "I just interviewed over 60 people with PhDs most of whom were
+unemployed... Yet nobody ever was like hey look 'I reproduced the results of
+these 5-10 papers myself and put the code in my GitHub'. To me this seems like
+the most obvious lowest hanging fruit?"
+
+<!-- nlr-allow: 60 -->
+
+Everybody applying can name the tools. Very few arrive with evidence that they
+ran somebody else's analysis end to end and can say where it came apart. You
+don't need a lab to get that evidence. The data is already public, and the
+paper already told you what the answer should be.
+
+The loop has four steps.
+
+1. Pick a paper that deposited its data. Chapter 23 covered where to look, and
+   the test is one line long: does the paper name an accession you can fetch?
+2. Pick one panel. Not the paper, not the figure. One panel.
+3. Rebuild that panel from the deposited data.
+4. List every number that came out different, and put the reason next to it.
+
+That list is your *difference log*, and it's the education. It's also the step
+I'd bet you drop, because by step 4 the panel already looks finished. Your
+numbers will differ from the paper's for reasons that have names, and the names
+are dull. A count filter at 5 CPM on their side and 1 on yours. An annotation
+release that renamed a gene between their run and your run. Each one you chase
+down is a piece of the pipeline you know afterwards and didn't know before.
+
+An answer on Biostars in 2015 called duplicating a published analysis "an
+endless stream of WTFs for you to resolve". Nothing cheaper finds the things
+you believe that aren't true.
+
+Be honest in the README about what you proved. Reproducing a figure shows you
+can run the pipeline and read the data. It doesn't show the finding is correct,
+and it doesn't make you a co-author.
+
+### Rosalind and Kaggle, and what each one leaves out
+
+`rosalind.info` is a set of programming problems built on biology, and its FAQ
+says it's free and open to the public. Every problem ships a sample dataset
+with the output that dataset should give. A problem hands you the data, tells
+you the format, and guarantees an answer exists, and real data does none of
+those three things. Use it to get fluent at the code, then go back to the
+papers.
+
+`kaggle.com` runs prediction competitions, and its own setup documentation says
+what one has to contain. There's a dataset. There's an answer key the
+organizers hold back. And there's a single metric, chosen before anybody
+enters, that scores every submission against that key. Go there if you want to
+get fast at handling tables.
+
+::: {.asof}
+Rosalind's FAQ and a problem page, and Kaggle's competition documentation, were
+checked on 2 August 2026. Names and layouts move; what a problem page and a
+competition have to contain doesn't.
+:::
+
+The caveat is that same list. Somebody chose the question, picked the
+measurement, cleaned the columns and put the answer in one of them. Every one
+of those decisions is the work you're trying to learn how to do. A competition
+dataset is the last tenth of a real project, delivered with the first nine
+tenths already finished by somebody you'll never meet.
+
+::: {.trap}
+A tutorial that runs cleanly is telling you about the tutorial. Guided
+exercises get built so that the commands work, so a hundred finished exercises
+hand you a number for your own ability that somebody else's testing decided in
+advance. The number is too high and nothing on the page says so. Then a real
+file gives you nothing back, and that reads as a verdict about you instead of a
+fact about the file. Spend part of every week on data nobody cleaned for you.
+:::
+
+## Two right answers for the same fold change
+
+You already have the file from Part 4, and `Brca1` is Entrez ID 12189 inside
+it. This cell asks how far `Brca1` moves in basal cells between virgin and
+lactating mice, and it answers twice, by two routes that are both standard.
+
+```{python}
+import numpy as np
+import pandas as pd
+
+counts = pd.read_csv("data/GSE60450_counts.tsv.gz", sep="\t")
+samples = pd.read_csv("data/GSE60450_samples.csv")
+counts.columns = [c.split("_")[0] for c in counts.columns]
+matrix = counts.set_index("EntrezGeneID").drop(columns="Length")
+cpm = matrix / matrix.sum() * 1e6
+
+brca1 = cpm.loc[12189]
+basal = samples[samples["cell_type"] == "basal"]
+virgin = brca1[basal[basal["stage"] == "virgin"]["sample"]]
+lactating = brca1[basal[basal["stage"] == "lactating"]["sample"]]
+
+logfc = np.log2(virgin + 1).mean() - np.log2(lactating + 1).mean()
+print("basal virgin, mean CPM   ", round(virgin.mean(), 1))
+print("basal lactating, mean CPM", round(lactating.mean(), 1))
+print("ratio of those two means ", round(virgin.mean() / lactating.mean(), 1))
+print("log2 fold change         ", round(logfc, 2))
+print("the same, as a ratio     ", round(2 ** logfc, 1))
+```
+
+Three numbers describe one change. Divide the two means as printed: 8.3 over
+0.9 is 9.2. Divide them before they were rounded, which the third line does,
+and you get 9.4. Take the log2 fold change back to a ratio and you get 4.9.
+
+Nothing here is broken. The first two differ because I rounded before dividing,
+which earns a line in the log and nothing more. The log route adds 1 to every
+value first, so a gene sitting at zero doesn't produce infinity. Adding 1 to
+8.3 barely moves it. Adding 1 to 0.9 more than doubles it, and the number that
+doubled is the denominator.
+
+So the correction lands almost entirely on the smaller group, and that's the
+whole distance between 9.4 and 4.9. Look at the raw counts underneath those
+means. The two virgin samples hold 163 reads and 210. The two lactating samples
+hold 20 and 17. Small counts are exactly where two ordinary routes come apart,
+and Chapter 25 is about what that does to a p-value.
+
+One more line for the log. Put lactating on top instead and 9.4 becomes 0.1,
+and 2.29 becomes -2.29. Nothing on the screen says which order you used.
+
+::: {.check}
+Your first two lines should read 8.3 and 0.9. A lactating mean near 19 means
+you selected luminal cells rather than basal, which is the Chapter 24 mistake
+arriving on schedule. If the ratio prints as 0.1 you have virgin and lactating
+the other way round, and you now know what that looks like.
+:::
+
+## Ninety days at three hours a week
+
+Thirteen weeks is ninety-one days, near enough to ninety. Thirteen weeks at
+three hours each is thirty-nine hours, and that's the entire budget the plan
+below gets to spend.
+
+| Weeks | What you do | What you have at the end |
+|---|---|---|
+| 1 to 2 | Choose the paper and one panel. Copy the accession, the file size and the panel's axis labels into a notebook cell. | A brief: one paper, one panel, one accession. |
+| 3 to 5 | Load the data. Reproduce the descriptive numbers the methods section states: how many samples, how many per group, how many rows. | A notebook that loads the file and prints counts you can hold against the paper. |
+| 6 to 9 | Rebuild the panel. Stop at the first version with the right axes and the right shape. | Your version of the panel, saved as an image next to the published one. |
+| 10 to 11 | Write the difference log. One line per number that came out different, each with a cause or an honest "I don't know". | A numbered list. This is the part worth sending to somebody. |
+| 12 to 13 | Publish, the way Chapter 26 did it. Restart and run all, write the README, save the copy to GitHub. | A link you can send. |
+
+You're going to lose two weeks. Put them in the calendar rather than in the
+plan, so thirteen weeks of work lands about fifteen weeks out. A plan that only
+survives an uninterrupted quarter isn't a plan.
+
+Every row above ends in a file, and that's the reason the rows are shaped like
+that. You come back after a gap and open the last file you finished. The gap
+costs you the block you were inside when you stopped, never a block you already
+closed, and never the whole plan.
+
+Two rules for the return. Reread your last artifact before you run anything.
+Then restart and run all before you trust any number on the screen. A notebook
+left open for two weeks has an empty runtime sitting under output that still
+looks alive. A runtime drops on its own after a stretch with nobody touching
+it, which Chapter 4 said out loud.
+
+## Exercises
+
+::: {.exercise num="27.1" time="30 minutes"}
+::: {.goal}
+Write the brief for your replication. One paper, one panel, one accession.
+:::
+::: {.given}
+An open-access paper in a subject you can already read the introduction of.
+Chapter 23 named the archives and the four questions that decide whether a
+dataset is usable.
+:::
+::: {.produce}
+Four lines: the paper's identifier, which panel of which figure you picked, the
+accession the data sits under, and the size of the file you'll download.
+:::
+::: {.check}
+Fill the accession line from the paper alone, inside ten minutes. If you can't,
+the paper is the wrong paper. Put it down and pick another one. A paper that
+never says where its data lives isn't a replication target, whatever else it
+is, and there are more papers than there are Tuesdays.
+:::
+
+::: {.answerspace lines="5"}
+:::
+:::
+
+::: {.exercise num="27.2" time="20 minutes"}
+::: {.goal}
+Run the walkthrough cell again on a second gene and account for what changed.
+:::
+::: {.given}
+Entrez ID 110308 is `Krt5`, the basal marker gene Chapter 24 uses to catch the
+mislabeled columns. Same two groups, same file, one identifier changed in the
+code. Write your prediction down before you run it: will the two routes agree
+more closely than they did for `Brca1`, or less?
+:::
+::: {.produce}
+Two numbers, the ratio of the means and the log2 fold change as a ratio, plus
+one sentence naming the cause of the gap between them.
+:::
+::: {.check}
+Your two numbers should agree to one decimal place, where `Brca1` had them
+nearly a factor of two apart. If they're still far apart, you changed the
+Entrez ID in one place and left it alone in another. The sentence you write
+should mention the 1 that gets added before the log, and how much of a CPM in
+the thousands that 1 is worth.
+:::
+
+::: {.answerbox height="1.8in"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="KeyError: 'Krt5'"}
+Python is speaking. The matrix is indexed on Entrez IDs and not on symbols, so
+`Krt5` is not a label in it. Use `110308`, as an integer and not as text.
+Go back to Chapter 20 for why that file holds numbers and not names.
+:::
+
+::: {.errfix err="The printed numbers come back as nan"}
+No layer is speaking. No traceback, no red text, and the cell finished. Pandas
+hands back `nan` for the mean of an empty group, so one of your two groups came
+back with no samples in it. The sample table writes `basal`, `virgin` and
+`lactating` in lowercase, and `Virgin` matches no row at all. Print each group
+and count its rows before you average anything.
+:::
+
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'data/GSE60450_counts.tsv.gz'"}
+Python is speaking, and it's telling you nothing sits at the path you handed
+it. A fresh Colab runtime starts with an empty disk, so whatever put the book's
+`data` folder into your notebook in Chapter 20 has to run again in this
+session, above this cell.
+:::
+
+::: {.errfix err="The paper you picked reports a number you cannot get anywhere near"}
+Record the gap and go on. A difference you can't explain is still a line in
+the log, and "I don't know why this is 2-fold out" is a more useful sentence
+than a silent number. Come back to it after the panel is built.
+:::
+:::
+
+::: {.checkpoint}
+- Name the four steps of the replication loop, and say which one is the
+  education
+- Write a difference log entry: the published number, your number, the cause
+- State what reproducing a figure proves and what it doesn't
+- Say what a competition dataset has already had done to it
+- Compute a fold change two ways and explain why the smaller group moves more
+- Name the artifact that ends each block of your ninety-day plan
+:::

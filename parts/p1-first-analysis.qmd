@@ -1,0 +1,13 @@
+# Your first real analysis
+
+No code in this part. Not one line.
+
+That is not a warm-up decision. The tools in these chapters are the ones
+working biologists reach for most days, they run in a browser, and people
+publish papers on the strength of them. You can do real work before you can
+program, and doing it first means that when the code arrives in Part 2 you will
+already know what you want it to do.
+
+By the end of this part you will have looked up a gene, identified an unknown
+sequence, judged how much to believe the result, and found a protein structure
+that nobody has ever seen under a microscope.

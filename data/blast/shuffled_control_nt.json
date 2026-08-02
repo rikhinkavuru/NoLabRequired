@@ -1,0 +1,42 @@
+{
+"BlastOutput2": [
+{
+    "report": {
+      "program": "blastn",
+      "version": "BLASTN 2.17.0+",
+      "reference": "Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb Miller (2000), \"A greedy algorithm for aligning DNA sequences\", J Comput Biol 2000; 7(1-2):203-14.",
+      "search_target": {
+        "db": "core_nt"
+      },
+      "params": {
+        "expect": 10,
+        "sc_match": 1,
+        "sc_mismatch": -2,
+        "gap_open": 0,
+        "gap_extend": 0,
+        "filter": "L;m;"
+      },
+      "results": {
+        "search": {
+          "query_id": "Query_3490877",
+          "query_title": "shuffled_control",
+          "query_len": 649,
+          "hits": [
+          ],
+          "stat": {
+            "db_num": 128547243,
+            "db_len": 948086538397,
+            "hsp_len": 36,
+            "eff_space": 578340267478837,
+            "kappa": 0.46,
+            "lambda": 1.28,
+            "entropy": 0.85
+          },
+          "message": "No hits found"
+        }
+      }
+    }
+  }
+]
+}
+

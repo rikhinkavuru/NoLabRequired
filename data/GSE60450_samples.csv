@@ -1,0 +1,13 @@
+sample,gsm,cell_type,stage,column_position,gsm_position
+MCL1-DG,GSM1480297,basal,virgin,1,7
+MCL1-DH,GSM1480298,basal,virgin,2,8
+MCL1-DI,GSM1480299,basal,pregnant,3,9
+MCL1-DJ,GSM1480300,basal,pregnant,4,10
+MCL1-DK,GSM1480301,basal,lactating,5,11
+MCL1-DL,GSM1480302,basal,lactating,6,12
+MCL1-LA,GSM1480291,luminal,virgin,7,1
+MCL1-LB,GSM1480292,luminal,virgin,8,2
+MCL1-LC,GSM1480293,luminal,pregnant,9,3
+MCL1-LD,GSM1480294,luminal,pregnant,10,4
+MCL1-LE,GSM1480295,luminal,lactating,11,5
+MCL1-LF,GSM1480296,luminal,lactating,12,6

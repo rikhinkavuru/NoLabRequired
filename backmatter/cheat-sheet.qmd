@@ -1,0 +1,121 @@
+# Cheat sheet {.unnumbered}
+
+Two pages, meant to be printed on their own and kept next to the keyboard.
+Nothing here assumes you have the rest of the book open.
+
+## Read an error message
+
+Read the **last line first**. It says what went wrong. The lines above it say
+where.
+
+| Message | What the machine believes | Usual cause |
+|---|---|---|
+| `SyntaxError` | I could not finish reading your instruction | An unclosed bracket or quote, often on an earlier line than the one named |
+| `IndentationError` | The spacing does not tell me what is inside what | Mixed tabs and spaces, or a missing indent after a colon |
+| `NameError: name 'x' is not defined` | You used a name I was never given | A typo, or a cell that has not been run yet |
+| `TypeError` | You asked me to combine two kinds of thing that do not combine | Text where a number was needed. Anything read from a file is text |
+| `IndexError: list index out of range` | You asked for an item past the end | Positions run 0 to length minus one. Use `-1` for the last |
+| `KeyError: 'ABC'` | That key is not in the dictionary | Your two inputs disagree. The name in the message is the clue |
+| `FileNotFoundError` | I looked and it is not there | Wrong folder, or the file was never downloaded in this session |
+| `ModuleNotFoundError` | That library is not installed here | A fresh notebook session. Run the install cell again |
+
+**Who is talking?** Python prints a traceback and always names a line. The
+notebook runtime says things like `Your session crashed` and names nothing from
+your code. A website shows a banner about your input. The network says nothing
+at all and just leaves you waiting.
+
+## Counting from zero, and counting from one
+
+Python numbers the **gaps between** letters, starting at the gap before the
+first one. Databases number the **letters**, starting at one.
+
+```
+   sequence:    A  T  G  G  C
+   Python:     0  1  2  3  4  5
+   GenBank:     1  2  3  4  5
+```
+
+`seq[0:3]` is `ATG`. In GenBank that same piece is `1..3`.
+
+- Python slice: end is **excluded**. Length is `end - start`.
+- GenBank range: both ends **included**. Length is `end - start + 1`.
+- To use a database range in Python: `seq[start - 1 : end]`.
+- BED files count from zero and exclude the end, like Python. GFF and GTF count
+  from one and include it, like GenBank.
+
+## Sequences in Python
+
+```python
+seq = "ATGGATTTATCTGCT"
+
+len(seq)                       # how many bases
+seq[0]                         # first base
+seq[-1]                        # last base
+seq[0:3]                       # first three, as a piece
+seq.count("G")                 # how many G, no overlaps
+seq.upper()                    # force uppercase before comparing
+"ATG" in seq                   # True or False
+[seq[i:i+3] for i in range(0, len(seq), 3)]     # split into codons
+```
+
+`str.count` does not count overlapping matches. Counting `AA` in `AAAA` gives
+2, not 3.
+
+## Reading a BLAST hit table
+
+| Column | What it measures | Watch out |
+|---|---|---|
+| **E-value** | How many hits this good you would expect by accident in a database this size | Depends on database size. Meaningless without knowing which database |
+| **Bit score** | The alignment score on a fixed scale | The only column you can compare across different searches |
+| **Percent identity** | How much of the **aligned part** matched | Says nothing about how much of your query was involved |
+| **Query coverage** | How much of your query the alignment used | Read together with identity, never alone |
+
+100 percent identity over 28 bases means nothing. The default E-value cutoff is
+10, so out of the box BLAST shows you hits it expects to see ten times by
+chance.
+
+## The genetic code, in numbers
+
+64 codons. 3 stop codons: `TAA`, `TAG`, `TGA`. 20 amino acids.
+
+Leucine, serine and arginine have six codons each. Tryptophan and methionine
+have one each.
+
+A coding sequence of length *n* gives *n* / 3 codons, one of which is the stop,
+so the protein is (*n* / 3) − 1 residues.
+
+## File formats at a glance
+
+| Format | Holds | Recognize it by |
+|---|---|---|
+| FASTA | Sequences | Lines starting with `>` |
+| FASTQ | Reads with quality scores | Four lines per read, starting with `@` |
+| GenBank | One annotated record | `LOCUS` on line 1 |
+| BED | Genome intervals | Three or more tab-separated columns, first is a sequence name |
+| VCF | Differences from a reference | Header lines starting with `##` |
+
+## Tables in pandas
+
+```python
+import pandas as pd
+
+df = pd.read_csv("counts.tsv", sep="\t", index_col=0)
+df.shape                       # rows, columns
+df.head()                      # look before you compute
+df.columns                     # what the columns are really called
+df.sum()                       # column totals
+df.loc[12189]                  # one row by its label
+df[df["p_adjusted"] < 0.05]    # filter
+df.merge(meta, on="sample")    # join BY KEY, never by position
+```
+
+Counts are not comparable across samples until you divide by the library size.
+Counts per million is `df / df.sum() * 1e6`.
+
+## Before you believe a result
+
+- Did the columns line up by **key**, or did you trust the order?
+- Does a gene you already know behave the way you already know it does?
+- How many tests did you run, and did you correct for that?
+- Is the biggest source of variation the thing you were asking about?
+- Does the notebook still work after **Restart and run all**?

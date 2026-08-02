@@ -1,0 +1,195 @@
+# Resources, honestly annotated
+
+Every list like this one tells you what a thing is good for. None prints the
+one field that decides your evening. So here's the question this chapter
+answers, once per entry, in the same words. What is this resource bad at?
+
+## Four fields, and why the fourth is the one you need
+
+An entry here says what the thing is, when you'd take it, what it costs, and
+what it's bad at. The first three are on every resource page in this field. The
+fourth is on none of them, because nobody advertises where their own material
+stops working.
+
+A resource doesn't fail in general. It fails you, at the point where what it
+assumes about you and what's true about you come apart. A lesson that assumes a
+working terminal is fine for the person who has one. You don't, so that
+assumption is the first thing about it you need to read. Everything below is
+free unless its entry says otherwise, and none of it wants an institutional
+login.
+
+## Why no address is printed next to any of these
+
+None of the entries below carries a web address. A name outlives an address,
+and it still finds the thing after a redesign that would have broken a printed
+link.
+
+The back of this book carries a dataset and source index. It holds every
+address the book takes a number from, with the date that number was last
+checked against the live page:
+
+``` {.default .output}
+https://www.uniprot.org/uniprotkb/P38398
+9 facts, checked 2026-08-02
+```
+
+Nothing on this page is in that index, because this chapter takes no numbers
+from anything below. The line at the end of the entries dates them instead.
+
+::: {.check}
+Find that UniProt line in the index at the back. It reads `9 facts, checked
+2026-08-02`. Every line there has that shape: one address, one count, one date.
+A date more than a year behind today makes what sits above it history.
+:::
+
+## Practice that marks your answer
+
+**Rosalind** sets programming problems built on biology and marks what you
+submit. Chapter 27 says when to take it and how far to go. The bad part: every
+input it hands you is clean, so nothing there prepares you for a file like the
+one in Chapter 15.
+
+**The Galaxy Training Network** runs its tutorials on public Galaxy servers, in
+a browser, with nothing installed, free and openly licensed. Use it to run a
+whole analysis before you can write one. The bad part: a Galaxy history isn't a
+script, so you finish holding nothing a stranger can re-run.
+
+## The command line, which this book left out
+
+**Software Carpentry's Unix Shell lesson** is the standard free route in, under
+a Creative Commons license, and it's the one to take when you want the shell.
+The bad part: before lesson one you download an archive and, on Windows,
+install a shell to run it in.
+
+**Happy Belly Bioinformatics**, by Mike Lee, is a working bioinformatician's
+teaching site that starts at Unix and carries on into genomics. Nothing to pay.
+The bad part: past the first pages it expects a Unix environment you set up and
+tools you install yourself.
+
+::: {.trap}
+A page that loads is not a resource that's maintained. Tools change a default
+more often than they remove the option. When that happens an old tutorial still
+runs, warns about nothing, and hands you a number worked out a different way
+from the one on the page. Look for a date and a version before you copy a
+command off any page.
+:::
+
+## Reference for what you already use
+
+**The Biopython Tutorial and Cookbook** documents the one library Chapter 17
+installs, online and free, well past what that chapter needed. Open it when you
+want a function you haven't met. The bad part: it tells you how to use `SeqIO`,
+not whether `SeqIO` is what you want.
+
+**EMBL-EBI's on-demand training** holds recorded webinars, self-paced tutorials
+and course materials, free and openly licensed, from the institute that runs
+Ensembl. Watch one to hear a database explained by the people who host it. The
+bad part: a recording runs at the speaker's pace and never checks your work.
+
+## The other half of the field, which is in R
+
+**Bioconductor** is where a lot of published RNA-seq analysis happens, in R
+rather than Python. Open source, free, one worked vignette per package. Go
+there when the paper you're reproducing says DESeq2, because that's where
+DESeq2 lives. The bad part: a vignette starts from data already in the shape
+that package wants, and yours never arrives that way.
+
+**Chatomics**, by Ming Tang, is a working bioinformatician's blog on R, Python
+and single-cell data. The blog is free; the courses beside it aren't. Read a
+post when it names your exact problem. The bad part: each post assumes whatever
+setup he had open that day.
+
+## Where a stranger will answer you
+
+**Biostars** is the question-and-answer site Chapter 16 sent you to, free to
+read. Bring it a question a search couldn't answer. The bad part: the standard
+reply to "I have no lab" is to get one, and a badly formed question gets
+silence rather than a correction.
+
+**Bioinformatics Stack Exchange** is smaller and stricter than Biostars, and
+free both to read and to post. Bring it a question with one right answer. The
+bad part: anything without one gets closed instead of answered, so carry a
+single failure and the exact text it printed.
+
+## The two subjects this book stopped short of
+
+**Automate the Boring Stuff with Python**, by Al Sweigart, is free to read
+online under a Creative Commons license and assumes no programming at all. Take
+it when Part 2 runs out and you want more Python. The bad part: there's no
+biology in it anywhere.
+
+**StatQuest**, by Josh Starmer, explains p-values, multiple testing and PCA in
+short videos, free to watch. The study guides cost money. Start there if the
+statistics in Chapter 25 went past you. The bad part: a video holds no data and
+no code, so you can watch ten and still not have run one.
+
+::: {.asof}
+Every entry above was read on the live site on 2 August 2026, except Biostars
+and Bioinformatics Stack Exchange, which refuse automated readers. Costs and
+account rules move without notice, so check that field yourself before you
+spend an evening on any of these.
+:::
+
+## Exercises
+
+::: {.exercise num="30.1" time="30 minutes"}
+::: {.goal}
+Annotate one resource this chapter left out, and commit to the fourth field
+before you open the thing.
+:::
+::: {.given}
+Anything you can reach without paying and without an affiliation. A tool's own
+documentation counts, and so does one person's blog.
+:::
+::: {.produce}
+Five lines: your guess at the bad part first, then what it is, when you'd take
+it, what it costs, and what it turned out to be bad at.
+:::
+::: {.check}
+Compare your first line with your last. If they say the same thing, the bad
+part was visible from the front page and you haven't been inside yet. Go one
+level in and write it again.
+:::
+
+::: {.answerspace lines="6"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="404 Not Found"}
+The site answered, so it's up and the address is what's gone. Search the site's
+name plus the thing you wanted, instead of retyping what you have.
+:::
+
+::: {.errfix err="ERR_NAME_NOT_RESOLVED"}
+Nothing answered at all. This is the fourth voice from Chapter 4, the network,
+not the site. Open another page you know works. If that one fails too, the
+trouble is between you and the internet.
+:::
+
+::: {.errfix err="A tutorial's command fails with an error the page never mentions"}
+The page is older than the tool, so options got renamed under it. Read the
+tool's own documentation for the option the error names, and treat the page as
+a record of what somebody once did.
+:::
+:::
+
+::: {.checkpoint}
+- Name the four fields an honest annotation carries, and say which one gets
+  left out everywhere else
+- Say why no address is printed beside a resource on this page, and where the
+  addresses this book does print are collected
+- Pick the resource above that fits your next three hours, and say what it's
+  bad at before you open it
+- Write four fields for one resource nobody listed for you
+:::
+
+## Nobody sends the message
+
+There's no message coming to tell you you're allowed. No acceptance, no first
+day, nothing that marks the end of the beginner part. NCBI served you that
+record in Chapter 5 without asking one question about who you are, and it'll
+serve you another tomorrow morning. Go and ask it something nobody assigned
+you.

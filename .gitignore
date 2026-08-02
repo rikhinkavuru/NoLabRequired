@@ -1,0 +1,37 @@
+# Build output
+/_book/
+/_freeze/
+/.quarto/
+**/*.quarto_ipynb
+/build-logs/
+*.log
+*.aux
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+/index.tex
+/bioinformatics-workbook*.tex
+/No-Lab-Required.tex
+
+# Python
+/.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Raw API responses are provenance, not source: large, and regenerable with
+# tools/fetch_facts.py. research/facts.jsonl is the record that matters and it
+# is committed.
+/research/raw/
+
+# OS
+.DS_Store
+.gstack/
+
+# Quarto writes executed figure output next to the chapter that produced it,
+# and the site libraries into site_libs/. Both are build products.
+/chapters/*_files/
+/site_libs/
+/backmatter/*_files/

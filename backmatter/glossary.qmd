@@ -1,0 +1,394 @@
+# Glossary {.unnumbered}
+
+Every term this book sets in bold is defined here, written to be read cold by
+somebody who doesn't have the chapter open. The chapter named at the end of
+each entry is where the term gets taught with a worked example. Error messages
+are not in this list. Those are in the error index, which gives you a page
+number for each one.
+
+## A {.unnumbered}
+
+**accession number**
+: A permanent identifier for one record in a sequence database, such as
+  `NM_007294.4`. The part after the dot is the version, and it goes up each
+  time somebody corrects the sequence. Quote an accession without its version
+  and you've named a record that can change under you. See Chapter 5.
+
+**affine gap penalty**
+: A way of pricing gaps in an alignment that charges a large amount to open a
+  gap and a small amount for each further column the gap runs on. One deletion
+  of twelve bases is a single event, and this pricing is what stops a program
+  from scoring it like twelve separate one-base events. See Chapter 18.
+
+## B {.unnumbered}
+
+**BED**
+: A tab-separated text format for intervals along a sequence, with three
+  required columns: the sequence name, the start, and the end. Coordinates
+  count from zero and the end position is not included, which is the opposite
+  convention from GenBank and GFF. See Chapter 15.
+
+**bioinformatics**
+: Building and running the software and the databases that hold biological
+  data and hand it back to whoever asks. BLAST is bioinformatics, and so is
+  the collection of sequences it searches. See Chapter 2.
+
+**bit score**
+: An alignment score put on a fixed scale, so the same value means the same
+  thing in every search anyone has ever run. Unlike an E-value it doesn't move
+  when the database changes size, which is why it's the column you compare
+  hits across searches with. See Chapter 7.
+
+**BLAST**
+: Basic Local Alignment Search Tool. You hand it one sequence, and it hands
+  back the deposited sequences that resemble yours region by region, ranked
+  and scored. See Chapter 6.
+
+## C {.unnumbered}
+
+**cell**
+: One box in a notebook, holding either code or text. They run one at a time
+  in whatever order you click, so a notebook can show a result that no
+  top-to-bottom run reproduces. See Chapter 4.
+
+**computational biology**
+: Using computation to answer a question about biology rather than to build a
+  tool. The output is an answer, such as which two species split first. See
+  Chapter 2.
+
+**counts per million**
+: A raw count divided by the total counts in its own sample, then multiplied
+  by a million. It makes one gene comparable across samples sequenced to
+  different depths. A count is still not an amount of RNA, because it mixes
+  how much the cell held with how hard the machine looked. See Chapter 20.
+
+## D {.unnumbered}
+
+**DataFrame**
+: A table in pandas, with named columns, numbered rows, and one kind of value
+  all the way down each column. It's what you get back when you read a
+  spreadsheet or a counts file into Python. See Chapter 20.
+
+**dictionary**
+: A set of key and value pairs, where you fetch a value by naming its key
+  instead of by its position. A key appears once, so asking for a key that
+  isn't there raises `KeyError` rather than giving you an empty answer. See
+  Chapter 13.
+
+**differential expression**
+: Comparing one gene's counts between two groups of samples, then repeating
+  that comparison for every gene in the table. What gets compared are
+  normalized counts and never expression itself. A count measures the
+  sequencing run as much as it measures the cell. See Chapter 24.
+
+**docstring**
+: A string written on the first line of a function's body, in triple quotes,
+  saying what the function does and what it assumes about its input. Python
+  keeps it, instead of throwing it away the way it throws away a comment. See
+  Chapter 14.
+
+**domain**
+: A stretch of a protein that folds up on its own and does its own job, even
+  when it's cut out of the full chain. Domains carry names and the residue
+  numbers they run between, which is how a database annotates them. See
+  Chapter 8.
+
+## E {.unnumbered}
+
+**Entrez Gene ID**
+: NCBI's permanent integer identifier for one gene in one species. It never
+  changes and never comes to point at another gene. It also tells you nothing
+  on sight, so a table of them needs a lookup before you can read it. See
+  Chapter 20.
+
+**E-value**
+: The number of alignments at least this good that you'd expect to meet by
+  accident in a database this size. It counts expected accidents, which is
+  neither the probability that your hit is real nor a p-value. Search a bigger
+  database and the same alignment earns a bigger E-value. See Chapter 7.
+
+## F {.unnumbered}
+
+**false discovery rate**
+: The expected fraction of the hits on your list that are false positives. Set
+  it to 0.05 and you accept one wrong gene in twenty on the list you report.
+  That's a different promise from a p-value cutoff of 0.05. See Chapter 25.
+
+**FASTA**
+: A plain-text sequence format: one header line starting with a greater-than
+  sign, then the sequence on the lines after it. Nothing in the format says
+  which organism the sequence came from or whether it's DNA or protein. All of
+  that lives in the header, and the header is free text. See Chapter 5.
+
+**FASTQ**
+: FASTA with a confidence attached to every base. Four lines make one read: a
+  name line starting with an at sign, the bases, a plus line, then one quality
+  character per base. Line four is always the same length as line two. See
+  Chapter 15.
+
+**function**
+: A block of code with a name, which you run by writing the name and a pair of
+  brackets. The body doesn't run when Python reads it; it runs when something
+  calls the name. See Chapter 14.
+
+## G {.unnumbered}
+
+**GenBank flatfile**
+: NCBI's full text record for one sequence: a description, the papers behind
+  it, annotated features with their coordinates, then the sequence itself.
+  It's what you get when nothing is left out. The FASTA version of the same
+  record throws all of it away except the sequence. See Chapter 15.
+
+**genome assembly**
+: One numbered reconstruction of a genome, such as GRCh37 or GRCh38. A
+  coordinate means nothing without the name of the assembly it was counted in.
+  Sequence gets added and reordered between assemblies, so every position
+  downstream of a change moves. See Chapter 5.
+
+**global alignment**
+: An alignment forced to run end to end through both sequences, with every
+  base in both pushed into some column. Ask for one when you expect the whole
+  of both sequences to correspond, and a local alignment when you don't. See
+  Chapter 18.
+
+**guide tree**
+: A rough tree that an alignment program builds for itself, to decide what
+  order to align the sequences in. It's a scheduling device, and it makes no
+  claim about history. Keep it apart from the tree the program hands you when
+  the run finishes. See Chapter 19.
+
+## H {.unnumbered}
+
+**heatmap**
+: A table drawn as colored squares, one square per cell of the table, so the
+  pattern across rows and columns shows at a glance. In an expression figure
+  it's one row per gene and one column per sample, so every sample stays
+  visible instead of being summarized away. See Chapter 21.
+
+**homologous**
+: Descended from a common ancestor. That's a claim about history, and it's
+  either true or false. Nothing is 60 percent homologous, and what a paper
+  calls percent homology is really percent identity. See Chapter 7.
+
+## I {.unnumbered}
+
+**indel**
+: An insertion or a deletion, at a place where two aligned sequences disagree
+  by a gap. Which one it is depends on which sequence you treat as the
+  original, and an alignment can't tell you that. See Chapter 18.
+
+**issues**
+: The numbered public threads on a code project's tracker, where somebody
+  reports a problem and the maintainers answer. Anybody with a free account
+  can open one and nobody assigns them, so reading a few is the cheapest way
+  to see how a project really works. See Chapter 28.
+
+## L {.unnumbered}
+
+**library**
+: Code somebody else wrote and published for other people to call. You install
+  it once, import it by name, then use the names inside it as if you'd written
+  them yourself. See Chapter 17.
+
+**library size**
+: The total number of reads counted in one sample, which is the sum of that
+  sample's column in a counts table. Two samples with different library sizes
+  can't have their raw counts compared directly. Counts per million exist to
+  fix exactly that. See Chapter 20.
+
+**list**
+: An ordered run of values in Python, written inside square brackets. You
+  reach a value by its position, counting from zero, so the first item sits at
+  position 0. See Chapter 13.
+
+**local alignment**
+: An alignment that reports only the best-scoring stretch and is free to
+  ignore the rest of both sequences. BLAST is local, which is why a hit can
+  cover a small piece of your query and still score well. See Chapter 18.
+
+## M {.unnumbered}
+
+**MANE Select**
+: The one transcript per human gene that NCBI and EMBL-EBI went through and
+  agreed is representative, matching between their two databases. Use it when
+  you need one human transcript and have no specific reason to want another.
+  MANE covers human and not mouse. See Chapter 5.
+
+**marker gene**
+: A gene whose expression is reliably high in one cell type and low in
+  another, used to tell those cell types apart. Checking one in your own table
+  is how you find out whether the sample labels are the right way round. See
+  Chapter 24.
+
+**minimal reproducible example**
+: The smallest piece of code that still produces your error, with everything
+  unrelated cut away. Every line you delete is a line you've ruled out, so the
+  cutting is the same work as finding the bug and sometimes finishes it. See
+  Chapter 16.
+
+**multiple sequence alignment**
+: One alignment of three or more sequences, in which every column makes a
+  single claim about all of them at once. A pair that would rather have its
+  gap three bases along doesn't get it, because the column has to hold for
+  every pair in the set. See Chapter 19.
+
+## N {.unnumbered}
+
+**Newick**
+: A text format for trees. Parentheses group, commas separate, a colon and a
+  number give a branch length, and a semicolon ends the tree. See Chapter 19.
+
+## O {.unnumbered}
+
+**outgroup**
+: A sequence you add to a tree on purpose, chosen because you're already sure
+  it sits outside the group you're studying. The branch leading to it is where
+  the root goes, and every other branch takes its direction from that. See
+  Chapter 19.
+
+## P {.unnumbered}
+
+**pairwise alignment**
+: Two sequences written one above the other with gaps allowed in either, so
+  every column holds one base from each or a base against a gap. The format
+  has no other rules, and the scoring is what picks one arrangement out of the
+  many possible ones. See Chapter 18.
+
+**parameter**
+: The name a function gives to a value it was handed. It exists only while the
+  function is running, and it has nothing to do with the name that value had
+  outside. See Chapter 14.
+
+**percent identity**
+: The share of alignment columns where both sequences carry the same base or
+  residue. The denominator is a choice that varies between programs, so two
+  tools can report different percent identities for one alignment. Don't read
+  it as homology, which is a claim about ancestry rather than a measurement.
+  See Chapter 18.
+
+**Phred quality score**
+: A number saying how likely the machine thinks a base call is wrong. Q20 is
+  one error in a hundred and Q30 is one in a thousand, so every 10 points is a
+  factor of ten in the error rate. See Chapter 15.
+
+**pLDDT**
+: AlphaFold's confidence in its own prediction at one residue, on a scale of 0
+  to 100. High means the model is sure of the local shape there. No experiment
+  enters into the number, so a confident model is still a prediction. See
+  Chapter 8.
+
+**principal component analysis**
+: A way of redrawing many measurements per sample as two, chosen so that
+  samples far apart in the full table stay far apart in the drawing. It also
+  reports what fraction of the total spread each of the two directions holds.
+  See Chapter 21.
+
+**p-value**
+: The chance of seeing a difference at least this big between two groups when
+  there's no real difference at all. It knows nothing about how many other
+  tests you ran, which is why a table of thousands of them needs a false
+  discovery rate on top. An E-value is a different quantity and isn't a
+  probability at all. See Chapter 25.
+
+## Q {.unnumbered}
+
+**query coverage**
+: The percentage of your query sequence that the reported alignment actually
+  covered. Read it next to percent identity and never alone: a hit can be 100
+  percent identical over 28 bases of a long query and mean nothing. See
+  Chapter 7.
+
+## R {.unnumbered}
+
+**reading frame**
+: Which of the three ways of chopping a sequence into triplets you're using.
+  Shift the start by one base and every codon after it changes, so only one of
+  the three frames produces the protein. See Chapter 12.
+
+**repository**
+: One project's folder on a code-hosting site, with a web address of its own
+  and a record of every change made to it. A public one on GitHub costs
+  nothing, and it's where the work you want a hiring manager to see should
+  live. See Chapter 26.
+
+**runtime**
+: The remote machine that runs the cells of your notebook. It holds every
+  variable you have made, it's separate from the page in front of you, and it
+  can die while the page still looks healthy. See Chapter 4.
+
+## S {.unnumbered}
+
+**script**
+: A list of instructions saved in a file, so a machine can run the same steps
+  again without you retyping them. That's the whole definition, and it's
+  smaller than the word sounds. See Chapter 10.
+
+**Seq**
+: Biopython's sequence object. It slices and counts like an ordinary Python
+  string, and it also knows how to complement and translate itself. See
+  Chapter 17.
+
+**SeqRecord**
+: Biopython's object for one record read out of a sequence file: an id, a
+  description, and the sequence itself. The id stops at the first space and
+  the description keeps everything after it. Two records whose headers agree
+  up to the first space therefore end up with the same id. See Chapter 17.
+
+**slice**
+: A run of characters cut out of a string, written `name[start:end]`. The end
+  number is a gap rather than a letter, so that last letter isn't included and
+  the length is end minus start. See Chapter 11.
+
+**start codon**
+: The ATG where translation begins. The same three letters appear all over a
+  gene and code methionine in those places. Position is what makes one a start
+  codon, because the ribosome loads on the front of the messenger RNA and
+  begins at the first ATG it meets. See Chapter 12.
+
+**string**
+: An ordered run of characters that a program keeps as one value. The order is
+  remembered exactly and the meaning is not remembered at all, because there's
+  nowhere in a string to record what the characters stand for. See Chapter 11.
+
+**substitution matrix**
+: A table giving a score for every pair of amino acids, built by counting how
+  often each swap turns up in alignments of sequences already known to be
+  related. Protein alignment needs one because the twenty residues aren't
+  interchangeable. DNA gets by with a single match score and a single mismatch
+  score. See Chapter 18.
+
+**systems biology**
+: The study of how genes and proteins behave in groups, rather than one gene
+  at a time. A network can do things you can't recover from any single member
+  of it. See Chapter 2.
+
+## T {.unnumbered}
+
+**traceback**
+: The block Python prints when it stops: a list of the lines it was inside,
+  innermost last, then the error. Read the last line first, because that's the
+  one sentence in the block written for a person. See Chapter 16.
+
+**transcripts**
+: The RNA versions of a gene, differing from each other in which exons they
+  include. A gene is not a transcript. One gene has a single Gene record and
+  many transcript records, so a gene length and a transcript length are
+  different numbers. See Chapter 5.
+
+## V {.unnumbered}
+
+**variable**
+: A name attached to a value, so the value can be used again by name. Nothing
+  is copied and nothing is stored twice, because what you have made is a
+  label. See Chapter 11.
+
+**VCF**
+: Variant Call Format. One line per position where a sample differs from a
+  named reference genome, carrying the reference base and the alternate base,
+  and nothing else. See Chapter 15.
+
+**volcano plot**
+: A scatter plot with one point per gene, showing how far the gene moved
+  across the bottom and how well the move is supported up the side. It exists
+  so you never have to choose between fold change and p-value. Sorting by
+  either one alone gives you a list you would regret. See Chapter 21.

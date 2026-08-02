@@ -1,0 +1,17 @@
+# About the author {.unnumbered}
+
+Rikhin Kavuru works on computational biology, and on tools that try to tell the
+difference between an answer and an answer-shaped object.
+
+This book exists because of a gap between two things. The honest answer to "how
+do I start in bioinformatics without a lab" is long. The answers people
+actually give are short, and most of them end with "find a lab."
+
+That advice is not wrong. It's just not available to the person asking.
+
+Corrections are welcome, and disagreements are more welcome than agreement. So
+is a report that a web page this book describes no longer looks the way it says
+it does. That's the failure this book is most exposed to, and readers will hit
+it before the author does.
+
+Everything is at `github.com/rikhinkavuru/NoLabRequired`.

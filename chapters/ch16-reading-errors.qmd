@@ -1,0 +1,533 @@
+# Reading errors
+
+Red text just appeared. Is the problem in your code, in the notebook your code
+is running on, or in your internet? Three different problems, three different
+fixes, and picking the wrong one costs you the rest of the evening. The red
+text on your screen already says which one you have.
+
+## How much red is normal
+
+There's one way Python tells you it stopped, and it uses that way for a missing
+bracket and for a corrupted genome file alike. The amount of red on your screen
+says nothing about how badly the work is going. You get back the first thing
+the machine couldn't do, and nothing else.
+
+Al Sweigart puts a box in the first chapter of *Automate the Boring Stuff with
+Python*, headed ERRORS ARE OKAY. The line inside it is that professional
+software developers get error messages all the time while writing code.
+Experience buys less time per error, and that time goes on reading rather than
+typing.
+
+## Read the last line first
+
+Here's a script called `gc_report.py` that looks fine. It reports GC content
+for sequences it looks up by name.
+
+``` {.python}
+def gc_fraction(records, name):
+    sequence = records[name]
+    g_and_c = sequence.count("G") + sequence.count("C")
+    return g_and_c / len(sequence)
+
+
+def report(records, names):
+    for name in names:
+        print(name, round(gc_fraction(records, name), 4))
+
+
+records = {"BRCA1_human": "ATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAAAT"}
+report(records, ["BRCA1_human", "Brca1_mouse"])
+```
+
+Those 39 bases are real. They open the *BRCA1* coding sequence, and they come
+from the accession you recorded in Chapter 5, `NM_007294.4`. Base 114 of that
+transcript is where the coding sequence starts. Run the script and one line of
+output arrives before the red does.
+
+``` {.default .output}
+BRCA1_human 0.359
+Traceback (most recent call last):
+  File "gc_report.py", line 13, in <module>
+    report(records, ["BRCA1_human", "Brca1_mouse"])
+  File "gc_report.py", line 9, in report
+    print(name, round(gc_fraction(records, name), 4))
+  File "gc_report.py", line 2, in gc_fraction
+    sequence = records[name]
+KeyError: 'Brca1_mouse'
+```
+
+Three rows are missing from that block, one under each code line. Your own
+screen carries a run of tildes and carets there, pointing at the piece of the
+line Python was working on when it stopped. Under line 2 it sits below
+`records[name]`, which narrows a long line to the single operation that failed.
+They're left off the page here so the frames stay easy to count.
+
+[A Colab line number counts from the top of the cell it's in, not from the top of the notebook.]{.margin}
+
+Colab dresses the same block differently. Chapter 4 showed the shape: a rule of
+dashes, a line naming a file Colab built out of your cell, and an arrow
+pointing at the code. The frames are the same frames in the same order, and
+everything below applies to both.
+
+That block is called a [traceback]{.term def="The block Python prints when it
+stops. A list of the lines it was inside, innermost last, then the error."},
+and it's printed in the order the machine ran things. You want to read it in
+the opposite order. I read tracebacks top down for about a year, and I
+abandoned plenty of them before reaching the one sentence written for a person.
+
+Four steps, in this order.
+
+1. Read the last line. It carries a class name, `KeyError`, then a message
+   about this failure, `'Brca1_mouse'`.
+2. Read the frame directly above it. That's the line Python was on when it
+   stopped: `sequence = records[name]`, on line 2.
+3. Ask whether that line could be right and still fail. Here it can. Looking a
+   name up in a dictionary is correct; the name it got was wrong.
+4. Walk up one frame at a time until you reach a line you typed today. Line 9
+   passed the name along, and line 13 is where you wrote it.
+
+The mistake is on line 13 and the traceback stopped on line 2. The gap is the
+normal case. A traceback tells you where the machine gave up, which is
+downstream of wherever you were careless.
+
+::: {.check}
+Answer three questions off that traceback alone. Which class stopped it? Which
+key was missing? Which line was running at the moment it stopped? The answers
+are `KeyError`, `'Brca1_mouse'`, and line 2. If you answered line 13 for the
+third, you read the frames in call order instead of from the bottom.
+:::
+
+## Which of the four voices is this
+
+Chapter 4 named four things that can interrupt you, one more than the question
+this chapter opened on. The fourth is a website, and it only interrupts you
+while you're filling in a form. Now you can tell all four apart by what they
+print.
+
+Python is talking when there's a class name in the message and a line of your
+own code above it. The eight classes below are all Python.
+
+The notebook runtime is talking when there's no class name and no line of your
+code anywhere. The line `Your session crashed after using all available RAM.`
+is about the machine, and your code goes unmentioned because your code isn't
+what failed.
+
+A website is talking when your form is still on the screen and a colored strip
+has appeared next to one of the boxes you filled in. There's no line number,
+because you never wrote a line.
+
+The network is talking when nothing happens at all. No message, no output, and
+a ring that keeps turning. That's the one voice you diagnose by waiting.
+
+## The eight errors, most expensive first
+
+These are ordered by what they cost you, not by how often you'll meet them. A
+`NameError` is the one you'll see most and the one you'll fix fastest. A
+`KeyError` on a gene identifier is rare and can take your whole evening, so it
+goes first. Every message below came out of a real interpreter, Python 3.14.5,
+on 2 August 2026. Older Pythons say less inside these messages. The class name
+at the front is the part that hasn't moved.
+
+### KeyError
+
+``` {.default .output}
+KeyError: 'BRCA1'
+```
+
+A `KeyError` names the key you asked for and gives you nothing else. The name
+is the whole message. The dictionary holds no entry filed under `'BRCA1'`, so
+the lookup stopped there.
+
+What makes it expensive is what the missing key usually turns out to be. In
+real work it's a gene identifier. Your counts table is keyed on `Brca1` and
+your gene list says `BRCA1`, and Chapter 3 already warned you that two
+nomenclature committees enforce that difference on purpose. So a `KeyError` on
+an identifier means your two inputs disagree about what things are called.
+
+::: {.why}
+The disagreement is itself a finding. Gene symbols get renamed, and they get
+reused across species with different capitalization. When two genes turn out to
+be one, they get merged under a single symbol, and the retired one stops
+matching anything. A failed lookup is the machine telling you that two files
+describe the same biology under two naming schemes. Chapter 20 hands you 27,179
+rows keyed on Entrez IDs for exactly this reason.
+:::
+
+Fix it by looking at the keys rather than at the code. Put a few real keys next
+to the one you asked for with `print(sorted(records)[:6], name)`, and the
+difference is usually visible on sight. There's a second fix that looks tidier
+and is worse.
+
+::: {.trap}
+`records.get(name, 0)` returns a default instead of stopping. Reach for it here
+and every mismatched gene now reads zero. The table fills up, every plot
+renders, and nothing says that half your genes were never found. Use a default
+only where a missing key is expected and means something. Otherwise you've
+traded a loud failure for a quiet wrong answer.
+:::
+
+### FileNotFoundError
+
+``` {.default .output}
+FileNotFoundError: [Errno 2] No such file or directory: 'counts.tsv'
+```
+
+`[Errno 2]` is the operating system's own number for this, passed straight
+through. Some line of your code asked for a file by that name, in the folder
+the notebook is working in, and there isn't one there.
+
+The trouble is that the folder isn't on your computer. The notebook runs on a
+machine at Google, so a file in your own Downloads folder is invisible to it no
+matter how clearly you can see it. And a file you upload into a session goes
+away when the runtime restarts, along with every variable.
+
+Ask the runtime what it can actually reach before you open anything:
+
+``` {.python}
+import os
+print("counts.tsv" in os.listdir())
+```
+
+``` {.default .output}
+False
+```
+
+Print `sorted(os.listdir())` on its own line to see every name instead of one.
+Every file this book uses arrives by a line of code inside the notebook, so
+when the name you want isn't there, run that line again.
+
+The name in the quotes is yours, so it moves. In Chapter 20 the same message
+ends `'data/GSE60450_counts.tsv.gz'` and means exactly this.
+
+### TypeError
+
+``` {.default .output}
+TypeError: can only concatenate str (not "int") to str
+```
+
+A `TypeError` means the operation exists and the values you handed it are the
+wrong kind of thing. That first message is readable: you tried to glue a number
+onto the end of some text, and `+` won't do that. Wrap the number in `str()`,
+or hand both to `print` separated by a comma.
+
+Now the one that costs you.
+
+``` {.default .output}
+TypeError: not all arguments converted during string formatting
+```
+
+Nobody was formatting a string. That message turns up when you divide, and
+here's why. Between two numbers, `%` gives the remainder. With text on the
+left, `%` is old-style string formatting, a separate feature that spells itself
+with the same character. So `"39" % 3` isn't Python refusing to divide: it was
+formatting the text `"39"`, finding no slot to put the 3 into, and saying so in
+the only vocabulary it had.
+
+Anything read from a file, a form or a web page arrives as text. Convert it
+with `int()` at the moment it arrives and this error stops being possible.
+
+### IndexError
+
+``` {.default .output}
+IndexError: list index out of range
+```
+
+Positions start at 0. A list of 13 codons has positions 0 through 12, and there
+is no position 13. So `codons[len(codons)]` always asks for one item past the
+end, because the length is always one more than the last position. The string
+version says `string index out of range` and means the same thing.
+
+Take the last item with `codons[-1]`. Negative positions count back from the
+end, and that expression stays correct when the list changes length. The model
+behind all this is in Chapter 11, and the error is what it feels like when the
+model slips.
+
+### ModuleNotFoundError
+
+``` {.default .output}
+ModuleNotFoundError: No module named 'Bio'
+```
+
+The library called `Bio` isn't on that machine. Python looked in every folder
+it keeps libraries in and found nothing. This one is on the list for what it
+does to people rather than for what it costs to fix. It's the error that ends
+courses, usually on the first evening, before any biology has happened.
+
+In this book it has one cause. Chapter 17 opens with `!pip install biopython`,
+and Colab throws that installation away whenever the session restarts, so you
+run the cell again. Nothing gets installed on your own machine, then or ever.
+
+### IndentationError
+
+``` {.default .output}
+IndentationError: expected an indented block after 'for' statement on line 1
+```
+
+The left margin is how Python works out what sits inside what. A line ending in
+a colon promises a block underneath it, shifted right. When nothing is shifted
+right, Python reports that the promised block never arrived and names the line
+that made the promise.
+
+Two other wordings come from the same place. The message `unexpected indent`
+means you pushed a line right when nothing was expecting a block. The message
+`unindent does not match any outer indentation level` means you came back left
+to a margin no enclosing block uses.
+
+This one feels arbitrary because the cause is invisible. A tab and four spaces
+look identical on screen and are different characters to Python. The usual
+cause is a block with both in it, and that mix almost always arrives with text
+you pasted in from somewhere else.
+
+### SyntaxError
+
+``` {.default .output}
+SyntaxError: '(' was never closed
+```
+
+A `SyntaxError` means Python couldn't finish reading your instruction, so it
+never ran any of that cell. None of it, including the lines above the one it
+points at. Your earlier cells already ran and their variables are still there,
+which is why the notebook can look half alive.
+
+The line number is the trap. It marks the point where Python gave up, and for
+an unclosed bracket that point is where the bracket was opened. You'll be
+staring at a line three below it wondering what's wrong with it.
+
+Recent Pythons name the fix in the message. `expected ':'` means a colon is
+missing at the end of a `for` or `if` line. The message
+`invalid syntax. Maybe you meant '==' or ':=' instead of '='?` tells you that
+you wrote one equals sign where a comparison needed two. A quotation mark
+copied out of a document can also arrive curly, and the message then names that
+character and prints its Unicode number.
+
+### NameError
+
+``` {.default .output}
+NameError: name 'sequnce' is not defined. Did you mean: 'sequences'?
+```
+
+Python reached a name it had never been given a value for. Read the whole line
+before you look at your code. The second sentence is Python comparing your name
+against every name it knows, then handing you the closest match. It's right
+often enough to try first.
+
+Two causes sit behind it. One is a typo, which the suggestion catches. The
+other is that the cell defining the name is sitting above this one, unrun, and
+no suggestion can catch that: the name genuinely doesn't exist yet. Restart and
+run all sorts it out.
+
+The second sentence arrived in Python 3.10. Run the same code on 3.9 and the
+last line stops after `is not defined`, with nothing after it. Some notebook
+front ends drop it too, which Python's own release notes warn about. The class
+and the name are the message, and the suggestion is a convenience on top.
+
+## Finding a wrong answer by halving
+
+Some code runs cleanly and hands you a number that's wrong. Here are six lines
+that do that. They pull the sequence out of a FASTA record and report GC
+content.
+
+``` {.python}
+raw = ">NM_007294.4\nATGGATTTATCTGCT\nCTTCGCGTTGAAGAA\nGTACAAAAT"
+lines = raw.split("\n")
+sequence = "".join(lines)
+g_and_c = sequence.count("G") + sequence.count("C")
+gc_fraction = g_and_c / len(sequence)
+print("GC content:", round(gc_fraction, 4))
+```
+
+``` {.default .output}
+GC content: 0.2745
+```
+
+No red anywhere. The answer is wrong, and the only reason you know is that the
+true value for those 39 bases is 0.359 and you could count them by hand.
+
+The instinct is to put a `print` after every line. Resist it. Six lines gives
+you six prints to read and sixty lines gives you sixty, and reading them is the
+same work as reading the code. Cut the suspect region in half instead.
+
+The script is six lines, so put one `print` at the halfway mark, just after
+line 3 runs. Print a length rather than a sequence, because a length you can
+check against a number you already know.
+
+``` {.python}
+print(len(sequence))
+```
+
+``` {.default .output}
+51
+```
+
+You expected 39. So the fault is in lines 1 to 3 and lines 4 to 6 are innocent.
+Halve what's left again: put a `print` after line 2 instead.
+
+``` {.python}
+print(len(lines))
+```
+
+``` {.default .output}
+4
+```
+
+That one's correct. A header line and three sequence lines is exactly four. The
+fault has to be line 3. Look straight at it: `"".join(lines)` glues the header
+onto the front of the sequence. Use `lines[1:]` instead and the denominator
+drops from 51 to 39.
+
+Two prints found it. Each one halved what was left, so a script of about sixty
+lines takes six, because doubling one six times gets you past sixty. Printing
+after every line takes sixty.
+
+::: {.check}
+Run the fixed version and you should get `GC content: 0.359`. If you get
+`0.2745` again, you edited one cell and re-ran a different one.
+:::
+
+::: {.trap}
+A cell that fails halfway through still did everything above the line that
+failed. Those variables keep their new values while the ones below keep their
+old ones, and nothing on screen marks which is which. Run a later cell now and
+the number it prints is arithmetic on a mixture of two runs. After any error,
+restart and run all before you trust anything.
+:::
+
+## Cutting an error message down to what's searchable
+
+An error message has two parts and only one of them is worth putting in a
+search box. The machine's part is the class name and the fixed wording. Your
+part is everything Python quoted back at you: your filenames, your variable
+names, your keys.
+
+Search `NameError: name 'sequnce' is not defined` whole and you're searching
+for your own typo. Drop the quoted name, search
+`NameError name is not defined python`, and you get the class.
+
+Same move on the file error. Cut `'counts.tsv'` and keep
+`FileNotFoundError: [Errno 2] No such file or directory`. Then add one word for
+where it ran, which for everything in this book is `colab`.
+
+One exception, and it matters. When the quoted part is somebody else's name
+rather than yours, keep it. The whole line `No module named 'Bio'` is worth
+searching, because `Bio` isn't a name you invented.
+
+## Asking a question somebody will answer
+
+A question gets answered when a stranger can reproduce your problem in under a
+minute without asking you anything first. That's the whole standard, and it's
+the one part of the transaction you control.
+
+Take script 5 from the exercise below. It's seventeen lines. Cut everything
+that isn't needed to still get the same error: the loop, the list
+comprehension, and seven of the eight codons in the table.
+
+``` {.python}
+codon_table = {"ATG": "M"}
+print(codon_table["CTT"])
+```
+
+``` {.default .output}
+KeyError: 'CTT'
+```
+
+Two lines, and anybody can paste them and get the same last line you got. What
+you've built is a [minimal reproducible example]{.term def="The smallest code
+that still produces your error, with everything unrelated removed."}. Do the
+cutting before you write the question. Every line you delete is a line you've
+ruled out, which is the same work as finding the bug, and it sometimes finishes
+the job before you post anything.
+
+Then post five things, in this order.
+
+1. What you were trying to get, in one sentence, in biology terms.
+2. The cut-down code, as text you can select. Never a screenshot.
+3. The error, complete and verbatim, from the first line to the last.
+4. The things you already tried, and what happened when you tried them.
+5. Where it ran. "Google Colab" is enough.
+
+Screenshots are the common mistake. Nobody can search a picture, and the person
+reading your question wants to paste your message into the same box you did.
+
+Biostars takes questions with biology in them and Stack Overflow takes ones
+that are purely about Python. Both are public archives, so a well-formed
+question keeps working for the next person who hits the same wall. Those
+archives are the whole substitute for having somebody two doors down.
+
+## Exercises
+
+Predict before you run, on all five. Work through each script, write down the
+class you expect, then run it. A wrong prediction is worth more than a right
+one here, because it points at the exact thing you believed that isn't true.
+
+::: {.exercise num="16.1" time="60 minutes"}
+::: {.goal}
+Diagnose and fix five broken scripts, committing to the error class in writing
+before you change anything.
+:::
+::: {.given}
+`scripts/broken/broken_1.py` through `broken_5.py`, in the repository Chapter 3
+names. Copy the text of one script into a Colab cell and run it. Each script
+breaks in exactly one way and no two break the same way. Worked answers are in
+`scripts/solutions/`, one per script, and each says what the machine believed
+as well as what to change.
+:::
+::: {.produce}
+Five error class names, in script order, each written down before you fix
+anything. Then five working scripts, each producing the output its comment
+header describes.
+:::
+::: {.check}
+All five class names you wrote down are different. If two of them match, one is
+wrong, so go back to the last line of that message. Here are two more checks on
+individual scripts. Script 1 has two places the missing bracket could go and
+only one of them is right, so read your answer: a GC content of 8.1538 is not a
+fraction of anything. Script 3 complains about string formatting while you were
+trying to divide, which is the intended surprise; the `TypeError` section
+explains what `%` did.
+:::
+
+::: {.answerspace lines="10"}
+:::
+:::
+
+## If it breaks
+
+::: {.ifbreaks}
+::: {.errfix err="IndentationError: unexpected indent"}
+Python is speaking, and the first line of what you pasted arrived with spaces
+in front of it. Copying out of a PDF picks up the page's left margin. Put your
+cursor at the start of that line and delete backwards until it's flush.
+:::
+
+::: {.errfix err="FileNotFoundError: [Errno 2] No such file or directory: 'broken_1.py'"}
+This one is Python speaking, and it's right: the script is in the repository,
+not on the machine your notebook is running on. Copy the text of the script
+into a cell and run the cell.
+:::
+
+::: {.errfix err="The last line ends at 'is not defined' with no suggestion after it"}
+Nothing is wrong here. That's still Python speaking, and the suggestion is a
+separate feature that arrived in Python 3.10. Some notebook front ends don't
+print it even on newer versions. The class and the name are the whole message,
+so find the typo by eye: hold the quoted name against the line that made the
+variable.
+:::
+
+::: {.errfix err="Nothing prints at all and the ring beside the cell keeps turning"}
+The runtime is speaking, by saying nothing. None of these five scripts touches
+the internet, so nothing in them can wait on a connection. A fresh session
+takes a moment to start. Past a minute, restart and run all.
+:::
+:::
+
+::: {.checkpoint}
+- Read a traceback from the bottom up, and name the class, the message, and the
+  line that was running when it stopped
+- Say which of the four voices produced a message you're looking at
+- Name what the machine believed for each of the eight errors in this chapter
+- Locate a wrong answer by halving the code under suspicion instead of printing
+  every line
+- Cut an error message down to the part worth searching, and say which part you
+  dropped
+- Build a two-line reproducible example out of a script that fails
+:::
