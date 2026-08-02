@@ -7,15 +7,25 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OPT="$HOME/.local/opt"
 BIN="$HOME/.local/bin"
 QV="1.10.18"
+
+case "$(uname -s)" in
+  Darwin) QUARTO_ASSET="quarto-$QV-macos.tar.gz"; FONT_DIR="$HOME/Library/Fonts" ;;
+  Linux)  case "$(uname -m)" in
+            aarch64|arm64) QUARTO_ASSET="quarto-$QV-linux-arm64.tar.gz" ;;
+            *)             QUARTO_ASSET="quarto-$QV-linux-amd64.tar.gz" ;;
+          esac
+          FONT_DIR="$HOME/.local/share/fonts" ;;
+  *) echo "unsupported platform: $(uname -s)"; exit 1 ;;
+esac
 mkdir -p "$OPT" "$BIN" "$ROOT/build-logs"
 
 echo "### 1/5 Quarto $QV"
 if [ ! -x "$OPT/quarto-$QV/bin/quarto" ]; then
-  [ -f "/tmp/quarto-$QV.tar.gz" ] || curl -fsSL -o "/tmp/quarto-$QV.tar.gz" \
-    "https://github.com/quarto-dev/quarto-cli/releases/download/v$QV/quarto-$QV-macos.tar.gz"
+  [ -f "/tmp/$QUARTO_ASSET" ] || curl -fsSL -o "/tmp/$QUARTO_ASSET" \
+    "https://github.com/quarto-dev/quarto-cli/releases/download/v$QV/$QUARTO_ASSET"
   rm -rf "$OPT/quarto-$QV" "$OPT/bin" "$OPT/share"
   mkdir -p "$OPT/quarto-$QV"
-  tar -xzf "/tmp/quarto-$QV.tar.gz" -C "$OPT/quarto-$QV"
+  tar -xzf "/tmp/$QUARTO_ASSET" -C "$OPT/quarto-$QV"
 fi
 ln -sf "$OPT/quarto-$QV/bin/quarto" "$BIN/quarto"
 export PATH="$BIN:$PATH"
@@ -35,7 +45,7 @@ echo "### 3/5 TinyTeX"
 quarto install tinytex --no-prompt --update-path || quarto install tinytex --no-prompt || true
 
 echo "### 4/5 Fonts"
-FDIR="$HOME/Library/Fonts"
+FDIR="$FONT_DIR"
 mkdir -p "$FDIR" /tmp/nlrfonts
 cd /tmp/nlrfonts
 fetch_font () { # url  glob

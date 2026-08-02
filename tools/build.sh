@@ -6,7 +6,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-export PATH="$HOME/.local/bin:$HOME/Library/TinyTeX/bin/universal-darwin:$PATH"
+# TinyTeX names its bin directory after the platform: universal-darwin on
+# macOS, x86_64-linux or aarch64-linux elsewhere. Glob it rather than guess.
+for d in "$HOME/Library/TinyTeX/bin"/* "$HOME/.TinyTeX/bin"/*; do
+  [ -d "$d" ] && PATH="$d:$PATH"
+done
+export PATH="$HOME/.local/bin:$PATH"
 export QUARTO_PYTHON="$ROOT/.venv/bin/python"
 export NLR_TERMS_OUT="$ROOT/build-logs/terms.tsv"
 export NLR_ERRORS_OUT="$ROOT/build-logs/errors.tsv"
