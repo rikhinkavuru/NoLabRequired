@@ -35,3 +35,6 @@ __pycache__/
 /chapters/*_files/
 /site_libs/
 /backmatter/*_files/
+
+# LuaTeX's tagging phase writes a MathML sidecar next to the tex file.
+/*-luamml-mathml.html
