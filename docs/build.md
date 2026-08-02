@@ -55,6 +55,28 @@ rule that follows: margin definitions live in body prose, not inside callouts.
 note downward, and a definition declared near the foot of a page otherwise runs
 off the bottom of the paper.
 
+
+## The web edition uses system fonts on purpose
+
+The SCSS names Source Serif 4, Inter and JetBrains Mono NL, and self-hosts none
+of them. A reader who does not have them installed gets the fallback stack:
+Georgia, the system sans, and the system monospace.
+
+That is deliberate. Self-hosting the three families as woff2 would add roughly
+two megabytes to every first page load, and this book is written for somebody
+on a school Chromebook or paying for data by the gigabyte. Chapter 1 promises
+that every download states its size, and quietly spending two megabytes on
+typography would break that promise before the reader reached Chapter 2.
+
+The PDF carries the full typographic system and is the artifact where the
+typography matters. The website is the searchable, screen-readable edition, and
+it is fast.
+
+The one thing the fallback does have to preserve is the monospace distinction
+between 0/O and 1/l/I, since a reader may type code out of the web edition.
+`ui-monospace` resolves to SF Mono, Cascadia Mono or DejaVu Sans Mono depending
+on platform, and all three distinguish those characters.
+
 ## The checks
 
 Nine of them, all wired into CI and into `tools/release_check.sh`.
