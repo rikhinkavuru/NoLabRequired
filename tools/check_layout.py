@@ -38,8 +38,39 @@ SPEC = {
 results: list[tuple[str, bool, str]] = []
 
 
-_FONT_DIR = os.path.expanduser("~/Library/Fonts")
+# Font locations, in the order they are searched. macOS first, then the three
+# places a Linux runner puts user and system fonts. Hard-coding the macOS path
+# made this check report "sizes in use: []" on CI and fail without saying why.
+_FONT_DIRS = [
+    os.path.expanduser("~/Library/Fonts"),
+    os.path.expanduser("~/.fonts"),
+    os.path.expanduser("~/.local/share/fonts"),
+    "/Library/Fonts",
+    "/usr/share/fonts",
+    "/usr/local/share/fonts",
+]
 _metrics_cache: dict[str, tuple[int, dict, dict]] = {}
+_font_files_seen = 0
+
+
+def _find_font_file(family: str) -> str | None:
+    """Locate an installed face by family name, across platforms."""
+    global _font_files_seen
+    for base in _FONT_DIRS:
+        if not os.path.isdir(base):
+            continue
+        for ext in (".otf", ".ttf"):
+            direct = os.path.join(base, family + ext)
+            if os.path.exists(direct):
+                _font_files_seen += 1
+                return direct
+        # Linux distributions nest fonts several directories deep.
+        for root, _dirs, files in os.walk(base):
+            for ext in (".otf", ".ttf"):
+                if family + ext in files:
+                    _font_files_seen += 1
+                    return os.path.join(root, family + ext)
+    return None
 
 
 def _metrics(family: str):
@@ -53,18 +84,16 @@ def _metrics(family: str):
         return _metrics_cache[family]
     from fontTools.ttLib import TTFont
 
-    for ext in (".otf", ".ttf"):
-        path = os.path.join(_FONT_DIR, family + ext)
-        if os.path.exists(path):
-            try:
-                f = TTFont(path, lazy=True)
-                upem = f["head"].unitsPerEm
-                cmap = f.getBestCmap()
-                hmtx = dict(f["hmtx"].metrics)
-                _metrics_cache[family] = (upem, cmap, hmtx)
-                return _metrics_cache[family]
-            except Exception:
-                break
+    path = _find_font_file(family)
+    if path:
+        try:
+            f = TTFont(path, lazy=True)
+            _metrics_cache[family] = (
+                f["head"].unitsPerEm, f.getBestCmap(), dict(f["hmtx"].metrics)
+            )
+            return _metrics_cache[family]
+        except Exception:
+            pass
     _metrics_cache[family] = (0, {}, {})
     return _metrics_cache[family]
 
@@ -316,6 +345,16 @@ def main(path: str) -> int:
     def has(found: list[float], want: float) -> bool:
         return any(abs(s - want) <= 0.15 for s in found)
 
+    # Point sizes are recovered by comparing each glyph's advance in the PDF
+    # against the same glyph in the installed face. If no face can be found,
+    # say so instead of reporting an empty set, which reads like the book has
+    # no 11 pt text in it.
+    if _font_files_seen == 0:
+        check(
+            "font files available to measure against", False,
+            "found none of the book's faces in " + ", ".join(_FONT_DIRS)
+            + ". Install them, or run tools/setup_toolchain.sh.",
+        )
     check("body text set at 11 pt", has(serif_sizes, 11.0), f"serif sizes in use: {serif_sizes}")
     check("code set at 9.5 pt", has(mono_sizes, 9.5), f"mono sizes in use: {mono_sizes}")
     check(
