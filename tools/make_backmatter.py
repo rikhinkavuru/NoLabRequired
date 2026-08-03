@@ -93,14 +93,38 @@ def dataset_index() -> str:
 
 
 # ---------------------------------------------------------------------------
+def slugify(err: str) -> str:
+    """The anchor slug, matching filters/nlr-components.lua exactly."""
+    slug = re.sub(r"[^0-9a-z]+", "-", err.lower()).strip("-")
+    return slug[:60]
+
+
+LITERAL_PREFIX = (
+    "Traceback", "Killed", "command not found", "zsh:", "bash:", "fatal:",
+    "usage:", "error:", "warning:",
+)
+
+
+def is_literal(message: str) -> bool:
+    """True when the machine printed this, false when somebody described it."""
+    if " " not in message:
+        return True
+    if re.match(r"^[A-Za-z]*(Error|Warning|Exception)\b", message):
+        return True
+    if re.match(r"^\d{3}\b", message):
+        return True
+    return message.startswith(LITERAL_PREFIX)
+
+
 def error_index() -> str:
     """Error message to the page that addresses it."""
     lines = [
         "# Error index {.unnumbered}",
         "",
-        "Every error message this book explains, in alphabetical order, with the",
-        "page that explains it. Look the message up here before you search the",
-        "web for it.",
+        "Every error message this book explains and every stuck moment it names,",
+        "in alphabetical order, with the page that deals with it. Look yours up",
+        "here before you search the web for it. Anything set in code type is what",
+        "the machine prints; the rest describes a situation.",
         "",
     ]
     if not ERRORS.exists() or not ERRORS.read_text().strip():
@@ -112,21 +136,58 @@ def error_index() -> str:
         ]
         return "\n".join(lines) + "\n"
 
-    seen: dict[str, str] = {}
+    # Which chapter each entry lives in, read straight off the sources. The
+    # filter cannot supply it: by the time it runs, Quarto has preprocessed the
+    # chapter into a temp file and the original name is gone from input_files.
+    source_of = {}
+    for qmd in sorted(Path("chapters").glob("*.qmd")):
+        # The value may contain escaped quotes: err="KeyError: \"['x'] not in
+        # index\"". A [^"]* pattern stops at the first inner one and slugs the
+        # truncated string, which then matches no anchor.
+        for err in re.findall(r'errfix err="((?:[^"\\]|\\.)*)"', qmd.read_text()):
+            err = err.replace('\\"', '"').replace("\\\\", "\\")
+            source_of[slugify(err)] = qmd.name
+
+    seen: dict[str, tuple[str, str]] = {}
     for line in ERRORS.read_text().splitlines():
         if "\t" not in line:
             continue
         anchor, message = line.split("\t", 1)
-        seen.setdefault(message.strip(), anchor)
+        anchor = anchor.strip()
+        seen.setdefault(message.strip(),
+                        (anchor, source_of.get(anchor[len("err-"):], "")))
 
     # A table rather than a definition list. Pandoc renders a definition list
     # with the term hanging into the margin, which puts it outside the text
     # block, and a two-column table is easier to scan anyway.
-    lines += ["| Message | Page |", "|---|---|"]
-    for message in sorted(seen, key=str.lower):
-        anchor = seen[message]
+    lines += ["| Message or situation | Page |", "|---|---:|"]
+    # Sort on letters and digits only. With punctuation significant,
+    # "AttributeError: PathCollection.set()" sorted after both quoted
+    # AttributeErrors instead of between them.
+    def sort_key(msg: str) -> str:
+        return re.sub(r"[^0-9a-z]+", " ", msg.lower()).strip()
+
+    for message in sorted(seen, key=sort_key):
+        anchor, source = seen[message]
         safe = message.replace("|", "\\|")
-        lines.append(f"| `{safe}` | \\pageref{{{anchor}}} |")
+        # Just over half of these entries are situations somebody wrote down,
+        # not text an interpreter printed. Setting "A paper reports 98 percent
+        # homology and you need to quote it" in monospace says it is a literal
+        # string, which is false, and costs the column about a fifth of its
+        # width on top of that.
+        cell = f"`{safe}`" if is_literal(message) else safe
+        # The message links to the entry as well as carrying a page number.
+        # \pageref is LaTeX-only, so in the web edition the second column
+        # rendered empty and the index was a list of messages pointing nowhere.
+        # Quarto rewrites a .qmd target to .html for the site and to a
+        # \\hyperref for the PDF, so one link serves both editions.
+        target = f"../chapters/{source}#{anchor}" if source else f"#{anchor}"
+        lines.append(f"| [{cell}]({target}) | \\pageref{{{anchor}}} |")
+    lines.append("")
+    # Without this pandoc splits the table 50/50 and reserves two and a half
+    # inches of the page to hold a three-digit number, which leaves every row
+    # blank across its right half.
+    lines.append(': {tbl-colwidths="[88,12]"}')
     lines.append("")
     return "\n".join(lines) + "\n"
 

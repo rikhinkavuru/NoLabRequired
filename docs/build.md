@@ -16,57 +16,52 @@ directory.
 
 The spec asks for a tagged PDF. LaTeX's tagging support runs on pdfTeX and
 LuaTeX and not on XeTeX, and the book also needs OpenType fonts, so LuaLaTeX is
-the only engine that provides both. The cost is compile time: a full build of
-30 chapters takes several minutes in the LaTeX stage alone, because every
-component is a `tcolorbox` and margin material is redistributed page by page.
+the only engine that provides both.
 
-## Deviations from the typography specification
+## Tagging silently disables titlesec and caption
 
-Two, both deliberate, both because the specified behavior could not be made
-correct rather than because it was inconvenient.
+This is the one thing worth reading before you touch `tex/preamble.tex`.
 
-### Margins do not mirror
+`\DocumentMetadata{tagging=on}` replaces LaTeX's sectioning commands and its
+`\@makecaption` with template-based versions. Packages that work by patching
+the originals therefore stop working, and they do not stop loudly:
 
-Spec B1 gives an inner margin of 0.75 in and an outer of 1.25 in, which implies
-the page mirrors. This build uses `geometry`'s `asymmetric` option instead: the
-narrow margin is on the left and the side column on the right, on every page.
+* `titlesec` writes `Non standard sectioning command \section detected. Using
+  default spacing and no format.` into the log and then does nothing. Every
+  `\titleformat` in this preamble was dead for the entire first draft, so the
+  chapter openers printed stock `book.cls` while the file described a design
+  nobody had ever seen on paper.
+* `\captionsetup` is discarded the same way, which printed every caption
+  centred, at body size, in the roman, under a flush-left ragged-right column.
 
-A mirrored layout has to decide which direction a full-width element breaks out
-of the main column, and that decision depends on which page the element will
-land on. LaTeX builds boxes before it knows that, so the answer has to be read
-back from the previous compilation pass. It is wrong whenever pagination
-shifts, and it fails silently, by pushing text off the trim edge. On a book with
-hundreds of full-width components that is not a risk worth carrying for a
-symmetry no reader of a digital-first PDF will see.
+Both are now done the supported way. Headings are `\DeclareInstance{heading}`
+and `\DeclareInstance{headformat}`; captions override the `caption/label`
+socket and redefine `\@makecaption` inside `begindocument/end`, which is after
+the tagging code's own hook rather than before it.
 
-The alternating running heads are kept, because `fancyhdr` resolves page parity
-at shipout, where it is always correct.
+Two traps inside that fix, both of which cost a build:
 
-### Margin notes use `\marginpar`
+* `number-title-sep` is a bare dimension. Passing `{\par\vskip 12pt}` gives
+  `Missing number, treated as zero`.
+* `\par` closes a tagged paragraph by itself. Emitting `para/end` as well
+  double-closes it, and `tagpdf` rejects the whole document with `The number of
+  automatic begin and end text para hooks differ`.
 
-The `marginnote` package chooses its side from `\if@twoside` and the page number
-directly, ignoring `\@mparswitch`, so it lands in the left margin on even pages
-whatever you tell it. `\marginpar` honors `\@mparswitchfalse` and is
-deterministic. The cost is that `\marginpar` is illegal inside a box, so every
-boxed component rebinds the margin commands to inline fallbacks. The authoring
-rule that follows: margin definitions live in body prose, not inside callouts.
-
-`marginfix` is loaded on top, because LaTeX only ever pushes a colliding margin
-note downward, and a definition declared near the foot of a page otherwise runs
-off the bottom of the paper.
-
+The same class of failure applies to colour. `\color{nlrink}` in a preamble
+does not survive `\begin{document}`, which issues `\normalcolor`; the book
+printed at pure `#000000` until `\normalcolor` itself was redefined.
 
 ## The web edition uses system fonts on purpose
 
-The SCSS names Source Serif 4, Inter and JetBrains Mono NL, and self-hosts none
-of them. A reader who does not have them installed gets the fallback stack:
-Georgia, the system sans, and the system monospace.
+The SCSS names Charis and Inconsolata and self-hosts neither. A reader who does
+not have them installed gets the fallback stack: Charter or Georgia, and the
+system monospace.
 
-That is deliberate. Self-hosting the three families as woff2 would add roughly
-two megabytes to every first page load, and this book is written for somebody
-on a school Chromebook or paying for data by the gigabyte. Chapter 1 promises
-that every download states its size, and quietly spending two megabytes on
-typography would break that promise before the reader reached Chapter 2.
+That is deliberate. Self-hosting as woff2 would add roughly a megabyte to every
+first page load, and this book is written for somebody on a school Chromebook or
+paying for data by the gigabyte. Chapter 1 promises that every download states
+its size, and quietly spending that on typography would break the promise before
+the reader reached Chapter 2.
 
 The PDF carries the full typographic system and is the artifact where the
 typography matters. The website is the searchable, screen-readable edition, and
@@ -77,9 +72,28 @@ between 0/O and 1/l/I, since a reader may type code out of the web edition.
 `ui-monospace` resolves to SF Mono, Cascadia Mono or DejaVu Sans Mono depending
 on platform, and all three distinguish those characters.
 
+## Figures are styled by a file, not by the chapters
+
+`matplotlibrc` at the project root sets the figure typeface, the spine and tick
+weights and the default size. Matplotlib reads it from the working directory and
+`_quarto.yml` sets `execute-dir: project`, so it applies to every figure without
+a line of styling in any chapter. That matters because three of the four figure
+blocks in Chapter 21 are echoed to the reader, and their code has to stay the
+plain matplotlib somebody would actually write.
+
+It is deliberately typographic only. Nothing in it changes a colour that carries
+data, a scale or a marker, so a reader running the same code on a default
+install gets a figure that differs in typeface and frame and in nothing that
+would change what they conclude.
+
+One operational note: matplotlib caches the list of installed fonts, and a cache
+written before the book's faces were installed still says they do not exist.
+`tools/build.sh` deletes that cache on every run, because the alternative is
+every figure silently falling back to DejaVu Sans.
+
 ## The checks
 
-Nine of them, all wired into CI and into `tools/release_check.sh`.
+Ten of them, all wired into CI and into `tools/release_check.sh`.
 
 | Check | What it proves |
 |---|---|
@@ -91,6 +105,8 @@ Nine of them, all wired into CI and into `tools/release_check.sh`.
 | `check_data_refs.py` | Every file the book tells a reader to open exists |
 | `verify_translation.py` | The coding sequence really does translate to the deposited protein |
 | `check_layout.py` | Glyph positions in the rendered PDF match the typography spec, and the delivery spec holds |
+| `check_figures.py` | Every figure has alt text and a caption |
+| `check_pages.py` | Every chapter lands within its page budget |
 | `check_links.py` | Every external address resolves |
 
 `check_layout.py` is the unusual one. It opens the finished PDF, reads where the

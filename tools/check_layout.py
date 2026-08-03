@@ -6,34 +6,41 @@ positions out of the PDF rather than trusting the LaTeX source, so a silently
 broken breakout or a font that failed to embed shows up as a failure here
 instead of as a surprise at print time.
 
-Usage:  .venv/bin/python tools/check_layout.py _book/No-Lab-Required.pdf
+Usage:  .venv/bin/python tools/check_layout.py [_book/<name>.pdf]
 """
 from __future__ import annotations
 
 import os
 import sys
+from pathlib import Path
 from collections import Counter, defaultdict
 
 import pdfplumber
 from pypdf import PdfReader
 
 PT = 72.0
-TOL = 0.02  # inches
+TOL = 0.02   # inches
+HANG = 0.25  # how far a list marker may hang into the left margin
 
+# One centred column. The reasoning is at the top of tex/preamble.tex: the side
+# column was repeating definitions the body already gave, so it is gone and the
+# text block is centred.
 SPEC = {
     "page_w": 8.5,
     "page_h": 11.0,
-    "top": 0.75,
-    "bottom": 0.90,
-    "inner": 0.75,
-    "outer": 1.25,
-    "text_block": 6.50,
-    "main_col": 4.60,
-    "gutter": 0.25,
-    "side_col": 1.65,
+    "top": 1.05,
+    "bottom": 1.45,
+    "inner": 1.725,
+    "outer": 1.725,
+    "text_block": 5.05,
+    "main_col": 5.05,
+    "gutter": 0.0,
+    "side_col": 0.0,
     "body_pt": 11.0,
-    "code_pt": 9.5,
+    "code_pt": 9.0,
 }
+BODY_FACE = "Charis"
+MONO_FACE = "Inconsolata"
 
 results: list[tuple[str, bool, str]] = []
 
@@ -259,6 +266,7 @@ def main(path: str) -> int:
     folio_baselines: list[float] = []
     widest_measure = 0.0
     overflow: list[str] = []
+    curly_in_code: list[tuple[int, str]] = []
 
     with pdfplumber.open(path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
@@ -272,17 +280,22 @@ def main(path: str) -> int:
                 pt = measured_size(ch)
                 if pt is not None:
                     sizes[(fam, round(pt, 1))] += 1
+                if MONO_FACE in fam and ch["text"] in "\u2018\u2019\u201c\u201d":
+                    curly_in_code.append((i, ch["text"]))
             # Serif body glyphs only, so margin notes (Inter) do not pollute the measure.
-            serif = [c for c in chars if "SourceSerif" in c["fontname"].replace("-", "") or "Source" in c["fontname"]]
+            serif = [c for c in chars if BODY_FACE in c["fontname"]]
             if serif:
                 body_lefts[parity][round(min(c["x0"] for c in serif) / PT, 2)] += 1
                 body_rights[parity][round(max(c["x1"] for c in serif) / PT, 2)] += 1
             if serif:
                 by_line: dict[float, list] = defaultdict(list)
                 for c in serif:
-                    by_line[round(c["bottom"], 1)].append(c)
+                    if c["text"].strip():
+                        by_line[round(c["bottom"], 1)].append(c)
                 for line in by_line.values():
-                    span = (max(c["x1"] for c in line) - min(c["x0"] for c in line)) / PT
+                    # Measure from the margin, not from a hanging marker.
+                    left = max(min(c["x0"] for c in line) / PT, SPEC["inner"])
+                    span = max(c["x1"] for c in line) / PT - left
                     widest_measure = max(widest_measure, span)
             # Text block runs 0.75 -> 7.25 in on every page.
             lo = SPEC["inner"]
@@ -290,14 +303,25 @@ def main(path: str) -> int:
             # 0.05 in of slack: microtype protrudes punctuation past the measure
             # on purpose, which is desirable and should not be flagged.
             for c in chars:
-                if c["x0"] / PT < lo - 0.05 or c["x1"] / PT > hi + 0.05:
+                # A line-ending space is not printed content. Ragged-right
+                # leaves one past the measure on most lines and counting them
+                # buries the overflows that are real.
+                if not c["text"].strip():
+                    continue
+                # List markers hang into the left margin. That is deliberate
+                # and it is what books do; indenting every list body instead
+                # would cost measure and make a bulleted page read as an
+                # outline. A quarter inch is room for a bullet or "10.".
+                if c["x0"] / PT < lo - 0.05 and c["x1"] / PT < lo + 0.05:
+                    continue
+                if c["x0"] / PT < lo - HANG or c["x1"] / PT > hi + 0.05:
                     overflow.append(f"p{i} {c['text']!r} x0={c['x0']/PT:.2f} x1={c['x1']/PT:.2f}")
                     break
             top_edges.append(min(c["top"] for c in chars) / PT)
             bottom_edges.append(max(c["bottom"] for c in chars) / PT)
             # The topmost run of glyphs on a page with a running head is that head.
             head = min(chars, key=lambda c: c["top"])
-            if head["top"] / PT < 0.55:
+            if head["top"] / PT < 0.60:
                 head_baselines.append(head["bottom"] / PT)
             foot = max(chars, key=lambda c: c["bottom"])
             if foot["bottom"] / PT > 10.20:
@@ -313,7 +337,7 @@ def main(path: str) -> int:
     for parity, value in (("recto", odd_left), ("verso", even_left)):
         if value is not None:
             check(
-                f"{parity} main column starts at 0.75 in",
+                f"{parity} text starts at {SPEC['inner']:.2f} in",
                 near(value, SPEC["inner"], 0.03),
                 f"{value} in",
             )
@@ -323,7 +347,7 @@ def main(path: str) -> int:
     # ceiling is the text block and the modal line start is what proves the
     # main column is being honoured.
     check(
-        "no line exceeds the 6.50 in text block",
+        f"no line exceeds the {SPEC['text_block']:.2f} in measure",
         widest_measure <= SPEC["text_block"] + 0.05,
         f"widest serif line {widest_measure:.2f} in",
     )
@@ -338,9 +362,9 @@ def main(path: str) -> int:
         found = {s for (fam, s), n in sizes.items() if pred(fam) and n >= 12}
         return sorted(found)
 
-    serif_sizes = family_sizes(lambda f: "SourceSerif" in f.replace("-", ""))
-    mono_sizes = family_sizes(lambda f: "JetBrainsMono" in f.replace("-", ""))
-    sans_sizes = family_sizes(lambda f: f.startswith("Inter"))
+    serif_sizes = family_sizes(lambda f: BODY_FACE in f)
+    mono_sizes = family_sizes(lambda f: MONO_FACE in f)
+    sans_sizes = serif_sizes  # headings and labels are set in the text face
 
     def has(found: list[float], want: float) -> bool:
         return any(abs(s - want) <= 0.15 for s in found)
@@ -356,40 +380,63 @@ def main(path: str) -> int:
             + ". Install them, or run tools/setup_toolchain.sh.",
         )
     check("body text set at 11 pt", has(serif_sizes, 11.0), f"serif sizes in use: {serif_sizes}")
-    check("code set at 9.5 pt", has(mono_sizes, 9.5), f"mono sizes in use: {mono_sizes}")
+    check("code set at 9 pt", has(mono_sizes, SPEC["code_pt"]), f"mono sizes in use: {mono_sizes}")
+    # 9.0 in code blocks, 8.5 in printed output, 10.4 inline. Anything else is a
+    # size nobody chose.
     check(
-        "running head 8.5 pt and folio 9.5 pt",
-        has(sans_sizes, 8.5) and has(sans_sizes, 9.5),
-        f"sans sizes in use: {sans_sizes}",
+        "no unplanned mono sizes",
+        all(any(abs(s - w) <= 0.15 for w in (8.5, 9.0, 10.4)) for s in mono_sizes),
+        f"mono sizes in use: {mono_sizes}",
+    )
+    check(
+        "running head and folio set small",
+        any(7.5 <= s <= 10.5 for s in serif_sizes),
+        f"text-face sizes in use: {serif_sizes}",
+    )
+
+    # Straight quotes must stay straight inside code. \defaultfontfeatures
+    # {Ligatures=TeX} switches on `tlig`, which maps the straight quote to the
+    # typographic one, and it applies to the mono face too unless
+    # Ligatures=NoTeX is set. That silently put 1,182 curly quotes inside the
+    # book's listings, so a reader typing code off the page got a SyntaxError.
+    # check_content.py never saw it: it reads the source, and the source was
+    # clean. Only the rendered page shows this one.
+    check(
+        "code prints straight quotes, not typographic ones",
+        not curly_in_code,
+        f"{len(curly_in_code)} curly quote(s) set in {MONO_FACE}, "
+        f"first on page {curly_in_code[0][0]}" if curly_in_code else "",
     )
 
     fams = {k for k in fontnames}
-    # Matplotlib embeds its own default face inside figure PDFs. That is left
-    # alone on purpose: the figures should look like what the reader's code
-    # produces on a default install, not like the book's body text.
+    # Matplotlib embeds its own default face inside figure PDFs, so a generated
+    # figure will ship DejaVu Sans unless the plotting code is told otherwise.
+    # DejaVu used to be waved through here as "figure fonts". That allowance is
+    # what let every generated figure ship matplotlib's default sans -- a third
+    # typeface in a book that claims two -- without a single check going red.
     figure_fonts = sorted(f for f in fams if "DejaVu" in f)
     check(
-        "only matplotlib's default falls outside the book's three faces",
-        all(("DejaVu" in f) or ("SourceSerif" in f.replace("-", ""))
-            or f.startswith("Inter") or "JetBrainsMono" in f.replace("-", "")
-            for f in fams),
+        "every face in the book is one of the two chosen",
+        all((BODY_FACE in f) or (MONO_FACE in f) for f in fams),
         f"figure faces: {figure_fonts}" if figure_fonts else "none",
     )
-    check("Source Serif 4 present", any("SourceSerif" in f.replace("-", "") for f in fams), str(sorted(fams))[:200])
-    check("Inter present", any(f.startswith("Inter") for f in fams), "")
-    check("JetBrains Mono NL present", any("JetBrainsMonoNL" in f.replace("-", "") for f in fams), "")
+    check(f"{BODY_FACE} present", any(BODY_FACE in f for f in fams), str(sorted(fams))[:200])
+    check(f"{MONO_FACE} present", any(MONO_FACE in f for f in fams), "")
+    check("80 columns of code fits the measure",
+          80 * 0.5 * SPEC["code_pt"] / 72 <= SPEC["text_block"],
+          f"{80 * 0.5 * SPEC['code_pt'] / 72:.2f} in of {SPEC['text_block']:.2f} in")
 
     # ---- vertical block ---------------------------------------------------
     # Uppercase running heads sit on their baseline, so a char's bottom edge is
-    # the baseline. Spec B6 puts that baseline 0.45 in from the top trim.
+    # the baseline. Spec B6 puts that baseline 0.50 in from the top trim.
     if head_baselines:
         med = sorted(head_baselines)[len(head_baselines) // 2]
-        check("running-head baseline 0.45 in from top trim", near(med, 0.45, 0.03), f"median {med:.3f} in")
+        check("running-head baseline 0.50 in from top trim", near(med, 0.50, 0.03), f"median {med:.3f} in")
     if folio_baselines:
         med = sorted(folio_baselines)[len(folio_baselines) // 2]
-        check("folio baseline 0.55 in from bottom trim", near(11.0 - med, 0.55, 0.03), f"median {11.0 - med:.3f} in from bottom")
+        check("folio baseline 0.72 in from bottom trim", near(11.0 - med, 0.72, 0.04), f"median {11.0 - med:.3f} in from bottom")
     if bottom_edges:
-        check("nothing printed below 10.55 in", max(bottom_edges) <= 10.58, f"lowest glyph at {max(bottom_edges):.3f} in")
+        check("nothing printed below 10.40 in", max(bottom_edges) <= 10.42, f"lowest glyph at {max(bottom_edges):.3f} in")
 
     # ---- delivery specification (spec B9) ---------------------------------
     import os
@@ -444,4 +491,15 @@ def main(path: str) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else "_book/No-Lab-Required.pdf"))
+    if len(sys.argv) > 1:
+        target = sys.argv[1]
+    else:
+        # The output name comes from _quarto.yml and carries the version, so a
+        # hard-coded default goes stale the first time the version moves.
+        found = sorted(Path("_book").glob("*.pdf"))
+        if len(found) != 1:
+            print(f"expected exactly one PDF in _book/, found {len(found)}; "
+                  f"pass the path explicitly", file=sys.stderr)
+            sys.exit(2)
+        target = str(found[0])
+    sys.exit(main(target))

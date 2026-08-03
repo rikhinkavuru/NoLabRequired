@@ -1,105 +1,108 @@
 # Error index {.unnumbered}
 
-Every error message this book explains, in alphabetical order, with the
-page that explains it. Look the message up here before you search the
-web for it.
+Every error message this book explains and every stuck moment it names,
+in alphabetical order, with the page that deals with it. Look yours up
+here before you search the web for it. Anything set in code type is what
+the machine prints; the rest describes a situation.
 
-| Message | Page |
-|---|---|
-| `404 Not Found` | \pageref{err-404-not-found} |
-| `A paper reports 98 percent homology and you need to quote it` | \pageref{err-a-paper-reports-98-percent-homology-and-you-need-to-quote-it} |
-| `A tutorial's command fails with an error the page never mentions` | \pageref{err-a-tutorial-s-command-fails-with-an-error-the-page-never-ment} |
-| `AttributeError: 'numpy.ndarray' object has no attribute 'set_xlabel'` | \pageref{err-attributeerror-numpy-ndarray-object-has-no-attribute-set-xla} |
-| `AttributeError: 'SeqRecord' object has no attribute 'sequence'` | \pageref{err-attributeerror-seqrecord-object-has-no-attribute-sequence} |
-| `AttributeError: PathCollection.set() got an unexpected keyword argument 'colour'` | \pageref{err-attributeerror-pathcollection-set-got-an-unexpected-keyword-} |
-| `Colab asks for GitHub access and the window closes without saving anything` | \pageref{err-colab-asks-for-github-access-and-the-window-closes-without-s} |
-| `Colab will not save your changes` | \pageref{err-colab-will-not-save-your-changes} |
-| `ERR_NAME_NOT_RESOLVED` | \pageref{err-err-name-not-resolved} |
-| `Every hit in your table has the same score and the same E-value` | \pageref{err-every-hit-in-your-table-has-the-same-score-and-the-same-e-va} |
-| `Every posting you read wants a doctorate` | \pageref{err-every-posting-you-read-wants-a-doctorate} |
-| `Every variable has vanished and the numbers beside your cells are gone` | \pageref{err-every-variable-has-vanished-and-the-numbers-beside-your-cell} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'broken_1.py'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-broken-1} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'data/alignment/brca1_cds_five_species.aln'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-ali} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'data/codon_table_standard.tsv'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-cod} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'data/GSE60450_counts.tsv.gz'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-gse} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'data/sequences/brca1_five_species.fasta'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-seq} |
-| `FileNotFoundError: [Errno 2] No such file or directory: 'messy.fasta'` | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-messy-fa} |
-| `GitHub refuses the notebook and says the file is too large` | \pageref{err-github-refuses-the-notebook-and-says-the-file-is-too-large} |
-| `IndentationError: expected an indented block after 'for' statement on line 1` | \pageref{err-indentationerror-expected-an-indented-block-after-for-statem} |
-| `IndentationError: expected an indented block after function definition on line 1` | \pageref{err-indentationerror-expected-an-indented-block-after-function-d} |
-| `IndentationError: unexpected indent` | \pageref{err-indentationerror-unexpected-indent} |
-| `IndexError: string index out of range` | \pageref{err-indexerror-string-index-out-of-range} |
-| `KeyError: "['MCL1-DG'] not in index"` | \pageref{err-keyerror-mcl1-dg-not-in-index} |
-| `KeyError: 'atg'` | \pageref{err-keyerror-atg} |
-| `KeyError: 'CA'` | \pageref{err-keyerror-ca} |
-| `KeyError: 'Human'` | \pageref{err-keyerror-human} |
-| `KeyError: 'Krt5'` | \pageref{err-keyerror-krt5} |
-| `KeyError: 'Length'` | \pageref{err-keyerror-length} |
-| `KeyError: 'MCL1-DG'` | \pageref{err-keyerror-mcl1-dg} |
-| `KeyError: 'sample_name'` | \pageref{err-keyerror-sample-name} |
-| `KeyError: 12189` | \pageref{err-keyerror-12189} |
-| `ModuleNotFoundError: No module named 'Bio'` | \pageref{err-modulenotfounderror-no-module-named-bio} |
-| `NameError: name 'brca1' is not defined` | \pageref{err-nameerror-name-brca1-is-not-defined} |
-| `NameError: name 'cpm' is not defined` | \pageref{err-nameerror-name-cpm-is-not-defined} |
-| `NameError: name 'minutes' is not defined` | \pageref{err-nameerror-name-minutes-is-not-defined} |
-| `NameError: name 'seq' is not defined` | \pageref{err-nameerror-name-seq-is-not-defined} |
-| `NameError: name 'translate' is not defined` | \pageref{err-nameerror-name-translate-is-not-defined} |
-| `No significant similarity found.` | \pageref{err-no-significant-similarity-found} |
-| `Nothing prints at all and the ring beside the cell keeps turning` | \pageref{err-nothing-prints-at-all-and-the-ring-beside-the-cell-keeps-tur} |
-| `Residue numbers in the PDB entry do not match the UniProt ones` | \pageref{err-residue-numbers-in-the-pdb-entry-do-not-match-the-uniprot-on} |
-| `Searching BRCA1 in UniProt returns dozens of entries` | \pageref{err-searching-brca1-in-uniprot-returns-dozens-of-entries} |
-| `Somebody replied asking what it is you want` | \pageref{err-somebody-replied-asking-what-it-is-you-want} |
-| `SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?` | \pageref{err-syntaxerror-invalid-syntax-maybe-you-meant-or-instead-of} |
-| `The AlphaFold model version is higher than 6` | \pageref{err-the-alphafold-model-version-is-higher-than-6} |
-| `The cell has been running for several minutes and nothing has printed` | \pageref{err-the-cell-has-been-running-for-several-minutes-and-nothing-ha} |
-| `The download is one file per sample instead of one table` | \pageref{err-the-download-is-one-file-per-sample-instead-of-one-table} |
-| `The eligibility page says you must be currently enrolled` | \pageref{err-the-eligibility-page-says-you-must-be-currently-enrolled} |
-| `The file you want is labeled controlled access` | \pageref{err-the-file-you-want-is-labeled-controlled-access} |
-| `The form refuses your sequence and complains about the characters in it` | \pageref{err-the-form-refuses-your-sequence-and-complains-about-the-chara} |
-| `The gene page shows several transcripts and you cannot tell them apart` | \pageref{err-the-gene-page-shows-several-transcripts-and-you-cannot-tell-} |
-| `The last line ends at 'is not defined' with no suggestion after it` | \pageref{err-the-last-line-ends-at-is-not-defined-with-no-suggestion-afte} |
-| `The page has been sitting there for minutes and nothing has happened` | \pageref{err-the-page-has-been-sitting-there-for-minutes-and-nothing-has-} |
-| `The page keeps asking you to sign in and will not open a notebook` | \pageref{err-the-page-keeps-asking-you-to-sign-in-and-will-not-open-a-not} |
-| `The paper you picked reports a number you cannot get anywhere near` | \pageref{err-the-paper-you-picked-reports-a-number-you-cannot-get-anywher} |
-| `The printed numbers come back as nan` | \pageref{err-the-printed-numbers-come-back-as-nan} |
-| `The README text does not appear on the front page of the repository` | \pageref{err-the-readme-text-does-not-appear-on-the-front-page-of-the-rep} |
-| `The repository works when you are signed in and 404s in a private window` | \pageref{err-the-repository-works-when-you-are-signed-in-and-404s-in-a-pr} |
-| `The series lists samples but there is no processed data file` | \pageref{err-the-series-lists-samples-but-there-is-no-processed-data-file} |
-| `The structure viewer stays blank or never finishes loading` | \pageref{err-the-structure-viewer-stays-blank-or-never-finishes-loading} |
-| `The version suffix on the page is higher than the one printed here` | \pageref{err-the-version-suffix-on-the-page-is-higher-than-the-one-printe} |
-| `TypeError: object of type 'NoneType' has no len()` | \pageref{err-typeerror-object-of-type-nonetype-has-no-len} |
-| `TypeError: string indices must be integers, not 'str'` | \pageref{err-typeerror-string-indices-must-be-integers-not-str} |
-| `TypeError: translate() missing 1 required positional argument: 'dna'` | \pageref{err-typeerror-translate-missing-1-required-positional-argument-d} |
-| `TypeError: unsupported operand type(s) for /: 'tuple' and 'int'` | \pageref{err-typeerror-unsupported-operand-type-s-for-tuple-and-int} |
-| `TypeError: write() argument must be str, not int` | \pageref{err-typeerror-write-argument-must-be-str-not-int} |
-| `UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte` | \pageref{err-unicodedecodeerror-utf-8-codec-can-t-decode-byte-0x8b-in-pos} |
-| `ValueError: All arrays must be of the same length` | \pageref{err-valueerror-all-arrays-must-be-of-the-same-length} |
-| `ValueError: Duplicate key 'NM_007294.4'` | \pageref{err-valueerror-duplicate-key-nm-007294-4} |
-| `ValueError: I/O operation on closed file.` | \pageref{err-valueerror-i-o-operation-on-closed-file} |
-| `ValueError: invalid mode (expected 'global', 'local', or 'fogsaa'` | \pageref{err-valueerror-invalid-mode-expected-global-local-or-fogsaa} |
-| `ValueError: not enough values to unpack (expected 3, got 2)` | \pageref{err-valueerror-not-enough-values-to-unpack-expected-3-got-2} |
-| `ValueError: not enough values to unpack (expected 4, got 1)` | \pageref{err-valueerror-not-enough-values-to-unpack-expected-4-got-1} |
-| `ValueError: Records in Fastq files should start with '@' character` | \pageref{err-valueerror-records-in-fastq-files-should-start-with-characte} |
-| `ValueError: x and y must be the same size` | \pageref{err-valueerror-x-and-y-must-be-the-same-size} |
-| `Whole runs of rows share one identical adjusted p-value` | \pageref{err-whole-runs-of-rows-share-one-identical-adjusted-p-value} |
-| `You cannot finish the sentence I would be wrong if` | \pageref{err-you-cannot-finish-the-sentence-i-would-be-wrong-if} |
-| `You cannot tell which numbers in your notes came from which search` | \pageref{err-you-cannot-tell-which-numbers-in-your-notes-came-from-which-} |
-| `You have four questions and no way to choose between them` | \pageref{err-you-have-four-questions-and-no-way-to-choose-between-them} |
-| `You have two named groups and no dataset containing both of them` | \pageref{err-you-have-two-named-groups-and-no-dataset-containing-both-of-} |
-| `You open a methods section in a new subfield and none of the nouns are familiar` | \pageref{err-you-open-a-methods-section-in-a-new-subfield-and-none-of-the} |
-| `You re-run a Part 1 search and the numbers do not match your notes` | \pageref{err-you-re-run-a-part-1-search-and-the-numbers-do-not-match-your} |
-| `You sent eight messages and nobody replied to any of them` | \pageref{err-you-sent-eight-messages-and-nobody-replied-to-any-of-them} |
-| `You want to report an E-value and yours prints as 0.0` | \pageref{err-you-want-to-report-an-e-value-and-yours-prints-as-0-0} |
-| `Your adjusted p-values came out smaller than your raw ones` | \pageref{err-your-adjusted-p-values-came-out-smaller-than-your-raw-ones} |
-| `Your column count isn't 5,838 and your identity numbers don't match the ones printed here` | \pageref{err-your-column-count-isn-t-5-838-and-your-identity-numbers-don-} |
-| `Your coordinates do not match the ones in a paper you are reading` | \pageref{err-your-coordinates-do-not-match-the-ones-in-a-paper-you-are-re} |
-| `Your issue was closed with one line and no discussion` | \pageref{err-your-issue-was-closed-with-one-line-and-no-discussion} |
-| `Your notes do not say which database you searched` | \pageref{err-your-notes-do-not-say-which-database-you-searched} |
-| `Your p_adjusted column is entirely NaN` | \pageref{err-your-p-adjusted-column-is-entirely-nan} |
-| `Your paragraph reads fine to you and a stranger cannot repeat it` | \pageref{err-your-paragraph-reads-fine-to-you-and-a-stranger-cannot-repea} |
-| `Your question still contains the words is involved in` | \pageref{err-your-question-still-contains-the-words-is-involved-in} |
-| `Your report is labeled with a species you never asked about` | \pageref{err-your-report-is-labeled-with-a-species-you-never-asked-about} |
-| `Your search returns hundreds of records and none of them look right` | \pageref{err-your-search-returns-hundreds-of-records-and-none-of-them-loo} |
-| `Your search returns thousands of series and none of them match your question` | \pageref{err-your-search-returns-thousands-of-series-and-none-of-them-mat} |
-| `Your slice runs but the sequence looks wrong` | \pageref{err-your-slice-runs-but-the-sequence-looks-wrong} |
+| Message or situation | Page |
+|---|---:|
+| [`404 Not Found`](../chapters/ch30-resources.qmd#err-404-not-found) | \pageref{err-404-not-found} |
+| [A paper reports 98 percent homology and you need to quote it](../chapters/ch07-what-results-mean.qmd#err-a-paper-reports-98-percent-homology-and-you-need-to-quote-it) | \pageref{err-a-paper-reports-98-percent-homology-and-you-need-to-quote-it} |
+| [A tutorial's command fails with an error the page never mentions](../chapters/ch30-resources.qmd#err-a-tutorial-s-command-fails-with-an-error-the-page-never-ment) | \pageref{err-a-tutorial-s-command-fails-with-an-error-the-page-never-ment} |
+| [`AttributeError: 'numpy.ndarray' object has no attribute 'set_xlabel'`](../chapters/ch21-figures-that-communicate.qmd#err-attributeerror-numpy-ndarray-object-has-no-attribute-set-xla) | \pageref{err-attributeerror-numpy-ndarray-object-has-no-attribute-set-xla} |
+| [`AttributeError: PathCollection.set() got an unexpected keyword argument 'colour'`](../chapters/ch21-figures-that-communicate.qmd#err-attributeerror-pathcollection-set-got-an-unexpected-keyword-) | \pageref{err-attributeerror-pathcollection-set-got-an-unexpected-keyword-} |
+| [`AttributeError: 'SeqRecord' object has no attribute 'sequence'`](../chapters/ch17-biopython.qmd#err-attributeerror-seqrecord-object-has-no-attribute-sequence) | \pageref{err-attributeerror-seqrecord-object-has-no-attribute-sequence} |
+| [Colab asks for GitHub access and the window closes without saving anything](../chapters/ch26-writing-it-up-and-sharing-it.qmd#err-colab-asks-for-github-access-and-the-window-closes-without-s) | \pageref{err-colab-asks-for-github-access-and-the-window-closes-without-s} |
+| [Colab will not save your changes](../chapters/ch04-your-one-and-only-setup.qmd#err-colab-will-not-save-your-changes) | \pageref{err-colab-will-not-save-your-changes} |
+| [`ERR_NAME_NOT_RESOLVED`](../chapters/ch30-resources.qmd#err-err-name-not-resolved) | \pageref{err-err-name-not-resolved} |
+| [Every hit in your table has the same score and the same E-value](../chapters/ch07-what-results-mean.qmd#err-every-hit-in-your-table-has-the-same-score-and-the-same-e-va) | \pageref{err-every-hit-in-your-table-has-the-same-score-and-the-same-e-va} |
+| [Every posting you read wants a doctorate](../chapters/ch29-what-the-field-looks-like.qmd#err-every-posting-you-read-wants-a-doctorate) | \pageref{err-every-posting-you-read-wants-a-doctorate} |
+| [Every variable has vanished and the numbers beside your cells are gone](../chapters/ch04-your-one-and-only-setup.qmd#err-every-variable-has-vanished-and-the-numbers-beside-your-cell) | \pageref{err-every-variable-has-vanished-and-the-numbers-beside-your-cell} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'broken_1.py'`](../chapters/ch16-reading-errors.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-broken-1) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-broken-1} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'data/alignment/brca1_cds_five_species.aln'`](../chapters/ch19-multiple-alignment-and-trees.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-data-ali) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-ali} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'data/codon_table_standard.tsv'`](../chapters/ch13-lists-dictionaries-genetic-code.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-data-cod) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-cod} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'data/GSE60450_counts.tsv.gz'`](../chapters/ch29-what-the-field-looks-like.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-data-gse) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-gse} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'data/sequences/brca1_five_species.fasta'`](../chapters/ch12-loops-and-conditionals.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-data-seq) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-data-seq} |
+| [`FileNotFoundError: [Errno 2] No such file or directory: 'messy.fasta'`](../chapters/ch15-files-and-formats.qmd#err-filenotfounderror-errno-2-no-such-file-or-directory-messy-fa) | \pageref{err-filenotfounderror-errno-2-no-such-file-or-directory-messy-fa} |
+| [GitHub refuses the notebook and says the file is too large](../chapters/ch26-writing-it-up-and-sharing-it.qmd#err-github-refuses-the-notebook-and-says-the-file-is-too-large) | \pageref{err-github-refuses-the-notebook-and-says-the-file-is-too-large} |
+| [`IndentationError: expected an indented block after 'for' statement on line 1`](../chapters/ch12-loops-and-conditionals.qmd#err-indentationerror-expected-an-indented-block-after-for-statem) | \pageref{err-indentationerror-expected-an-indented-block-after-for-statem} |
+| [`IndentationError: expected an indented block after function definition on line 1`](../chapters/ch14-functions.qmd#err-indentationerror-expected-an-indented-block-after-function-d) | \pageref{err-indentationerror-expected-an-indented-block-after-function-d} |
+| [`IndentationError: unexpected indent`](../chapters/ch16-reading-errors.qmd#err-indentationerror-unexpected-indent) | \pageref{err-indentationerror-unexpected-indent} |
+| [`IndexError: string index out of range`](../chapters/ch12-loops-and-conditionals.qmd#err-indexerror-string-index-out-of-range) | \pageref{err-indexerror-string-index-out-of-range} |
+| [`KeyError: 12189`](../chapters/ch25-interpreting-results.qmd#err-keyerror-12189) | \pageref{err-keyerror-12189} |
+| [`KeyError: 'atg'`](../chapters/ch13-lists-dictionaries-genetic-code.qmd#err-keyerror-atg) | \pageref{err-keyerror-atg} |
+| [`KeyError: 'CA'`](../chapters/ch13-lists-dictionaries-genetic-code.qmd#err-keyerror-ca) | \pageref{err-keyerror-ca} |
+| [`KeyError: 'Human'`](../chapters/ch19-multiple-alignment-and-trees.qmd#err-keyerror-human) | \pageref{err-keyerror-human} |
+| [`KeyError: 'Krt5'`](../chapters/ch27-practicing.qmd#err-keyerror-krt5) | \pageref{err-keyerror-krt5} |
+| [`KeyError: 'Length'`](../chapters/ch24-walkthrough-differential-expression.qmd#err-keyerror-length) | \pageref{err-keyerror-length} |
+| [`KeyError: 'MCL1-DG'`](../chapters/ch20-tabular-data-with-pandas.qmd#err-keyerror-mcl1-dg) | \pageref{err-keyerror-mcl1-dg} |
+| [`KeyError: "['MCL1-DG'] not in index"`](../chapters/ch24-walkthrough-differential-expression.qmd#err-keyerror-mcl1-dg-not-in-index) | \pageref{err-keyerror-mcl1-dg-not-in-index} |
+| [`KeyError: 'sample_name'`](../chapters/ch20-tabular-data-with-pandas.qmd#err-keyerror-sample-name) | \pageref{err-keyerror-sample-name} |
+| [`ModuleNotFoundError: No module named 'Bio'`](../chapters/ch18-sequence-alignment.qmd#err-modulenotfounderror-no-module-named-bio) | \pageref{err-modulenotfounderror-no-module-named-bio} |
+| [`NameError: name 'brca1' is not defined`](../chapters/ch11-variables-strings-and-dna.qmd#err-nameerror-name-brca1-is-not-defined) | \pageref{err-nameerror-name-brca1-is-not-defined} |
+| [`NameError: name 'cpm' is not defined`](../chapters/ch20-tabular-data-with-pandas.qmd#err-nameerror-name-cpm-is-not-defined) | \pageref{err-nameerror-name-cpm-is-not-defined} |
+| [`NameError: name 'minutes' is not defined`](../chapters/ch10-why-code-at-all.qmd#err-nameerror-name-minutes-is-not-defined) | \pageref{err-nameerror-name-minutes-is-not-defined} |
+| [`NameError: name 'seq' is not defined`](../chapters/ch03-how-this-workbook-works.qmd#err-nameerror-name-seq-is-not-defined) | \pageref{err-nameerror-name-seq-is-not-defined} |
+| [`NameError: name 'translate' is not defined`](../chapters/ch14-functions.qmd#err-nameerror-name-translate-is-not-defined) | \pageref{err-nameerror-name-translate-is-not-defined} |
+| [No significant similarity found.](../chapters/ch07-what-results-mean.qmd#err-no-significant-similarity-found) | \pageref{err-no-significant-similarity-found} |
+| [Nothing prints at all and the ring beside the cell keeps turning](../chapters/ch16-reading-errors.qmd#err-nothing-prints-at-all-and-the-ring-beside-the-cell-keeps-tur) | \pageref{err-nothing-prints-at-all-and-the-ring-beside-the-cell-keeps-tur} |
+| [Residue numbers in the PDB entry do not match the UniProt ones](../chapters/ch08-proteins-without-a-microscope.qmd#err-residue-numbers-in-the-pdb-entry-do-not-match-the-uniprot-on) | \pageref{err-residue-numbers-in-the-pdb-entry-do-not-match-the-uniprot-on} |
+| [Searching BRCA1 in UniProt returns dozens of entries](../chapters/ch08-proteins-without-a-microscope.qmd#err-searching-brca1-in-uniprot-returns-dozens-of-entries) | \pageref{err-searching-brca1-in-uniprot-returns-dozens-of-entries} |
+| [Somebody replied asking what it is you want](../chapters/ch28-getting-in-without-credentials.qmd#err-somebody-replied-asking-what-it-is-you-want) | \pageref{err-somebody-replied-asking-what-it-is-you-want} |
+| [`SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?`](../chapters/ch12-loops-and-conditionals.qmd#err-syntaxerror-invalid-syntax-maybe-you-meant-or-instead-of) | \pageref{err-syntaxerror-invalid-syntax-maybe-you-meant-or-instead-of} |
+| [The AlphaFold model version is higher than 6](../chapters/ch08-proteins-without-a-microscope.qmd#err-the-alphafold-model-version-is-higher-than-6) | \pageref{err-the-alphafold-model-version-is-higher-than-6} |
+| [The cell has been running for several minutes and nothing has printed](../chapters/ch18-sequence-alignment.qmd#err-the-cell-has-been-running-for-several-minutes-and-nothing-ha) | \pageref{err-the-cell-has-been-running-for-several-minutes-and-nothing-ha} |
+| [The download is one file per sample instead of one table](../chapters/ch23-finding-data.qmd#err-the-download-is-one-file-per-sample-instead-of-one-table) | \pageref{err-the-download-is-one-file-per-sample-instead-of-one-table} |
+| [The eligibility page says you must be currently enrolled](../chapters/ch28-getting-in-without-credentials.qmd#err-the-eligibility-page-says-you-must-be-currently-enrolled) | \pageref{err-the-eligibility-page-says-you-must-be-currently-enrolled} |
+| [The file you want is labeled controlled access](../chapters/ch23-finding-data.qmd#err-the-file-you-want-is-labeled-controlled-access) | \pageref{err-the-file-you-want-is-labeled-controlled-access} |
+| [The form refuses your sequence and complains about the characters in it](../chapters/ch06-blast.qmd#err-the-form-refuses-your-sequence-and-complains-about-the-chara) | \pageref{err-the-form-refuses-your-sequence-and-complains-about-the-chara} |
+| [The gene page shows several transcripts and you cannot tell them apart](../chapters/ch05-reading-a-gene.qmd#err-the-gene-page-shows-several-transcripts-and-you-cannot-tell-) | \pageref{err-the-gene-page-shows-several-transcripts-and-you-cannot-tell-} |
+| [The last line ends at 'is not defined' with no suggestion after it](../chapters/ch16-reading-errors.qmd#err-the-last-line-ends-at-is-not-defined-with-no-suggestion-afte) | \pageref{err-the-last-line-ends-at-is-not-defined-with-no-suggestion-afte} |
+| [The page has been sitting there for minutes and nothing has happened](../chapters/ch06-blast.qmd#err-the-page-has-been-sitting-there-for-minutes-and-nothing-has-) | \pageref{err-the-page-has-been-sitting-there-for-minutes-and-nothing-has-} |
+| [The page keeps asking you to sign in and will not open a notebook](../chapters/ch04-your-one-and-only-setup.qmd#err-the-page-keeps-asking-you-to-sign-in-and-will-not-open-a-not) | \pageref{err-the-page-keeps-asking-you-to-sign-in-and-will-not-open-a-not} |
+| [The paper you picked reports a number you cannot get anywhere near](../chapters/ch27-practicing.qmd#err-the-paper-you-picked-reports-a-number-you-cannot-get-anywher) | \pageref{err-the-paper-you-picked-reports-a-number-you-cannot-get-anywher} |
+| [The printed numbers come back as nan](../chapters/ch27-practicing.qmd#err-the-printed-numbers-come-back-as-nan) | \pageref{err-the-printed-numbers-come-back-as-nan} |
+| [The README text does not appear on the front page of the repository](../chapters/ch26-writing-it-up-and-sharing-it.qmd#err-the-readme-text-does-not-appear-on-the-front-page-of-the-rep) | \pageref{err-the-readme-text-does-not-appear-on-the-front-page-of-the-rep} |
+| [The repository works when you are signed in and 404s in a private window](../chapters/ch26-writing-it-up-and-sharing-it.qmd#err-the-repository-works-when-you-are-signed-in-and-404s-in-a-pr) | \pageref{err-the-repository-works-when-you-are-signed-in-and-404s-in-a-pr} |
+| [The series lists samples but there is no processed data file](../chapters/ch23-finding-data.qmd#err-the-series-lists-samples-but-there-is-no-processed-data-file) | \pageref{err-the-series-lists-samples-but-there-is-no-processed-data-file} |
+| [The structure viewer stays blank or never finishes loading](../chapters/ch08-proteins-without-a-microscope.qmd#err-the-structure-viewer-stays-blank-or-never-finishes-loading) | \pageref{err-the-structure-viewer-stays-blank-or-never-finishes-loading} |
+| [The version suffix on the page is higher than the one printed here](../chapters/ch05-reading-a-gene.qmd#err-the-version-suffix-on-the-page-is-higher-than-the-one-printe) | \pageref{err-the-version-suffix-on-the-page-is-higher-than-the-one-printe} |
+| [`TypeError: object of type 'NoneType' has no len()`](../chapters/ch14-functions.qmd#err-typeerror-object-of-type-nonetype-has-no-len) | \pageref{err-typeerror-object-of-type-nonetype-has-no-len} |
+| [`TypeError: string indices must be integers, not 'str'`](../chapters/ch11-variables-strings-and-dna.qmd#err-typeerror-string-indices-must-be-integers-not-str) | \pageref{err-typeerror-string-indices-must-be-integers-not-str} |
+| [`TypeError: translate() missing 1 required positional argument: 'dna'`](../chapters/ch14-functions.qmd#err-typeerror-translate-missing-1-required-positional-argument-d) | \pageref{err-typeerror-translate-missing-1-required-positional-argument-d} |
+| [`TypeError: unsupported operand type(s) for /: 'tuple' and 'int'`](../chapters/ch10-why-code-at-all.qmd#err-typeerror-unsupported-operand-type-s-for-tuple-and-int) | \pageref{err-typeerror-unsupported-operand-type-s-for-tuple-and-int} |
+| [`TypeError: write() argument must be str, not int`](../chapters/ch15-files-and-formats.qmd#err-typeerror-write-argument-must-be-str-not-int) | \pageref{err-typeerror-write-argument-must-be-str-not-int} |
+| [`UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte`](../chapters/ch15-files-and-formats.qmd#err-unicodedecodeerror-utf-8-codec-can-t-decode-byte-0x8b-in-pos) | \pageref{err-unicodedecodeerror-utf-8-codec-can-t-decode-byte-0x8b-in-pos} |
+| [`ValueError: All arrays must be of the same length`](../chapters/ch24-walkthrough-differential-expression.qmd#err-valueerror-all-arrays-must-be-of-the-same-length) | \pageref{err-valueerror-all-arrays-must-be-of-the-same-length} |
+| [`ValueError: Duplicate key 'NM_007294.4'`](../chapters/ch17-biopython.qmd#err-valueerror-duplicate-key-nm-007294-4) | \pageref{err-valueerror-duplicate-key-nm-007294-4} |
+| [`ValueError: I/O operation on closed file.`](../chapters/ch15-files-and-formats.qmd#err-valueerror-i-o-operation-on-closed-file) | \pageref{err-valueerror-i-o-operation-on-closed-file} |
+| [`ValueError: invalid mode (expected 'global', 'local', or 'fogsaa'`](../chapters/ch18-sequence-alignment.qmd#err-valueerror-invalid-mode-expected-global-local-or-fogsaa) | \pageref{err-valueerror-invalid-mode-expected-global-local-or-fogsaa} |
+| [`ValueError: not enough values to unpack (expected 3, got 2)`](../chapters/ch19-multiple-alignment-and-trees.qmd#err-valueerror-not-enough-values-to-unpack-expected-3-got-2) | \pageref{err-valueerror-not-enough-values-to-unpack-expected-3-got-2} |
+| [`ValueError: not enough values to unpack (expected 4, got 1)`](../chapters/ch13-lists-dictionaries-genetic-code.qmd#err-valueerror-not-enough-values-to-unpack-expected-4-got-1) | \pageref{err-valueerror-not-enough-values-to-unpack-expected-4-got-1} |
+| [`ValueError: Records in Fastq files should start with '@' character`](../chapters/ch17-biopython.qmd#err-valueerror-records-in-fastq-files-should-start-with-characte) | \pageref{err-valueerror-records-in-fastq-files-should-start-with-characte} |
+| [`ValueError: x and y must be the same size`](../chapters/ch21-figures-that-communicate.qmd#err-valueerror-x-and-y-must-be-the-same-size) | \pageref{err-valueerror-x-and-y-must-be-the-same-size} |
+| [Whole runs of rows share one identical adjusted p-value](../chapters/ch25-interpreting-results.qmd#err-whole-runs-of-rows-share-one-identical-adjusted-p-value) | \pageref{err-whole-runs-of-rows-share-one-identical-adjusted-p-value} |
+| [You cannot finish the sentence I would be wrong if](../chapters/ch22-framing-a-question.qmd#err-you-cannot-finish-the-sentence-i-would-be-wrong-if) | \pageref{err-you-cannot-finish-the-sentence-i-would-be-wrong-if} |
+| [You cannot tell which numbers in your notes came from which search](../chapters/ch09-checkpoint-what-you-just-did.qmd#err-you-cannot-tell-which-numbers-in-your-notes-came-from-which-) | \pageref{err-you-cannot-tell-which-numbers-in-your-notes-came-from-which-} |
+| [You have four questions and no way to choose between them](../chapters/ch22-framing-a-question.qmd#err-you-have-four-questions-and-no-way-to-choose-between-them) | \pageref{err-you-have-four-questions-and-no-way-to-choose-between-them} |
+| [You have two named groups and no dataset containing both of them](../chapters/ch22-framing-a-question.qmd#err-you-have-two-named-groups-and-no-dataset-containing-both-of-) | \pageref{err-you-have-two-named-groups-and-no-dataset-containing-both-of-} |
+| [You open a methods section in a new subfield and none of the nouns are familiar](../chapters/ch29-what-the-field-looks-like.qmd#err-you-open-a-methods-section-in-a-new-subfield-and-none-of-the) | \pageref{err-you-open-a-methods-section-in-a-new-subfield-and-none-of-the} |
+| [You re-run a Part 1 search and the numbers do not match your notes](../chapters/ch09-checkpoint-what-you-just-did.qmd#err-you-re-run-a-part-1-search-and-the-numbers-do-not-match-your) | \pageref{err-you-re-run-a-part-1-search-and-the-numbers-do-not-match-your} |
+| [You sent eight messages and nobody replied to any of them](../chapters/ch28-getting-in-without-credentials.qmd#err-you-sent-eight-messages-and-nobody-replied-to-any-of-them) | \pageref{err-you-sent-eight-messages-and-nobody-replied-to-any-of-them} |
+| [You want to report an E-value and yours prints as 0.0](../chapters/ch07-what-results-mean.qmd#err-you-want-to-report-an-e-value-and-yours-prints-as-0-0) | \pageref{err-you-want-to-report-an-e-value-and-yours-prints-as-0-0} |
+| [Your adjusted p-values came out smaller than your raw ones](../chapters/ch25-interpreting-results.qmd#err-your-adjusted-p-values-came-out-smaller-than-your-raw-ones) | \pageref{err-your-adjusted-p-values-came-out-smaller-than-your-raw-ones} |
+| [Your column count isn't 5,838 and your identity numbers don't match the ones printed here](../chapters/ch19-multiple-alignment-and-trees.qmd#err-your-column-count-isn-t-5-838-and-your-identity-numbers-don-) | \pageref{err-your-column-count-isn-t-5-838-and-your-identity-numbers-don-} |
+| [Your coordinates do not match the ones in a paper you are reading](../chapters/ch05-reading-a-gene.qmd#err-your-coordinates-do-not-match-the-ones-in-a-paper-you-are-re) | \pageref{err-your-coordinates-do-not-match-the-ones-in-a-paper-you-are-re} |
+| [Your issue was closed with one line and no discussion](../chapters/ch28-getting-in-without-credentials.qmd#err-your-issue-was-closed-with-one-line-and-no-discussion) | \pageref{err-your-issue-was-closed-with-one-line-and-no-discussion} |
+| [Your notes do not say which database you searched](../chapters/ch09-checkpoint-what-you-just-did.qmd#err-your-notes-do-not-say-which-database-you-searched) | \pageref{err-your-notes-do-not-say-which-database-you-searched} |
+| [Your p_adjusted column is entirely NaN](../chapters/ch24-walkthrough-differential-expression.qmd#err-your-p-adjusted-column-is-entirely-nan) | \pageref{err-your-p-adjusted-column-is-entirely-nan} |
+| [Your paragraph reads fine to you and a stranger cannot repeat it](../chapters/ch09-checkpoint-what-you-just-did.qmd#err-your-paragraph-reads-fine-to-you-and-a-stranger-cannot-repea) | \pageref{err-your-paragraph-reads-fine-to-you-and-a-stranger-cannot-repea} |
+| [Your question still contains the words is involved in](../chapters/ch22-framing-a-question.qmd#err-your-question-still-contains-the-words-is-involved-in) | \pageref{err-your-question-still-contains-the-words-is-involved-in} |
+| [Your report is labeled with a species you never asked about](../chapters/ch06-blast.qmd#err-your-report-is-labeled-with-a-species-you-never-asked-about) | \pageref{err-your-report-is-labeled-with-a-species-you-never-asked-about} |
+| [Your search returns hundreds of records and none of them look right](../chapters/ch05-reading-a-gene.qmd#err-your-search-returns-hundreds-of-records-and-none-of-them-loo) | \pageref{err-your-search-returns-hundreds-of-records-and-none-of-them-loo} |
+| [Your search returns thousands of series and none of them match your question](../chapters/ch23-finding-data.qmd#err-your-search-returns-thousands-of-series-and-none-of-them-mat) | \pageref{err-your-search-returns-thousands-of-series-and-none-of-them-mat} |
+| [Your slice runs but the sequence looks wrong](../chapters/ch11-variables-strings-and-dna.qmd#err-your-slice-runs-but-the-sequence-looks-wrong) | \pageref{err-your-slice-runs-but-the-sequence-looks-wrong} |
+
+: {tbl-colwidths="[88,12]"}
 

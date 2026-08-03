@@ -1,20 +1,19 @@
 /*-- scss:defaults --*/
 // No Lab Required -- HTML edition. Mirrors the print system in tex/preamble.tex.
 
-$nlr-ink:      #1a1a1a;
-$nlr-second:   #5a5a5a;
-$nlr-teal:     #0b6e6e;
-$nlr-amber:    #b5651d;
-$nlr-green:    #2e6b3e;
-$nlr-rule:     #d9d9d9;
-$nlr-codebg:   #f4f4f2;
-$nlr-outbg:    #edf2f2;
-$nlr-tint:     #f2f7f7;
-$nlr-traptint: #faf3ec;
+$nlr-ink:      #1c1b19;
+$nlr-second:   #5f5b54;
+$nlr-teal:     #7a2e1d;
+$nlr-amber:    #8a6212;
+$nlr-green:    #3b5c3f;
+$nlr-rule:     #b9b4aa;
 
-$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !default;
-$font-family-serif:      "Source Serif 4", Georgia, "Times New Roman", serif !default;
-$font-family-monospace:  "JetBrains Mono NL", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace !default;
+// Two families, matching the print edition. Neither is self-hosted; see
+// docs/build.md for why. The fallbacks are chosen so the page still reads
+// like a book rather than like a form.
+$font-family-serif:      Charis, Charter, "Bitstream Charter", Georgia, "Times New Roman", serif !default;
+$font-family-sans-serif: $font-family-serif !default;
+$font-family-monospace:  Inconsolata, "Iosevka", ui-monospace, "SF Mono", Consolas, monospace !default;
 
 $body-color:  $nlr-ink !default;
 $link-color:  $nlr-teal !default;
@@ -23,7 +22,7 @@ $body-bg:     #ffffff !default;
 
 $font-size-root: 17px !default;
 $toc-color: $nlr-second !default;
-$code-block-bg: $nlr-codebg !default;
+$code-block-bg: transparent !default;
 $code-color: $nlr-ink !default;
 
 /*-- scss:rules --*/
@@ -35,11 +34,7 @@ $code-color: $nlr-ink !default;
   --nlr-amber: #{$nlr-amber};
   --nlr-green: #{$nlr-green};
   --nlr-rule: #{$nlr-rule};
-  --nlr-codebg: #{$nlr-codebg};
-  --nlr-outbg: #{$nlr-outbg};
-  --nlr-tint: #{$nlr-tint};
-  --nlr-traptint: #{$nlr-traptint};
-  --nlr-measure: 34rem;
+  --nlr-measure: 36rem;
 }
 
 /* ---- typography ------------------------------------------------------- */
@@ -51,8 +46,8 @@ h1, h2, h3, h4, h5, h6,
   font-family: $font-family-sans-serif;
 }
 
-h1 { font-weight: 700; letter-spacing: -0.015em; }
-h2 { font-weight: 600; letter-spacing: -0.01em; margin-top: 2.2em; }
+h1 { font-weight: 700; }
+h2 { font-weight: 600; margin-top: 2.2em; }
 h3 { font-weight: 600; margin-top: 1.6em; }
 
 #quarto-document-content > section > p,
@@ -62,226 +57,134 @@ main p, main ul, main ol, main blockquote {
 
 p { margin-bottom: 0.55em; }
 
-/* ---- code and output -------------------------------------------------- */
+/* ---- code and output --------------------------------------------------
+   Everything below used to be a card: a tinted ground, a coloured bar down the
+   left edge, a dashed rule, and a label in letterspaced capitals next to a
+   Unicode icon. Print dropped all of it, and the two editions have to agree.
+   What is left is what print does -- a smaller size, an indent, and one italic
+   word run into the line -- which also happens to be the only version of this
+   that survives being printed from a browser in black and white. */
 
 pre, code, kbd, samp { font-family: $font-family-monospace; font-variant-ligatures: none; }
 
 div.sourceCode {
-  background: var(--nlr-codebg);
-  border-left: 3px solid var(--nlr-teal);
+  background: none;
+  border: none;
   border-radius: 0;
-  margin: 1.1rem 0;
+  margin: 1.2rem 0;
 }
 
-div.sourceCode pre.sourceCode { padding: 0.7rem 0.9rem; font-size: 0.86em; }
+div.sourceCode pre.sourceCode { padding: 0; font-size: 0.87em; }
 
-/* Filename chip above a code block, matching the repo path exactly. */
+/* Filename above a code block, matching the repo path exactly. */
 div.sourceCode[data-filename]::before,
 .nlr-filename {
   content: attr(data-filename);
   display: block;
-  font-family: $font-family-sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-style: italic;
+  font-size: 0.8rem;
   color: var(--nlr-second);
-  padding: 0.35rem 0.9rem 0;
+  margin-bottom: 0.15rem;
 }
 
 pre.nlr-output, .cell-output pre {
-  background: var(--nlr-outbg);
-  border-top: 1px dashed var(--nlr-second);
-  border-left: none;
-  padding: 0.7rem 0.9rem;
-  font-size: 0.82em;
-  margin-top: -1.1rem;
-  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.83em;
+  color: var(--nlr-second);
+  margin-top: 0;
 }
 
 .cell-output::before {
-  content: "OUTPUT";
+  content: "Output";
   display: block;
-  font-family: $font-family-sans-serif;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-style: italic;
+  font-size: 0.8rem;
   color: var(--nlr-second);
-  background: var(--nlr-outbg);
-  padding: 0.5rem 0.9rem 0;
-  border-top: 1px dashed var(--nlr-second);
-  margin-top: -1.1rem;
+  margin: 0.5rem 0 0.15rem;
 }
-.cell-output pre { border-top: none; margin-top: 0; }
 
 /* ---- components ------------------------------------------------------- */
 
+/* The shared shape: indent, hold it, and run one italic word into the first
+   line. No ground, no bar, no glyph. */
+%nlr-aside {
+  margin: 1.4rem 0;
+  padding-left: 1.4em;
+  font-size: 0.95em;
+}
+%nlr-aside-label {
+  font-style: italic;
+  margin-right: 0.35em;
+}
+
 .nlr-exercise {
-  border-left: 4px solid var(--nlr-teal);
-  padding: 0.4rem 0 0.4rem 1rem;
-  margin: 1.8rem 0;
+  margin: 2rem 0;
 }
 .nlr-ex-head {
   display: flex; align-items: baseline; justify-content: space-between;
-  gap: 1rem; margin-bottom: 0.5rem;
+  gap: 1rem; margin-bottom: 0.45rem;
 }
-.nlr-ex-num {
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 1.15rem; color: var(--nlr-teal);
-}
-.nlr-ex-time {
-  font-family: $font-family-sans-serif; font-size: 0.8rem; color: var(--nlr-second);
-}
-.nlr-field { margin: 0.55rem 0; }
+.nlr-ex-num { font-weight: 700; font-size: 1.2rem; }
+.nlr-ex-time { font-style: italic; font-size: 0.85rem; color: var(--nlr-second); }
+
+.nlr-field { margin: 0.5rem 0; }
 .nlr-field-label {
-  font-family: $font-family-sans-serif; font-weight: 600;
-  font-size: 0.82rem; color: var(--nlr-teal); display: block;
+  @extend %nlr-aside-label;
+  &::after { content: "."; }
 }
 
-.nlr-ifbreaks {
-  border-left: 4px solid var(--nlr-amber);
-  padding: 0.6rem 0 0.6rem 1rem;
-  margin: 1.6rem 0;
-  font-size: 0.94em;
-}
-.nlr-ifbreaks::before {
-  content: "\26A0  IF IT BREAKS";
-  display: block;
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 0.68rem; letter-spacing: 0.08em; color: var(--nlr-amber);
-  margin-bottom: 0.5rem;
-}
+.nlr-ifbreaks, .nlr-why, .nlr-trap, .nlr-check, .nlr-notebox { @extend %nlr-aside; }
+
+.nlr-ifbreaks::before { content: "If it breaks."; @extend %nlr-aside-label; }
+.nlr-why::before      { content: "Why this matters."; @extend %nlr-aside-label; }
+.nlr-trap::before     { content: "Trap."; @extend %nlr-aside-label; }
+.nlr-check::before    { content: "Check."; @extend %nlr-aside-label; }
+
+/* The label runs into the first paragraph rather than sitting above it. */
+.nlr-ifbreaks > p:first-of-type, .nlr-why > p:first-of-type,
+.nlr-trap > p:first-of-type, .nlr-check > p:first-of-type,
+.nlr-notebox > p:first-of-type { display: inline; }
+
 .nlr-errfix {
   display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: 0 1rem; margin: 0.5rem 0;
+  gap: 0 1rem; margin: 0.6rem 0;
 }
 .nlr-errfix > :first-child code {
-  color: var(--nlr-amber); background: none; padding: 0; font-size: 0.86em;
+  background: none; padding: 0; font-size: 0.86em;
 }
 @media (max-width: 640px) { .nlr-errfix { grid-template-columns: 1fr; } }
 
-.nlr-why, .nlr-notebox {
-  background: var(--nlr-tint);
-  padding: 0.9rem 1.1rem;
-  margin: 1.6rem 0;
-  font-size: 0.95em;
-}
-.nlr-why::before {
-  content: "WHY THIS MATTERS";
-  display: block;
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 0.68rem; letter-spacing: 0.08em; color: var(--nlr-second);
-  margin-bottom: 0.45rem;
-}
-
-/* A trap is not an error. It runs cleanly and gives the wrong answer, which is
-   why it gets its own ground as well as its own rule. */
-.nlr-trap {
-  background: var(--nlr-traptint);
-  border-left: 4px solid var(--nlr-amber);
-  padding: 0.8rem 1.1rem;
-  margin: 1.6rem 0;
-  font-size: 0.95em;
-}
-.nlr-trap::before {
-  content: "\2297  TRAP";
-  display: block;
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 0.68rem; letter-spacing: 0.08em; color: var(--nlr-amber);
-  margin-bottom: 0.45rem;
-}
-
-.nlr-check {
-  border-left: 4px solid var(--nlr-green);
-  padding: 0.6rem 0 0.6rem 1rem;
-  margin: 1.6rem 0;
-  font-size: 0.95em;
-}
-.nlr-check::before {
-  content: "\2713  CHECK";
-  display: block;
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 0.68rem; letter-spacing: 0.08em; color: var(--nlr-green);
-  margin-bottom: 0.45rem;
-}
-
 .nlr-asof {
-  border-top: 1px solid var(--nlr-rule);
-  border-bottom: 1px solid var(--nlr-rule);
-  padding: 0.4rem 0;
-  margin: 1.4rem 0;
-  font-family: $font-family-sans-serif;
-  font-size: 0.78rem;
+  margin: 1.3rem 0;
+  font-size: 0.82rem;
   color: var(--nlr-second);
   p { display: inline; margin: 0; }
 }
-.nlr-asof-label {
-  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-  margin-right: 0.5rem;
-}
+.nlr-asof-label { font-style: italic; margin-right: 0.4rem; }
+
 .nlr-note-label, .nlr-cp-label {
   display: block;
-  font-family: $font-family-sans-serif; font-weight: 700;
-  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--nlr-second); margin-bottom: 0.45rem;
+  font-style: italic;
+  color: var(--nlr-second);
+  margin-bottom: 0.35rem;
 }
 
 .nlr-checkpoint {
-  border-top: 1px solid var(--nlr-rule);
-  padding-top: 0.9rem;
   margin-top: 2.4rem;
+  padding-left: 0;
   font-size: 0.95em;
 }
 
 .nlr-answerspace, .nlr-answerbox { display: none; }
 
-/* Margin material: a real sidenote on wide screens, an inline aside otherwise.
-   The print edition puts these in a 1.65 in side column; the web edition has to
-   carry the same content or readers on the site lose every definition. */
-.column-margin, aside {
-  font-family: $font-family-sans-serif;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: var(--nlr-ink);
-}
-
+/* Key terms are bold and link to the glossary. There is no side column and no
+   duplicated definition; the glossary is the one place a definition lives. */
 .nlr-term { font-weight: 700; }
-
-.nlr-term-def, .nlr-margin {
-  display: block;
-  font-family: $font-family-sans-serif;
-  font-size: 0.76rem;
-  line-height: 1.45;
-  color: var(--nlr-second);
-  border-left: 2px solid var(--nlr-rule);
-  padding-left: 0.7rem;
-  margin: 0.5rem 0 0.7rem 0;
-  max-width: 26rem;
-}
-
-.nlr-term-def::before {
-  content: "Definition";
-  display: block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--nlr-teal);
-  margin-bottom: 0.15rem;
-}
-
-/* Wide screens have room for a true margin note beside the text. */
-@media (min-width: 1300px) {
-  #quarto-document-content, main {
-    position: relative;
-  }
-  .nlr-term-def, .nlr-margin {
-    position: absolute;
-    right: -18rem;
-    width: 15.5rem;
-    max-width: 15.5rem;
-    margin-top: -1.4rem;
-    border-left: 2px solid var(--nlr-rule);
-  }
-}
+.nlr-term a { color: inherit; text-decoration-color: var(--nlr-rule); }
+.nlr-aside { font-style: italic; color: var(--nlr-second); }
+.nlr-gloss-anchor { scroll-margin-top: 5rem; }
 
 /* ---- tables (spec B8: horizontal rules only) -------------------------- */
 
@@ -300,17 +203,15 @@ main table td, main table th { padding: 0.4rem 0.8rem 0.4rem 0; }
 main table, main table tr, main table td, main table th { border-left: none; border-right: none; }
 
 /* ---- dark mode: keep the print palette legible ------------------------ */
+/* The accent here was #56b6b6 -- so on a dark screen the book reverted to the
+   teal the redesign took out, and the four tinted grounds came back with it. */
 @media (prefers-color-scheme: dark) {
   :root {
     --nlr-ink: #e8e8e6;
     --nlr-second: #a8a8a4;
-    --nlr-teal: #56b6b6;
-    --nlr-amber: #e0a066;
-    --nlr-green: #7fbf8f;
+    --nlr-teal: #d9907a;
+    --nlr-amber: #d9b36a;
+    --nlr-green: #8fbf95;
     --nlr-rule: #3a3a38;
-    --nlr-codebg: #16181a;
-    --nlr-outbg: #141a1a;
-    --nlr-tint: #141c1c;
-    --nlr-traptint: #1e1813;
   }
 }

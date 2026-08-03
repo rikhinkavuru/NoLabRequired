@@ -445,6 +445,47 @@ def check_file(path: Path, *, strict: bool = True) -> Report:
     return rep
 
 
+# --- LaTeX sources ---------------------------------------------------------
+# The front matter is written in LaTeX, so none of the rules above ever saw it,
+# and two em dashes lived on the copyright page of a book that hard-fails on
+# them. LaTeX spells the em dash `---`, which is invisible to BANNED_CHARS.
+
+TEX_COMMENT = re.compile(r"(?<!\\)%.*$", re.M)
+TEX_MACRO = re.compile(r"\\[a-zA-Z@]+\*?")
+
+
+def tex_prose(text: str) -> list[tuple[int, str]]:
+    """Line-numbered prose from a .tex source, comments and macros removed."""
+    out: list[tuple[int, str]] = []
+    for i, raw in enumerate(text.splitlines(), start=1):
+        line = TEX_COMMENT.sub("", raw)
+        if not line.strip():
+            continue
+        out.append((i, line))
+    return out
+
+
+def check_tex(path: Path) -> Report:
+    rep = Report(path=path)
+    for lineno, line in tex_prose(path.read_text(encoding="utf-8")):
+        if "---" in line:
+            rep.findings.append(
+                Finding(lineno, "em dash", "fail", line.strip()[:100],
+                        "`---` is the LaTeX em dash. Hard cut, same as in prose.")
+            )
+        for ch, name in BANNED_CHARS.items():
+            if ch in line:
+                rep.findings.append(
+                    Finding(lineno, name, "fail", line.strip()[:100], "Hard cut."))
+        flat = TEX_MACRO.sub(" ", line).replace("{", " ").replace("}", " ")
+        for pattern, rule in BANNED_PHRASES:
+            m = re.search(pattern, flat, re.I)
+            if m:
+                rep.findings.append(
+                    Finding(lineno, rule, "fail", m.group(0), "Cut it."))
+    return rep
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("paths", nargs="*", help=".qmd files to check")
@@ -467,12 +508,12 @@ def main() -> int:
         targets = [
             t for t in targets
             if t.exists() and "smoke" not in t.name and t.name not in GENERATED
-        ]
+        ] + sorted((ROOT / "tex").glob("*.tex"))
 
     total_fail = 0
     total_warn = 0
     for path in targets:
-        rep = check_file(path)
+        rep = check_tex(path) if path.suffix == ".tex" else check_file(path)
         fails = rep.failures
         warns = [f for f in rep.findings if f.severity == "warn"]
         total_fail += len(fails)

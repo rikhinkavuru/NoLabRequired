@@ -135,7 +135,10 @@ format:
       - tex/before-body.tex
     include-after-body:
       - tex/after-body.tex
-    fig-pos: "H"
+    # Not "H". [H] is not a float, so a figure that does not fit pins itself to
+    # the next page AND pins the paragraph after it, leaving nearly two inches
+    # of blank page behind with no warning.
+    fig-pos: "htbp"
     fig-format: pdf
     fig-dpi: 300
     reference-location: document

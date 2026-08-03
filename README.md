@@ -89,8 +89,7 @@ bash tools/build.sh all         # PDF and website
 ```
 
 The toolchain installs into your home directory and needs no administrator
-rights. Fonts are Source Serif 4, Inter, and JetBrains Mono NL, all
-open-licensed.
+rights. Fonts are Charis and Inconsolata, both open-licensed.
 
 ## Contributing
 

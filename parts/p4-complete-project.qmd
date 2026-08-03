@@ -2,10 +2,10 @@
 
 One question, one dataset, one result, published.
 
-This part is the reason for the other four. You will take a vague interest,
+This part is the reason for the other four. You'll take a vague interest,
 narrow it into something a public dataset can answer, run the analysis, hit two
 real problems in the data, work through both, and put the finished notebook
 somewhere a stranger can read it.
 
-The two problems are not exercises. They are in the data, they were there when
+The two problems are not exercises. They're in the data, they were there when
 the authors deposited it, and neither one produces an error message.

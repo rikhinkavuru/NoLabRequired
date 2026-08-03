@@ -359,7 +359,7 @@ print(benjamini_hochberg(np.array([0.001, 0.02, 0.5])).round(4))
 
 `stats.ttest_ind(b, a, axis=1)` runs one t-test per row, all 14,210 at once.
 Argument order matters: `b` first means a positive fold change is higher in
-group B. The `dropna` line has a trap box of its own below.
+group B. The `dropna` line has a trap of its own below.
 
 `benjamini_hochberg` is the one block in this chapter built out of numpy calls
 this book never taught, and you don't have to read them to use it. Watch what it

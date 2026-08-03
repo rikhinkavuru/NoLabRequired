@@ -10,18 +10,18 @@ PDF. Releases are at `github.com/rikhinkavuru/NoLabRequired/releases`.
 
 First release.
 
-Every externally-sourced number in this edition was checked against its live
-source during production. The dataset index records the date for each one.
+The dataset index records the date each externally-sourced number was checked
+against its live source.
 
 ### Known limitations
 
 - The differential expression analysis in Part 4 uses a t-test on log counts.
   That is chosen so the reader can follow every step with what Chapters 11 to
   21 taught them. It is not what a working analyst would run, and Chapter 25
-  says so and names what is used instead.
+  names what they use instead.
 - Descriptions of other people's websites carry the date they were checked.
   They will drift. Where a description has gone stale, the invariant the
   chapter names should still hold, and an issue on the repository is the
   fastest way to get the text corrected.
-- The book covers no command-line software. Chapter 1 states what that costs
-  the reader.
+- The book covers no command-line software. What that costs you is in
+  Chapter 1.

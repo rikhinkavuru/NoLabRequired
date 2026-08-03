@@ -4,134 +4,181 @@
 %  Engine: LuaLaTeX (needed for OpenType fonts *and* LaTeX PDF tagging).
 % ===========================================================================
 
-% --- 1. PAGE GEOMETRY (spec B1, B2) ----------------------------------------
-% Trim 8.5 x 11 in. Text block 6.50 x 9.35 in, split into a 4.60 in main
-% column, a 0.25 in gutter and a 1.65 in side column.
-% 0.75 + 4.60 + 0.25 + 1.65 + 1.25 = 8.50 in.
+% --- 1. PAGE GEOMETRY (spec B1, B2 simplified fallback) --------------------
+% One column, 5.05 in wide, sitting slightly above the centre of the sheet.
 %
-% DEVIATION FROM SPEC B1, deliberate and documented in docs/build.md:
-% the margins do not mirror. `asymmetric` fixes the narrow margin on the left
-% and the side column on the right for every page. Two reasons.
-%   1. Correctness. A mirrored layout has to decide which way a full-width
-%      element breaks out, and that decision depends on the page a box will
-%      eventually land on. LaTeX builds boxes before it knows that, so the
-%      answer is read from the previous compilation pass and is wrong whenever
-%      pagination shifts. The failure mode is silent: text runs off the trim
-%      edge. On a 240-page book with hundreds of full-width components that is
-%      not a risk worth carrying.
-%   2. Fit. This is a digital-first PDF read on screen and printed one-sided on
-%      school printers. Mirrored margins buy nothing without a binding, and
-%      they make a one-sided printout look broken. The spec makes the same
-%      trade in B6 when it refuses to force recto-only chapter openers.
-% Alternating running heads are kept, because fancyhdr resolves parity at
-% shipout, where it is always correct.
+% The spec offers a single column as its own fallback and it is the better
+% design here, for a reason that only showed up once the book was written: the
+% side column was carrying 62 margin definitions and every one of them
+% repeated, nearly word for word, a sentence already in the body two inches to
+% its left. A reader met the same definition twice and the page sat lopsided.
+%
+% The measure is 5.05 in rather than 5.50 because at 11 pt Charis a 5.50 in
+% line runs to about 80 characters, and a reader loses the start of the next
+% line somewhere past 75. 5.05 in gives roughly 74. Eighty columns of
+% Inconsolata at 9 pt is 5.00 in, so code still fits inside the measure and
+% nothing has to break out of the column.
+%
+% Top 1.05 in against bottom 1.45 in puts the block above the optical centre,
+% which is where books have put it since before anyone measured why.
 \usepackage{geometry}
 \geometry{
   paperwidth      = 8.5in,
   paperheight     = 11in,
-  top             = 0.75in,
-  bottom          = 0.90in,
-  left            = 0.75in,
-  right           = 1.25in,
-  marginparsep    = 0.25in,
-  marginparwidth  = 1.65in,
-  includemp       = true,
+  top             = 1.05in,
+  bottom          = 1.45in,
+  left            = 1.725in,
+  right           = 1.725in,
   twoside         = true,
   asymmetric      = true,
   headheight      = 12pt,
-  headsep         = 19.7pt,   % puts the running-head baseline 0.45in from trim
-  footskip        = 24.2pt,   % puts the folio baseline 0.55in from trim
+  headsep         = 38.0pt,  % running-head baseline 0.50in from the top trim
+  footskip        = 52.0pt,  % folio baseline 0.72in from the bottom trim
 }
-% Margin material always goes in the side column on the right.
-\makeatletter\@mparswitchfalse\makeatother
-\normalmarginpar
 
-\newlength{\nlrfullwidth}   \setlength{\nlrfullwidth}{6.50in}
-\newlength{\nlrbreakout}    \setlength{\nlrbreakout}{1.90in} % gutter + side column
+\newlength{\nlrfullwidth}   \setlength{\nlrfullwidth}{5.05in}
+\newlength{\nlrbreakout}    \setlength{\nlrbreakout}{0pt}
 
 % --- 2. FONTS (spec B3) ----------------------------------------------------
+% Two families, not three, and neither is the open-source default everybody
+% reaches for first.
+%
+% Charis is Matthew Carter's Charter, extended by SIL. Carter drew Charter to
+% hold up at small sizes on the cheap low-resolution printers of the 1980s.
+% This book assumes its reader prints on a school printer in black and white,
+% so that is not a nostalgic choice, it is the same problem.
+%
+% Inconsolata was drawn by Raph Levien specifically for printed code listings,
+% which is exactly what a code block in a workbook is. It advances 0.5 em per
+% character, half the width of most monospaces, so 80 columns fits the measure.
+%
+% Headings are set in the text face at a heavier weight rather than in a
+% separate sans. Books have done that for a long time and it stops the page
+% looking like a component library.
 \usepackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX}
+% Ligatures=TeX (the alias for the tex-text input mapping) is applied to the
+% text faces one at a time rather than to every font in the document. Set as a
+% default it reached Inconsolata too, and the mapping turns a straight quote
+% into a typographic one, so every string literal in every listing printed as
+% "basal" instead of "basal" and no code in the book could be typed off the
+% page. There is no Ligatures=NoTeX to undo it with; the fix is not to set it.
 
-\setmainfont{Source Serif 4}[
-  UprightFont    = *-Regular,
-  ItalicFont     = *-It,
-  BoldFont       = *-Bold,
-  BoldItalicFont = *-BoldIt,
-  Numbers        = OldStyle,
-]
-\setsansfont{Inter}[
+\setmainfont{Charis}[
   UprightFont    = *-Regular,
   ItalicFont     = *-Italic,
   BoldFont       = *-Bold,
   BoldItalicFont = *-BoldItalic,
+  Ligatures      = TeX,
+  Scale          = 1,
 ]
-% JetBrains Mono NL is the no-ligature cut. Spec B3: ligatures MUST be off in
-% code so a beginner sees the characters they have to type (!= not ≠).
-% No Scale= here on purpose. Spec B4 sets code at a true 9.5 pt because the
-% 80-column guarantee depends on it: JetBrains Mono advances 0.6 em per
-% character, so 80 x 0.6 x 9.5 pt = 456 pt = 6.33 in, which fits the 6.50 in
-% text block. Matching x-heights would shrink that to ~8.2 pt and quietly
-% invalidate the measurement the whole code layout rests on.
-\setmonofont{JetBrains Mono NL}[
+
+% Scale=1 is load-bearing, not decoration. The 80-column guarantee is a width
+% in inches -- 80 x 0.5 em x 9 pt = 360 pt = 5.00 in against a 5.05 in measure
+% -- and it only holds if 9 pt means 9 pt. Pandoc's template sets
+% \defaultfontfeatures{Scale=MatchLowercase}, which matches Inconsolata's
+% lowercase to Charis's and silently renders the code at 9.46 pt: 80 columns
+% becomes 5.25 in and the longest listings run off the text block. This was
+% hidden for a while because the old \defaultfontfeatures{Ligatures=TeX} here
+% overwrote pandoc's line wholesale, so removing that one exposed it.
+% No Ligatures=TeX either, deliberately. See the note above \setmainfont.
+\setmonofont{Inconsolata}[
   UprightFont    = *-Regular,
-  ItalicFont     = *-Italic,
   BoldFont       = *-Bold,
-  BoldItalicFont = *-BoldItalic,
+  ItalicFont     = *-Regular,
   Ligatures      = NoCommon,
+  Scale          = 1,
 ]
 
-\newfontfamily\nlrsans{Inter}[UprightFont=*-Regular, ItalicFont=*-Italic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic]
-\newfontfamily\nlrsansmed{Inter}[UprightFont=*-Medium, ItalicFont=*-MediumItalic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic]
-\newfontfamily\nlrsanssemi{Inter}[UprightFont=*-SemiBold, ItalicFont=*-SemiBoldItalic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic]
-\newfontfamily\nlrmono{JetBrains Mono NL}[UprightFont=*-Regular, ItalicFont=*-Italic, BoldFont=*-Bold, Ligatures=NoCommon]
+\newfontfamily\nlrsans{Charis}[Scale=1, UprightFont=*-Regular, ItalicFont=*-Italic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic, Ligatures=TeX]
+\newfontfamily\nlrsansmed{Charis}[Scale=1, UprightFont=*-Regular, ItalicFont=*-Italic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic, Ligatures=TeX]
+\newfontfamily\nlrsanssemi{Charis}[Scale=1, UprightFont=*-Bold, ItalicFont=*-BoldItalic, BoldFont=*-Bold, BoldItalicFont=*-BoldItalic, Ligatures=TeX]
+% The title page only. A word space that is proportionally right at 11 pt
+% reads loose at 44, and WordSpace is not settable through \addfontfeatures --
+% it has to be declared with the family.
+\newfontfamily\nlrdisplay{Charis}[UprightFont=*-Bold, ItalicFont=*-BoldItalic,
+  BoldFont=*-Bold, BoldItalicFont=*-BoldItalic, Ligatures=TeX, Scale=1,
+  WordSpace=0.90]
+\newfontfamily\nlrmono{Inconsolata}[UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Regular, Ligatures=NoCommon, Scale=1]
 
-% Lining figures inside code, tables and anything numeric-technical.
-\newcommand{\nlrlining}{\addfontfeature{Numbers=Lining}}
+\newcommand{\nlrlining}{}
 
 % --- 3. COLOUR (spec B5) ---------------------------------------------------
-% Every value below was chosen to survive conversion to greyscale on a
-% black-and-white school printer. Nothing in this book encodes meaning in hue
-% alone; colour always rides alongside a label, an icon or a weight change.
+% Ink, one grey, and three muted accents. Every one has to survive being
+% converted to grey on a black-and-white printer, which is the constraint that
+% keeps them dark. Nothing carries meaning in hue alone; colour always rides
+% alongside a label or a change of style.
+%
+% The four background tints this file used to define sat within 8/255 of one
+% another. On the school printer the book is designed for they all collapsed to
+% the same flat grey, so the system spent four values to print one.
 \usepackage{xcolor}
-\definecolor{nlrink}{HTML}{1A1A1A}      % body text
-\definecolor{nlrsecond}{HTML}{5A5A5A}   % secondary text
-\definecolor{nlrteal}{HTML}{0B6E6E}     % primary accent      -> 42% grey
-\definecolor{nlramber}{HTML}{B5651D}    % warning / error     -> 48% grey
-\definecolor{nlrgreen}{HTML}{2E6B3E}    % success             -> 45% grey
-\definecolor{nlrrule}{HTML}{D9D9D9}     % rules and borders
-\definecolor{nlrcodebg}{HTML}{F4F4F2}   % code block background
-\definecolor{nlroutbg}{HTML}{EDF2F2}    % output block background
-\definecolor{nlrtint}{HTML}{F2F7F7}     % "why this matters" tint
-\definecolor{nlrtraptint}{HTML}{FAF3EC} % "trap" tint, warm side of neutral
-\definecolor{nlrtealtint}{HTML}{CEE2E2} % 20% tint of the accent
-\color{nlrink}
+\definecolor{nlrink}{HTML}{1C1B19}      % body text, slightly warm black
+\definecolor{nlrsecond}{HTML}{5F5B54}   % secondary text
+\definecolor{nlraccent}{HTML}{7A2E1D}   % oxblood, external addresses only
+\definecolor{nlrteal}{HTML}{7A2E1D}     % alias, older rules still name it
+\definecolor{nlramber}{HTML}{8A6212}    % dark ochre
+\definecolor{nlrgreen}{HTML}{3B5C3F}    % deep green
+\definecolor{nlrrule}{HTML}{B9B4AA}     % rules, dark enough to print
+
+% \color at preamble time does not survive. \begin{document} issues
+% \normalcolor, which resets to the driver's black, so every page of this book
+% printed at #000000 rather than at the warm black defined above. Setting
+% \normalcolor itself is what makes the choice stick.
+\AtBeginDocument{\renewcommand{\normalcolor}{\color{nlrink}}\normalcolor}
 
 % --- 4. TYPE SCALE (spec B4) -----------------------------------------------
 % Body sits on the 16 pt baseline grid. Everything else is expressed as an
 % explicit size/leading pair so the grid stays legible even where it is broken.
 \newcommand{\nlrbody}{\fontsize{11}{16}\selectfont}
-\newcommand{\nlrcodesize}{\fontsize{9.5}{13}\selectfont}
-\newcommand{\nlroutsize}{\fontsize{9}{12.5}\selectfont}
+\newcommand{\nlrcodesize}{\fontsize{9}{12.5}\selectfont}
+\newcommand{\nlroutsize}{\fontsize{8.5}{12}\selectfont}
 \newcommand{\nlrmarginsize}{\fontsize{8.5}{12}\selectfont}
-\newcommand{\nlrcapsize}{\fontsize{9}{12}\selectfont}
+\newcommand{\nlrcapsize}{\fontsize{9.5}{13}\selectfont}
 \newcommand{\nlrtablesize}{\fontsize{9.5}{13}\selectfont}
 \newcommand{\nlrcalloutsize}{\fontsize{10}{14.5}\selectfont}
 \newcommand{\nlrlabelsize}{\fontsize{8.5}{10}\selectfont}
 \renewcommand{\normalsize}{\nlrbody}
 \normalsize
 
-% Small-caps-free letterspaced uppercase label, used for every component label.
 \usepackage{microtype}
-\newcommand{\nlrlabel}[1]{{\nlrsans\bfseries\nlrlabelsize\MakeUppercase{\textls[80]{#1}}}}
-\newcommand{\nlrlabelmed}[1]{{\nlrsansmed\nlrlabelsize\MakeUppercase{\textls[60]{#1}}}}
+% Every component label is one italic word or phrase in the text face, closed
+% with a full stop, run into the first line of what it labels. Not letterspaced
+% capitals, not a coloured word, not a word beside an icon. Capitals shout, and
+% a page of them makes a book look like a component library rather than like
+% something somebody wrote.
+\newcommand{\nlrlabel}[1]{{\itshape #1}}
+\newcommand{\nlrlabelmed}[1]{{\itshape\color{nlrsecond}\fontsize{9}{12}\selectfont #1}}
 
 % --- 5. COMPOSITION RULES (spec B8) ----------------------------------------
 \usepackage{ragged2e}
-\setlength{\parindent}{0pt}          % no first-line indent: a workbook is scanned
-\setlength{\parskip}{8pt plus 2pt minus 1pt}   % half a line between paragraphs
-\RaggedRight                          % justified text rivers on a 4.6in measure
-\setlength{\RaggedRightRightskip}{0pt plus 2.2em}
+% Indented paragraphs with no space between them. The alternative, a zero
+% indent plus 8 pt of \parskip, is the exact signature of markdown converted to
+% PDF, and it was the single most machine-made thing about the running text.
+% Order matters, and getting it wrong is silent. ragged2e's \RaggedRight ends
+% by assigning \parindent from \RaggedRightParindent (0pt by default) and
+% \rightskip from \RaggedRightRightskip, so setting either one afterwards has
+% no effect on the paragraphs it governs. Set before, not after: the indent was
+% being zeroed on every paragraph in the book, and with \parskip at 0 as well
+% there was nothing left to mark where one paragraph ended and the next began.
+% 5em, not the 2.2em this was tuned to. Inline code cannot hyphenate, so a
+% sentence ending in \texttt{FileNotFoundError:} gives TeX a choice between a
+% short line and an overfull one, and with only 2.2em of rag allowed it took
+% the overfull line and ran off the text block. The measured right edge across
+% the body still has a median of 6.68 in against a 6.775 in margin, so the rag
+% reads as even; the extra tolerance is spent on the handful of lines that
+% need it.
+\setlength{\RaggedRightParindent}{1.2em}
+\setlength{\RaggedRightRightskip}{0pt plus 5em}
+\RaggedRight
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt plus 0.5pt}
+\frenchspacing                        % one space after a full stop, as in print
+% \rightskip's stretch is finite under RaggedRight, so a line ending in a long
+% unbreakable identifier (\texttt{FileNotFoundError:} inside an indented aside)
+% could leave TeX a choice between a gap wider than the rag allows and an
+% overfull line, and it took the overfull one. \emergencystretch applies only
+% on the pass that would otherwise overflow, so the rest of the rag is untouched.
+\emergencystretch=2em
 \hyphenpenalty=2000
 \doublehyphendemerits=100000
 \finalhyphendemerits=100000
@@ -146,59 +193,112 @@
 % babel and csquotes are already loaded by the Quarto/pandoc template from the
 % document's `lang` setting; loading them again here causes an option clash.
 
-% --- 6. BREAKOUT: full-bleed elements (spec B2) -----------------------------
-% Body prose lives in the 4.60 in main column. Code, figures and tables span
-% the whole 6.50 in text block. 80 characters of JetBrains Mono at 9.5 pt is
-% 6.33 in, which is why code has to break out of the main column at all.
-% With `asymmetric` geometry the breakout is unconditional: every page has the
-% main column on the left of the text block, so full-width elements always grow
-% right, by exactly the gutter plus the side column.
+% --- 6. FULL WIDTH ---------------------------------------------------------
+% Kept as a no-op so the component definitions and the filter do not need to
+% know the layout changed. With one centred column there is nothing wider to
+% break out to: 80 columns of Inconsolata at 9.5 pt is 5.28 in and the measure
+% is 5.50 in, so code already fits.
 \usepackage{changepage}
 \usepackage{calc}
-
-\newenvironment{nlrfull}
-  {\par\begin{adjustwidth}{0pt}{-\nlrbreakout}}
-  {\end{adjustwidth}\par}
+\newenvironment{nlrfull}{\par}{\par}
 
 % --- 7. HEADINGS (spec B4) -------------------------------------------------
-\usepackage{titlesec}
-\usepackage{titletoc}
-
-% Part titles wrap ragged-right rather than being hyphenated and overflowing.
-% At 40 pt a title of more than about eighteen characters does not fit the
-% 4.60 in measure on one line, and without RaggedRight TeX hyphenates it and
-% still runs past the edge.
-\titleformat{\part}[display]
-  {\nlrsans\bfseries\color{nlrink}\RaggedRight}
-  {\nlrlabelmed{Part \thepart}}
-  {18pt}
-  {\fontsize{40}{44}\selectfont}
-\titlespacing*{\part}{0pt}{0pt}{40pt}
-
-% Chapter opener: a 60 pt tinted numeral at the top-left of the text block,
-% then the title dropping to 2.5 in from the top trim edge.
-\titleformat{\chapter}[display]
-  {\nlrsans\bfseries\RaggedRight}
-  {\fontsize{60}{60}\selectfont\color{nlrtealtint}\nlrlining\thechapter}
-  {40pt}
-  {\fontsize{28}{32}\selectfont\color{nlrink}}
-  [\vspace{6pt}{\color{nlrrule}\rule{\nlrfullwidth}{0.6pt}}]
-\titlespacing*{\chapter}{0pt}{-6pt}{26pt}
-
-\titleformat{\section}
-  {\nlrsanssemi\fontsize{16}{20}\selectfont\color{nlrink}\RaggedRight}{}{0pt}{}
-\titlespacing*{\section}{0pt}{24pt plus 4pt minus 2pt}{8pt}
-
-\titleformat{\subsection}
-  {\nlrsanssemi\fontsize{12}{16}\selectfont\color{nlrink}}{}{0pt}{}
-\titlespacing*{\subsection}{0pt}{16pt plus 3pt minus 1pt}{4pt}
-
-\titleformat{\subsubsection}
-  {\nlrsansmed\fontsize{11}{15}\selectfont\color{nlrsecond}}{}{0pt}{}
-\titlespacing*{\subsubsection}{0pt}{12pt plus 2pt}{2pt}
-
-% Headings never hyphenate and never sit alone at the foot of a page.
+% Every \titleformat in this file used to be dead.
+%
+% _quarto.yml turns on PDF tagging, which emits \DocumentMetadata{tagging=on},
+% and that replaces the sectioning commands with LaTeX's template-based ones.
+% titlesec detects the replacement, prints "Non standard sectioning command
+% detected. Using default spacing and no format." into a log nobody reads, and
+% then does nothing. So the chapter openers printed stock book.cls: the words
+% "Chapter 4" in bold black above a bold black title, with the 60 pt numeral
+% and the rule this file described existing only in the comment.
+%
+% The supported route under tagging is to redeclare the heading instances.
+%
+% What is set here differs from stock on four axes rather than one. Size alone,
+% in a single weight and a single colour, is how a generated page builds
+% hierarchy; the label line is also italic where the title is roman, grey where
+% the title is ink, and light where the title is bold.
 \usepackage{needspace}
+
+\makeatletter
+\DeclareInstance{heading}{part}{display}{
+  name           = part,
+  level          = -1,
+  placement      = page,
+  after-penalty-vspace = 150pt,   % drops the part title to the optical third
+  after-vspace   = 40pt,
+  prefix         = \partname,
+  number-format  = \thepart,
+  heading-decls  = \RaggedRight\parindent0pt\itshape\color{nlrsecond}%
+                   \fontsize{11}{15}\selectfont,
+  title-decls    = \upshape\bfseries\color{nlrink}\fontsize{32}{36}\selectfont,
+  headformat-instance = part,
+  mark-cmd       = \partmark{#1},
+}
+\DeclareInstance{headformat}{part}{display}{
+  heading-indent    = 0pt,
+  prefix-number-sep = \WordSpaceAmount{1},
+  number-title-sep  = 16pt,
+}
+
+\DeclareInstance{heading}{chapter}{display}{
+  name           = chapter,
+  level          = 0,
+  placement      = top,
+  after-penalty-vspace = 50pt,
+  after-vspace   = 32pt,
+  prefix         = \chaptername,
+  number-format  = \thechapter,
+  heading-decls  = \RaggedRight\parindent0pt\itshape\color{nlrsecond}%
+                   \fontsize{11}{15}\selectfont,
+  title-decls    = \upshape\bfseries\color{nlrink}\fontsize{24}{28}\selectfont,
+  headformat-instance = chapter,
+  mark-cmd       = \chaptermark{#1},
+  contents-extra = \addtocontents{lof}{\protect\addvspace{10\p@}}
+                   \addtocontents{lot}{\protect\addvspace{10\p@}},
+}
+\DeclareInstance{headformat}{chapter}{display}{
+  heading-indent    = 0pt,
+  prefix-number-sep = \WordSpaceAmount{1},
+  number-title-sep  = 14pt,
+}
+
+\DeclareInstance{heading}{section}{display}{
+  name           = section,
+  level          = 1,
+  before-vspace  = 22pt plus 4pt minus 2pt,
+  after-vspace   = 7pt,
+  heading-decls  = \RaggedRight\normalfont\bfseries\color{nlrink}%
+                   \fontsize{15}{19}\selectfont,
+  headformat-instance = section,
+  mark-cmd       = \sectionmark{#1},
+}
+\DeclareInstance{heading}{subsection}{display}{
+  name           = subsection,
+  parent-name    = section,
+  level          = 2,
+  before-vspace  = 15pt plus 3pt minus 1pt,
+  after-vspace   = 4pt,
+  heading-decls  = \RaggedRight\normalfont\bfseries\color{nlrink}%
+                   \fontsize{12}{16}\selectfont,
+  headformat-instance = subsection,
+  mark-cmd       = \subsectionmark{#1},
+}
+\DeclareInstance{heading}{subsubsection}{display}{
+  name           = subsubsection,
+  parent-name    = subsection,
+  level          = 3,
+  before-vspace  = 12pt plus 2pt,
+  after-vspace   = 2pt,
+  heading-decls  = \RaggedRight\normalfont\itshape\color{nlrink}%
+                   \fontsize{11}{15}\selectfont,
+  headformat-instance = subsubsection,
+  mark-cmd       = \subsubsectionmark{#1},
+}
+\makeatother
+
+% Headings never sit alone at the foot of a page.
 \pretocmd{\section}{\Needspace*{5\baselineskip}}{}{}
 \pretocmd{\subsection}{\Needspace*{4\baselineskip}}{}{}
 
@@ -206,7 +306,7 @@
 \usepackage{fancyhdr}
 \usepackage{emptypage}
 
-\newcommand{\nlrrunningfont}{\nlrsansmed\fontsize{8.5}{10}\selectfont\color[gray]{0.45}}
+\newcommand{\nlrrunningfont}{\itshape\fontsize{9}{11}\selectfont\color{nlrsecond}}
 \newcommand{\nlrfoliofont}{\nlrsansmed\fontsize{9.5}{11}\selectfont\color{nlrink}\nlrlining}
 
 \fancypagestyle{nlrmain}{%
@@ -216,9 +316,12 @@
   % Verso carries the book title, recto the current chapter (spec B6). Both hang
   % on the outer edge of the text block, which is why head and foot are widened
   % to the full 6.50 in below.
-  \fancyhead[LE]{\nlrrunningfont\textls[60]{\MakeUppercase{\nlrbooktitle}}}%
-  \fancyhead[RO]{\nlrrunningfont\textls[60]{\MakeUppercase{\nlrchaptermark}}}%
-  \fancyfoot[R]{\nlrfoliofont\thepage}%
+  \fancyhead[LE]{\nlrrunningfont\nlrbooktitle}%
+  \fancyhead[RO]{\nlrrunningfont\nlrchaptermark}%
+  % Outer edge on both sides. \fancyfoot[R] is unconditional, so on a verso
+  % the folio sat bottom-right while its own running head hung flush left,
+  % with the two on opposite edges of the same page.
+  \fancyfoot[LE,RO]{\nlrfoliofont\thepage}%
 }
 \fancypagestyle{nlrplain}{% chapter openers, part titles: no head, no folio
   \fancyhf{}%
@@ -254,262 +357,210 @@
 \renewcommand{\maketitle}{}
 
 % --- 9. THE COMPONENT LIBRARY (spec B7) ------------------------------------
-\usepackage[most]{tcolorbox}
+% Nothing here is a box any more.
+%
+% The old version of this section built every component the same way: a tinted
+% panel, full measure, sharp corners, a coloured bar down the left edge, and
+% for three of them an icon drawn in TikZ. That is a documentation-site
+% admonition, and stacking three of them on one page is what made the book look
+% machine-made no matter what typeface it was set in. The icons were the
+% warning triangle, the green check and the circled X, which are the three most
+% recognisable interface glyphs there are.
+%
+% What replaces them is the way print has always set an aside: a smaller size,
+% an indent, and one italic word run into the first line. It costs no colour,
+% survives a black-and-white printer, and cannot be mistaken for a screenshot.
 \usepackage{fancyvrb}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
+\usepackage{pgffor}
 
-% 9.1 Margin note and margin definition ......................................
-% \marginpar, not the marginnote package. marginnote picks its side from
-% \if@twoside and \ifodd\value{page} directly, so it lands in the left margin on
-% even pages however \@mparswitch is set; \marginpar honours \@mparswitchfalse
-% and is therefore deterministic under the asymmetric geometry above.
-% The cost is that \marginpar is illegal inside a box, so every boxed component
-% below rebinds these two commands to inline-only versions.
-\setlength{\marginparpush}{10pt}
-% LaTeX only ever pushes a colliding \marginpar downward, so a definition
-% declared near the foot of a page runs off the bottom of the paper. marginfix
-% collects the margin material for each page and redistributes it, moving what
-% genuinely does not fit onto the next page instead of off the trim edge.
-\usepackage{marginfix}
-
-\newcommand{\nlrmarginfont}{\nlrsans\nlrmarginsize\color{nlrink}\RaggedRight}
-
-\newcommand{\nlrnote}[1]{%
-  \marginpar{\vspace*{-0.35\baselineskip}\nlrmarginfont #1}}
-
-% \nlrdef{term}{definition}: bolds the term in the flow and drops the definition
-% into the side column beside the line where it first appears.
-% The linked form: #1 is already a complete \hyperref, so it is not re-bolded.
-\newcommand{\nlrdeflinked}[2]{%
-  #1%
-  \marginpar{\vspace*{-0.35\baselineskip}\nlrmarginfont
-    {\bfseries #1}\\[1pt]{\color{nlrsecond} #2}}%
-}
-
-\newcommand{\nlrdef}[2]{%
-  \textbf{#1}%
-  \marginpar{\vspace*{-0.35\baselineskip}\nlrmarginfont
-    {\bfseries #1}\\[1pt]{\color{nlrsecond} #2}}%
-}
-
-% Inline fallbacks, active inside every boxed component.
+% 9.1 Key terms ..............................................................
+% There is no side column any more, so there is no margin note. A term is set
+% bold where it first appears and links to its glossary entry. The definition
+% lives in the glossary and nowhere else, which is one place rather than two
+% that disagree.
+\newcommand{\nlrnote}[1]{}
+\newcommand{\nlrdef}[2]{\textbf{#1}}
 \newcommand{\nlrnoteinline}[1]{}
 \newcommand{\nlrdefinline}[2]{\textbf{#1}}
-\newcommand{\nlrnomargin}{%
-  \let\nlrnote\nlrnoteinline
-  \let\nlrdef\nlrdefinline}
+\newcommand{\nlrnomargin}{}
+
+% The shared shape: indent, hold the indent for as long as the aside runs, and
+% run an italic label into the first line.
+% The indent is kept in a length rather than written into \leftskip directly,
+% because anything inside an aside that sizes itself off \linewidth needs to
+% subtract it. \linewidth does not know about \leftskip, so the error/fix pair
+% laid two minipages across the full measure starting 1.4 em in, and ran 14
+% lines past the right edge of the text block.
+\newlength{\nlrasideindent}
+\setlength{\nlrasideindent}{0pt}
+
+\newenvironment{nlraside}[1]
+  {\par\addvspace{11pt}\begingroup
+   % 1.2em, resolved at body size before the callout size takes effect, so an
+   % aside starts on the same vertical as an indented paragraph rather than 2pt
+   % off it.
+   \setlength{\nlrasideindent}{1.2em}%
+   \setlength{\leftskip}{\nlrasideindent}\setlength{\parindent}{0pt}\nlrcalloutsize
+   \noindent{\itshape #1.}\hspace{0.45em}\ignorespaces}
+  {\par\endgroup\addvspace{11pt}}
 
 % 9.2 Code block .............................................................
-% Full width, 3 pt teal left rule, filename label above. Never breaks across a
-% page: a split code block is unreadable, so this is set breakable=false and
-% the build check in tools/check_layout.py flags any block long enough to risk it.
-\fvset{fontsize=\nlrcodesize, xleftmargin=0pt, xrightmargin=0pt, samepage=false}
-
-\newtcolorbox{nlrcodeinner}[1][]{%
-  enhanced, breakable=false, sharp corners,
-  colback=nlrcodebg, colframe=nlrcodebg, boxrule=0pt,
-  left=10pt, right=10pt, top=8pt, bottom=8pt,
-  borderline west={3pt}{0pt}{nlrteal},
-  before skip=2pt, after skip=12pt,
-  #1}
+% Indented, in one ink, on the white page. That is how a printed listing has
+% always been set. Never breaks across a page: a split code block is unreadable,
+% so tools/check_layout.py flags any block long enough to risk it.
+% Code sits flush with the text margin while prose is indented 1.2 em, so the
+% two are told apart by the code hanging outward rather than by a panel. It has
+% to be flush: the book guarantees 80 columns, and 80 columns of Inconsolata at
+% 9 pt is 5.00 in against a 5.05 in measure, so any indent at all pushes the
+% longest lines past the right edge of the text block.
+%
+% Inside an aside the whole block is indented, and \nlrasideindent carries that
+% in so a listing there lines up with the prose around it.
+\fvset{fontsize=\nlrcodesize, xleftmargin=\nlrasideindent, xrightmargin=0pt,
+       samepage=false}
 
 \newenvironment{nlrcodebox}[1]
-  {\par\addvspace{10pt}\nlrnomargin\begin{nlrfull}%
+  {\par\addvspace{9pt}%
    \if\relax\detokenize{#1}\relax\else
-     {\nlrsansmed\fontsize{8}{10}\selectfont\color{nlrsecond}#1}\par\vspace{2pt}%
-   \fi
-   \begin{nlrcodeinner}}
-  {\end{nlrcodeinner}\end{nlrfull}\par}
+     \noindent\hspace{\nlrasideindent}{\nlrlabelmed{#1}}\par\vspace{1pt}%
+   \fi}
+  {\par\addvspace{9pt}}
 
 % 9.3 Output block ...........................................................
-% Beginners confuse input with output constantly. The dashed top border and the
-% OUTPUT label are doing real teaching work, so they are never optional.
-\newtcolorbox{nlroutputinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=nlroutbg, colframe=nlroutbg, boxrule=0pt,
-  left=10pt, right=10pt, top=8pt, bottom=8pt,
-  borderline north={1pt}{0pt}{nlrsecond, dashed},
-  before skip=0pt, after skip=12pt}
-
+% Beginners confuse input with output constantly, so the label is never
+% optional. It used to be a grey panel under a dashed rule, which is a CSS
+% border and a UI card; the distinction it was drawing now comes from the word
+% "Output" and from the output being set in the secondary grey.
+%
+% This environment opened with \vspace{-10pt}, a kern tuned for the case where
+% it follows a code block. Where it followed a paragraph instead, it dragged
+% the block up over live text and the fill painted out a line: chapter 4 printed
+% "The answer lands directly" and simply lost "underneath the box you typed in."
+% \addvspace cannot do that.
 \newenvironment{nlroutputbox}
-  {\par\vspace{-10pt}\nlrnomargin\begin{nlrfull}%
-   \begin{nlroutputinner}%
-   {\nlrlabel{Output}}\par\vspace{4pt}\nlroutsize}
-  {\end{nlroutputinner}\end{nlrfull}\par}
+  {\par\addvspace{4pt}%
+   \noindent\hspace{\nlrasideindent}{\nlrlabelmed{Output}}\par\vspace{1pt}%
+   \color{nlrsecond}\nlroutsize}
+  {\par\addvspace{9pt}}
 
 % 9.4 Exercise block .........................................................
-\newtcolorbox{nlrexerciseinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=white, colframe=white, boxrule=0pt,
-  left=12pt, right=0pt, top=6pt, bottom=6pt,
-  borderline west={4pt}{0pt}{nlrteal},
-  before skip=14pt, after skip=14pt}
-
-\newcommand{\nlrfield}[1]{\par\vspace{4pt}{\nlrsanssemi\fontsize{9.5}{13}\selectfont\color{nlrteal}#1}\par\vspace{1pt}}
+% The one component that still announces itself, because a reader flipping for
+% somewhere to start has to be able to find one. It does it with size and space
+% rather than with a rule or a panel.
+\newcommand{\nlrfield}[1]{%
+  \par\addvspace{4pt}\noindent{\itshape #1.}\hspace{0.45em}\ignorespaces}
 
 \newenvironment{nlrexercise}[2]
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrexerciseinner}%
-   \noindent{\nlrsans\bfseries\fontsize{18}{22}\selectfont\color{nlrteal}\nlrlining #1}%
-   \hfill{\nlrsans\fontsize{9}{13}\selectfont\color{nlrsecond}#2}%
-   \par\vspace{6pt}}
-  {\end{nlrexerciseinner}\end{nlrfull}\par}
+  {\par\addvspace{17pt}\begingroup\setlength{\parindent}{0pt}%
+   \noindent{\bfseries\fontsize{13}{17}\selectfont #1}%
+   \hfill{\itshape\color{nlrsecond}\fontsize{9.5}{13}\selectfont #2}%
+   \par\addvspace{5pt}}
+  {\par\endgroup\addvspace{17pt}}
 
-% 9.5 "If it breaks" box .....................................................
-\newcommand{\nlrwarnicon}{%
-  \begin{tikzpicture}[baseline=-0.6ex]
-    \fill[nlramber] (0,0) -- (0.30,0.50) -- (0.60,0) -- cycle;
-    \node[white, font=\bfseries\fontsize{7}{7}\selectfont] at (0.30,0.16) {!};
-  \end{tikzpicture}}
-
-\newtcolorbox{nlrbreaksinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=white, colframe=white, boxrule=0pt,
-  left=12pt, right=0pt, top=6pt, bottom=6pt,
-  borderline west={4pt}{0pt}{nlramber},
-  before skip=14pt, after skip=14pt}
-
+% 9.5 "If it breaks" .........................................................
 \newenvironment{nlrbreaks}
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrbreaksinner}%
-   \noindent\nlrwarnicon\hspace{6pt}\nlrlabel{If it breaks}\par\vspace{6pt}\nlrcalloutsize}
-  {\end{nlrbreaksinner}\end{nlrfull}\par}
+  {\begin{nlraside}{If it breaks}}
+  {\end{nlraside}}
 
-% One error/fix pair. Error message set in mono so the reader can pattern-match
-% it against what is on their own screen.
+% One error/fix pair. The error message is set in mono so the reader can
+% pattern-match it against what is on their own screen.
 \usepackage{tabularx}
+\newlength{\nlrerrwidth}
 \newcommand{\nlrerrfix}[2]{%
-  \par\vspace{3pt}%
-  \noindent\begin{minipage}[t]{0.40\linewidth}\RaggedRight{\nlrmono\fontsize{9}{12}\selectfont\color{nlramber}#1}\end{minipage}%
-  \hspace{0.02\linewidth}%
-  \begin{minipage}[t]{0.56\linewidth}\RaggedRight\nlrcalloutsize #2\end{minipage}\par\vspace{3pt}}
+  \par\addvspace{3pt}%
+  \setlength{\nlrerrwidth}{\dimexpr\linewidth-\nlrasideindent\relax}%
+  \noindent\begin{minipage}[t]{0.40\nlrerrwidth}\RaggedRight
+    {\nlrmono\fontsize{8.5}{12}\selectfont #1}\end{minipage}%
+  \hspace{0.02\nlrerrwidth}%
+  \begin{minipage}[t]{0.56\nlrerrwidth}\RaggedRight\nlrcalloutsize #2\end{minipage}%
+  \par\addvspace{3pt}}
 
-% 9.5b "Trap" box ...........................................................
+% 9.5b "Trap" ...............................................................
 % Distinct from "If it breaks" on purpose. An error stops you; a trap does not.
-% This box is for the case that runs cleanly and gives the wrong answer, which
-% is the failure mode a beginner cannot detect and the one this book is most
-% concerned with. It carries a tinted ground as well as a rule so the two are
-% never confused in greyscale.
-\newtcolorbox{nlrtrapinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=nlrtraptint, colframe=nlrtraptint, boxrule=0pt,
-  left=12pt, right=12pt, top=9pt, bottom=9pt,
-  borderline west={4pt}{0pt}{nlramber},
-  before skip=14pt, after skip=14pt}
-
-\newcommand{\nlrtrapicon}{%
-  \begin{tikzpicture}[baseline=-0.55ex]
-    \draw[nlramber, line width=1.1pt] (0,0) circle (0.26);
-    \draw[nlramber, line width=1.1pt] (-0.11,-0.11) -- (0.11,0.11);
-    \draw[nlramber, line width=1.1pt] (-0.11,0.11) -- (0.11,-0.11);
-  \end{tikzpicture}}
-
+% This is for the case that runs cleanly and gives the wrong answer, which is
+% the failure a beginner cannot detect. The two are told apart by the word,
+% which is the only thing that ever told them apart in greyscale anyway.
 \newenvironment{nlrtrap}
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrtrapinner}%
-   \noindent\nlrtrapicon\hspace{6pt}\nlrlabel{Trap}\par\vspace{5pt}\nlrcalloutsize}
-  {\end{nlrtrapinner}\end{nlrfull}\par}
+  {\begin{nlraside}{Trap}}
+  {\end{nlraside}}
 
-% 9.5c "Check" box ..........................................................
-% A verification step and the exact output it should produce. Every exercise
-% and every walkthrough owes the reader one of these, because the signature
-% failure of this field is a pipeline that runs and produces nonsense.
-\newtcolorbox{nlrcheckinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=white, colframe=white, boxrule=0pt,
-  left=12pt, right=0pt, top=6pt, bottom=6pt,
-  borderline west={4pt}{0pt}{nlrgreen},
-  before skip=14pt, after skip=14pt}
-
-\newcommand{\nlrcheckicon}{%
-  \begin{tikzpicture}[baseline=-0.55ex]
-    \draw[nlrgreen, line width=1.3pt, line cap=round]
-      (-0.16,0.02) -- (-0.04,-0.12) -- (0.20,0.20);
-  \end{tikzpicture}}
-
+% 9.5c "Check" ..............................................................
 \newenvironment{nlrcheck}
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrcheckinner}%
-   \noindent\nlrcheckicon\hspace{6pt}\nlrlabel{Check}\par\vspace{5pt}\nlrcalloutsize}
-  {\end{nlrcheckinner}\end{nlrfull}\par}
+  {\begin{nlraside}{Check}}
+  {\end{nlraside}}
 
 % 9.5d Version pin ..........................................................
-% One line, not a box. Web tools get redesigned and printed click-paths rot;
-% this states when the page was last checked against the live service so the
-% reader can judge how much to trust the description.
+% One line. Web tools get redesigned and printed click-paths rot; this states
+% when the page was last checked against the live service.
 \newcommand{\nlrasof}[1]{%
-  \par\addvspace{8pt}%
-  \begin{nlrfull}%
-  {\color{nlrrule}\rule{\linewidth}{0.5pt}}\par\vspace{3pt}%
-  {\nlrsans\fontsize{8.5}{12}\selectfont\color{nlrsecond}%
-   \nlrlabelmed{As of}\hspace{6pt}#1}\par\vspace{2pt}%
-  {\color{nlrrule}\rule{\linewidth}{0.5pt}}%
-  \end{nlrfull}\par\addvspace{8pt}}
+  \par\addvspace{7pt}%
+  \noindent{\nlrlabelmed{As of}\hspace{0.45em}%
+  {\color{nlrsecond}\fontsize{9}{12}\selectfont #1}}%
+  \par\addvspace{7pt}}
 
-% 9.6 "Why this matters" box .................................................
-\newtcolorbox{nlrwhyinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=nlrtint, colframe=nlrtint, boxrule=0pt,
-  left=12pt, right=12pt, top=9pt, bottom=9pt,
-  before skip=14pt, after skip=14pt}
-
+% 9.6 "Why this matters" ....................................................
 \newenvironment{nlrwhy}
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrwhyinner}%
-   \nlrlabel{Why this matters}\par\vspace{5pt}\nlrcalloutsize}
-  {\end{nlrwhyinner}\end{nlrfull}\par}
+  {\begin{nlraside}{Why this matters}}
+  {\end{nlraside}}
 
-% Neutral note box, used sparingly for design notes and asides.
 \newenvironment{nlrnotebox}[1]
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrwhyinner}%
-   \nlrlabel{#1}\par\vspace{5pt}\nlrcalloutsize}
-  {\end{nlrwhyinner}\end{nlrfull}\par}
+  {\begin{nlraside}{#1}}
+  {\end{nlraside}}
 
 % 9.7 Checkpoint .............................................................
-% Boxed like every other component rather than left as a bare list. A list
-% nested inside adjustwidth does not inherit the reduced measure reliably, and
-% the bullets ran past the text block; a tcolorbox pins the width exactly.
-\newtcolorbox{nlrcheckpointinner}{%
-  enhanced, breakable=true, sharp corners,
-  colback=white, colframe=white, boxrule=0pt,
-  left=0pt, right=0pt, top=8pt, bottom=4pt,
-  borderline north={0.6pt}{0pt}{nlrrule},
-  before skip=18pt, after skip=12pt}
-
+% Was a full-measure hairline with nothing closing it underneath, which is an
+% <hr> followed by a <div>. The rule is gone; space and the italic line do it.
 \newenvironment{nlrcheckpoint}
-  {\par\nlrnomargin\begin{nlrfull}\begin{nlrcheckpointinner}%
-   \nlrlabel{You should now be able to}\par\vspace{5pt}\nlrcalloutsize
-   \begin{itemize}[leftmargin=1.1em, rightmargin=0pt, itemsep=2pt, topsep=0pt, parsep=0pt]}
-  {\end{itemize}\end{nlrcheckpointinner}\end{nlrfull}\par}
+  {\par\addvspace{16pt}\begingroup\setlength{\parindent}{0pt}\nlrcalloutsize
+   \noindent{\itshape You should now be able to:}\par\vspace{3pt}%
+   \begin{itemize}[leftmargin=1.4em, rightmargin=0pt, itemsep=2pt,
+                   topsep=0pt, parsep=0pt]}
+  {\end{itemize}\endgroup\par\addvspace{14pt}}
 
 % 9.8 Answer space ...........................................................
+% These two stay ruled. They are not decoration: they are the place the reader
+% writes, and a line to write on is the whole point of a workbook.
 % 0.30 in rule spacing is a comfortable handwriting height for an adult hand.
 \newcommand{\nlranswerlines}[1]{%
-  \par\vspace{6pt}%
-  \begin{nlrfull}%
+  \par\addvspace{6pt}%
   \foreach \i in {1,...,#1}{%
     \vspace{0.30in}\noindent{\color{nlrrule}\rule{\linewidth}{0.5pt}}\par}%
-  \end{nlrfull}%
-  \par\vspace{8pt}}
+  \par\addvspace{8pt}}
 
-% Bordered empty box for a written-code answer.
 \newcommand{\nlranswerbox}[1]{%
-  \par\vspace{6pt}\begin{nlrfull}%
-  \begin{tcolorbox}[enhanced, breakable=false, sharp corners, colback=white,
-                    colframe=nlrrule, boxrule=0.7pt, height=#1,
-                    left=8pt, right=8pt, top=8pt, bottom=8pt]\strut\end{tcolorbox}%
-  \end{nlrfull}\par\vspace{8pt}}
+  \par\addvspace{6pt}%
+  \noindent{\color{nlrrule}\fboxrule=0.5pt\fboxsep=8pt
+    \fbox{\parbox[t][#1][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\strut}}}%
+  \par\addvspace{8pt}}
 
 % --- 10. LISTS, TABLES, FIGURES (spec B8) ----------------------------------
 \usepackage{enumitem}
 \setlist{leftmargin=1.2em, topsep=4pt, itemsep=3pt, parsep=0pt}
-\setlist[itemize,1]{label=\textcolor{nlrteal}{\textbullet}}
 % Glossary entries. The stock description environment hangs its term into the
 % margin, which puts it outside the text block, and it is handled by the block
 % package rather than enumitem so its keys cannot be reconfigured. The filter
 % converts the glossary's definition list into these two instead.
 \newcommand{\nlrglossterm}[1]{%
   \par\addvspace{7pt}\noindent\textbf{#1}\par\nobreak\vspace{1pt}}
+% \parindent has to be zeroed here, and the block indent has to be deeper than
+% it was. At 1.1em the block sat *inside* the 1.2em first-line indent, so every
+% glossary entry had three left edges and the first line of each definition
+% started outside the block it belonged to.
 \newenvironment{nlrglossdef}
-  {\par\begingroup\leftskip=1.1em\relax}
+  {\par\begingroup\setlength{\leftskip}{1.5em}\setlength{\parindent}{0pt}}
   {\par\endgroup\addvspace{2pt}}
-\setlist[enumerate,1]{label=\textcolor{nlrteal}{\nlrsansmed\arabic*.}}
+% align=left keeps the number at the margin. The default right-aligns it into
+% a fixed label box, which hangs it a fraction outside the measure.
+% Markers hang into the margin, which is where LaTeX puts them and where books
+% have always put them. The alternative is indenting every list body, which
+% costs measure and makes a bulleted page look like a nested outline. Only
+% `label` is set here: enumerate and itemize are handled by the block package
+% in current LaTeX, and it rejects enumitem's geometry keys.
+% Markers print in the text colour. Colouring the marker but leaving the text
+% black is the CSS ::marker trick, and at 11 pt the oxblood bullet rendered as
+% a faint red speck rather than as a mark.
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[itemize,1]{label=\textbullet}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -517,21 +568,70 @@
 \setlength{\aboverulesep}{3pt}
 \setlength{\belowrulesep}{3pt}
 \renewcommand{\arraystretch}{1.25}
+% \nlrtablesize was defined and never used, so table cells were set at the body's
+% 11/16. In the error index that put a wrapped line 24px below its own first line
+% and the next entry only 30px below, and seven of thirteen rows on a page wrap,
+% so their continuations read as separate entries. At 9.5/13 the two are far
+% enough apart to tell.
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\nlrtablesize}
+\AtBeginEnvironment{tabular}{\nlrtablesize}
 
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{caption}
-\captionsetup{font={sf,footnotesize}, labelfont={sf,bf}, labelsep=period,
-              justification=raggedright, singlelinecheck=false, skip=6pt}
+% Captions are the second thing the tagging engine takes over. latex-lab's
+% float module redefines \@makecaption inside a begindocument hook, so every
+% \captionsetup key here was discarded and captions printed centred, at body
+% size, in the roman: the one piece of the page that contradicted the flush-left
+% ragged-right block it sat in. Overriding the socket and the macro is the
+% route that survives, and it has to happen after their hook, not before it.
+\makeatletter
+\NewSocketPlug{caption/label}{nlr}{{\itshape #1.}}
+\AssignSocketPlug{caption/label}{nlr}
+\AddToHook{begindocument/end}{%
+  \long\def\@makecaption#1#2{%
+    \UseHookWithArguments{cmd/@makecaption/before}{2}{#1}{#2}%
+    \vskip\abovecaptionskip
+    \UseTaggingSocket{caption/begin}{\@current@float@struct}%
+    {\nlrcapsize\color{nlrsecond}\RaggedRight\setlength{\parindent}{0pt}%
+     \UseTaggingSocket{caption/label/begin}%
+     \UseSocket{caption/label}{#1}%
+     \UseTaggingSocket{caption/label/end}%
+     \hspace{0.45em}%
+     % \par closes the para structure by itself. Emitting para/end as well
+     % double-closes it, and tagpdf refuses the document: 'The number of
+     % automatic begin (3845) and end (3850) text para hooks differ'.
+     \UseTaggingSocket{para/begin}#2\par}%
+    \UseTaggingSocket{caption/end}%
+    \vskip\belowcaptionskip}%
+}
+\makeatother
+\setlength{\abovecaptionskip}{7pt}
+\setlength{\belowcaptionskip}{2pt}
 
 % --- 11. LINKS AND BOOKMARKS (spec B9) -------------------------------------
+% Long addresses have to be able to break, or a single URL in the dataset index
+% runs past the measure and there is nothing TeX can do about it.
+\usepackage{xurl}
 \usepackage{bookmark}
+% Re-issued at the end of the preamble. Pandoc emits its own \hypersetup from
+% the `colorlinks` metadata before this file is read, and at that point nlrteal
+% does not exist yet, so every link fell back to LaTeX's default pure blue.
+% On a printed copyright page that blue is the loudest thing on the sheet.
+% Internal links print in the text colour. Coloured, they made every glossary
+% term a bold oxblood phrase mid-paragraph and turned the error index into a
+% column of ten red numerals -- so the same colour meant "defined term" here,
+% "cross-reference" there and "page number" ten times over, and the only marks
+% on a printed index page were red. An external address is the one link a
+% reader may want to see as one.
+\AtBeginDocument{\hypersetup{
+  colorlinks = true,
+  linkcolor  = nlrink,
+  citecolor  = nlrink,
+  filecolor  = nlrink,
+  urlcolor   = nlraccent,
+}}
 \hypersetup{
-  colorlinks    = true,
-  linkcolor     = nlrteal,
-  urlcolor      = nlrteal,
-  citecolor     = nlrteal,
-  filecolor     = nlrteal,
   bookmarksnumbered = true,
   bookmarksopen     = true,
   bookmarksopenlevel = 1,
@@ -555,4 +655,11 @@
 % acquire punctuation that is not in it.
 \newcommand{\nlrbreak}{\discretionary{}{}{}}
 \let\nlroldtexttt\texttt
-\renewcommand{\texttt}[1]{{\nlrmono\fontsize{10}{14}\selectfont #1}}
+% 10 pt was too small: Inconsolata's x-height is shorter than Charis's, so the
+% compound difference made every inline run visibly dip out of the line.
+% No second argument: forcing 16 pt leading from inside \texttt pushed every
+% table row that contained inline code to the body's leading, which inflated
+% the error index until a wrapped line and a new entry were 3 pt apart.
+\makeatletter
+\renewcommand{\texttt}[1]{{\nlrmono\fontsize{10.4}{\f@baselineskip}\selectfont #1}}
+\makeatother

@@ -5,8 +5,7 @@ again. Here's what pays for that.
 
 Every chapter after this one is built out of the same six parts, in the same
 order, and each names the files it starts from. Coming back costs you a page of
-reading, not an evening. This is the only chapter that stops to say what the
-six parts are.
+reading, not an evening.
 
 ## The six parts
 
@@ -22,10 +21,8 @@ six parts are.
 6. Checkpoint, three to six things you can now do, in verbs somebody could
    watch.
 
-This chapter breaks the pattern twice. It opens with a claim rather than a
-question, because a book can't ask you a biological question about itself. And
-it has no exercises, because you haven't got a notebook yet. Chapter 4 hands
-you one.
+This chapter has no exercises, because you haven't got a notebook yet. Chapter
+4 hands you one.
 
 ## What a time estimate assumes
 
@@ -33,21 +30,20 @@ you one.
 you're typing the code rather than pasting it, and that the page you need loads
 on the first try. It doesn't assume you already knew any of it.
 
-Doubling that number is ordinary. I wrote every estimate in this book already
-knowing the answer, which is the one advantage no reader has, so all of them
-lean short. If an exercise runs long, the estimate was optimistic. Write down
-what it really cost you and use your own number next time.
+Doubling that number is ordinary. I wrote every estimate already knowing the
+answer, so they all lean short. If an exercise runs long, the estimate was
+optimistic. Write down what it really cost you and use your own number next
+time.
 
-## The five boxes
+## The five labels
 
-Five kinds of box do the teaching here, each with a single job, and this page
-is the only legend you'll get. None is called Note or Warning: those labels
-announce that a box exists without saying what it's for. Each example below is
-doing real work rather than standing in as a sample.
+Five labels do the teaching here, each with a single job, and this page is the
+only legend you'll get. Each one is set in italic and runs into the first line
+of what it marks.
 
 ### Why this matters
 
-A Why this matters box carries the biology that makes a technical thing worth
+A Why this matters note carries the biology that makes a technical thing worth
 the trouble of learning.
 
 ::: {.why}
@@ -59,8 +55,8 @@ in this book arrives with the name of the thing it measured.
 
 ### Trap
 
-A Trap box marks something that runs cleanly and hands you a wrong answer.
-Nothing turns red. These are the boxes to read twice.
+A Trap marks something that runs cleanly and hands you a wrong answer.
+Nothing turns red. These are the ones to read twice.
 
 ::: {.trap}
 The human gene is `BRCA1`. The mouse one is `Brca1`, and two nomenclature
@@ -71,22 +67,22 @@ lose an afternoon checking everything except the capital letters.
 
 ### Check
 
-A Check box gives you a verification step and the exact output it should
-produce, never "you should see something like".
+A Check gives you a verification step and the exact output it should
+produce.
 
 ::: {.check}
 Turn to Chapter 5 and find all six parts in it. Only four carry a heading: the
-opening question runs above the first one, and the checkpoint is the boxed list
-at the end. The exercises are numbered 5.1 and 5.2, and If it breaks holds four
+opening question runs above the first one, and the checkpoint is the list at
+the end. The exercises are numbered 5.1 and 5.2, and If it breaks holds four
 errors. If you can't find the opening question, it's the pair of coordinates in
 the first two paragraphs.
 :::
 
 ### If it breaks
 
-Each If it breaks box holds the exact text of an error, names who is speaking,
+Each If it breaks note holds the exact text of an error, names who is speaking,
 and gives the fix. An error stops you where you stand. A trap doesn't stop you
-at all, which is why these are two boxes and not one.
+at all.
 
 ::: {.ifbreaks}
 ::: {.errfix err="NameError: name 'seq' is not defined"}
@@ -98,7 +94,7 @@ one, unrun. Run it, then run this one again.
 
 ### As of
 
-An As of box carries a date. It appears wherever this book describes somebody
+An As of line carries a date. It appears wherever this book describes somebody
 else's web page, because those pages get redesigned and nobody tells you.
 
 ::: {.asof}
@@ -116,13 +112,12 @@ there in Chapter 4.
 
 That's the one full address the body of this book prints. Everywhere else you
 get a bare domain like `ncbi.nlm.nih.gov`, because the domain is the part that
-survives a redesign. Printed links go stale, and a book that scatters them
-starts coming apart the month it's printed. Exact addresses live in the source
-index at the back, each next to the date it was last checked.
+survives a redesign. Exact addresses live in the source index at the back, each
+next to the date it was last checked.
 
 ## Type the code, don't copy it
 
-Here's the real reason, and it has nothing to do with discipline.
+This isn't about discipline.
 
 Typing puts you in contact with syntax errors at a moment when nothing is at
 stake. You'll miss a bracket, Python will refuse to run, you'll fix it in ten
@@ -131,9 +126,9 @@ seconds and forget it happened. That's the point. A reader who has never seen
 something matters. They read it as a verdict on themselves rather than as a
 missing bracket.
 
-Now the honest counter-argument. It's faster to copy, and you're going to do
-it. I do it. So the ask is narrower than "always type": type it out the first
-time you meet anything new, then copy freely after that.
+The counter-argument: it's faster to copy, and you're going to do it. I do it.
+So the ask is narrower than "always type". Type it out the first time you meet
+anything new, then copy freely after that.
 
 Copying out of a PDF carries one mechanical hazard. A quote mark can arrive
 curly where Python needs it straight, and Python rejects a curly quote with a
@@ -147,16 +142,12 @@ chapter really produces. This one produces none, because you haven't run
 anything yet. So here's the general procedure. Work down it and stop at the
 step that fixes things.
 
-[The error index at the back is generated from the If it breaks boxes, so it
-can't drift out of step with the chapters.]{.margin}
-
 1. Read the last line of the error first. It names the error and what the
    machine couldn't do. The lines above are the route, not the problem.
 2. Work out who's speaking. Python, the runtime your code runs on, a website
    and a silent network fail in four different ways, and Chapter 4 teaches the
    difference. Chapter 16 takes it apart error by error.
-3. Look the message up in the error index at the back. It lists every error
-   this book explains, against the page that explains it.
+3. Look the message up in the error index at the back.
 4. Restart and run every cell from the top. A notebook holds on to what earlier
    cells did, so the code on the page and the values in memory can disagree,
    with nothing on screen to say so.
@@ -168,7 +159,7 @@ can't drift out of step with the chapters.]{.margin}
 ::: {.checkpoint}
 - Name the six parts of a chapter, in the order they appear
 - Find all six in Chapter 5, and name the two that carry no heading
-- Say what a Trap box means, and how it differs from an If it breaks box
+- Say what a Trap means, and how it differs from an If it breaks note
 - Say what an exercise's time estimate assumes about how you're working
 - Name the first line to read when an error appears
 :::

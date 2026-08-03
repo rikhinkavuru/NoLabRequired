@@ -379,7 +379,7 @@ fine while it does. Scroll up and run the first cell again.
 ::: {.errfix err="Your slice runs but the sequence looks wrong"}
 Nothing is broken and nothing will tell you. Print the first three characters
 of what you extracted. A coding sequence starts with `ATG`, and if yours starts
-with `TGG` or `GGA` you're off by one in the direction the trap box above
+with `TGG` or `GGA` you're off by one in the direction the trap above
 describes.
 :::
 :::

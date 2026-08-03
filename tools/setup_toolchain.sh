@@ -53,17 +53,23 @@ fetch_font () { # url  glob
   [ -f "$zipname" ] || curl -fsSL -o "$zipname" "$url"
   unzip -oq "$zipname" -d "${zipname%.zip}" || true
 }
-fetch_font "https://github.com/adobe-fonts/source-serif/releases/download/4.005R/source-serif-4.005_Desktop.zip"
-fetch_font "https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip"
-fetch_font "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+# Charis, which is Matthew Carter's Charter extended by SIL, and Inconsolata,
+# which Raph Levien drew for printed code listings. Both OFL.
+fetch_font "https://github.com/silnrsi/font-charis/releases/download/v7.000/Charis-7.000.zip"
+fetch_font "https://github.com/googlefonts/Inconsolata/releases/download/v3.000/fonts_otf.zip"
 # Desktop OTF/TTF only. Skip variable fonts and web formats — XeLaTeX wants static faces.
-find /tmp/nlrfonts \( -name '*.ttf' -o -name '*.otf' \) \
-  ! -path '*variable*' ! -path '*Variable*' ! -name '*VF.ttf' ! -name '*Italic-VF*' \
-  ! -path '*web*' -print0 | while IFS= read -r -d '' f; do cp -n "$f" "$FDIR/" 2>/dev/null || true; done
+# Only the widths and weights the book uses. Inconsolata ships every width from
+# UltraCondensed to UltraExpanded and copying all of them makes font selection
+# ambiguous.
+for f in $(find /tmp/nlrfonts -name 'Charis-Regular.ttf' -o -name 'Charis-Italic.ttf' \
+                              -o -name 'Charis-Bold.ttf' -o -name 'Charis-BoldItalic.ttf' \
+                              -o -name 'Inconsolata-Regular.otf' -o -name 'Inconsolata-Bold.otf'); do
+  cp -f "$f" "$FDIR/" 2>/dev/null || true
+done
 cd "$ROOT"
 
 echo "### 5/5 Verify fonts visible to XeLaTeX"
 fc-cache -f "$FDIR" >/dev/null 2>&1 || true
-fc-list | grep -icE "source serif 4|^.*Inter[-_ ]|JetBrains Mono" || true
+fc-list : family | tr "," "\n" | grep -icE "^Charis$|^Inconsolata$" || true
 
 echo "### TOOLCHAIN DONE"

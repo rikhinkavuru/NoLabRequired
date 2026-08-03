@@ -1,0 +1,51 @@
+# Figure typography for No Lab Required.
+#
+# Matplotlib reads this file from the working directory, and _quarto.yml sets
+# execute-dir: project, so every figure the book renders picks it up without a
+# single line of styling in any chapter. That matters because three of the four
+# figure blocks in Chapter 21 are echoed to the reader: the code stays the
+# plain matplotlib a reader would actually write, and the book still gets
+# figures set in the book's own face.
+#
+# Deliberately typographic only. Nothing here changes a colour that carries
+# data, a scale, or a marker, so a reader who runs the same code on a default
+# install gets a figure that differs in typeface and frame and in nothing that
+# would change what they conclude.
+#
+# Without this, every figure shipped DejaVu Sans at the body text's optical
+# weight -- a third typeface in a book that claims two -- inside a four-sided
+# black frame with outward ticks, which is the notebook default and reads as a
+# screenshot of a notebook on a printed page.
+
+font.family:        serif
+font.serif:         Charis, DejaVu Serif
+font.size:          8.5
+axes.titlesize:     8.5
+axes.labelsize:     8.5
+xtick.labelsize:    8.0
+ytick.labelsize:    8.0
+legend.fontsize:    8.0
+
+# The book's warm black, not the driver's #000000.
+text.color:         1C1B19
+axes.labelcolor:    1C1B19
+axes.edgecolor:     1C1B19
+xtick.color:        1C1B19
+ytick.color:        1C1B19
+
+# A printed statistical figure drops the top and right spine.
+axes.spines.top:    False
+axes.spines.right:  False
+axes.linewidth:     0.6
+xtick.major.width:  0.6
+ytick.major.width:  0.6
+xtick.major.size:   3.0
+ytick.major.size:   3.0
+legend.frameon:     False
+axes.grid:          False
+
+# 5.0 in is inside the 5.05 in measure, so a figure prints at the size it was
+# drawn at instead of being scaled by \includegraphics to fit.
+figure.figsize:     5.0, 3.0
+figure.dpi:         300
+savefig.dpi:        300

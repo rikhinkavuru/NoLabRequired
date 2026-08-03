@@ -16,6 +16,10 @@ export QUARTO_PYTHON="$ROOT/.venv/bin/python"
 export NLR_TERMS_OUT="$ROOT/build-logs/terms.tsv"
 export NLR_ERRORS_OUT="$ROOT/build-logs/errors.tsv"
 export MPLBACKEND=Agg
+# matplotlib caches the list of installed fonts. If the book's faces were
+# installed after matplotlib last ran, that cache still says they do not exist
+# and every figure silently falls back to DejaVu Sans.
+rm -f "$("$ROOT/.venv/bin/python" -c 'import matplotlib; print(matplotlib.get_cachedir())')"/fontlist-*.json 2>/dev/null || true
 
 mkdir -p build-logs
 : > "$NLR_TERMS_OUT"

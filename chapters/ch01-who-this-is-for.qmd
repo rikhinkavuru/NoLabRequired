@@ -79,9 +79,8 @@ to a stranger, and BLAST returns the same hits either way. Nothing you're about
 to do checks your credentials, because there's nothing there to check them
 with.
 
-Here's what this book can hand you, stated plainly because you've read the
-threads that say otherwise. By the end you can read the methods section of a
-paper in your own field and say what happened in it. You'll have a
+Here's what this book can hand you. By the end you can read the methods section
+of a paper in your own field and say what happened in it. You'll have a
 published figure reproduced from public data, with your code somewhere a
 stranger can open it. And you'll have a small analysis that nobody assigned
 you.
@@ -98,10 +97,9 @@ about twice as many people in it.
 
 Most of this field taught itself, so teaching yourself isn't what makes your
 position unusual. The unusual part is that you're unaffiliated: no
-institutional login, nobody down the hall. Everywhere this book would otherwise
-tell you to go and ask a colleague, it gives you something you can check by
-yourself instead. Every exercise ends with a check you can run on your own
-answer, because that's the job a colleague would otherwise be doing for you.
+institutional login, nobody down the hall. Every exercise ends with a check you
+can run on your own answer, because that's the job a colleague would otherwise
+be doing for you.
 
 ## What this book leaves out
 
@@ -109,8 +107,7 @@ Four subjects are missing on purpose.
 
 Statistics stops where the arithmetic stops. You'll get counts, rates,
 thresholds and one page on what running 27,179 tests at once does to a p-value.
-You won't get the derivation behind the model that produced it, and Chapter 25
-says so on the page where it uses one.
+You won't get the derivation behind the model that produced it.
 
 Algorithm theory is out. You'll align two sequences and read what came back.
 You won't write the alignment algorithm yourself, and nothing here asks you to

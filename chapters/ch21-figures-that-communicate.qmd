@@ -18,7 +18,7 @@ counts = counts.set_index("EntrezGeneID").drop(columns="Length")
 brca1_cpm = (counts / counts.sum() * 1e6).loc[12189]
 
 pairs = [brca1_cpm[["MCL1-LA", "MCL1-LB"]], brca1_cpm[["MCL1-LE", "MCL1-LF"]]]
-fig, axes = plt.subplots(1, 2, figsize=(6.2, 2.5))
+fig, axes = plt.subplots(1, 2, figsize=(5.0, 2.4))
 for ax, bottom in zip(axes, [0, 18]):
     for position, values in zip([0, 1], pairs):
         ax.scatter([position] * 2, values, s=40, color="#440154", zorder=3)
@@ -26,8 +26,8 @@ for ax, bottom in zip(axes, [0, 18]):
     ax.set_ylim(bottom, 24)
     ax.set_xticks([0, 1])
     ax.set_xticklabels(["virgin", "lactating"])
-    ax.set_ylabel("Brca1 (counts per million)")
-    ax.grid(axis="y", color="#e4e4e4", zorder=0)
+    ax.grid(axis="y", color="#CFCAC1", lw=0.5, zorder=0)
+axes[0].set_ylabel("Brca1 (counts per million)")
 axes[0].set_title("y axis starts at 0", fontsize=9)
 axes[1].set_title("y axis starts at 18", fontsize=9)
 fig.tight_layout()
@@ -157,7 +157,7 @@ print(int(np.isfinite(support).sum()), "points drawn from",
 print(int(strong.sum()), "genes past both lines")
 
 box = dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.9)
-fig, ax = plt.subplots(figsize=(5.6, 3.3))
+fig, ax = plt.subplots(figsize=(5.0, 3.0))
 ax.scatter(fold[~strong], support[~strong], s=3, color="#c9c9c9",
            linewidths=0)
 ax.scatter(fold[strong], support[strong], s=3, color="#440154", linewidths=0)
@@ -230,7 +230,7 @@ marker_genes = {12293: "Cacna2d1", 94088: "Trim6", 77220: "Tmem200a",
 panel = logcpm.loc[list(marker_genes)]
 panel.index = list(marker_genes.values())
 
-fig, ax = plt.subplots(figsize=(6.2, 2.6))
+fig, ax = plt.subplots(figsize=(5.0, 2.5))
 sns.heatmap(panel, cmap="viridis", ax=ax,
             cbar_kws={"label": "log2(CPM + 1)"})
 ax.set_xlabel("sample")
@@ -294,7 +294,7 @@ percent = strength ** 2 / (strength ** 2).sum() * 100
 
 color_for = {"basal": "#440154", "luminal": "#21918c"}
 shape_for = {"virgin": "o", "pregnant": "s", "lactating": "^"}
-fig, ax = plt.subplots(figsize=(5.6, 3.3))
+fig, ax = plt.subplots(figsize=(5.0, 3.0))
 for i, name in enumerate(logcpm.columns):
     ax.scatter(coords[i, 0], coords[i, 1], s=55,
                color=color_for[samples.loc[name, "cell_type"]],

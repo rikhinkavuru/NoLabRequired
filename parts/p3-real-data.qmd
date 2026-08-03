@@ -8,5 +8,5 @@ actually use, and the data arrives in the state data actually arrives in:
 27,179 rows, twelve columns with unhelpful names, identifiers that are numbers
 rather than gene names, and no instructions.
 
-The skill this part teaches is not any one library. It is the habit of finding
-out what is in a file before trusting anything you compute from it.
+The skill this part teaches is not any one library. It's the habit of finding
+out what's in a file before trusting anything you compute from it.

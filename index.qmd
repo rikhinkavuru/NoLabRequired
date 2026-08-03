@@ -1,10 +1,9 @@
 # How to use this workbook {.unnumbered}
 
 This book is a series of things you do, not a series of things you read. The
-reading is there to make the doing possible, and it's kept as short as that
-allows.
+reading is there to make the doing possible.
 
-Here's how it's built, so you can decide how to spend your time on it.
+Here's how it's built.
 
 ## Every chapter has the same six parts
 
@@ -23,14 +22,12 @@ The concept section will still be there next week.
 
 A browser. A Google account, from Chapter 4 onward. About three hours a week.
 
-Nothing in this book is installed. There's no terminal, no package manager, and
-no moment where the instructions stop working because a version number moved.
-The one install command in the whole book appears in Chapter 17, and the book
-says so when it arrives.
+Nothing in this book is installed. No terminal, no package manager, nothing
+that stops working because a version number moved. The one install command in
+the whole book is in Chapter 17.
 
-Every dataset used here is already in the repository, so no chapter depends on
-a download working while you're sitting there. Where the book does ask you to
-fetch something, the size is stated in the sentence that asks.
+Every dataset used here is already in the repository. Where a chapter asks you
+to fetch something, the size is in the sentence that asks.
 
 ## Time estimates, and what they assume
 
@@ -54,8 +51,8 @@ In this order, and the order matters.
    whole block. The last line is the one that says what went wrong.
 2. Check the *if it breaks* section of the chapter you're in. If the error is
    listed there, it's listed with a fix.
-3. Check the error index at the back of the book, which maps every error
-   message this book explains to the page that explains it.
+3. Check the error index at the back. It lists error messages against the pages
+   that explain them.
 4. Compare your code against the printed version, character by character, on
    the line the error names. Roughly half the time it's a quotation mark, a
    bracket, or a letter.
@@ -63,7 +60,7 @@ In this order, and the order matters.
    taken out. Chapter 16 covers how to do that well.
 
 Chapter 16 is the one to read early if you get stuck often. It's about reading
-errors, and it's the longest chapter in Part 2 for a reason.
+errors.
 
 ## Type the code
 
@@ -78,10 +75,8 @@ a verdict when it finally shows up in the middle of something they care about.
 ## Where everything lives
 
 The code, the data, the answers to every exercise, and the source of this book
-are all at `github.com/rikhinkavuru/NoLabRequired`. Chapter 3 prints that
-address, and it's the only full web address in the body of the book. Everywhere
-else you get a bare domain. Every exact address this book took a number from is
-collected in the index at the back, with the date it was last checked. Printed
-links go stale, and a book that scatters them through its body text ages badly.
+are all at `github.com/rikhinkavuru/NoLabRequired`. Everywhere else in the book
+you get a bare domain rather than a full address. The exact addresses are
+collected in the index at the back, each with the date it was last checked.
 
 If something here is wrong, the repository is where to say so.

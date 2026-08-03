@@ -66,11 +66,14 @@ jobs:
       - name: Fonts
         run: |
           mkdir -p ~/.fonts /tmp/fonts && cd /tmp/fonts
-          curl -fsSL -o ss.zip https://github.com/adobe-fonts/source-serif/releases/download/4.005R/source-serif-4.005_Desktop.zip
-          curl -fsSL -o inter.zip https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
-          curl -fsSL -o jb.zip https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip
+          curl -fsSL -o charis.zip https://github.com/silnrsi/font-charis/releases/download/v7.000/Charis-7.000.zip
+          curl -fsSL -o inconsolata.zip https://github.com/googlefonts/Inconsolata/releases/download/v3.000/fonts_otf.zip
           for z in *.zip; do unzip -oq "$z" -d "${z%.zip}"; done
-          find /tmp/fonts \( -name '*.ttf' -o -name '*.otf' \) ! -path '*ariable*' -exec cp -n {} ~/.fonts/ \;
+          for f in $(find /tmp/fonts -name 'Charis-Regular.ttf' -o -name 'Charis-Italic.ttf' \
+                          -o -name 'Charis-Bold.ttf' -o -name 'Charis-BoldItalic.ttf' \
+                          -o -name 'Inconsolata-Regular.otf' -o -name 'Inconsolata-Bold.otf'); do
+            cp -f "$f" ~/.fonts/
+          done
           fc-cache -f
 
       - name: Build both editions

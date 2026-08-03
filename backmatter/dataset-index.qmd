@@ -20,7 +20,7 @@ This page is generated from `research/facts.jsonl` by
 ## blast.ncbi.nlm.nih.gov {.unnumbered}
 
 - <https://blast.ncbi.nlm.nih.gov/Blast.cgi>  
-  40 facts, checked 2026-08-02
+  41 facts, checked 2026-08-02
 
 ## doi.org {.unnumbered}
 
@@ -79,7 +79,7 @@ This page is generated from `research/facts.jsonl` by
 - <https://www.ncbi.nlm.nih.gov/nuccore/NM_007294>  
   8 facts, checked 2026-08-02
 - <https://www.ncbi.nlm.nih.gov/nuccore/NM_007294.4>  
-  6 facts, checked 2026-08-02
+  8 facts, checked 2026-08-02
 - <https://www.ncbi.nlm.nih.gov/nuccore/NM_009764>  
   8 facts, checked 2026-08-02
 - <https://www.ncbi.nlm.nih.gov/nuccore/NM_009764.3>  
@@ -117,6 +117,7 @@ download succeeding while you are working.
 |---|---|
 | `data/GSE60450_counts.tsv.gz` | 514 kB |
 | `data/GSE60450_samples.csv` | 1 kB |
+| `data/NM_007294.4.gb` | 42 kB |
 | `data/alignment/brca1_cds_five_species.aln` | 48 kB |
 | `data/alignment/brca1_cds_five_species.phylotree` | 0 kB |
 | `data/alignment/brca1_cds_five_species.pim` | 0 kB |

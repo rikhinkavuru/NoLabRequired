@@ -14,20 +14,13 @@ The mammary gland dataset in Part 4 is GSE60450, deposited by the authors of a
 data is doing a job here they never planned for, which is the whole argument
 for public deposition.
 
-The Carpentries lessons, Rosalind, and the practitioners who write openly about
-what actually goes wrong shaped how this book teaches. The debt is specific
-rather than general: the exercise anatomy, the checkpoint placement, and the
-decision to normalize errors before the reader's first one all came from
-studying what those projects do.
-
-The typefaces are open-licensed: Source Serif 4 from Adobe, Inter from Rasmus
-Andersson, and JetBrains Mono from JetBrains. The book is written in Quarto and
-typeset with LuaTeX.
+The Carpentries lessons and Rosalind shaped how this book teaches: the shape of
+an exercise, where a checkpoint goes, and the decision to put errors in front of
+you before you hit your own. So did the practitioners who write openly about
+what goes wrong in their own work.
 
 **Technical review.** This edition has not yet been through independent
-technical review. That's a real gap, and it's stated here rather than left for
-a reader to discover. Every factual claim was checked against a live source
-during production and the dates are in the dataset index, but checking your own
-work isn't the same as somebody else checking it. If you have the expertise and
-the inclination, the repository is open, and corrections are the most valuable
-thing you can send.
+technical review. Every factual claim was checked against a live source during
+production and the dates are in the dataset index, but checking your own work
+isn't the same as somebody else checking it. If you have the expertise, the
+repository is open, and corrections are the most valuable thing you can send.

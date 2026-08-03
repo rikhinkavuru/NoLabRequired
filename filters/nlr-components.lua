@@ -214,36 +214,25 @@ function Span(el)
     local label = pandoc.utils.stringify(el.content)
     seen_terms[label] = definition or ''
     if LATEX then
-      -- The bold term links to its glossary entry.
-      local linked = rawi('\\hyperref[' .. gloss_anchor(label) .. ']{\\textbf{'
+      -- Bold in the flow, linked to the glossary. The definition itself is not
+      -- repeated here: there is no side column any more, and when there was,
+      -- every one of these repeated a sentence the body had already said.
+      return rawi('\\hyperref[' .. gloss_anchor(label) .. ']{\\textbf{'
         .. esc(label) .. '}}')
-      if definition and definition ~= '' then
-        return { rawi('\\nlrdeflinked{'), linked, rawi('}{' .. esc(definition) .. '}') }
-      end
-      return linked
     end
-    -- HTML: the definition has to be visible here too, or the web edition
-    -- silently loses every margin definition in the book. The term links to
-    -- its glossary entry, same as in print.
-    local out = pandoc.List({
-      pandoc.Span(
-        { pandoc.Link(el.content, '#' .. gloss_anchor(label)) },
-        pandoc.Attr('', {'nlr-term'}, {{'data-term', label}})),
-    })
-    if definition and definition ~= '' then
-      out:insert(pandoc.Span(
-        { pandoc.Str(definition) },
-        pandoc.Attr('', {'nlr-term-def'}, {})
-      ))
-    end
-    return out
+    -- Same as print: bold, linked to the glossary, definition not repeated.
+    return pandoc.Span(
+      { pandoc.Link(el.content, '#' .. gloss_anchor(label)) },
+      pandoc.Attr('', {'nlr-term'}, {{'data-term', label}}))
   end
 
+  -- There were four of these in the whole book and there is no margin to put
+  -- them in. They read as asides, so they are set as asides.
   if hasClass(el, 'margin') then
     if LATEX then
-      return { rawi('\\nlrnote{'), pandoc.Span(el.content), rawi('}') }
+      return { rawi('{\\itshape\\color{nlrsecond}'), pandoc.Span(el.content), rawi('}') }
     end
-    return pandoc.Span(el.content, pandoc.Attr('', {'nlr-margin'}, {}))
+    return pandoc.Span(el.content, pandoc.Attr('', {'nlr-aside'}, {}))
   end
 
   return nil
@@ -310,6 +299,27 @@ local function wrap(el, open, close)
   return out
 end
 
+-- Same, but the opener is spliced into the first paragraph instead of sitting
+-- above it. Every aside label is meant to run into the first line, and as a
+-- RawBlock it never could: pandoc leaves a blank line after it, LaTeX reads
+-- that as \par, and the label ends up alone on a line of its own with the
+-- text starting underneath. Falls back to the block form when the component
+-- opens with something that is not a paragraph, such as a listing or a list.
+local function wrap_runin(el, open, close)
+  local content = el.content:clone()
+  local first = content[1]
+  if first and (first.t == 'Para' or first.t == 'Plain') then
+    local inlines = pandoc.List({ rawi(open) })
+    inlines:extend(first.content)
+    content[1] = pandoc.Para(inlines)
+    local out = pandoc.List()
+    out:extend(content)
+    out:insert(raw(close))
+    return out
+  end
+  return wrap(el, open, close)
+end
+
 function Div(el)
   -- ---- exercise ----------------------------------------------------------
   if hasClass(el, 'exercise') then
@@ -330,10 +340,17 @@ function Div(el)
   end
 
   -- ---- exercise sub-fields ----------------------------------------------
+  -- `check` is the one class that means two things: the last field of an
+  -- exercise (39 of them) and a standalone verification callout (37). This
+  -- loop runs before the callout loop below, so every standalone .check was
+  -- being turned into an exercise field and \nlrcheck was dead code that never
+  -- rendered once. The marking pass at the bottom of this file tags the ones
+  -- that really are inside an exercise.
   for key, label in pairs(FIELD_LABEL) do
-    if hasClass(el, key) then
+    if hasClass(el, key)
+       and (key ~= 'check' or hasClass(el, 'nlr-exercise-field')) then
       if LATEX then
-        return wrap(el, '\\nlrfield{' .. label .. '}', '')
+        return wrap_runin(el, '\\nlrfield{' .. label .. '}', '')
       end
       local content = pandoc.List({
         pandoc.Plain{ pandoc.Span({pandoc.Str(label)}, pandoc.Attr('', {'nlr-field-label'})) } })
@@ -346,7 +363,7 @@ function Div(el)
   for name, spec in pairs(SIMPLE_BOXES) do
     if hasClass(el, name) then
       if LATEX then
-        return wrap(el, '\\begin{' .. spec.env .. '}', '\\end{' .. spec.env .. '}')
+        return wrap_runin(el, '\\begin{' .. spec.env .. '}', '\\end{' .. spec.env .. '}')
       end
       return pandoc.Div(el.content, pandoc.Attr(el.identifier, {spec.class}, {}))
     end
@@ -355,7 +372,7 @@ function Div(el)
   -- ---- version pin -------------------------------------------------------
   if hasClass(el, 'asof') then
     if LATEX then
-      return wrap(el, '\\nlrasof{', '}')
+      return wrap_runin(el, '\\nlrasof{', '}')
     end
     local content = pandoc.List({
       pandoc.Plain{ pandoc.Span({pandoc.Str('As of')}, pandoc.Attr('', {'nlr-asof-label'})) } })
@@ -494,3 +511,37 @@ function Pandoc(doc)
   end
   return doc
 end
+
+-- ---------------------------------------------------------------------------
+-- Pandoc runs these in order. The first pass only marks. It walks top down, so
+-- an .exercise is reached before its children and can tag the field divs
+-- inside it; the default bottom-up order visits the child first and gives it
+-- no way to know what it is nested in. The second pass is the real filter.
+-- ---------------------------------------------------------------------------
+return {
+  {
+    traverse = 'topdown',
+    Div = function(el)
+      if hasClass(el, 'exercise') then
+        for _, child in ipairs(el.content) do
+          if child.t == 'Div' then
+            for key in pairs(FIELD_LABEL) do
+              if hasClass(child, key) then
+                child.classes:insert('nlr-exercise-field')
+              end
+            end
+          end
+        end
+      end
+      return el
+    end,
+  },
+  {
+    Inlines   = Inlines,
+    Code      = Code,
+    Span      = Span,
+    CodeBlock = CodeBlock,
+    Div       = Div,
+    Pandoc    = Pandoc,
+  },
+}

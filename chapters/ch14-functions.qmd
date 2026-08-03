@@ -141,7 +141,7 @@ ended. The `translated` on the first line above is a separate name in your
 notebook, and it holds what the call handed back.
 
 ::: {.check}
-The first line reads `1864 1 *`, which is the output Chapter 13's check box
+The first line reads `1864 1 *`, which is the output Chapter 13's check
 asked you for, and it hasn't moved. The second reads `MDLSALRVEE`: ten
 characters from 30 bases, no `*` in them. That's the short answer Exercise 13.1
 had you predict before you ran anything.

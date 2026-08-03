@@ -9,9 +9,8 @@ actually give are short, and most of them end with "find a lab."
 
 That advice is not wrong. It's just not available to the person asking.
 
-Corrections are welcome, and disagreements are more welcome than agreement. So
-is a report that a web page this book describes no longer looks the way it says
-it does. That's the failure this book is most exposed to, and readers will hit
-it before the author does.
+Corrections are welcome. So is a report that a web page this book describes no
+longer looks the way it says it does. Those pages get redesigned without
+warning, and readers find out first.
 
 Everything is at `github.com/rikhinkavuru/NoLabRequired`.

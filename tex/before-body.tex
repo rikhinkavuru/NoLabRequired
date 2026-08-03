@@ -1,6 +1,9 @@
 % ===========================================================================
 %  Front matter, pages i-vi (spec: FRONT MATTER table)
 %  i half title / ii blank / iii title / iv copyright / v dedication / vi blank
+%
+%  Nothing on these pages is linked. A copyright page in a printed book prints
+%  an address as text; the rest of the PDF links freely.
 % ===========================================================================
 
 \newcommand{\nlrversion}{1.0}
@@ -10,12 +13,18 @@
 \frontmatter
 \pagestyle{nlrplain}
 
+% Display matter is set flush, not indented. The book's 1.2em \parindent
+% otherwise lands on the title, the half title, the author line and the first
+% line of every copyright paragraph, so the subtitle's second line hung 0.18in
+% to the left of its first and the title page had two left edges.
+\setlength{\parindent}{0pt}
+
 % ---- i. half title --------------------------------------------------------
+% Sits higher and lighter than the title page it precedes. Setting it in the
+% same bold at a smaller size just reads as the title page rendered twice.
 \thispagestyle{empty}
-\vspace*{2.2in}
-\begin{nlrfull}
-{\nlrsans\bfseries\fontsize{34}{38}\selectfont No Lab Required}
-\end{nlrfull}
+\vspace*{1.6in}
+{\fontsize{21}{25}\selectfont No Lab Required}
 \clearpage
 
 % ---- ii. blank ------------------------------------------------------------
@@ -23,91 +32,89 @@
 
 % ---- iii. title page ------------------------------------------------------
 \thispagestyle{empty}
-\begin{nlrfull}
 \vspace*{1.9in}
-{\nlrsans\bfseries\fontsize{44}{48}\selectfont No Lab Required}
+{\nlrdisplay\fontsize{44}{48}\selectfont No Lab Required}
 
-\vspace{14pt}
-{\nlrsans\fontsize{15}{21}\selectfont\color{nlrsecond}
-A bioinformatics workbook for people with\\
-no lab, no degree, and no budget}
-
-\vspace{26pt}
-{\color{nlrteal}\rule{2.2in}{2.5pt}}
+\vspace{16pt}
+% The closing brace has to fall after the \par, not before it. TeX applies
+% \baselineskip at the moment it breaks the paragraph into lines, so with the
+% group closed first the subtitle was set on the body's 16 pt, not on 21.
+{\fontsize{15}{21}\selectfont
+A bioinformatics workbook for people\\
+with no lab, no degree, and no budget\par}
 
 \vfill
-{\nlrsansmed\fontsize{12}{16}\selectfont Rikhin Kavuru}
-
-\vspace{6pt}
-{\nlrsans\fontsize{9.5}{13}\selectfont\color{nlrsecond}%
-Version \nlrversion\ \textperiodcentered\ \nlrreleasedate}
-\end{nlrfull}
+{\fontsize{12}{16}\selectfont Rikhin Kavuru}
 \clearpage
 
-% ---- iv. copyright, license, colophon -------------------------------------
+% ---- iv. copyright ---------------------------------------------------------
+% Hangs from the foot of the text block, on a 3.85in measure, at 8/11.5. Set
+% full-measure at body size and flush to the head, it read as documentation.
 \thispagestyle{empty}
-\begin{nlrfull}
-\vspace*{0.2in}
-{\nlrsans\fontsize{9}{14}\selectfont\color{nlrink}
+\null\vfill
+% 0.70in of cutback, not 1.20. A narrow measure is right for legal text, but at
+% 1.20 this was the one page in the book whose silhouette was text on the left
+% with a void down the right, which is the shape the whole redesign started from.
+%
+% Two spacing tiers, 6pt inside a topic and 13pt between. The old sequence ran
+% 9/5/5/9/9/5, which is not a rule a reader can decode, only an inconsistency
+% they can see.
+\begin{adjustwidth}{0pt}{0.70in}
+{\fontsize{8}{11.5}\selectfont
 
-\textbf{No Lab Required: A bioinformatics workbook for people with no lab, no degree, and no budget}
+\textit{No Lab Required: A bioinformatics workbook for people with no lab,
+no degree, and no budget.} Version \nlrversion, \nlrreleasedate.
 
-\vspace{8pt}
-Version \nlrversion, \nlrreleasedate.
+\vspace{13pt}
+\textcopyright{} 2026 Rikhin Kavuru.
 
-\vspace{14pt}
-\textbf{License.} This work is licensed under a Creative Commons
-Attribution--NonCommercial--ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
-You are free to copy, print, redistribute and adapt this book for non-commercial
-purposes, provided you credit the author and license your adaptation under the
-same terms. The full license text is at
-\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{creativecommons.org/licenses/by-nc-sa/4.0/}.
+\vspace{6pt}
+% Single hyphens. That is the licence's actual name, and en dashes gave TeX no
+% break point in it, so the first line of this paragraph ran past the right edge.
+Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International License (CC BY-NC-SA 4.0). You are free to copy, print,
+redistribute and adapt this book for non-commercial purposes, provided you
+credit the author and license your adaptation under the same terms. Full
+license text at creativecommons.org/licenses/by-nc-sa/4.0/.
 
-\vspace{10pt}
-All source files for this book --- the text, the code, the datasets, and the
-build system that produced this PDF --- are public at
-\href{https://\nlrrepo}{\nlrrepo}. If you find an error, open an issue. If you fix
-one, open a pull request; contributors are credited in the changelog.
+\vspace{6pt}
+The text, the code, the data and the build system that produced this PDF are
+all public. Found an error, open an issue. Fixed one, open a pull request;
+contributors are credited in the changelog.
 
-\vspace{14pt}
-\textbf{How to cite this book.}\\
-Kavuru, R. (2026). \textit{No Lab Required: A bioinformatics workbook for people
-with no lab, no degree, and no budget} (Version \nlrversion). \nlrrepo
+\vspace{13pt}
+Cite this book as:
 
-\vspace{14pt}
-\textbf{A note on accuracy.} Every accession number, database record, tool
-output and web address in this book was checked against the live source during
-production, and the date of that check is recorded in the dataset index at the
-back. Databases grow and websites are redesigned. Chapter~3 explains what to do
-when what you see no longer matches what is printed here.
+\vspace{2pt}
+% Hanging, the way a citation is set. With the book's first-line indent it came
+% out inverted: the first line in, the turned line flush.
+{\hangindent=1.2em\hangafter=1
+Kavuru, R. (2026). \textit{No Lab Required} (Version \nlrversion). \nlrrepo\par}
 
-\vspace{14pt}
-\textbf{Trademarks and third-party services.} Google Colab, NCBI, UniProt,
-EMBL-EBI, the Protein Data Bank, GitHub and every other service named in this
-book belong to their respective owners. This book is not affiliated with,
-endorsed by, or reviewed by any of them.
+\vspace{13pt}
+Every accession number, database record, tool output and web address here was
+checked against the live source during production, and the date of that check
+is in the dataset index at the back. Databases grow and websites are
+redesigned. Chapter~3 covers what to do when what you see stops matching what
+is printed.
 
-\vspace{14pt}
-\textbf{Colophon.} Body text is set in Source Serif 4, headings and interface
-text in Inter, and code in JetBrains Mono NL --- the no-ligature cut, chosen so
-that \texttt{!=} prints as two characters you can type rather than one you
-cannot. All three faces are open-licensed. The book was written in Quarto and
-typeset with Lua\TeX; the layout source is in the repository alongside the text.
+\vspace{6pt}
+Google Colab, NCBI, UniProt, EMBL-EBI, the Protein Data Bank, GitHub and every
+other service named in this book belong to their respective owners. This book
+is not affiliated with, endorsed by, or reviewed by any of them.
 
 }
-\end{nlrfull}
+\end{adjustwidth}
 \clearpage
 
 % ---- v. dedication --------------------------------------------------------
 \thispagestyle{empty}
 \vspace*{2.6in}
-\begin{nlrfull}
 \begin{center}
 {\fontsize{12}{20}\selectfont\itshape
 For everyone who was told to come back\\
 when they had access.}
 \end{center}
-\end{nlrfull}
 \clearpage
 
 % ---- vi. blank ------------------------------------------------------------

@@ -302,7 +302,7 @@ your import again. Nothing is wrong with your machine or with the library.
 ::: {.errfix err="ValueError: Duplicate key 'NM_007294.4'"}
 Biopython is talking. `SeqIO.to_dict` keys its dictionary on `record.id`, and
 two of your headers agree up to their first space. This is the collision the
-Trap box above described, except that `to_dict` refuses out loud rather than
+Trap above described, except that `to_dict` refuses out loud rather than
 overwriting. Key on `record.description` instead, or fix the headers in the
 file.
 :::
