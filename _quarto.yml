@@ -24,6 +24,20 @@ book:
   sidebar:
     style: docked
     collapse-level: 1
+    tools:
+      - icon: play-circle
+        href: https://nolabrequired.vercel.app
+        text: "Interactive tools"
+  # HTML only, deliberately. The body of the book prints exactly one full web
+  # address, for the reason Chapter 3 gives: printed links go stale. A navbar
+  # item and a page footer exist only in the web edition, so the rule holds.
+  page-footer:
+    left: "Free under CC BY-NC-SA 4.0"
+    right:
+      - text: "Interactive tools"
+        href: https://nolabrequired.vercel.app
+      - text: "Source"
+        href: https://github.com/rikhinkavuru/NoLabRequired
   chapters:
     - index.qmd
     - frontmatter/contents.qmd
